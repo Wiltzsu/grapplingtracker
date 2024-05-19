@@ -22,11 +22,11 @@ error_reporting(E_ALL);
             <?php endforeach; ?>
         </select>
 
-        <select name="position_id">
+        <select name="difficulty_id">
             <!-- PHP loop to generate dropdown options dynamically -->
-            <?php foreach ($positions as $position): ?>
-                <option value="<?php echo htmlspecialchars($position['positionID']); ?>">
-                    <?php echo htmlspecialchars($position['positionName']); ?>
+            <?php foreach ($difficulties as $difficulty): ?>
+                <option value="<?php echo htmlspecialchars($difficulty['difficultyID']); ?>">
+                    <?php echo htmlspecialchars($difficulty['difficulty']); ?>
                 </option>
             <?php endforeach; ?>
         </select>

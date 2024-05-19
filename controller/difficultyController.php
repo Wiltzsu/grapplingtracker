@@ -6,14 +6,17 @@ error_reporting(E_ALL);
 require "model/difficultyModel.php";
 
 class difficultyController {
+    // A private property that will hold the instance of the Difficulty model
     private $difficulty;
 
     public function __construct($db)
     {
+        // Initializes the 'difficulty' property to hold an instance of the Difficulty model passing the database connection to it
         $this->difficulty = new Difficulty($db);
     }
 
-    public function index() {
+    // Calls the 'getAllDifficulties' on the difficulty model to fetch all items
+    public function difficultyIndex() {
         $difficulties = $this->difficulty->getAllDifficulties();
 
         // Pass items to view
