@@ -16,11 +16,7 @@ class difficultyController {
     }
 
     // Calls the 'getAllDifficulties' on the difficulty model to fetch all items
-    public function difficultyIndex() {
-        $difficulties = $this->difficulty->getAllDifficulties();
-
-        // Pass items to view
-        require 'view/AddTechniqueView.php';
-
+    public function getDifficulties() {
+        return $this->difficulty->getAllDifficulties();
     }
 }

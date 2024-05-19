@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 <body>
     <form method="post" action="">
         <h3>Select a category</h3>
-        <!-- Dropdown menu for items -->
+        <!-- Dropdown menu for categories -->
         <select name="category_id">
             <!-- PHP loop to generate dropdown options dynamically -->
             <?php foreach ($categories as $category): ?>
@@ -22,6 +22,8 @@ error_reporting(E_ALL);
             <?php endforeach; ?>
         </select>
 
+        <h3>Select a difficulty</h3>
+        <!-- Dropdown menu for difficulties -->
         <select name="difficulty_id">
             <!-- PHP loop to generate dropdown options dynamically -->
             <?php foreach ($difficulties as $difficulty): ?>
@@ -30,7 +32,9 @@ error_reporting(E_ALL);
                 </option>
             <?php endforeach; ?>
         </select>
+
         <input type="submit" value="Submit">
     </form>
 </body>
 </html>
+

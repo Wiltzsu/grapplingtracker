@@ -4,15 +4,18 @@ ini_set('log_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-
-require __DIR__ . '/config/database.php'; // Ensure the correct path to the database config
+require __DIR__ . '/config/database.php';
 require 'controller/categoryController.php';
 require 'controller/difficultyController.php';
 
 // Initialize the CategoryController with the database connection
 $categoryController = new CategoryController($db);
-$categoryController->categoryIndex();
-
 $difficultyController = new difficultyController($db);
-$difficultyController->difficultyIndex();
+
+// Fetch data from controllers
+$categories = $categoryController->getCategories();
+$difficulties = $difficultyController->getDifficulties();
+
+// Pass data to the view
+require 'view/AddTechniqueView.php';
 ?>

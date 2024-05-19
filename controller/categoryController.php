@@ -15,12 +15,9 @@ class CategoryController {
         $this->category = new Category($db);
     }
 
-    public function categoryIndex() {
+    public function getCategories() {
         // Calls the 'getAllCategories' on the category model to fetch all categories
-        $categories = $this->category->getAllCategories();
-
-        // Pass categories to the view
-        require 'view/AddTechniqueView.php';
+        return $this->category->getAllCategories();
     }
 }
 ?>
