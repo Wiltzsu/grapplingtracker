@@ -13,11 +13,7 @@ class PositionController {
         $this->position = new Position($db);
     }
 
-    public function index() {
-        $positions =  $this->position->getAllPositions();
-
-        // Pass positions to the view
-        require 'view/AddTechniqueView.php';
-
+    public function getPositions() {
+        return $this->position->getAllPositions();
     }
 }
