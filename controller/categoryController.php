@@ -15,13 +15,17 @@ require_once './config/database.php';
 require_once './model/categoryModel.php';
 
 // Create a CategoryController using the factory.
+$categoryController = $factory->create('CategoryController');
 
 /**
  * CategoryController Class.
  * Handles fetching the categories from the model and passing it to index.
  */
-class CategoryController {
-    // A private property that will hold the instance of the Category model.
+class CategoryController 
+{
+    /**
+     * @var Category Instance of the Category model.
+     */
     private $category;
 
     /**
@@ -30,12 +34,21 @@ class CategoryController {
      * @param PDO $db Database connection
      */
     public function __construct($db) {
-        // Initialize the 'category' property to hold an instance of the 'Cateogry' model passing the database connection to it
+
+        /**
+         * Initialize the 'category' property to hold an instance of the 'Category' 
+         * model passing the database connection to it
+         */
         $this->category = new Category($db);
     }
 
-    public function getCategories() {
-        // Calls the 'getAllCategories' on the category model to fetch all categories
+    /**
+     * Calls the 'getAllCatgories on the Category model to fetch all items.
+     * 
+     * @return array An associative array of categories.
+     */
+    public function getCategories() 
+    {
         return $this->category->getAllCategories();
     }
 }
