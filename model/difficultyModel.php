@@ -1,6 +1,6 @@
 <?php
 /**
- * Category model for interacting with the 'Category' table in the database.
+ * Difficulty model for interacting with the 'Category' table in the database.
  * 
  * @package Techniquedbmvc
  * @author  William Lönnberg <william.lonnberg@gmail.com>

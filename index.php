@@ -9,9 +9,9 @@ require 'controller/difficultyController.php';
 require 'controller/positionController.php';
 
 // Initialize the controllers with the database connection
-$categoryController = new CategoryController($db);
-$difficultyController = new difficultyController($db);
-$positionController = new PositionController($db);
+$categoryController = $factory->create('CategoryController');
+$difficultyController = $factory->create('DifficultyController');
+$positionController = $factory->create('PositionController');
 
 // Fetch data from controllers
 $categories = $categoryController->getCategories();
