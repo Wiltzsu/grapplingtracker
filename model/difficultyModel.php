@@ -18,16 +18,19 @@ error_reporting(E_ALL);
 class Difficulty
 {
     /**
-     * @var PDO Database connection
+     * @var PDO Database connection.
+     * '@var' is used to specify the type of a class property.
      */
-    private $_db; // Ensures that $_db is always an instance of PDO. Underscore for private variable.
+    private $_db; 
 
     /** 
-     * Initializes Difficulty with a database connection.
+     * Constructor method for the class initialized with database connection.
+     * Can only be called with an instance of PDO.
      * 
      * @param PDO $db database connection.
+     * '@param' is used to specify the type and purpose of a method parameter.
      */
-    public function __construct($db) // Ensures that the constructor can only be called with an instance of PDO.
+    public function __construct(PDO $db)
     {
         $this->_db = $db;
     }
@@ -37,7 +40,7 @@ class Difficulty
      * 
      * @return array An associative array of difficulties.
      */
-    public function getAllDifficulties(): array // Ensures that getAllDifficulties() always returns an array.
+    public function getAllDifficulties(): array
     {
         $statement = $this->_db->prepare("SELECT * FROM Difficulty");
         $statement->execute();

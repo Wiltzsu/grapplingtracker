@@ -1,17 +1,48 @@
 <?php
+/**
+ * Category model for interacting with the 'Category' table in the database.
+ * 
+ * @package Techniquedbmvc
+ * @author  William Lönnberg <william.lonnberg@gmail.com>
+ * @license MIT License
+ */
+
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-class Position {
-    private $db;
+/**
+ * Class Position
+ * Handles database operations for the class 'Position'.
+ */
+class Position
+{
+    /**
+     * @var PDO Database connection
+     * '@var' is used to specify the type of a class property.
+     */
+    private $_db; // Ensure that $_db is always an instance of PDO
 
-    public function __construct($db) {
-        $this->db = $db;
+    /**
+     * Constructor method for the class initialized with a database connection
+     * Can only be called with an instance of PDO.
+     * 
+     * @param PDO $db Database connection
+     * '@param' is used to specify the type and purpose of a method parameter.
+     */
+    public function __construct($db) 
+    {
+        $this->_db = $db;
     }
 
-    public function getAllPositions() {
-        $statement =  $this->db->prepare("SELECT * FROM Position");
+    /**
+     * Fetches all positions from the 'Position' table
+     * 
+     * @return array An associative array of difficulties.
+     */
+    public function getAllPositions(): array 
+    {
+        $statement =  $this->_db->prepare("SELECT * FROM Position");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

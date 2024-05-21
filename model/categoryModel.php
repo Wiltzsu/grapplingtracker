@@ -18,16 +18,19 @@ error_reporting(E_ALL);
 class Category
 {
     /**
-     * @var PDO Database connection
+     * @var PDO Database connection, ensures that $_db is always an instance of PDO.
+     * '@var' is used to specify the type of a class property.
      */
-    private PDO $_db; // Ensures that $_db is always an instance of PDO.
+    private PDO $_db;
 
     /**
-     * Initializes the Category model with a database connection.
+     * Constructor method for the class initialized with database connection.
+     * Can only be called with an instance of PDO
      * 
      * @param PDO $db Database connection
+     * '@param' is used to specify the type and purpose of a method parameter.
      */
-    public function __construct(PDO $db) // Ensures that the constructor can only be called with an instance of PDO.
+    public function __construct(PDO $db)
     {
         $this->_db = $db;
     }
@@ -35,9 +38,9 @@ class Category
     /**
      * Fetches all categories from the 'Category' table.
      * 
-     * @return array Associative array of categories
+     * @return array Associative array of categories.
      */
-    public function getAllCategories(): array // Ensures that getAllCategories always returns an array.
+    public function getAllCategories(): array
     {
         $statement = $this->_db->prepare("SELECT * FROM Category");
         $statement->execute();
