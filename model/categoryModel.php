@@ -3,7 +3,7 @@
  * Category model for interacting with the 'Category' table in the database.
  * 
  * @package Techniquedbmvc
- * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @author  William Lönnberg <william.lonnberg@gmail.com>
  * @license MIT License
  */
 
