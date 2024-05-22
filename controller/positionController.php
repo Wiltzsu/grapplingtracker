@@ -1,19 +1,54 @@
 <?php
-// /controller/categoryController.php
+/**
+ * Controller category for interacting with the Difficulty model and index.
+ * 
+ * @package Techniquedbmvc
+ * @author  William Lönnberg <william.lonnberg@gmail.com>
+ * @license MIT License
+ */
+
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-require 'model/positionModel.php';
+require_once './config/database.php';
+require_once './model/positionModel.php';
 
-class PositionController {
-    private $position;
+// Create a PositionController using the factory.
+$positionController = $factory->create('PositionController');
 
-    public function __construct($db) {
-        $this->position = new Position($db);
+/**
+ * PositionController Class
+ */
+
+class PositionController
+{
+    /**
+     * @var Position Instance of the Position model.
+     */
+    private $_position;
+
+    /**
+     * Constructor method for the class initialized with a database connection.
+     * 
+     * @param PDO $db Database connection.
+     */
+    public function __construct($db) 
+    {
+        /**
+         * Initializes the 'position' property to hold an instance of the Position
+         * model passing the database connection to it.
+         */
+        $this->_position = new Position($db);
     }
 
-    public function getPositions() {
-        return $this->position->getAllPositions();
+    /**
+     * Calls the 'getAllPositions' method on the Positions model to fetch all items.
+     * 
+     * @return array An associative array of positions.
+     */
+    public function getPositions(): array
+    {
+        return $this->_position->getAllPositions();
     }
 }

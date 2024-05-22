@@ -19,7 +19,6 @@ $difficultyController = $factory->create('DifficultyController');
 
 /**
  * DifficultyController Class
- * Handles operations related to difficulties.
  */
 class DifficultyController
 {
