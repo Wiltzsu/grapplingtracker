@@ -1,0 +1,19 @@
+{
+    "name": "william/technique-db-mvc",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Wiltzsu",
+            "email": "william.lonnberg@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.10"
+    }
+}

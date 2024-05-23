@@ -1,4 +1,8 @@
 <?php
+namespace App\Controller;
+
+use App\Model\Position;
+use PDO;
 /**
  * Controller category for interacting with the Difficulty model and index.
  * 
@@ -10,12 +14,6 @@
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
-require_once './config/database.php';
-require_once './model/positionModel.php';
-
-// Create a PositionController using the factory.
-$positionController = $factory->create('PositionController');
 
 /**
  * PositionController Class

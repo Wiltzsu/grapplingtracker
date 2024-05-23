@@ -1,4 +1,8 @@
 <?php
+namespace App\Controller;
+
+use App\Model\Category;
+use PDO;
 /**
  * Controller category for interacting with the difficulty model and index.
  * 
@@ -10,12 +14,6 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
-require_once './config/database.php';
-require_once './model/categoryModel.php';
-
-// Create a CategoryController using the factory.
-$categoryController = $factory->create('CategoryController');
 
 /**
  * CategoryController Class.

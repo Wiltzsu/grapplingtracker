@@ -1,6 +1,9 @@
 <?php
+namespace App\Model;
+
+use PDO;
 /**
- * Difficulty model for interacting with the 'Category' table in the database.
+ * Category model for interacting with the 'Category' table in the database.
  * 
  * @package Techniquedbmvc
  * @author  William Lönnberg <william.lonnberg@gmail.com>
@@ -12,22 +15,22 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 /**
- * Class Difficulty
- * Handles database operations for the class 'Difficulty'.
+ * Class Category
+ * Handles database operations for the 'Category' table.
  */
-class Difficulty
+class CategoryModel
 {
     /**
-     * @var PDO Database connection.
+     * @var PDO Database connection, ensures that $_db is always an instance of PDO.
      * '@var' is used to specify the type of a class property.
      */
-    private $_db; 
+    private PDO $_db;
 
-    /** 
+    /**
      * Constructor method for the class initialized with database connection.
-     * Can only be called with an instance of PDO.
+     * Can only be called with an instance of PDO
      * 
-     * @param PDO $db database connection.
+     * @param PDO $db Database connection
      * '@param' is used to specify the type and purpose of a method parameter.
      */
     public function __construct(PDO $db)
@@ -36,14 +39,15 @@ class Difficulty
     }
 
     /**
-     * Fetches all difficulties from the 'Difficulty' table.
+     * Fetches all categories from the 'Category' table.
      * 
-     * @return array An associative array of difficulties.
+     * @return array Associative array of categories.
      */
-    public function getAllDifficulties(): array
+    public function getAllCategories(): array
     {
-        $statement = $this->_db->prepare("SELECT * FROM Difficulty");
+        $statement = $this->_db->prepare("SELECT * FROM Category");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }
+?>

@@ -1,4 +1,7 @@
 <?php
+namespace App\Model;
+
+use PDO;
 /**
  * Category model for interacting with the 'Category' table in the database.
  * 
@@ -12,39 +15,38 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 /**
- * Class Category
- * Handles database operations for the 'Category' table.
+ * Class Position
+ * Handles database operations for the class 'Position'.
  */
-class Category
+class PositionModel
 {
     /**
-     * @var PDO Database connection, ensures that $_db is always an instance of PDO.
+     * @var PDO Database connection
      * '@var' is used to specify the type of a class property.
      */
-    private PDO $_db;
+    private $_db; // Ensure that $_db is always an instance of PDO
 
     /**
-     * Constructor method for the class initialized with database connection.
-     * Can only be called with an instance of PDO
+     * Constructor method for the class initialized with a database connection
+     * Can only be called with an instance of PDO.
      * 
      * @param PDO $db Database connection
      * '@param' is used to specify the type and purpose of a method parameter.
      */
-    public function __construct(PDO $db)
+    public function __construct($db) 
     {
         $this->_db = $db;
     }
 
     /**
-     * Fetches all categories from the 'Category' table.
+     * Fetches all positions from the 'Position' table
      * 
-     * @return array Associative array of categories.
+     * @return array An associative array of difficulties.
      */
-    public function getAllCategories(): array
+    public function getAllPositions(): array 
     {
-        $statement = $this->_db->prepare("SELECT * FROM Category");
+        $statement =  $this->_db->prepare("SELECT * FROM Position");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-?>
