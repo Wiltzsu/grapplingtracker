@@ -7,7 +7,7 @@ use PDO;
  * Difficulty model for interacting with the 'Category' table in the database.
  * 
  * @package Techniquedbmvc
- * @author  William Lönnberg <william.lonnberg@gmail.com>
+ * @author  William
  * @license MIT License
  */
 
@@ -32,7 +32,7 @@ class DifficultyModel
      * Can only be called with an instance of PDO.
      * 
      * @param PDO $db database connection.
-     * '@param' is used to specify the type and purpose of a method parameter.
+     *                '@param' is used to specify the type and purpose of a method parameter.
      */
     public function __construct(PDO $db)
     {

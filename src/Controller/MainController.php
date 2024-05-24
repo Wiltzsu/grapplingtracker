@@ -6,29 +6,44 @@ use App\Model\CategoryModel;
 use App\Model\DifficultyModel;
 use App\Model\PositionModel;
 
-class MainController {
-    private $db;
-    private $categoryController;
-    private $difficultyController;
-    private $positionController;
+/**
+ * Controls the flow between the user interface and the model data processing,
+ * coordinating responses based on user actions and input.
+ *
+ * @package Techniquedbmvc
+ * @author William
+ * @license MIT License
+ */
+class MainController
+{
+    private $_db;
+    private $categoryModel;
+    private $difficultyModel;
+    private $positionModel;
 
-    public function __construct() {
-        $this->db = Database::connect();
-        $this->categoryController = new CategoryModel($this->db);
-        $this->difficultyController = new DifficultyModel($this->db);
-        $this->positionController = new PositionModel($this->db);
+    /**
+     * Initializes the controller with model instances using a database connection.
+     * @param \PDO $db Database connection
+     */
+    public function __construct(\PDO $db)
+    {
+        $this->_db = $db;
+        $this->categoryModel = new CategoryModel($this->_db);
+        $this->difficultyModel = new DifficultyModel($this->_db);
+        $this->positionModel = new PositionModel($this->_db);
     }
 
     /**
-     * Index method to handle the primary logic and view rendering.
+     * Gathers data from models and passes them to the view for rendering.
+     * This is the main entry point for rendering the page requested by the user.
      */
-    public function index() {
-        // Fetch data from each controller
-        $categories = $this->categoryController->getAllCategories();
-        $difficulties = $this->difficultyController->getAllDifficulties();
-        $positions = $this->positionController->getAllPositions();
+    public function index()
+    {
+        $categories = $this->categoryModel->getAllCategories();
+        $difficulties = $this->difficultyModel->getAllDifficulties();
+        $positions = $this->positionModel->getAllPositions();
 
-        // Pass the data to the view
         include __DIR__ . "/../View/add_new.php";
     }
 }
+

@@ -7,7 +7,7 @@ use PDO;
  * Controller category for interacting with the difficulty model and index.
  * 
  * @package Techniquedbmvc
- * @author  William Lönnberg <william.lonnberg@gmail.com>
+ * @author  William
  * @license MIT License
  */
 

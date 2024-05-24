@@ -4,10 +4,10 @@ namespace App\Controller;
 use App\Model\DifficultyModel;
 use PDO;
 /**
- * Controller category for interacting with the Difficulty model and index.
+ * Controller category for interacting with the difficulty model and index.
  * 
  * @package Techniquedbmvc
- * @author  William Lönnberg <william.lonnberg@gmail.com>
+ * @author  William
  * @license MIT License
  */
 
