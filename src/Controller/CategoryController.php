@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use App\Model\Category;
+use App\Model\CategoryModel;
 use PDO;
 /**
  * Controller category for interacting with the difficulty model and index.
@@ -37,7 +37,7 @@ class CategoryController
          * Initialize the 'category' property to hold an instance of the 'Category' 
          * model passing the database connection to it
          */
-        $this->category = new Category($db);
+        $this->category = new CategoryModel($db);
     }
 
     /**

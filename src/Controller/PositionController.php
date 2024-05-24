@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use App\Model\Position;
+use App\Model\PositionModel;
 use PDO;
 /**
  * Controller category for interacting with the Difficulty model and index.
@@ -37,7 +37,7 @@ class PositionController
          * Initializes the 'position' property to hold an instance of the Position
          * model passing the database connection to it.
          */
-        $this->_position = new Position($db);
+        $this->_position = new PositionModel($db);
     }
 
     /**

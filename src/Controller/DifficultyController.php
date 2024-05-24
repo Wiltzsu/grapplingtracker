@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use App\Model\Difficulty;
+use App\Model\DifficultyModel;
 use PDO;
 /**
  * Controller category for interacting with the Difficulty model and index.
@@ -36,7 +36,7 @@ class DifficultyController
          * Initializes the 'difficulty' property to hold an instance of the Difficulty 
          * model passing the database connection to it.
          */
-        $this->_difficulty = new Difficulty($db);
+        $this->_difficulty = new DifficultyModel($db);
     }
 
     /**
