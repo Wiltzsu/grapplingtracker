@@ -1,8 +1,4 @@
 <?php
-namespace App\Controller;
-
-use App\Model\PositionModel;
-use PDO;
 /**
  * Controller category for interacting with the difficulty model and index.
  * 
@@ -10,6 +6,11 @@ use PDO;
  * @author  William
  * @license MIT License
  */
+
+namespace App\Controller;
+
+use App\Model\PositionModel;
+use PDO;
 
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);

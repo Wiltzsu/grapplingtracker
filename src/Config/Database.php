@@ -1,4 +1,13 @@
 <?php
+/**
+ * Provides the Database class for establishing connections to the database.
+ *
+ * This file contains the Database class which is responsible for handling database connections
+ * using the PDO extension. It ensures that a connection is established and that the database
+ * exists before performing any operations. It sets default character sets and error handling modes.
+ * 
+ */
+
 namespace App\Config;
 
 use PDO;

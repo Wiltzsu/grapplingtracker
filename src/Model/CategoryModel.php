@@ -1,14 +1,16 @@
 <?php
-namespace App\Model;
-
-use PDO;
 /**
- * Category model for interacting with the 'Category' table in the database.
+ * Model for interacting with the 'Category' table in the database.
+ * 
+ * Fetches the values from the table as an array.
  * 
  * @package Techniquedbmvc
  * @author  William
  * @license MIT License
  */
+namespace App\Model;
+
+use PDO;
 
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);
@@ -28,7 +30,7 @@ class CategoryModel
 
     /**
      * Constructor method for the class initialized with database connection.
-     * Can only be called with an instance of PDO
+     * Can only be called with an instance of PDO.
      * 
      * @param PDO $db Database connection
      * '@param' is used to specify the type and purpose of a method parameter.

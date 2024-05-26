@@ -1,10 +1,4 @@
 <?php
-namespace App\Controller;
-
-use App\Model\CategoryModel;
-use App\Model\DifficultyModel;
-use App\Model\PositionModel;
-
 /**
  * Controls the flow between the user interface and the model data processing,
  * coordinating responses based on user actions and input.
@@ -13,6 +7,13 @@ use App\Model\PositionModel;
  * @author William
  * @license MIT License
  */
+
+namespace App\Controller;
+
+use App\Model\CategoryModel;
+use App\Model\DifficultyModel;
+use App\Model\PositionModel;
+
 class MainController
 {
     private $_db;

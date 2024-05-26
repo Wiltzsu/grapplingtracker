@@ -1,15 +1,17 @@
 <?php
-namespace App\Model;
-
-use PDO;
-
 /**
- * Difficulty model for interacting with the 'Category' table in the database.
+ * Model for interacting with the 'Difficulty' table in the database.
+ * 
+ * Fetches the contents of the table and returns them as an array.
  * 
  * @package Techniquedbmvc
  * @author  William
  * @license MIT License
  */
+
+namespace App\Model;
+
+use PDO;
 
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);

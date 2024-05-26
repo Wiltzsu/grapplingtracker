@@ -1,43 +1,47 @@
 <?php
-namespace App\Controller;
-
-use App\Model\CategoryModel;
-use PDO;
 /**
- * Controller category for interacting with the difficulty model and index.
+ * Handles web requests related to the category management by interacting
+ * with the Category model.
  * 
  * @package Techniquedbmvc
  * @author  William
  * @license MIT License
  */
 
+namespace App\Controller;
+
+use App\Model\CategoryModel;
+use PDO;
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 /**
- * CategoryController Class.
- * Handles fetching the categories from the model and passing it to index.
+ * Manages the category data for the application.
+ * 
+ * This controller handles operations such as fetching all categories
+ * from the database and passing them to the appropriate view.
  */
 class CategoryController 
 {
     /**
      * @var Category Instance of the Category model.
      */
-    private $category;
+    private $_category;
 
     /**
-     * Constructor method for the class initialized with a database connection.
+     * Initializes the controller with a database connection.
      * 
      * @param PDO $db Database connection
      */
-    public function __construct($db) {
+    public function __construct(PDO $db) {
 
         /**
          * Initialize the 'category' property to hold an instance of the 'Category' 
          * model passing the database connection to it
          */
-        $this->category = new CategoryModel($db);
+        $this->_category = new CategoryModel($db);
     }
 
     /**
@@ -45,9 +49,9 @@ class CategoryController
      * 
      * @return array An associative array of categories.
      */
-    public function getCategories() 
+    public function getCategories(): array
     {
-        return $this->category->getAllCategories();
+        return $this->_category->getAllCategories();
     }
 }
 ?>

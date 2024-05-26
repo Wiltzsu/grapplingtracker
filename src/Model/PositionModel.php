@@ -1,14 +1,16 @@
 <?php
-namespace App\Model;
-
-use PDO;
 /**
- * Category model for interacting with the 'Category' table in the database.
+ * Model for interacting with the 'Position' table in the database.
+ * 
+ * Creates an SQL query and fetches the positions from the database as an array.
  * 
  * @package Techniquedbmvc
  * @author  William
  * @license MIT License
  */
+namespace App\Model;
+
+use PDO;
 
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);
