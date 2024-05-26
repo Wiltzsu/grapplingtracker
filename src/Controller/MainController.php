@@ -4,7 +4,7 @@
  * coordinating responses based on user actions and input.
  *
  * @package Techniquedbmvc
- * @author William
+ * @author  William
  * @license MIT License
  */
 
@@ -23,6 +23,7 @@ class MainController
 
     /**
      * Initializes the controller with model instances using a database connection.
+     *
      * @param \PDO $db Database connection
      */
     public function __construct(\PDO $db)

@@ -23,7 +23,7 @@ error_reporting(E_ALL);
  * This controller handles operations such as fetching all categories
  * from the database and passing them to the appropriate view.
  */
-class CategoryController 
+class CategoryController
 {
     /**
      * @var Category Instance of the Category model.
@@ -35,7 +35,8 @@ class CategoryController
      * 
      * @param PDO $db Database connection
      */
-    public function __construct(PDO $db) {
+    public function __construct(PDO $db)
+    {
 
         /**
          * Initialize the 'category' property to hold an instance of the 'Category' 
