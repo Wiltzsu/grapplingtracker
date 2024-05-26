@@ -1,7 +1,6 @@
 <?php
 namespace App\Controller;
 
-use App\Config\Database;
 use App\Model\CategoryModel;
 use App\Model\DifficultyModel;
 use App\Model\PositionModel;
