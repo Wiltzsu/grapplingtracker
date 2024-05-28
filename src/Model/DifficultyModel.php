@@ -34,7 +34,7 @@ class DifficultyModel
      * Can only be called with an instance of PDO.
      * 
      * @param PDO $db database connection.
-     *                '@param' is used to specify the type and purpose of a method parameter.
+     * '@param' is used to specify the type and purpose of a method parameter.
      */
     public function __construct(PDO $db)
     {

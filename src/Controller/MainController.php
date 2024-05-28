@@ -40,11 +40,15 @@ class MainController
      */
     public function index()
     {
-        $categories = $this->categoryModel->getAllCategories();
+        include __DIR__ . "/../View/main_view.php";
+    }
+
+    public function newTechnique()
+    {
+        $categories = $this->categoryModel->readCategories();
         $difficulties = $this->difficultyModel->getAllDifficulties();
         $positions = $this->positionModel->getAllPositions();
 
         include __DIR__ . "/../View/add_new.php";
     }
 }
-

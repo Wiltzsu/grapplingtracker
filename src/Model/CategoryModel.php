@@ -41,15 +41,37 @@ class CategoryModel
     }
 
     /**
+     * Creates a new category.
+     */
+    public function createCategory()
+    {
+
+    }
+
+    /**
      * Fetches all categories from the 'Category' table.
      * 
      * @return array Associative array of categories.
      */
-    public function getAllCategories(): array
+    public function readCategories(): array
     {
-        $statement = $this->_db->prepare("SELECT * FROM Category");
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        $readStatement = $this->_db->prepare("SELECT * FROM Category");
+        $readStatement->execute();
+        return $readStatement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function updateCategory()
+    {
+
+    }
+
+    /**
+     * Deletes a category.
+     * Checks if 'categoryID' exists in the POST request to process the deletion
+     */
+    public function deleteCategory()
+    {
+        
     }
 }
 ?>
