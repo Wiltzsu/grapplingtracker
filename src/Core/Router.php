@@ -9,7 +9,7 @@ class Router
 {
     protected $routes = [
         'home' => ['controller' => MainViewController::class, 'action' => 'index'],
-        'addnew' => ['controller' => ReadController::class, 'action' => 'index'],
+        'readview' => ['controller' => ReadController::class, 'action' => 'index'],
     ];
 
     public function direct($uri)
