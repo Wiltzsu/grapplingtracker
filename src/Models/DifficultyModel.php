@@ -9,7 +9,7 @@
  * @license MIT License
  */
 
-namespace App\Model;
+namespace App\Models;
 
 use PDO;
 
@@ -46,7 +46,7 @@ class DifficultyModel
      * 
      * @return array An associative array of difficulties.
      */
-    public function getAllDifficulties(): array
+    public function readDifficulties(): array
     {
         $statement = $this->_db->prepare("SELECT * FROM Difficulty");
         $statement->execute();

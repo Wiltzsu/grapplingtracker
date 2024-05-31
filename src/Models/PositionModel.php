@@ -8,7 +8,7 @@
  * @author  William
  * @license MIT License
  */
-namespace App\Model;
+namespace App\Models;
 
 use PDO;
 
@@ -45,7 +45,7 @@ class PositionModel
      * 
      * @return array An associative array of difficulties.
      */
-    public function getAllPositions(): array 
+    public function readPositions(): array 
     {
         $statement =  $this->_db->prepare("SELECT * FROM Position");
         $statement->execute();

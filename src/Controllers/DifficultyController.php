@@ -7,9 +7,9 @@
  * @license MIT License
  */
 
-namespace App\Controller;
+namespace App\Controllers;
 
-use App\Model\DifficultyModel;
+use App\Models\DifficultyModel;
 use PDO;
 
 ini_set('log_errors', 1);

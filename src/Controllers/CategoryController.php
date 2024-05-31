@@ -8,9 +8,9 @@
  * @license MIT License
  */
 
-namespace App\Controller;
+namespace App\Controllers;
 
-use App\Model\CategoryModel;
+use App\Models\CategoryModel;
 use PDO;
 
 ini_set('display_errors', 1);
