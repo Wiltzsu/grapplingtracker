@@ -1,14 +1,16 @@
 <?php
+/**
+ * Model for interacting with the 'Position' table in the database.
+ * 
+ * Creates an SQL query and fetches the positions from the database as an array.
+ * 
+ * @package Techniquedbmvc
+ * @author  William
+ * @license MIT License
+ */
 namespace App\Model;
 
 use PDO;
-/**
- * Category model for interacting with the 'Category' table in the database.
- * 
- * @package Techniquedbmvc
- * @author  William Lönnberg <william.lonnberg@gmail.com>
- * @license MIT License
- */
 
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);
@@ -31,7 +33,7 @@ class PositionModel
      * Can only be called with an instance of PDO.
      * 
      * @param PDO $db Database connection
-     * '@param' is used to specify the type and purpose of a method parameter.
+     *                '@param' is used to specify the type and purpose of a method parameter.
      */
     public function __construct($db) 
     {

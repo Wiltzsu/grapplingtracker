@@ -1,15 +1,16 @@
 <?php
-namespace App\Controller;
-
-use App\Model\Difficulty;
-use PDO;
 /**
- * Controller category for interacting with the Difficulty model and index.
+ * Controller category for interacting with the difficulty model and index.
  * 
  * @package Techniquedbmvc
- * @author  William Lönnberg <william.lonnberg@gmail.com>
+ * @author  William
  * @license MIT License
  */
+
+namespace App\Controller;
+
+use App\Model\DifficultyModel;
+use PDO;
 
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);
@@ -36,7 +37,7 @@ class DifficultyController
          * Initializes the 'difficulty' property to hold an instance of the Difficulty 
          * model passing the database connection to it.
          */
-        $this->_difficulty = new Difficulty($db);
+        $this->_difficulty = new DifficultyModel($db);
     }
 
     /**
