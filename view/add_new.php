@@ -1,14 +1,7 @@
+<?php
+require_once 'header.php';
+?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-</head>
-<body>
 <div class="container centered-container">
     
     <div class="card p-4">
@@ -17,7 +10,9 @@
 
 
         <div id="accordion">
-        <a href="../index.php" class="btn btn-primary btn1">Back to Home</a>
+
+        <a href="/technique-db-mvc/" class="btn btn-primary btn1">Back</a>
+
 
             <div class="card">
                 <div class="card-header" id="headingOne">
@@ -75,7 +70,7 @@
                                 </select>
                             </div>
 
-                            <button type="submit" name="submitTechnique" class="btn btn-primary btn1">Add Technique</button>
+                            <button type="submit" name="submitTechnique" class="btn btn-primary btn2">Add Technique</button>
                         </form>
                     </div>
                 </div>
@@ -108,7 +103,7 @@
                             <label for="categoryDescription">Category Name:</label>
                             <input type="text" class="form-control" id="categoryDescription" name="categoryDescription" required>
                         </div>
-                        <button type="submit" name="submitCategory" class="btn btn-primary btn1">Add Category</button>
+                        <button type="submit" name="submitCategory" class="btn btn-primary btn2">Add Category</button>
                     </form>
                 </div>        
             </div>
@@ -142,7 +137,7 @@
                             <label for="positionDescription">Position Name:</label>
                             <input type="text" class="form-control" id="positionDescription" name="positionDescription" required>
                         </div>
-                        <button type="submit" name="submitPosition" class="btn btn-primary btn1">Add Position</button>
+                        <button type="submit" name="submitPosition" class="btn btn-primary btn2">Add Position</button>
                     </form>
                 </div>        
             </div>

@@ -1,0 +1,73 @@
+/* General body styles */
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+body {
+    background-color: #f4f4f9; /* Light gray background */
+    font-family: 'Mukta', Arial, Helvetica, sans-serif; /* Consistent font for the whole page */
+    background-image: url('https://images.unsplash.com/photo-1439405326854-014607f694d7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Fix the background image during scrolling */
+    background-position: center; /* Center the background image */
+    background-size: cover; /* Cover the entire viewport */
+}
+
+/* Centered container for the main content */
+.centered-container {
+    max-width: 800px; /* Max width for the container */
+    margin: 40px auto; /* Centering the container */
+    padding: 20px;
+    background-color: #ffffff; /* White background for the content area */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for 3D effect */
+    border-radius: 10px; /* Rounded corners */
+}
+/* Card styles */
+.card {
+    border: none; /* Remove default border */
+}
+
+/* Header styles within the card */
+h2 {
+    color: #333; /* Dark grey color for headings */
+    font-size: 24px; /* Larger font size for visibility */
+}
+
+/* Styling for list items */
+.list-group-item {
+    background-color: #e9ecef; /* Light background for the list items */
+    color: #495057; /* Darker text for better readability */
+    border-radius: 5px; /* Rounded corners for the list items */
+    margin-bottom: 10px; /* Space between items */
+    transition: transform 0.2s; /* Smooth transform on hover */
+}
+
+
+/* Hover effects for list items */
+.list-group-item:hover {
+    transform: scale(1.01); /* Slight scale up on hover */
+    background-color: #dde5ed; /* Light blue background on hover */
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #aa62a4; /* Bootstrap primary color */
+    border-color: #aa62a4; /* Matching border color */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #4ca3c5; /* Bootstrap primary color */
+    border-color: #4ca3c5; /* Matching border color */
+}
+
+.btn-secondary {
+    background-color: #34babe; /* Bootstrap secondary color */
+    border-color: #34babe; /* Matching border color */
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #aaa;
+    font-size: 12px;
+}

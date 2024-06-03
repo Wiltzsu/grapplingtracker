@@ -1,4 +1,7 @@
 <?php 
+
+require_once 'header.php';
+
 // Display errors for debugging (remove or turn off error reporting in a production environment)
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -13,16 +16,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 }*/
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet">
-</head>
-<body>
 
 <div class="container centered-container">
     <div class="card p-4">
@@ -46,26 +39,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 <strong>Your Profile:</strong> View and edit your personal information.
             </a>
         </div>
-
-        <?php /*
-        if (!isset($_SESSION['username'])) {?>
-        <div class="text-center mt-3">
-            <a href="users/login.php" class="btn btn-primary">Login</a>
-            <a href="users/register.php" class="btn btn-secondary btn1 ml-2">Sign Up</a>
-        </div>
-        <?php }?>
-
-        <?php
-        if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
-                <div class="text-center mt-3">
-            <a href="users/logout.php" class="btn btn-primary btn1">Logout</a>
-        </div><?php
-        }*/ ?>
-
-
     </div>
-
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

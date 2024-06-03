@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
 </head>
 <body>
 <div class="container centered-container">
@@ -18,8 +18,8 @@
 
 
         <div id="accordion">
-        <a href="../index.php" class="btn btn-primary btn1">Back to Home</a>
-
+        <a href="/technique-db-mvc/" class="btn btn-primary btn1">Back</a>
+        
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
