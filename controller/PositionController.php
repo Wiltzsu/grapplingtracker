@@ -7,9 +7,6 @@
  * @license MIT License
  */
 
-namespace App\Controllers;
-
-use App\Models\PositionModel;
 use PDO;
 
 ini_set('log_errors', 1);

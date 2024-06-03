@@ -30,19 +30,19 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         <p class="text-center"></*?php echo $greeting; */?></p>
 
         <div class="list-group">
-            <a href="" class="list-group-item list-group-item-action">
+            <a href="/technique-db-mvc/journal" class="list-group-item list-group-item-action">
                 <strong>Journal:</strong> View and log your daily practice.
             </a>
 
-            <a href="<?php echo BASE_URL; ?>technique/new" class="list-group-item list-group-item-action">
+            <a href="/technique-db-mvc/addnew" class="list-group-item list-group-item-action">
                 <strong>Add:</strong> Add new techniques, categories, and positions.
             </a>
 
-            <a href="" class="list-group-item list-group-item-action">
+            <a href="/technique-db-mvc/viewitems" class="list-group-item list-group-item-action">
                 <strong>View:</strong> View your techniques, categories, and positions.
             </a>
 
-            <a href="" class="list-group-item list-group-item-action">
+            <a href="/technique-db-mvc/profile" class="list-group-item list-group-item-action">
                 <strong>Your Profile:</strong> View and edit your personal information.
             </a>
         </div>

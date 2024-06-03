@@ -8,7 +8,6 @@
  * @author  William
  * @license MIT License
  */
-namespace App\Models;
 
 use PDO;
 
