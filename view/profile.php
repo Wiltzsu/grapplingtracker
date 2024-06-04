@@ -15,12 +15,11 @@ require_once 'header.php';
 
  
 
-        <?php
-        if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
-                <div class="text-center mt-3">
-            <a href="../users/logout.php" class="btn btn-primary btn1">Logout</a>
-        </div><?php
-        }?>
+        <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
+            <div class="text-center mt-3">
+                <a href="view/logout.php" class="btn btn-primary btn1">Logout</a>
+            </div>
+        <?php }?>
     </div>
 </div>
 

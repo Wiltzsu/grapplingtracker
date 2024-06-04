@@ -22,4 +22,5 @@ switch($request)
         break;
     case '/journal':
         require 'view/journal.php';
+        break;
 }
