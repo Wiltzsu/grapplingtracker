@@ -1,25 +1,37 @@
 <?php 
-
-require_once 'header.php';
+// Start the session
+session_start();
 
 // Display errors for debugging (remove or turn off error reporting in a production environment)
-error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+error_reporting(E_ALL);
 
-/* Check if the user is logged in and then greet them
+// Check if the user is logged in and then greet them
 $username = '';
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     $username = $_SESSION['username'];
     $greeting = "Hello, " . htmlspecialchars($username);
 } else {
-    header("Location: users/login_page.php");
-}*/
+    header("Location: view/login.php");
+}
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
+</head>
+<body>
 
 <div class="container centered-container">
     <div class="card p-4">
         <h2 class="text-center mb-4">Grappling Technique Journal</h2>
+        <p class="text-center"><?php echo $greeting; ?></p>
+
         <p class="text-center"></*?php echo $greeting; */?></p>
 
         <div class="list-group">
@@ -39,6 +51,13 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                 <strong>Your Profile:</strong> View and edit your personal information.
             </a>
         </div>
+
+        <?php
+        if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
+                <div class="text-center mt-3">
+            <a href="logout.php" class="btn btn-primary btn1">Logout</a>
+        </div><?php
+        }?>
     </div>
 </div>
 

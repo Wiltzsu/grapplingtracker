@@ -1,4 +1,7 @@
 <?php
+/** This file is the first version of user controller and is 
+ * now replaced by 'UserController2'.
+ */
 require '../config/Database.php';
 
 ini_set('log_errors', 1);
@@ -11,9 +14,6 @@ error_reporting(E_ALL);
  * parameters, which are passed on from the login form.
  */
 
-$error = ['username' => '', 'password' => '', 'credentials' => ''];
-$username = isset($_POST['username']) ? filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS) : '';
-
 $db = Database::connect(); 
 
 class UserController
@@ -22,12 +22,10 @@ class UserController
      * @var db Database connection variable.
      * @var username Username from login form.
      * @var password Password from login form.
-     * @var errors A
      */
     private $db;
     private $username;
     private $password;
-    public $error = ['username' => '', 'password' => '', 'credentials' => ''];
 
     /**
      * Constructor method that takes the database connection as a parameter.
@@ -53,17 +51,10 @@ class UserController
      */
     private function validateInput()
     {
-        if (empty($this->username) || empty($this->password))
-        {
-            $this->error['login'] = 'Please enter both username and password.';
-            return false;
+        if (empty($this->username) || empty($this->password)) {
+            throw new Exception('Please enter both username and password.');
         }
-        if (strlen($this->password) < 3 || strlen($this->password) > 72)
-        {
-            $this->error['password'] = 'Password must be between 5 to 72 characters long.';
-            return false;
-        }
-        return true;
+        return true; // Returns the Exception to the loginUser method when the if block is true
     }
 
     /**
@@ -73,25 +64,35 @@ class UserController
      */
     private function checkCredentials()
     {
-        $query = $this->db->prepare("SELECT * FROM User WHERE username = ?");
+        // '?' acts as a placeholder and tells PDO to expect a parameter when the prepared statement is executed
+        $query = $this->db->prepare("SELECT * FROM User WHERE username = ?"); 
+        // Execute the prepared statement with the provided username. This replaces the '?' placeholder with the actual username, ensuring the value is properly quoted and escaped
         $query->execute([$this->username]);
+        // Retrieve the result of the query as an associative array where column names are keys. This array represents the user data fetched from the database
+        // Fetch is used to retrieve the next row from the result set
         $user = $query->fetch(PDO::FETCH_ASSOC);
         
-        if (!$user || !password_verify($this->password, $user['password']))
-        {
-            $this->error['credentials'] = 'User does not exist or password is wrong.';
+        // Check if user exists
+        if (!$user) { // If the user does not exist, throw an exception
+            throw new Exception('No such user exists.');
+        // If the user is found, verify the form input password with the database password
+        } elseif (!password_verify($this->password, $user['password'])) { 
+            throw new Exception('Wrong password.'); // If the password does not match, throw an exception
         }
         return $user; // Returns either the correct credentials or the exceptions
     }
 
-    public function loginUser($username, $password) {
+    public function loginUser($username, $password) 
+    {
+        // 'this' represents the current instance of the class in which it is used
         $this->username = $username;
         $this->password = $password;
 
-        if (!$this->validateInput() || !$this->checkCredentials()) {
-            return false;
-        }
-        $this->setSessionVariables($this->checkCredentials());
+        // Validates input and checks credentials. Throws exceptions on failure
+        $user = $this->validateInput(); // This is also used to call other methods in the same object
+        $user = $this->checkCredentials();
+        // Sets session variables upon successful login
+        $this->setSessionVariables($user);
         return true;
     }
 
@@ -101,8 +102,6 @@ class UserController
         $_SESSION['username'] = $user['username'];
         $_SESSION['logged_in'] = true;
     }
-    
-
 
 }
 
@@ -116,12 +115,11 @@ class UserController
  */
 $userController = new UserController($db);
 
+// If submit button is pressed in the form, use the object to run the loginUser method with inserted credentials
 if (isset($_POST['submit'])) {
     if ($userController->loginUser($_POST['username'], $_POST['password'])) {
-        header("Location: ../view/main_view.php");
-        exit();
-    } else {
-        // Handle login failure; for example, display error messages
-        $error = $userController->error;
+    // If the login is successful, redirect the user to the index page
+    header("Location: /technique-db-mvc/view/main_view.php");
+    exit();
     }
 }

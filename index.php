@@ -8,12 +8,7 @@ $request = str_replace($base, '', $_SERVER['REQUEST_URI']);
 switch($request)
 {
     case '/':
-        if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-            $username = $_SESSION['username'];
-            $greeting = "Hello, " . htmlspecialchars($username);
-        } else {
-            header("Location: view/login.php");
-        }
+
         require 'view/main_view.php';
         break;
     case '/addnew':

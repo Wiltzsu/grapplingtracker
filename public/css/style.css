@@ -3,7 +3,7 @@
 body {
     background-color: #f4f4f9; /* Light gray background */
     font-family: 'Mukta', Arial, Helvetica, sans-serif; /* Consistent font for the whole page */
-    background-image: url('https://images.unsplash.com/photo-1439405326854-014607f694d7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    /*background-image: url('https://images.unsplash.com/photo-1439405326854-014607f694d7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');*/
     background-repeat: no-repeat; /* Do not repeat the image */
     background-attachment: fixed; /* Fix the background image during scrolling */
     background-position: center; /* Center the background image */

@@ -1,34 +1,35 @@
 <?php
-require 'header.php';
 require '../controller/UserController.php';
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
+</head>
 
 <body>
     <div class="centered-container">
 
-        <div class="login-container">
+    <div class="login-container">
             <div class="card p-4">
                 <h2 class="text-center mb-4">Login</h2>
 
-
                 <form method="POST" action="">
-
-<div class="form-group<?= !empty($error['username']) ? ' has-error' : '' ?>">
-    <label for="username">Username</label>
-    <input type="text" class="form-control" id="username" name="username" value="<?= htmlspecialchars($username) ?>">
-    <?php if (!empty($error['username'])): ?>
-        <span class="help-block"><?= htmlspecialchars($error['username']) ?></span>
-    <?php endif ?>
-</div>
-
-<div class="form-group<?= !empty($error['password']) ? ' has-error' : '' ?>">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-    <?php if (!empty($error['password'])): ?>
-        <span class="help-block"><?= htmlspecialchars($error['password']) ?></span>
-    <?php endif ?>
-</div>
-
+                    <div class="form-group<?php if ($error['username']): ?> has-error <?php endif ?>">
+                        <label for="inputError">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" value="<?= htmlspecialchars($input['username']) ?>" placeholder="Enter username">
+                    </div>
+                    <div class="form-group<?php if ($error['password']): ?> has-error <?php endif ?>">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                        <?php if ($error['password']): ?>
+                            <span class="help-block"><?= htmlspecialchars($error['password']) ?></span>
+                        <?php endif ?>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-block loginbutton" name="submit">Login</button>
                     <a href="register.php"><p>Create an account</p></a>
                 </form>
