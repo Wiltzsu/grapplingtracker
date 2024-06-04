@@ -1,18 +1,22 @@
-<?php
-session_start(); // This should be the first thing in your script, before any output
+<?php 
+// Start the session
+session_start();
 
-// Checking if the user is logged in
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    // Display logout button
-    echo '<a href="logout.php" class="btn btn-warning">Logout</a>';
-}
+// Display errors for debugging (remove or turn off error reporting in a production environment)
+ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+error_reporting(E_ALL);
 
 // Check if the user is logged in and then greet them
 $username = '';
-
+$greeting = 'No sessions.';  // Default message if not logged in
+if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    $greeting = "Hello, " . htmlspecialchars($username);
+} else {
+    header("Location: view/login.php");
+}
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,4 +27,3 @@ $username = '';
     <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
 </head>
 <body>
-<p class="text-center"><?php echo $greeting; ?></p>

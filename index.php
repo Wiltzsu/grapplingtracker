@@ -15,7 +15,7 @@ switch($request)
         require 'view/add_new.php';
         break;
     case '/viewitems':
-        require 'view_items.php';
+        require 'view/view_items.php';
         break;
     case '/profile':
         require 'view/profile.php';

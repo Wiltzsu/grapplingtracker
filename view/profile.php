@@ -2,10 +2,18 @@
 require_once 'header.php';
 ?>
 
-
 <div class="container centered-container">
-<a href="/technique-db-mvc/" class="btn btn-primary btn1">Back</a>
-<p>penis</p>
+    
+    <div class="card p-4">
+        <h2 class="text-center mb-4">Grappling Technique Journal</h2>
+        <p class="text-center"><?php echo $greeting; ?></p>
+
+
+        <div id="accordion">
+
+        <a href="/technique-db-mvc/" class="btn btn-primary btn1">Back</a>
+
+ 
 
         <?php
         if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
