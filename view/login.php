@@ -1,5 +1,8 @@
 <?php
-require '../controller/UserController.php';
+require '../controller/UserController2.php';
+
+$error = ['username' => '', 'password' => '']; // Default empty values
+$input = ['username' => '']; // Default empty values
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,11 +21,17 @@ require '../controller/UserController.php';
             <div class="card p-4">
                 <h2 class="text-center mb-4">Login</h2>
 
-                <form method="POST" action="">
-                    <div class="form-group<?php if ($error['username']): ?> has-error <?php endif ?>">
-                        <label for="inputError">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" value="<?= htmlspecialchars($input['username']) ?>" placeholder="Enter username">
+                <form method="POST" action="../controller/UserController2.php">
+                    <div class="form-group<?= !empty($error['username']) ? ' has-error' : '' ?>">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" value="<?= htmlspecialchars($input['username'] ?? '') ?>" placeholder="Enter username">
+                        <?php if (!empty($error['username'])): ?>
+                            <span class="help-block"><?= htmlspecialchars($error['username']) ?></span>
+                        <?php endif; ?>
                     </div>
+
+
+
                     <div class="form-group<?php if ($error['password']): ?> has-error <?php endif ?>">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">

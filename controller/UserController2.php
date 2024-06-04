@@ -42,14 +42,21 @@ class UserController2
 
     public function authenticate($username, $password) {
         if (implode("", $this->error) === '') {
-            $result = $this->db->execute_query("SELECT * FROM users WHERE username = ?", [$username]);
-            $user = $result->fetch_assoc();
+            $stmt = $this->db->prepare("SELECT * FROM User WHERE username = ?");
+            $stmt->execute([$username]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
-                header("Location: /index.php");
+                $_SESSION['username'] = $username;
+                $_SESSION['logged_in'] = true;
+
+                header("Location: /technique-db-mvc/view/main_view.php");
                 exit();
             } else {
                 $this->error['password'] = 'Login or password do not match.';
+                echo $this->error['password'];  // Output for debugging
+                return false;
             }
         }
     }
@@ -66,15 +73,11 @@ class UserController2
 
 $userController2 = new UserController2($db);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = filter_input(INPUT_POST, 'username');
-    $password = filter_input(INPUT_POST, 'password');
-
-    $errors = $userController2->validateInput($username, $password);
-
-    if (implode("", $errors) === '') {
-        $userController2->authenticate($username, $password);
-        header("Location: /technique-db-mvc/view/main_view.php");
-        exit();
+// If submit button is pressed in the form, use the object to run the loginUser method with inserted credentials
+if (isset($_POST['submit'])) {
+    if ($userController2->authenticate($_POST['username'], $_POST['password'])) {
+    // If the login is successful, redirect the user to the index page
+    header("Location: /technique-db-mvc/view/main_view.php");
+    exit();
     }
 }
