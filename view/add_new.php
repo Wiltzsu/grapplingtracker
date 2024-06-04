@@ -13,7 +13,6 @@ require_once 'header.php';
 
         <a href="/technique-db-mvc/" class="btn btn-primary btn1">Back</a>
 
-
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
@@ -27,14 +26,15 @@ require_once 'header.php';
                     <div class="card-body">
 
                     <!-- Technique Form Column -->
-                    <div class="col-md-4">
+
                         <form action="home_technique.php" method="POST">
                             <h4>Add a New Technique</h4>
 
                             <!-- Name -->
                             <div class="form-group">
                                 <label for="techniqueName">Technique Name:</label>
-                                <input type="text" class="form-control" id="techniqueName" name="techniqueName" required>
+                                <div class="col-sm-12"></div>
+                                <input type="text"  size=10 class="form-control" id="techniqueName" name="techniqueName" required>
                             </div>
 
                             <!-- Description -->
@@ -72,7 +72,7 @@ require_once 'header.php';
 
                             <button type="submit" name="submitTechnique" class="btn btn-primary btn2">Add Technique</button>
                         </form>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@ require_once 'header.php';
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
                 <!-- Category Form Column -->
-                <div class="col-md-4">
+
                     <form action="home_technique.php" method="POST">
 
                         <!-- Category name -->
@@ -105,7 +105,7 @@ require_once 'header.php';
                         </div>
                         <button type="submit" name="submitCategory" class="btn btn-primary btn2">Add Category</button>
                     </form>
-                </div>        
+     
             </div>
         </div>
     </div>
@@ -122,7 +122,6 @@ require_once 'header.php';
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
                 <!-- Position Form Column -->
-                <div class="col-md-4">
                     <form action="home_technique.php" method="POST">
 
                         <!-- Position name -->
@@ -139,7 +138,6 @@ require_once 'header.php';
                         </div>
                         <button type="submit" name="submitPosition" class="btn btn-primary btn2">Add Position</button>
                     </form>
-                </div>        
             </div>
         </div>
     </div>

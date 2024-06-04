@@ -31,8 +31,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         <h2 class="text-center mb-4">Grappling Technique Journal</h2>
         <p class="text-center"><?php echo $greeting; ?></p>
 
-        <p class="text-center"></*?php echo $greeting; */?></p>
-
         <div class="list-group">
             <a href="/technique-db-mvc/journal" class="list-group-item list-group-item-action">
                 <strong>Journal:</strong> View and log your daily practice.

@@ -23,7 +23,6 @@ require_once 'header.php';
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
 
-                    <div class="col-md-4">
                     <!-- Journal Form -->
                     <form action="" method="POST">
                         <h4>Add a journal note</h4>
@@ -48,7 +47,6 @@ require_once 'header.php';
 
                         <button type="submit" name="submitTechniqueClass" class="btn btn-secondary btn2">Add to journal</button>
                     </form>
-                </div>
             </div>
         </div>
     </div>

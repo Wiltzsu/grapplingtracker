@@ -1,83 +1,94 @@
 <?php
-session_start(); // Begin a new session or resume the existing one
+/**
+ * This class is responsible for user login.
+ * 
+ * It contains two methods, one for input validation and 
+ * another one for authentication.
+ * 
+ * @package Techniquedbmvc
+ * @author  William
+ * @license MIT License
+ */
+
+session_start();
 
 require '../config/Database.php';
 
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
-error_reporting(E_ALL);
-
 /**
- * Class that contains methods regarding user login and authentication.
- * The class takes the database connection and username and password as
- * parameters, which are passed on from the login form.
+ * User controller class which contains a constructor
+ * and two methods.
  */
-
-$db = Database::connect(); 
-
 class UserController2
 {
-    private $db;
-    private $error;
-    private $input;
+    private $_db;
 
-    public function __construct($db) {
-        $this->db = $db;
-        $this->error = ['username' => '', 'password' => ''];
-        $this->input = ['username' => ''];
+    /**
+     * Constructor method that initializes the class every
+     * time it is used. It takes the database connection
+     * as a parameter.
+     * 
+     * @param $db Database connection.
+     */
+    public function __construct($db)
+    {
+        $this->_db = $db;
     }
 
-    public function validateInput($username, $password) {
-        $this->input['username'] = trim($username);
-        if (empty($this->input['username'])) {
-            $this->error['username'] = 'Please enter a valid username.';
+    /**
+     * Validates the user input. The method checks if username
+     * field is empty or if the password is proper length.
+     *
+     * @param $username Username
+     * @param $password Password
+     * 
+     * @return Array Returns an array containing errors.
+     */
+    public function validateInput($username, $password)
+    {
+        $errors = [];
+        if (empty($username)) {
+            $errors['username'] = 'Please enter a valid username.';
         }
-
-        if (strlen($password) < 6 || strlen($password) > 72) {
-            $this->error['password'] = 'Please enter password, it must be from 6 to 72 characters long.';
+        if (strlen($password) < 3 || strlen($password) > 72) {
+            $errors['password'] = 'Please enter password, it must be from 3 to 72 characters long.';
         }
-
-        return $this->error;
+        return $errors;
     }
 
-    public function authenticate($username, $password) {
-        if (implode("", $this->error) === '') {
-            $stmt = $this->db->prepare("SELECT * FROM User WHERE username = ?");
-            $stmt->execute([$username]);
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    /**
+     * Executes the user validation with the given parameters.
+     * If it doesn't generate any errors, proceed to query
+     * the database. If user is found and password matches,
+     * start the sessions.
+     * 
+     * @param $username Username
+     * @param $password Password
+     * 
+     * @return Array
+     */
+    public function authenticate($username, $password)
+    {
+        $errors = $this->validateInput($username, $password);
+        if (!empty($errors)) {
+            return $errors;  // Return validation errors
+        }
 
-            if ($user && password_verify($password, $user['password'])) {
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $username;
-                $_SESSION['logged_in'] = true;
+        $stmt = $this->_db->prepare("SELECT * FROM User WHERE username = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                header("Location: /technique-db-mvc/view/main_view.php");
-                exit();
-            } else {
-                $this->error['password'] = 'Login or password do not match.';
-                echo $this->error['password'];  // Output for debugging
-                return false;
-            }
+        if ($user && password_verify($password, $user['password'])) {
+            // Authentication successful, set session variables
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $username;
+            $_SESSION['logged_in'] = true;
+            return [];
+        } else {
+            return ['password' => 'Login or password do not match.'];
         }
     }
 }
 
-/**
- * Instantiate UserAuthenticator class.
- * 
- * Creates a login object that takes database connection as a parameter.
- * 
- * If submit button is pressed in the form, use the object to run
- * 'loginUser()' method with the inserted credentials.
- */
-
+// Database connection is managed outside and passed to the constructor
+$db = Database::connect();
 $userController2 = new UserController2($db);
-
-// If submit button is pressed in the form, use the object to run the loginUser method with inserted credentials
-if (isset($_POST['submit'])) {
-    if ($userController2->authenticate($_POST['username'], $_POST['password'])) {
-    // If the login is successful, redirect the user to the index page
-    header("Location: /technique-db-mvc/view/main_view.php");
-    exit();
-    }
-}
