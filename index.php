@@ -26,4 +26,7 @@ switch($request)
     case '/register':
         require 'view/register.php';
         break;
+    case '/register2':
+        require 'view/register2.php';
+        break;
 }

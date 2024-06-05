@@ -1,9 +1,9 @@
 <?php
 /**
- * This class is responsible for user login.
- * 
- * It contains two methods, one for input validation and 
- * another one for authentication.
+ * This file contains the User Controller class, which is responsible
+ * for user login. It contains methods to validate user input,
+ * authenticate the user and finally the class is initialized
+ * for deployment.
  * 
  * @package Techniquedbmvc
  * @author  William
@@ -14,9 +14,15 @@ session_start();
 
 require '../config/Database.php';
 
+ini_set('log_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 /**
- * User controller class which contains a constructor
- * and two methods.
+ * This class is responsible for user login.
+ * 
+ * It contains two methods, one for input validation and 
+ * another one for authentication.
  */
 class UserController2
 {
@@ -35,7 +41,7 @@ class UserController2
     }
 
     /**
-     * Validates the user input. The method checks if username
+     * Validates user input. The method checks if username
      * field is empty or if the password is proper length.
      *
      * @param $username Username
@@ -49,6 +55,7 @@ class UserController2
         if (empty($username)) {
             $errors['username'] = 'Please enter a valid username.';
         }
+        
         if (strlen($password) < 3 || strlen($password) > 72) {
             $errors['password'] = 'Please enter password, it must be from 3 to 72 characters long.';
         }
@@ -73,9 +80,9 @@ class UserController2
             return $errors;  // Return validation errors
         }
 
-        $stmt = $this->_db->prepare("SELECT * FROM User WHERE username = ?");
-        $stmt->execute([$username]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $query = $this->_db->prepare("SELECT * FROM User WHERE username = ?");
+        $query->execute([$username]);
+        $user = $query->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
             // Authentication successful, set session variables
@@ -91,4 +98,18 @@ class UserController2
 
 // Database connection is managed outside and passed to the constructor
 $db = Database::connect();
-$userController2 = new UserController2($db);
+$controller = new UserController2($db);
+
+$errors = ['username' => '', 'password' => ''];
+$input = ['username' => '', 'password' => ''];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $input['username'] = $_POST['username'] ?? '';
+    $input['password'] = $_POST['password'] ?? '';
+
+    $errors = $controller->authenticate($input['username'], $input['password']);
+    if (!array_filter($errors)) { // Checks if errors array is empty
+        header("Location: /technique-db-mvc/view/main_view.php");
+        exit();
+    }
+}
