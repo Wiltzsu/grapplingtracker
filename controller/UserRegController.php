@@ -27,9 +27,8 @@ class UserRegController
     private $_hashed_password;
 
     /**
-     * Constructor method that initializes the class. It takes a
-     * database connection as a parameter.
-     * 
+     * Initializes with a database connection.
+     *
      * @param $db Database connection.
      */
     public function __construct($db)
@@ -38,16 +37,13 @@ class UserRegController
     }
 
     /**
-     * Method that validates user input. The method checks if 'username'
-     * field is empty, if the username is correct length, or if the username
-     * is already taken. It also checks that the password is correct length,
-     * if passwords don't match, if email is valid format or if the email
-     * address is already taken.
+     * Validates input and checks database for existing username/email.
+     * Returns errors if conditions fail.
      * 
-     * @param $username Username
-     * @param $email    Email
+     * @param string $username User's chosen username.
+     * @param string $email    User's email address.
      * 
-     * @return Array Returns $errors array.
+     * @return array Array of error messages, empty if valid.
      */
     public function validateInput($username, $email)
     {
@@ -89,16 +85,14 @@ class UserRegController
     }
 
     /**
-     * Executes the insert if no errors are found.
-     * First it checks if validateInput() method returns any errors, if not,
-     * proceeds to prepare the insert statement and executes it.
-     * Returns an empty array to signify no errors
+     * Registers a new user if validation passes.
+     * Hashes password and inserts into database.
      * 
-     * @param $username Username
-     * @param $email    Email
-     * @param $password Password
+     * @param string $username Username.
+     * @param string $email    Email address.
+     * @param string $password Password.
      * 
-     * @return Array Returns an empty array.
+     * @return array Empty if successful, errors if not.
      */
     public function registerUser($username, $email, $password)
     {
@@ -127,7 +121,7 @@ class UserRegController
 
 // Inititalize the database connection.
 $_db = Database::connect();
-// Create an instance of the class for user registering with the database connection.
+// Instantiate the class.
 $userRegController = new UserRegController($_db);
 
 // Initialize empty arrays to store errors and input data.
@@ -135,9 +129,9 @@ $errors = ['username' => '', 'password' => ''];
 $input = ['username' => '', 'password' => '', 'email' => ''];
 
 /**
- * Checks if the form is submitted, and if it is, retrieves the input data
- * and stored in the 'input' array. The '??' provides a default empty
- * string if the expected data is not set.
+ * Checks if the form is submitted and retrieves the input data.
+ * Stores the data in the 'input' array.
+ * '??' provides a default empty string.
  */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input['username'] = $_POST['username'] ?? '';
@@ -145,10 +139,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input['password'] = $_POST['password'] ?? '';
 
     /**
-     * The 'registerUser' method is called with the input values as
-     * arguments. This method is responsible for validating the data
-     * and registering the user if the data is valid. Returns an
-     * array of errors if any exists.
+     * Calls 'registerUser' method with the input values as arguments. 
+     * Responsible for validating the data and registering the user.
+     * Returns an array of errors if any exists.
      * 
      * @return Array Array of errors
      */
@@ -161,8 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      * If the '$errors' array is empty, the registration was successful.
      * A session is created and the user is redirected to the login
      * page.
-     * If there are errors, they are joined into a single string
-     * which is then displayed.
+     * If any errors, they are joined into a single string.
      */
     if (empty($errors)) {
         $_SESSION['username'] = $_POST['username'];

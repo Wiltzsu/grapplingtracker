@@ -19,9 +19,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 /**
- * This class is responsible for user login.
- * 
- * It contains two methods, one for input validation and 
+ * 'UserController2' contains two methods, one for input validation and 
  * another one for authentication.
  */
 class UserController2
@@ -29,9 +27,7 @@ class UserController2
     private $_db;
 
     /**
-     * Constructor method that initializes the class every
-     * time it is used. It takes the database connection
-     * as a parameter.
+     * Initializes with a database connection
      * 
      * @param $db Database connection.
      */
@@ -41,13 +37,13 @@ class UserController2
     }
 
     /**
-     * Validates user input. The method checks if username
-     * field is empty or if the password is proper length.
+     * Checks if username field is empty or if the password is proper length.
+     * Returns errors if conditions fail.
      *
-     * @param $username Username
-     * @param $password Password
+     * @param string $username User's chosen username.
+     * @param string $password User's password.
      * 
-     * @return Array Returns an array containing errors.
+     * @return Array Array of error messages, empty if valid.
      */
     public function validateInput($username, $password)
     {
@@ -63,13 +59,12 @@ class UserController2
     }
 
     /**
-     * Executes the user validation with the given parameters.
-     * If it doesn't generate any errors, proceed to query
-     * the database. If user is found and password matches,
-     * start the sessions.
+     * Tries to authenticate the user.
+     * Verifies the password and starts sessions.
+     * Returns an array with an error if failed.
      * 
-     * @param $username Username
-     * @param $password Password
+     * @param string $username Username
+     * @param string $password Password
      * 
      * @return Array
      */
@@ -96,17 +91,29 @@ class UserController2
     }
 }
 
-// Database connection is managed outside and passed to the constructor
+// Initializes the database connection.
 $db = Database::connect();
+// Instantiate the class.
 $controller = new UserController2($db);
 
+// Initialize empty arrays to store errors and input data.
 $errors = ['username' => '', 'password' => ''];
 $input = ['username' => '', 'password' => ''];
 
+/**
+ * Checks if the form is submitted and retrieves the input data.
+ * Stores the data in the 'input' array.
+ * '??' provides a default empty string.
+ */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input['username'] = $_POST['username'] ?? '';
     $input['password'] = $_POST['password'] ?? '';
 
+
+    /**
+     * Authenticates the user.
+     * Checks if the '$errors' array is empty and redirects to login.
+     */
     $errors = $controller->authenticate($input['username'], $input['password']);
     if (!array_filter($errors)) { // Checks if errors array is empty
         header("Location: /technique-db-mvc/view/main_view.php");
