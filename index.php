@@ -23,4 +23,7 @@ switch($request)
     case '/journal':
         require 'view/journal.php';
         break;
+    case '/register':
+        require 'view/register.php';
+        break;
 }

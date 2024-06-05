@@ -1,5 +1,5 @@
 <?php
-require '../config/config.php';
+
 /**
  * Provides the Database class for establishing connections to the database.
  *

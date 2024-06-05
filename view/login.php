@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block loginbutton" name="submit">Login</button>
-                    <a href="register.php"><p>Create an account</p></a>
+                    <a href="/technique-db-mvc/register"><p>Create an account</p></a>
                 </form>
             </div>
         </div>
