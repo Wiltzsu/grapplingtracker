@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Contains methods regarding techniques.
+ * 
+ * @package Techniquedbmvc
+ * @author  William
+ * @license MIT License
+ */
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -18,6 +24,17 @@ class Technique
         $this->_db = $db;
     }
 
+    /**
+     * Checks if any of the input fields are empty.
+     * Returns errors if there are empty fields.
+     * 
+     * @param string $techniqueName Name of the technique.
+     * @param int $categoryID       ID of the category.
+     * @param int $positionID       ID of the position.
+     * @param int $difficultyID     ID of the difficulty.
+     * 
+     * @return array Array of error messages, empty if valid.
+     */
     private function validateInput($techniqueName, $categoryID, $positionID, $difficultyID)
     {
         $errors = [];
@@ -31,6 +48,17 @@ class Technique
         return $errors;
     }
 
+    /**
+     * Adds a new technique to database if validation passes.
+     * 
+     * @param string $techniqueName         Name of the technique.
+     * @param string $techniqueDescription  Description of the technique.
+     * @param int $categoryID               Technique category.
+     * @param int positionID                Technique position.
+     * @param int difficultyID              Technique difficulty.
+     * 
+     * @return array Empty if successful, errors if not.
+     */
     public function addTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID, $difficultyID)
     {
         $this->_techniqueName = $techniqueName;

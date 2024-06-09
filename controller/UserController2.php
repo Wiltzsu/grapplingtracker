@@ -93,6 +93,7 @@ class UserController2
 
 // Initializes the database connection.
 $db = Database::connect();
+
 // Instantiate the class.
 $controller = new UserController2($db);
 
@@ -108,7 +109,6 @@ $input = ['username' => '', 'password' => ''];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input['username'] = $_POST['username'] ?? '';
     $input['password'] = $_POST['password'] ?? '';
-
 
     /**
      * Authenticates the user.
