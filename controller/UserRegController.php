@@ -9,8 +9,8 @@
  * @license MIT License
  */
 
-require_once '/opt/lampp/htdocs/technique-db-mvc/config/Database.php';
-require_once './model/UserRegModel.php';
+require_once './config/Database.php';
+require_once './model/UserReg.php';
 
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);
@@ -31,7 +31,7 @@ class UserRegController
      */
     public function __construct($db)
     {
-        $this->_userRegModel = new UserRegModel($db);
+        $this->_userRegModel = new UserReg($db);
     }
 
     public function createUser($username, $email, $password)

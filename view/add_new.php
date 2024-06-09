@@ -1,6 +1,12 @@
 <?php
 require_once 'header.php';
-require_once './model/AddNewOptions.php';
+require_once '/opt/lampp/htdocs/technique-db-mvc/controller/CreateTechniqueController.php';
+require_once __DIR__ . '/../config/Database.php';
+require_once __DIR__ . '/../model/AddNewOptions.php';
+
+ini_set('log_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(E_ALL)
 ?>
 
 <div class="container centered-container">
@@ -8,7 +14,6 @@ require_once './model/AddNewOptions.php';
     <div class="card p-4">
         <h2 class="text-center mb-4">Grappling Technique Journal</h2>
         <p class="text-center"><?php echo $greeting; ?></p>
-
 
         <div id="accordion">
 
@@ -28,47 +33,60 @@ require_once './model/AddNewOptions.php';
 
                     <!-- Technique Form Column -->
 
-                        <form action="home_technique.php" method="POST">
+                        <form method="POST" action="">
                             <h4>Add a New Technique</h4>
-
                             <!-- Name -->
-                            <div class="form-group">
+                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
                                 <label for="techniqueName">Technique Name:</label>
-                                <div class="col-sm-12"></div>
                                 <input type="text"  size=10 class="form-control" id="techniqueName" name="techniqueName" required>
+                                <?php if (!empty($errors['emptyField'])): ?>
+                                    <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
+                                <?php endif; ?>
                             </div>
 
                             <!-- Description -->
-                            <div class="form-group">
+                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
                                 <label for="techniqueDescription">Description:</label>
                                 <textarea class="form-control" id="techniqueDescription" name="techniqueDescription" required></textarea>
+                                <?php if (!empty($errors['emptyField'])): ?>
+                                    <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
+                                <?php endif; ?>
                             </div>
 
                             <!-- Category -->
-                            <div class="form-group">
+                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
                                 <label for="techniqueCategory">Category:</label>
                                 <select class="form-control" id="categoryID" name="categoryID" required>
                                     <option value="">Select a Category</option>
                                     <?= $categoryOptions; ?>
                                 </select>
+                                <?php if (!empty($errors['emptyField'])): ?>
+                                    <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
+                                <?php endif; ?>
                             </div>
 
                             <!-- Position -->
-                            <div class="form-group">
+                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
                                 <label for="techniquePosition">Position:</label>
                                 <select class="form-control" id="positionID" name="positionID" required>
                                     <option value="">Select a Position</option>
                                     <?= $positionOptions; ?>
                                 </select>
+                                <?php if (!empty($errors['emptyField'])): ?>
+                                    <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
+                                <?php endif; ?>
                             </div>
 
                             <!-- Difficulty -->
-                            <div class="form-group">
+                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
                                 <label for="techniqueDifficulty">Difficulty:</label>
                                 <select class="form-control" id="difficultyID" name="difficultyID" required>
                                     <option value="">Select a Difficulty</option>
                                     <?= $difficultyOptions; ?>
                                 </select>
+                                <?php if (!empty($errors['emptyField'])): ?>
+                                    <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
+                                <?php endif; ?>
                             </div>
 
                             <button type="submit" name="submitTechnique" class="btn btn-primary btn2">Add Technique</button>

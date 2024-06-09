@@ -11,7 +11,7 @@ ini_set('log_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-class UserRegModel
+class UserReg
 {
     private $_db;
     private $_username;
@@ -93,14 +93,14 @@ class UserRegModel
         }
 
         $this->_hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $insert_query = "INSERT INTO User (username, email, password) 
-                         VALUES (:username, :email, :password)";
+        $query = "INSERT INTO User (username, email, password) 
+                  VALUES (:username, :email, :password)";
 
-        $insert_statement = $this->_db->prepare($insert_query);
-        $insert_statement->bindParam(":username", $this->_username, PDO::PARAM_STR);
-        $insert_statement->bindParam(":email", $this->_email, PDO::PARAM_STR);
-        $insert_statement->bindParam(":password", $this->_hashed_password, PDO::PARAM_STR);
-        $insert_statement->execute();
+        $statement = $this->_db->prepare($query);
+        $statement->bindParam(":username", $this->_username, PDO::PARAM_STR);
+        $statement->bindParam(":email", $this->_email, PDO::PARAM_STR);
+        $statement->bindParam(":password", $this->_hashed_password, PDO::PARAM_STR);
+        $statement->execute();
 
         return []; // Return an empty array to signify no errors.
     }
