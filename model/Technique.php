@@ -103,7 +103,7 @@ class Technique
             $positionID,
             $difficultyID
         );
-        if (!empty($errors)) {
+        if (!empty($errors)) { // If errors array contains errors, return it.
             return $errors;
         }
 
@@ -116,7 +116,8 @@ class Technique
             ) VALUES (
                 :techniqueName,
                 :techniqueDescription,
-                :categoryID,:positionID,
+                :categoryID,
+                :positionID,
                 :difficultyID
             )";
 

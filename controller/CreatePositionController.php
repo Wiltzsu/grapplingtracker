@@ -1,10 +1,6 @@
 <?php
 /**
- * This file is the controller for creating a new technique.
- * It contains a method for creating a technique with the help
- * of the Model.
- * It also creates a connection to the database and instantiates
- * the controller.
+ * Controller category for interacting with the difficulty model and index.
  * 
  * @package Techniquedbmvc
  * @author  William
@@ -12,94 +8,55 @@
  */
 
 require_once __DIR__ . '/../config/Database.php';
-require_once __DIR__ . '/../model/Technique.php';
+require_once __DIR__ . '/../model/Position.php';
+require_once 'CreateTechniqueController.php';
 require_once 'CreateCategoryController.php';
-require_once 'CreatePositionController.php';
 
 ini_set('log_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 /**
- * Class for technique creation.
- * Instantiates the Model in the constructor.
- * Uses the instance to call 'addTechnique' method from the Model.
+ * PositionController Class
  */
-class CreateTechniqueController
+
+class CreatePositionController
 {
     /**
-     * @var _techniqueModel Instance of the Technique model.
+     * @var _positionModel Instance of the Position model.
      */
-    private $_techniqueModel;
+    private $_positionModel;
 
     /**
-     * Inititalize with a database connection.
+     * Initialize with a database connection.
      * 
-     * @param $db Database connection
+     * @param $db Database connection.
      */
-    public function __construct($db)
+    public function __construct($db) 
     {
-        $this->_techniqueModel = new Technique($db);
+        /**
+         * Initializes the 'position' property to hold an instance of the Position
+         * model passing the database connection to it.
+         */
+        $this->_positionModel = new Position($db);
     }
 
-    /**
-     * Uses the instance of the model and adds the technique to the database.
-     * 
-     * @param string $techniqueName        Name of the technique.
-     * @param string $techniqueDescription Description of the technique.
-     * @param int    $categoryID           Technique category.
-     * @param int    $positionID           Technique position.
-     * @param int    $difficultyID         Technique difficulty.
-     * 
-     * @return Array Returns an empty array if successful or an array containing errors.
-     */
-    public function createTechnique(
-        $techniqueName,
-        $techniqueDescription,
-        $categoryID,
-        $positionID,
-        $difficultyID
-    ) {
-        return $this->_techniqueModel->addTechnique(
-            $techniqueName,
-            $techniqueDescription,
-            $categoryID,
-            $positionID,
-            $difficultyID
-        );
+    public function createPosition($positionName, $positionDescription)
+    {
+        return $this->_positionModel->addPosition($positionName, $positionDescription);
     }
 }
 
-/**
- * Initialize empty arrays to store errors and input data.
- */
-$errors = [
-    'emptyField' => ''
-];
+$errors = ['emptyField' => ''];
 
-$input = [
-    'techniqueName' => '',
-    'techniqueDescription' => '',
-    'categoryID' => '',
-    'positionID' => '',
-    'difficultyID' => ''
-];
+$input = ['positionName', 'positionDescription'];
 
-/**
- * Initialize the database connection.
- * Instantiate the class.
- */
 $db = Database::connect();
 $createTechniqueController = new CreateTechniqueController($db);
 $createCategoryController = new CreateCategoryController($db);
 $createPositionController = new CreatePositionController($db);
 
-/**
- * Checks if the form is posted and retrieves the input data.
- * '??' provides an empty default string.
- */
-
- if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submitTechnique'])) {
             $techniqueName = $_POST['techniqueName'] ?? '';
             $techniqueDescription = $_POST['techniqueDescription' ?? ''];

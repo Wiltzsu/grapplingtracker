@@ -62,41 +62,23 @@ class Category
      * 
      * @return array Empty if successful, errors if not.
      */
-    public function addCategory(
-        $categoryName,
-        $categoryDescription
-    ) {
+    public function addCategory($categoryName, $categoryDescription)
+    {
         $this->_categoryName = $categoryName;
         $this->_categoryDescription = $categoryDescription;
 
-        $errors = $this->_validateInput(
-            $categoryName,
-            $categoryDescription
-        );
-        if (!empty($errors)) { // If errors array contains errors, return it.
+        $errors = $this->_validateInput($categoryName, $categoryDescription);
+
+        if (!empty($errors)) {
             return $errors;
         }
 
-        $query = "INSERT INTO Category (
-                categoryName,
-                categoryDescription
-            ) VALUES (
-                :categoryName,
-                :categoryDescription
-            )";
-
+        $query = "INSERT INTO Category (categoryName, categoryDescription) VALUES (:categoryName, :categoryDescription)";
         $statement = $this->_db->prepare($query);
-        $statement->bindParam(
-            ":categoryName",
-            $this->_categoryName, PDO::PARAM_STR
-        );
-        $statement->bindParam(
-            ":categoryDescription",
-            $this->_categoryDescription, PDO::PARAM_STR
-        );
+        $statement->bindParam(":categoryName", $this->_categoryName, PDO::PARAM_STR);
+        $statement->bindParam(":categoryDescription", $this->_categoryDescription, PDO::PARAM_STR);
         $statement->execute();
-
-        return []; // Return an empty array to signify no errors.
+        return [];
     }
 }
 ?>
