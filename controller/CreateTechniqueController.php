@@ -1,4 +1,11 @@
 <?php
+/**
+ * This file is the controller for creating a new technique.
+ * It contains a method for creating a technique with the help
+ * of the Model.
+ * It also creates a connection to the database and instantiates
+ * the controller.
+ */
 
 require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../model/Technique.php';
@@ -7,6 +14,11 @@ ini_set('log_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+/**
+ * Class for technique creation.
+ * Instantiates the Model in the constructor.
+ * Uses the instance to call 'addTechnique' method from the Model.
+ */
 class CreateTechniqueController
 {
     private $_techniqueModel;
@@ -66,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = $createTechniqueController->createTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID, $difficultyID);
 
     if (empty($errors)) {
-        header("Location: ../view/add_new.php");
+        header("Location: /technique-db-mvc/view/add_new.php");
         exit();
     } else {
         $error_message = join('<br>', $errors);
