@@ -1,5 +1,7 @@
 <?php
 require "header.php";
+require_once __DIR__ . '/../controller/ReadController.php';
+require_once __DIR__ . '/../controller/DeleteController.php';
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +34,69 @@ require "header.php";
                 </div>
 
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Position</th>
+                                <th>Difficulty</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        <?php
+                            if (is_array($techniques)) {
+                                foreach ($techniques as $technique) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($technique['techniqueName']) ?></td>
+                                        <td><?php echo htmlspecialchars($technique['techniqueDescription']) ?></td>
+                                        <td><?php echo htmlspecialchars($technique['categoryID']) ?></td>
+                                        <td><?php echo htmlspecialchars($technique['positionID']) ?></td>
+                                        <td><?php echo htmlspecialchars($technique['difficultyID']) ?></td>
+                                        <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $technique['techniqueID']; ?>">
+                                        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete">
+                                    </button></td>
+                                    </tr>
+
+                                    <!-- Modal for deletion confirmation -->
+                                    <div class="modal fade" id="modal<?php echo $technique['techniqueID']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete the technique "<?php echo htmlspecialchars($technique['techniqueName']); ?>"?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <!-- Form for deletion -->
+                                                    <form method="POST" action="">
+                                                        <input type="hidden" name="techniqueID" value="<?php echo $technique['techniqueID']; ?>">
+                                                        <button type="submit" class="btn btn-danger">Delete technique</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <?php
+                                }
+                            } else {
+                                echo "No techniques found.";
+                        }?>
+                        </tbody>
+                        </table>
+                    
+
                     <?php
                         if (isset($technique_array['techniques']) && is_array($technique_array['techniques'])) 
                         {
@@ -86,7 +150,6 @@ require "header.php";
                             echo '</div>'; // Row end
                         }
                     ?>
-                </div>
             </div>
         </div>
 

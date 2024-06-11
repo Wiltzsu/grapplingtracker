@@ -146,4 +146,31 @@ class Technique
 
         return []; // Return an empty array to signify no errors.
     }
+
+    public function readTechniques()
+    {
+        $query = "SELECT * FROM Technique ORDER BY techniqueID DESC";
+        $data = $this->_db->query($query);
+
+        $techniqueArray = $data->fetchAll(\PDO::FETCH_ASSOC);
+        return $techniqueArray;
+    }
+
+    public function deleteTechnique()
+    {
+        if (isset($_POST['techniqueID'])) {
+            // Assign the 'techniqueID' value from the form to a variable
+            $techniqueID = $_POST['techniqueID'];
+
+            $query = "DELETE FROM Technique WHERE techniqueID=:techniqueID";
+
+            $delete = $this->_db->prepare($query);
+
+            $delete->bindValue(':techniqueID', $techniqueID, PDO::PARAM_INT);
+
+            $delete->execute();
+            header("Location: __DIR__ . /..//view_items.php");
+            exit();
+        }
+    }
 }
