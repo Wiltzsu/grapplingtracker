@@ -1,4 +1,5 @@
 <?php
+/** REDUNDANT */
 require_once '/opt/lampp/htdocs/technique-db-mvc/config/Database.php';
 
 ini_set('log_errors', 1);

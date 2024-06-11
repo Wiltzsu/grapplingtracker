@@ -1,7 +1,21 @@
 <?php
+/**
+ * This file is responsible for checking form submissions,
+ * retrieving data and calling the methods to insert
+ * new items to the database.
+ * 
+ * @package Techniquedbmvc
+ * @author  William
+ * @license MIT License
+ */
+
 require_once 'CreateCategoryController.php';
 require_once 'CreatePositionController.php';
 require_once 'CreateTechniqueController.php';
+
+ini_set('log_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 /**
  * Initialize empty arrays to store errors and input data.
@@ -17,7 +31,7 @@ $input = [
 
 /**
  * Initialize the database connection.
- * Instantiate the class.
+ * Instantiate the classes with the connection.
  */
 $db = Database::connect();
 $createTechniqueController = new CreateTechniqueController($db);
@@ -26,18 +40,18 @@ $createPositionController = new CreatePositionController($db);
 
 /**
  * Check if form is submitted and retrieve input data.
- * '??' provides an empty default string.
+ * Uses an if-else block to decide which form was submitted.
  */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submitTechnique'])) {
-        $userID = $_POST['userID'];//$_SESSION['userID']; // Ensure you have this session variable set upon login
+        $userID = $_POST['userID'];
         $techniqueName = $_POST['techniqueName'];
         $techniqueDescription = $_POST['techniqueDescription'];
         $categoryID = $_POST['categoryID'];
         $positionID = $_POST['positionID'];
         $difficultyID = $_POST['difficultyID'];
     
-        // Call the add technique method
+        // Call the createTechnique method
         $errors = $createTechniqueController->createTechnique(
             $userID,
             $techniqueName,
@@ -46,19 +60,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $positionID,
             $difficultyID
         );
-        
-            if (empty($errors)) {
-                header("Location: /technique-db-mvc/view/add_new.php");
-                exit();
-            }
+            // If no errors, execute and redirect back to the page.
+        if (empty($errors)) {
+            header("Location: /technique-db-mvc/view/add_new.php");
+            exit();
+        }
     } elseif (isset($_POST['submitCategory'])) {
         $categoryName = $_POST['categoryName'];
         $categoryDescription = $_POST['categoryDescription'];
     
-        /**
-         * Execute the function.
-         * If no errors, redirect to 'addnew' page.
-         */
         $errors = $createCategoryController->createCategory(
             $categoryName,
             $categoryDescription
@@ -72,12 +82,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $positionName = $_POST['positionName'];
             $positionDescription = $_POST['positionDescription'];
     
-            $errors = $createPositionController->createPosition($positionName, $positionDescription);
+            $errors = $createPositionController->createPosition(
+                $positionName,
+                $positionDescription
+            );
     
-            if (empty($errors)) {
-                header("Location: /technique-db-mvc/view/add_new.php");
-                exit();
-            }
+        if (empty($errors)) {
+            header("Location: /technique-db-mvc/view/add_new.php");
+            exit();
         }
     }
+}
 

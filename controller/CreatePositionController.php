@@ -1,6 +1,7 @@
 <?php
 /**
  * Controller category for interacting with the difficulty model and index.
+ * Includes a constructor and createPosition method.
  * 
  * @package Techniquedbmvc
  * @author  William
@@ -19,7 +20,6 @@ error_reporting(E_ALL);
 /**
  * PositionController Class
  */
-
 class CreatePositionController
 {
     /**
@@ -41,8 +41,19 @@ class CreatePositionController
         $this->_positionModel = new Position($db);
     }
 
+    /**
+     * Creates a new position.
+     * 
+     * @return Array Returns an empty array if unsuccessful.
+     * 
+     * @param $positionName        Name of the position.
+     * @param $positionDescription Description of the position.
+     */
     public function createPosition($positionName, $positionDescription)
     {
-        return $this->_positionModel->addPosition($positionName, $positionDescription);
+        return $this->_positionModel->addPosition(
+            $positionName,
+            $positionDescription
+        );
     }
 }

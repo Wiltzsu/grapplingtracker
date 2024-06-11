@@ -1,5 +1,7 @@
 <?php
-/** This file is the first version of user controller and is 
+/**
+ * REDUNDANT 
+ * This file is the first version of user controller and is 
  * now replaced by 'UserController2'.
  */
 require '../config/Database.php';

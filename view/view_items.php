@@ -38,7 +38,6 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                     <table class="table table-hover">
                         <thead class="thead-light">
                             <tr>
-                                <th>user ID</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Category</th>
@@ -54,12 +53,11 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                                 foreach ($techniques as $technique) {
                                     ?>
                                     <tr>
-                                        <td><?php echo htmlspecialchars($technique['userID']) ?></td>
                                         <td><?php echo htmlspecialchars($technique['techniqueName']) ?></td>
                                         <td><?php echo htmlspecialchars($technique['techniqueDescription']) ?></td>
-                                        <td><?php echo htmlspecialchars($technique['categoryID']) ?></td>
-                                        <td><?php echo htmlspecialchars($technique['positionID']) ?></td>
-                                        <td><?php echo htmlspecialchars($technique['difficultyID']) ?></td>
+                                        <td><?php echo htmlspecialchars($technique['categoryName']) ?></td>
+                                        <td><?php echo htmlspecialchars($technique['positionName']) ?></td>
+                                        <td><?php echo htmlspecialchars($technique['difficulty']) ?></td>
                                         <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $technique['techniqueID']; ?>">
                                         <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete">
                                     </button></td>

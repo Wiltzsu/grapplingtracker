@@ -1,4 +1,14 @@
 <?php
+/**
+ * This file is responsible for creating a new category.
+ * The constructor is initialized with a category Model
+ * and a database connection. It then calls the method
+ * from the model to create a new category.
+ * 
+ * @package Techniquedbmvc
+ * @author  William
+ * @license MIT License
+ */
 
 require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../model/Category.php';
@@ -9,12 +19,18 @@ ini_set('log_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+/**
+ * Class for creating the category.
+ * Includes a constructor method and a method for category creation.
+ */
 class CreateCategoryController
 {
     private $_categoryModel;
 
     /**
      * Initialize with a database connection.
+     * 
+     * @param $db Database connection.
      */
     public function __construct($db)
     {
@@ -22,17 +38,17 @@ class CreateCategoryController
     }
 
     /**
-     * Uses the instance of the category model and adds the category to the database.
+     * Creates a new category
      * 
-     * @param string $categoryName          Name of the category.
-     * @param string $categoryDescription   Category description.
+     * @param string $categoryName        Name of the category.
+     * @param string $categoryDescription Category description.
      * 
-     * @return Array Returns an empty array if successful or an array containing errors.
+     * @return Array Returns empty array if successful or an array containing errors.
      */
     public function createCategory(
         $categoryName,
-        $categoryDescription)
-    {
+        $categoryDescription
+    ) {
         return $this->_categoryModel->addCategory(
             $categoryName,
             $categoryDescription

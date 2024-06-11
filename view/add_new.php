@@ -19,7 +19,6 @@ error_reporting(E_ALL)
     <div class="card p-4">
         <h2 class="text-center mb-4">Grappling Technique Journal</h2>
         <p class="text-center"><?php echo $greeting1; ?></p>
-        <p class="text-center"><?php echo $greeting2; ?></p>
 
         <div id="accordion">
 
@@ -42,19 +41,9 @@ error_reporting(E_ALL)
                         <form method="POST" action="">
                             <h4>Add a New Technique</h4>
                             
-                            <?php
-                            // Check if userID is set in the session and display it
-                            if (isset($_SESSION['userID'])) {
-                                echo "<p class='text-center'>User ID: " . htmlspecialchars($_SESSION['userID']) . "</p>";
-                            } else {
-                                echo "<p class='text-center'>User ID: Not logged in</p>";
-                            }
-                            ?>
-                            
                             <!-- User ID -->
                             <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
-                                <label for="userID">User ID:</label>
-                                <input type="text"  size=10 class="form-control" id="userID" name="userID" required value="<?php echo $_SESSION['userID']?>">
+                                <input type="hidden"  size=10 class="form-control" id="userID" name="userID" required value="<?php echo $_SESSION['userID']?>">
                                 <?php if (!empty($errors['emptyField'])): ?>
                                     <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
                                 <?php endif; ?>

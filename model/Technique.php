@@ -141,7 +141,17 @@ class Technique
         $userID = $_SESSION['userID'];
     
         // Prepare the SQL statement
-        $query = "SELECT * FROM Technique WHERE userID = :userID ORDER BY techniqueID DESC";
+        $query = "SELECT User.userID, techniqueID, techniqueName, techniqueDescription, Category.categoryName, Difficulty.difficulty, Position.positionName
+        FROM Technique
+        INNER JOIN User
+        ON Technique.userID = User.userID
+        INNER JOIN Category
+        ON Technique.categoryID = Category.categoryID
+        INNER JOIN Difficulty
+        ON Technique.difficultyID = Difficulty.difficultyID
+        INNER JOIN Position
+        ON Technique.positionID = Position.positionID
+        WHERE Technique.userID = :userID ORDER BY techniqueID DESC";
         $stmt = $this->_db->prepare($query);
     
         // Bind the userID to the placeholder
