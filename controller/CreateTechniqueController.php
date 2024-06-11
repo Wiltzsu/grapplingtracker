@@ -54,13 +54,17 @@ class CreateTechniqueController
      * @return Array Returns an empty array if successful or an array containing errors.
      */
     public function createTechnique(
+        $userID,
         $techniqueName,
         $techniqueDescription,
         $categoryID,
         $positionID,
         $difficultyID
     ) {
+        //$userID = $_SESSION['userID'];
+
         return $this->_techniqueModel->addTechnique(
+            $userID,
             $techniqueName,
             $techniqueDescription,
             $categoryID,

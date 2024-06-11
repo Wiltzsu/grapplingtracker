@@ -28,6 +28,7 @@ class Technique
      * @var $_difficultyID          Difficulty ID.
      */
     private $_db;
+    private $_userID;
     private $_techniqueName;
     private $_techniqueDescription;
     private $_categoryID;
@@ -85,74 +86,73 @@ class Technique
      * @return array Empty if successful, errors if not.
      */
     public function addTechnique(
+        $userID,
         $techniqueName,
         $techniqueDescription,
         $categoryID,
         $positionID,
         $difficultyID
     ) {
+        $this->_userID = $userID;
         $this->_techniqueName = $techniqueName;
         $this->_techniqueDescription = $techniqueDescription;
         $this->_categoryID = $categoryID;
         $this->_positionID = $positionID;
         $this->_difficultyID = $difficultyID;
-
+    
+        // Validate the input
         $errors = $this->_validateInput(
             $techniqueName,
             $categoryID,
             $positionID,
             $difficultyID
         );
-        if (!empty($errors)) { // If errors array contains errors, return it.
+        if (!empty($errors)) {
             return $errors;
         }
-
+    
+        // Prepare the SQL query
         $query = "INSERT INTO Technique (
-                techniqueName,
-                techniqueDescription,
-                categoryID,
-                positionID,
-                difficultyID
-            ) VALUES (
-                :techniqueName,
-                :techniqueDescription,
-                :categoryID,
-                :positionID,
-                :difficultyID
-            )";
-
+            userID, techniqueName, techniqueDescription, categoryID, positionID, difficultyID
+        ) VALUES (
+            :userID, :techniqueName, :techniqueDescription, :categoryID, :positionID, :difficultyID
+        )";
+    
         $statement = $this->_db->prepare($query);
-        $statement->bindParam(
-            ":techniqueName", 
-            $this->_techniqueName, PDO::PARAM_STR
-        );
-        $statement->bindParam(
-            ":techniqueDescription", 
-            $this->_techniqueDescription, PDO::PARAM_STR
-        );
-        $statement->bindParam(
-            ":categoryID", 
-            $this->_categoryID, PDO::PARAM_INT
-        );
-        $statement->bindParam(
-            ":positionID", 
-            $this->_positionID, PDO::PARAM_INT
-        );
-        $statement->bindParam(
-            ":difficultyID", 
-            $this->_difficultyID, PDO::PARAM_INT
-        );
+        $statement->bindParam(":userID", $this->_userID, PDO::PARAM_INT);
+        $statement->bindParam(":techniqueName", $this->_techniqueName, PDO::PARAM_STR);
+        $statement->bindParam(":techniqueDescription", $this->_techniqueDescription, PDO::PARAM_STR);
+        $statement->bindParam(":categoryID", $this->_categoryID, PDO::PARAM_INT);
+        $statement->bindParam(":positionID", $this->_positionID, PDO::PARAM_INT);
+        $statement->bindParam(":difficultyID", $this->_difficultyID, PDO::PARAM_INT);
+    
+        // Execute the query
         $statement->execute();
-
-        return []; // Return an empty array to signify no errors.
+    
+        return []; // Indicate success
     }
+    
 
-    public function readTechniques()
+    public function readTechniques($userID)
     {
-        $query = "SELECT * FROM Technique ORDER BY techniqueID DESC";
-        $data = $this->_db->query($query);
-
-        $techniqueArray = $data->fetchAll(\PDO::FETCH_ASSOC);
+        if (!isset($_SESSION['userID'])) {
+            throw new Exception("User ID is not set in the session.");
+        }
+        $userID = $_SESSION['userID'];
+    
+        // Prepare the SQL statement
+        $query = "SELECT * FROM Technique WHERE userID = :userID ORDER BY techniqueID DESC";
+        $stmt = $this->_db->prepare($query);
+    
+        // Bind the userID to the placeholder
+        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+    
+        // Execute the statement
+        $stmt->execute();
+    
+        // Fetch all results
+        $techniqueArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
         return $techniqueArray;
     }
 

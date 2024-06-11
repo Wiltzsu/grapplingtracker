@@ -9,10 +9,19 @@ error_reporting(E_ALL);
 
 // Check if the user is logged in and then greet them
 $username = '';
-$greeting = 'No sessions.';  // Default message if not logged in
+$greeting1 = 'No sessions.';  // Default message if not logged in
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    $greeting = "Hello, " . htmlspecialchars($username);
+    $greeting1 = "Hello, " . htmlspecialchars($username);
+} else {
+    header("Location: view/login.php");
+}
+
+$userID = '';
+$greeting2 = 'No sessions.';  // Default message if not logged in
+if (isset($_SESSION['userID']) && !empty($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+    $greeting2 = "Hello, " . htmlspecialchars($userID);
 } else {
     header("Location: view/login.php");
 }
@@ -31,7 +40,8 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 <div class="container centered-container">
     <div class="card p-4">
         <h2 class="text-center mb-4">Grappling Technique Journal</h2>
-        <p class="text-center"><?php echo $greeting; ?></p>
+        <p class="text-center"><?php echo $greeting1; ?></p>
+        <p class="text-center"><?php echo $greeting2; ?></p>
 
         <div class="list-group">
             <a href="/technique-db-mvc/journal" class="list-group-item list-group-item-action">

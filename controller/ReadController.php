@@ -7,6 +7,13 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 $db = Database::connect();
-$readTechniqueController = new Technique($db);
 
-$techniques = $readTechniqueController->readTechniques();
+if (!isset($_SESSION['userID'])) {
+    // Handle the case where the userID is not set in the session.
+    echo "User is not logged in.";
+    exit; // Prevent further execution if userID is not available.
+}
+$userID = $_SESSION['userID']; // Properly fetch the userID from session.
+
+$readTechniqueController = new Technique($db);
+$techniques = $readTechniqueController->readTechniques($userID);

@@ -9,12 +9,21 @@ error_reporting(E_ALL);
 
 // Check if the user is logged in and then greet them
 $username = '';
-$greeting = 'No sessions.';  // Default message if not logged in
+$greeting1 = 'No sessions.';  // Default message if not logged in
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    $greeting = "Hello, " . htmlspecialchars($username);
+    $greeting1 = "Hello, " . htmlspecialchars($username);
 } else {
     header("Location: login.php");
+}
+
+$userID = '';
+$greeting2 = 'No sessions.';  // Default message if not logged in
+if (isset($_SESSION['userID']) && !empty($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+    $greeting2 = "Hello, " . htmlspecialchars($userID);
+} else {
+    header("Location: view/login.php");
 }
 ?>
 <!DOCTYPE html>

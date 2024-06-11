@@ -81,7 +81,7 @@ class UserController2
 
         if ($user && password_verify($password, $user['password'])) {
             // Authentication successful, set session variables
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['userID'] = $user['userID'];
             $_SESSION['username'] = $username;
             $_SESSION['logged_in'] = true;
             return [];

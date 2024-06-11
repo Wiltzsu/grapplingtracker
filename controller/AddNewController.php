@@ -30,23 +30,22 @@ $createPositionController = new CreatePositionController($db);
  */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submitTechnique'])) {
-            $techniqueName = $_POST['techniqueName'] ?? '';
-            $techniqueDescription = $_POST['techniqueDescription' ?? ''];
-            $categoryID = $_POST['categoryID' ?? ''];
-            $positionID = $_POST['positionID' ?? ''];
-            $difficultyID = $_POST['difficultyID' ?? ''];
-        
-            /**
-             * Executes the creation of a technique.
-             * If no errors, redirect to 'addnew' page.
-             */
-            $errors = $createTechniqueController->createTechnique(
-                $techniqueName,
-                $techniqueDescription,
-                $categoryID,
-                $positionID,
-                $difficultyID
-            );
+        $userID = $_POST['userID'];//$_SESSION['userID']; // Ensure you have this session variable set upon login
+        $techniqueName = $_POST['techniqueName'];
+        $techniqueDescription = $_POST['techniqueDescription'];
+        $categoryID = $_POST['categoryID'];
+        $positionID = $_POST['positionID'];
+        $difficultyID = $_POST['difficultyID'];
+    
+        // Call the add technique method
+        $errors = $createTechniqueController->createTechnique(
+            $userID,
+            $techniqueName,
+            $techniqueDescription,
+            $categoryID,
+            $positionID,
+            $difficultyID
+        );
         
             if (empty($errors)) {
                 header("Location: /technique-db-mvc/view/add_new.php");

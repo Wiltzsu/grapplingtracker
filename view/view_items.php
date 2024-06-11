@@ -18,8 +18,8 @@ require_once __DIR__ . '/../controller/DeleteController.php';
     
     <div class="card p-4">
         <h2 class="text-center mb-4">Grappling Technique Journal</h2>
-        <p class="text-center"><?php echo $greeting; ?></p>
-
+        <p class="text-center"><?php echo $greeting1; ?></p>
+        <p class="text-center"><?php echo $greeting2; ?></p>
 
         <div id="accordion">
         <a href="/technique-db-mvc/" class="btn btn-primary btn1">Back</a>
