@@ -36,8 +36,9 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 
                     <table class="table table-hover">
-                        <thead>
+                        <thead class="thead-light">
                             <tr>
+                                <th>user ID</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Category</th>
@@ -53,6 +54,7 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                                 foreach ($techniques as $technique) {
                                     ?>
                                     <tr>
+                                        <td><?php echo htmlspecialchars($technique['userID']) ?></td>
                                         <td><?php echo htmlspecialchars($technique['techniqueName']) ?></td>
                                         <td><?php echo htmlspecialchars($technique['techniqueDescription']) ?></td>
                                         <td><?php echo htmlspecialchars($technique['categoryID']) ?></td>
