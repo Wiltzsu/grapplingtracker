@@ -1,6 +1,11 @@
 <?php
+/**
+ * Require header, database and options files.
+ * 
+ * Also require 'addnew' controller to handle form submissions.
+ */
 require_once 'header.php';
-require_once '/opt/lampp/htdocs/technique-db-mvc/controller/CreateTechniqueController.php';
+require_once __DIR__ . '/../controller/AddNewController.php';
 require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../model/AddNewOptions.php';
 
