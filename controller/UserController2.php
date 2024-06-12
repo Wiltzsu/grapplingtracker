@@ -14,10 +14,6 @@ session_start();
 
 require '../config/Database.php';
 
-ini_set('log_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 /**
  * 'UserController2' contains two methods, one for input validation and 
  * another one for authentication.
@@ -83,6 +79,7 @@ class UserController2
             // Authentication successful, set session variables
             $_SESSION['userID'] = $user['userID'];
             $_SESSION['username'] = $username;
+            $_SESSION['roleID'] = $user['roleID'];
             $_SESSION['logged_in'] = true;
             return [];
         } else {

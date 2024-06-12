@@ -21,7 +21,16 @@ $userID = '';
 $greeting2 = 'No sessions.';  // Default message if not logged in
 if (isset($_SESSION['userID']) && !empty($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
-    $greeting2 = "Hello, " . htmlspecialchars($userID);
+    $greeting2 = htmlspecialchars($userID);
+} else {
+    header("Location: view/login.php");
+}
+
+$roleID = '';
+$greeting3 = 'No sessions.';  // Default message if not logged in
+if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
+    $roleID = $_SESSION['roleID'];
+    $greeting3 = htmlspecialchars($roleID);
 } else {
     header("Location: view/login.php");
 }

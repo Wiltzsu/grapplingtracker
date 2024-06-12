@@ -19,6 +19,8 @@ error_reporting(E_ALL)
     <div class="card p-4">
         <h2 class="text-center mb-4">Grappling Technique Journal</h2>
         <p class="text-center"><?php echo $greeting1; ?></p>
+        <p class="text-center"><?php echo 'User ID: ' . $greeting2; ?></p>
+        <p class="text-center"><?php echo 'Role: ' . $greeting3; ?></p>
 
         <div id="accordion">
 
@@ -36,13 +38,13 @@ error_reporting(E_ALL)
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
 
-                    <!-- Technique Form Column -->
+                        <!-- Technique Form Column -->
 
                         <form method="POST" action="">
                             <h4>Add a New Technique</h4>
                             
                             <!-- User ID -->
-                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
+                            <div class="form-group<?= !empty($errors['emptyField']) ? ' has-error' : '' ?>">
                                 <input type="hidden"  size=10 class="form-control" id="userID" name="userID" required value="<?php echo $_SESSION['userID']?>">
                                 <?php if (!empty($errors['emptyField'])): ?>
                                     <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
@@ -50,7 +52,7 @@ error_reporting(E_ALL)
                             </div>
 
                             <!-- Name -->
-                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
+                            <div class="form-group<?= !empty($errors['emptyField']) ? ' has-error' : '' ?>">
                                 <label for="techniqueName">Technique Name:</label>
                                 <input type="text"  size=10 class="form-control" id="techniqueName" name="techniqueName" required>
                                 <?php if (!empty($errors['emptyField'])): ?>
@@ -59,7 +61,7 @@ error_reporting(E_ALL)
                             </div>
 
                             <!-- Description -->
-                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
+                            <div class="form-group<?= !empty($errors['emptyField']) ? ' has-error' : '' ?>">
                                 <label for="techniqueDescription">Description:</label>
                                 <textarea class="form-control" id="techniqueDescription" name="techniqueDescription" required></textarea>
                                 <?php if (!empty($errors['emptyField'])): ?>
@@ -68,7 +70,7 @@ error_reporting(E_ALL)
                             </div>
 
                             <!-- Category -->
-                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
+                            <div class="form-group<?= !empty($errors['emptyField']) ? ' has-error' : '' ?>">
                                 <label for="techniqueCategory">Category:</label>
                                 <select class="form-control" id="categoryID" name="categoryID" required>
                                     <option value="">Select a Category</option>
@@ -80,7 +82,7 @@ error_reporting(E_ALL)
                             </div>
 
                             <!-- Position -->
-                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
+                            <div class="form-group<?= !empty($errors['emptyField']) ? ' has-error' : '' ?>">
                                 <label for="techniquePosition">Position:</label>
                                 <select class="form-control" id="positionID" name="positionID" required>
                                     <option value="">Select a Position</option>
@@ -92,7 +94,7 @@ error_reporting(E_ALL)
                             </div>
 
                             <!-- Difficulty -->
-                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
+                            <div class="form-group<?= !empty($errors['emptyField']) ? ' has-error' : '' ?>">
                                 <label for="techniqueDifficulty">Difficulty:</label>
                                 <select class="form-control" id="difficultyID" name="difficultyID" required>
                                     <option value="">Select a Difficulty</option>
@@ -110,85 +112,95 @@ error_reporting(E_ALL)
             </div>
         </div>
 
-    <div class="card">
-        <div class="card-header" id="headingTwo">
-            <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Add a category to the database.
-                </button>
-            </h5>
-        </div>
-
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
-
-                <!-- Category Form Column -->
-
-                    <form method="POST" action="">
-                        <h4>Add a New Category</h4>
-                        <!-- Category name -->
-                        <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
-                            <label for="categoryName">Category Name:</label>
-                            <input type="text" class="form-control" id="categoryName" name="categoryName" required>
-                            <?php if (!empty($errors['emptyField'])): ?>
-                                <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
-                            <?php endif; ?>
-                        </div>
-
-                        <!-- Description -->
-                        <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
-                            <label for="categoryDescription">Description:</label>
-                            <textarea class="form-control" id="categoryDescription" name="categoryDescription" required></textarea>
-                            <?php if (!empty($errors['emptyField'])): ?>
-                                <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
-                            <?php endif; ?>
-                        </div>
-
-                        <button type="submit" name="submitCategory" class="btn btn-primary btn2">Add Category</button>
-                    </form>
-     
+        <?php
+        if (isset($_SESSION['roleID']) && $_SESSION['roleID'] === 1) {
+            ?>
+            <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Add a category to the database.
+                    </button>
+                </h5>
             </div>
-        </div>
-    </div>
 
-    <div class="card">
-        <div class="card-header" id="headingThree">
-            <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Add a position to the database.
-                </button>
-            </h5>
-        </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
 
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body">
-                <!-- Position Form Column -->
-                    <form method="POST" action="" >
+                    <!-- Category Form Column -->
 
-                        <!-- Position name -->
-                        <h4>Add a New Position</h4>
-                        <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
-                                <label for="positionName">Position Name:</label>
-                                <input type="text"  size=10 class="form-control" id="positionName" name="positionName" required>
+                        <form method="POST" action="">
+                            <h4>Add a New Category</h4>
+                            <!-- Category name -->
+                            <div class="form-group<?= !empty($errors['emptyField']) ? ' has-error' : '' ?>">
+                                <label for="categoryName">Category Name:</label>
+                                <input type="text" class="form-control" id="categoryName" name="categoryName" required>
                                 <?php if (!empty($errors['emptyField'])): ?>
                                     <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
                                 <?php endif; ?>
                             </div>
 
                             <!-- Description -->
-                            <div class="form-group<?= !empty($errors['fieldEmpty']) ? ' has-error' : '' ?>">
-                                <label for="positionDescription">Description:</label>
-                                <textarea class="form-control" id="positionDescription" name="positionDescription" required></textarea>
+                            <div class="form-group<?= !empty($errors['emptyField']) ? ' has-error' : '' ?>">
+                                <label for="categoryDescription">Description:</label>
+                                <textarea class="form-control" id="categoryDescription" name="categoryDescription" required></textarea>
                                 <?php if (!empty($errors['emptyField'])): ?>
                                     <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
                                 <?php endif; ?>
                             </div>
-                        <button type="submit" name="submitPosition" class="btn btn-primary btn2">Add Position</button>
-                    </form>
+
+                            <button type="submit" name="submitCategory" class="btn btn-primary btn2">Add Category</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php
+        }
+        ?>
+
+        <?php
+        if (isset($_SESSION['roleID']) && $_SESSION['roleID'] === 1) {
+        ?>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Add a position to the database.
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <!-- Position Form Column -->
+                        <form method="POST" action="" >
+
+                            <!-- Position name -->
+                            <h4>Add a New Position</h4>
+                            <div class="form-group<?= !empty($errors['emptyField']) ? ' has-error' : '' ?>">
+                                    <label for="positionName">Position Name:</label>
+                                    <input type="text"  size=10 class="form-control" id="positionName" name="positionName" required>
+                                    <?php if (!empty($errors['emptyField'])): ?>
+                                        <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
+                                    <?php endif; ?>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="form-group<?= !empty($errors['emptyField']) ? ' has-error' : '' ?>">
+                                    <label for="positionDescription">Description:</label>
+                                    <textarea class="form-control" id="positionDescription" name="positionDescription" required></textarea>
+                                    <?php if (!empty($errors['emptyField'])): ?>
+                                        <span class="help-block"><?= htmlspecialchars($errors["emptyField"]) ?></span>
+                                    <?php endif; ?>
+                                </div>
+                            <button type="submit" name="submitPosition" class="btn btn-primary btn2">Add Position</button>
+                        </form>
+                </div>
             </div>
         </div>
-    </div>
-
+        <?php
+        }
+        ?>
 
         <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
             <div class="text-center mt-3">
