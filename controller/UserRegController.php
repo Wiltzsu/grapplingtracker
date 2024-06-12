@@ -12,10 +12,6 @@
 require_once './config/Database.php';
 require_once './model/UserReg.php';
 
-ini_set('log_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 /**
  * 'UserRegController' class contains a method for input validation
  * and inserting a new user to the database.

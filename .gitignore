@@ -1,3 +1,5 @@
 
 /vendor/
 /config/config.php/
+/controller/UserController.php
+/controller/UserRegistration.php
