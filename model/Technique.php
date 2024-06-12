@@ -44,6 +44,8 @@ class Technique
     /**
      * Validates the input parameters for creating a new technique.
      * Checks each parameter to ensure it is not empty.
+     * Checks if technique already exists.
+     * 
      * Further validations can be added to check for data types or 
      * format constraints.
      * 
@@ -68,7 +70,14 @@ class Technique
         ) {
             $errors['emptyField'] = 'Field cannot be empty.';
         }
-    
+
+        $techniqueExists = $this->_db->prepare(
+            "SELECT 1 FROM Technique WHERE techniqueName = ?"
+        );
+        $techniqueExists->execute([$techniqueName]);
+        if ($techniqueExists->fetch(PDO::FETCH_ASSOC)) {
+            $errors['techniqueExists'] = 'Technique name is already used.';
+        }
         return $errors;
     }
 
@@ -207,18 +216,18 @@ class Technique
     {
         if (isset($_POST['techniqueID'])) {
             if (isset($_POST['deleteTechnique'])) {
-            // Assign the 'techniqueID' value from the form to a variable
-            $techniqueID = $_POST['techniqueID'];
+                // Assign the 'techniqueID' value from the form to a variable
+                $techniqueID = $_POST['techniqueID'];
 
-            $query = "DELETE FROM Technique WHERE techniqueID=:techniqueID";
+                $query = "DELETE FROM Technique WHERE techniqueID=:techniqueID";
 
-            $delete = $this->_db->prepare($query);
+                $delete = $this->_db->prepare($query);
 
-            $delete->bindValue(':techniqueID', $techniqueID, PDO::PARAM_INT);
+                $delete->bindValue(':techniqueID', $techniqueID, PDO::PARAM_INT);
 
-            $delete->execute();
-            header("Location: __DIR__ . /../view/view_items.php");
-            exit();
+                $delete->execute();
+                header("Location: __DIR__ . /../view/view_items.php");
+                exit();
             }
         }
     }

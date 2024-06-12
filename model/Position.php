@@ -30,6 +30,10 @@ class Position
     /**
      * Validates the input parameters for creating a new position.
      * Checks each parameter to ensure its not empty.
+     * Checks if position already exists.
+     * 
+     * Further validations can be added to check for data types or 
+     * format constraints.
      * 
      * @param string $positionName        Name of the position.
      * @param string $positionDescription Description of the position.
@@ -41,6 +45,14 @@ class Position
         $errors = [];
         if (empty($positionName) || empty($positionDescription)) {
             $errors['emtpyField'] = 'Field cannot be empty.';
+        }
+
+        $positionExists = $this->_db->prepare(
+            "SELECT 1 FROM Position WHERE positionName = ?"
+        );
+        $positionExists->execute([$positionName]);
+        if ($positionExists->fetch(PDO::FETCH_ASSOC)) {
+            $errors['positionExists'] = 'Position name is already used.';
         }
         return $errors;
     }
@@ -110,18 +122,18 @@ class Position
     {
         if (isset($_POST['positionID'])) {
             if (isset($_POST['deletePosition'])) {
-            // Assign the 'positionID' value from the form to a variable.
-            $positionID = $_POST['positionID'];
+                // Assign the 'positionID' value from the form to a variable.
+                $positionID = $_POST['positionID'];
 
-            $query = "DELETE FROM Position WHERE positionID=:positionID";
+                $query = "DELETE FROM Position WHERE positionID=:positionID";
 
-            $delete = $this->_db->prepare($query);
+                $delete = $this->_db->prepare($query);
 
-            $delete->bindValue(':positionID', $positionID, PDO::PARAM_INT);
+                $delete->bindValue(':positionID', $positionID, PDO::PARAM_INT);
 
-            $delete->execute();
-            header("Location: __DIR__ . /../view/view_items.php");
-            exit();
+                $delete->execute();
+                header("Location: __DIR__ . /../view/view_items.php");
+                exit();
             }
         }
     }

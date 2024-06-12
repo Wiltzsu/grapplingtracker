@@ -94,3 +94,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+/**
+ * Keeps the accordion cards open in case of an error on submission.
+ */
+$accordionState = [
+    'collapseOne' => (!empty($errors) && isset($_POST['submitTechnique'])) ? ' show' : '',
+    'collapseTwo' => (!empty($errors) && isset($_POST['submitCategory'])) ? ' show' : '',
+    'collapseThree' => (!empty($errors) && isset($_POST['submitPosition'])) ? ' show' : ''
+];

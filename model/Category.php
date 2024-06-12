@@ -30,6 +30,7 @@ class Category
     /**
      * Validates the input parameters for creating a new category.
      * Checks each parameter to ensure its not empty.
+     * Checks if category already exist.
      * 
      * @param string $categoryName        Name of the category.
      * @param string $categoryDescription Description of the category.
@@ -47,6 +48,13 @@ class Category
             $errors['emptyField'] = 'Field cannot be empty.';
         }
 
+        $categoryExists = $this->_db->prepare(
+            "SELECT 1 FROM Category WHERE categoryName = ?"
+        );
+        $categoryExists->execute([$categoryName]);
+        if ($categoryExists->fetch(PDO::FETCH_ASSOC)) {
+            $errors['categoryExists'] = 'Category name is already taken.';
+        }
         return $errors;
     }
 
