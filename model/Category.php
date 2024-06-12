@@ -7,10 +7,6 @@
  * @license MIT License
  */
 
-ini_set('log_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 /**
  * Class Category
  * Handles database operations for the 'Category' table.
@@ -60,7 +56,7 @@ class Category
      * @param string $categoryName        Name of the category.
      * @param string $categoryDescription Description of the category.
      * 
-     * @return array Empty if successful, errors if not.
+     * @return Array Empty if successful, errors if not.
      */
     public function addCategory($categoryName, $categoryDescription)
     {
@@ -73,12 +69,64 @@ class Category
             return $errors;
         }
 
-        $query = "INSERT INTO Category (categoryName, categoryDescription) VALUES (:categoryName, :categoryDescription)";
+        $query = "INSERT INTO Category (
+            categoryName, categoryDescription
+        ) VALUES (
+            :categoryName, :categoryDescription
+        )";
+
         $statement = $this->_db->prepare($query);
-        $statement->bindParam(":categoryName", $this->_categoryName, PDO::PARAM_STR);
-        $statement->bindParam(":categoryDescription", $this->_categoryDescription, PDO::PARAM_STR);
+        $statement->bindParam(
+            ":categoryName", 
+            $this->_categoryName, PDO::PARAM_STR
+        );
+        $statement->bindParam(
+            ":categoryDescription", 
+            $this->_categoryDescription, PDO::PARAM_STR
+        );
         $statement->execute();
         return [];
+    }
+
+    /**
+     * Fetches categories from database.
+     * 
+     * @return Array Return array of techniques.
+     */
+    public function readCategories()
+    {
+        $query = "SELECT * FROM Category ORDER BY categoryName";
+
+        $statement = $this->_db->prepare($query);
+
+        $statement->execute();
+
+        $categoryArray = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $categoryArray;
+    }
+
+    /**
+     * Deletes category from the database.
+     * 
+     * @return null Returns null if 'categoryID' is not set.
+     */
+    public function deleteCategory()
+    {
+        if (isset($_POST['categoryID'])) {
+            // Assign the 'categoryID' value from the form to a variable.
+            $categoryID = $_POST['categoryID'];
+
+            $query = "DELETE FROM Category WHERE categoryID=:categoryID";
+
+            $delete = $this->_db->prepare($query);
+
+            $delete->bindValue(':categoryID', $categoryID, PDO::PARAM_INT);
+
+            $delete->execute();
+            header("Location: __DIR__ . /../view_items.php");
+            exit();
+        }
     }
 }
 ?>

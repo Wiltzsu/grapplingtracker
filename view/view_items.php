@@ -1,5 +1,13 @@
 <?php
-require "header.php";
+/**
+ * View that displays techniques, categories and positions.
+ * 
+ * @package Techniquedbmvc
+ * @author  William
+ * @license MIT License
+ */
+
+require_once "header.php";
 require_once __DIR__ . '/../controller/ReadController.php';
 require_once __DIR__ . '/../controller/DeleteController.php';
 ?>
@@ -46,12 +54,11 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                                 <th></th>
                             </tr>
                         </thead>
-
                         <tbody>
                         <?php
-                            if (is_array($techniques)) {
-                                foreach ($techniques as $technique) {
-                                    ?>
+                        if (is_array($techniques)) {
+                            foreach ($techniques as $technique) {
+                                ?>
                                     <tr>
                                         <td><?php echo htmlspecialchars($technique['techniqueName']) ?></td>
                                         <td><?php echo htmlspecialchars($technique['techniqueDescription']) ?></td>
@@ -89,138 +96,79 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                                     </div>
                                     
                                     <?php
-                                }
-                            } else {
-                                echo "No techniques found.";
+                            }
+                        } else {
+                            echo "No techniques found.";
                         }?>
                         </tbody>
-                        </table>
-                    
+                    </table>
+                </div>
+            </div>
 
-                    <?php
-                        if (isset($technique_array['techniques']) && is_array($technique_array['techniques'])) 
-                        {
-                            echo '<div class="row">'; // Row for better bootstrap layout
-                            foreach ($technique_array['techniques'] as $technique) 
-                            {
-                                echo '<div class="col-md-4 mb-3">'; // Each technique in a column
-                                echo '<div class="card">';
-                                echo '<div class="card-body">';
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        View your categories.
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <table class="table table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        if (is_array($categories)) {
+                            foreach ($categories as $category) {
                                 ?>
-                                <div class="d-flex justify-content-between align-items-center"> <!-- Flexbox for horizontal layout -->
-                                    <h5 class="card-title"><?php echo htmlspecialchars($technique['techniqueName'] ?? ''); ?></h5> <!-- Technique title -->
-                                    
-                                    <!-- Button to trigger modal -->
-                                    <button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $technique['techniqueID']; ?>">
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($category['categoryName']) ?></td>
+                                        <td><?php echo htmlspecialchars($category['categoryDescription']) ?></td>
+                                        <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $category['categoryID']; ?>">
                                         <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete">
-                                    </button>
-                                </div>
+                                    </button></td>
+                                    </tr>
 
-                                <p class="card-text"><?php echo htmlspecialchars($technique['techniqueDescription'] ?? ''); ?></p> <!-- Technique description -->
-
-                                <!-- Modal for deletion confirmation -->
-                                <div class="modal fade" id="modal<?php echo $technique['techniqueID']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to delete the technique "<?php echo htmlspecialchars($technique['techniqueID']); ?>"?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <!-- Form for deletion -->
-                                                <form action="delete_technique.php" method="POST">
-                                                    <input type="hidden" name="techniqueID" value="<?php echo $technique['techniqueID']; ?>">
-                                                    <button type="submit" class="btn btn-danger">Delete technique</button>
-                                                </form>
+                                    <!-- Modal for deletion confirmation -->
+                                    <div class="modal fade" id="modal<?php echo $category['categoryID']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete the technique "<?php echo htmlspecialchars($category['categoryName']); ?>"?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <!-- Form for deletion -->
+                                                    <form method="POST" action="">
+                                                        <input type="hidden" name="techniqueID" value="<?php echo $category['categoryID']; ?>">
+                                                        <button type="submit" class="btn btn-danger">Delete technique</button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <?php
-                                echo '</div>'; // Card body end
-                                echo '</div>'; // Card end
-                                echo '</div>'; // Column end
+                                    <?php
                             }
-                            echo '</div>'; // Row end
-                        }
-                    ?>
+                        } else {
+                            echo "No techniques found.";
+                        }?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-
-    <div class="card">
-        <div class="card-header" id="headingTwo">
-            <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                View your categories.
-                </button>
-            </h5>
-        </div>
-
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
-
-            <?php
-                if (isset($category_array['categories']) && is_array($category_array['categories']))
-                {
-                    echo '<div class="row">'; // Bootstrap layout
-                    foreach ($category_array['categories'] as $category)
-                    {
-                        echo '<div class="col-md-4 mb-3">'; // Each technique in a column
-                        echo '<div class="card">';
-                        echo '<div class="card-body">';
-                        ?> 
-                        <div class="d-flex justify-content-between align-items-center"> <!-- Flexbox for horizontal layout -->
-                            <h5 class="card-title"><?php echo htmlspecialchars($category['categoryName'] ?? ''); ?></h5> <!-- Category title -->
-                            
-                            <!-- Button to trigger modal -->
-                            <button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $position['positionID']; ?>">
-                                <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete">
-                            </button>
-                        </div>
-
-                        <p class="card-text"><?php echo htmlspecialchars($position['positionDescription'] ?? ''); ?></p> <!-- Position description -->
-
-                        <!-- Modal for deletion confirmation -->
-                        <div class="modal fade" id="modal<?php echo $category['categoryID']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure you want to delete the category "<?php echo htmlspecialchars($category['categoryName']); ?>"?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <!-- Form for deletion -->
-                                        <form action="delete_category.php" method="POST">
-                                            <input type="hidden" name="categoryID" value="<?php echo $category['categoryID']; ?>">
-                                            <button type="submit" class="btn btn-danger">Delete category</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                        echo '</div>'; // Card body end
-                        echo '</div>'; // Card end
-                        echo '</div>'; // Column end
-                    }
-                    echo '</div>'; // Row end
-                }
-            ?>
-            </div>
-        </div>
-    </div>
 
     <div class="card">
         <div class="card-header" id="headingThree">
@@ -234,15 +182,14 @@ require_once __DIR__ . '/../controller/DeleteController.php';
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
             <?php
-                if (isset($position_array['positions']) && is_array($position_array['positions'])) 
+            if (isset($position_array['positions']) && is_array($position_array['positions'])) {
+                echo '<div class="row">'; // Bootstrap layout
+                foreach ($position_array['positions'] as $position) 
                 {
-                    echo '<div class="row">'; // Bootstrap layout
-                    foreach ($position_array['positions'] as $position) 
-                    {
-                        echo '<div class="col-md-4 mb-3">'; // Each position in a column
-                        echo '<div class="card">';
-                        echo '<div class="card-body">';
-                        ?>
+                    echo '<div class="col-md-4 mb-3">'; // Each position in a column
+                    echo '<div class="card">';
+                    echo '<div class="card-body">';
+                    ?>
                         <div class="d-flex justify-content-between align-items-center"> <!-- Flexbox for horizontal layout -->
                             <h5 class="card-title"><?php echo htmlspecialchars($position['positionName'] ?? ''); ?></h5> <!-- Position title -->
                             
@@ -282,10 +229,10 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                         echo '</div>'; // Card body end
                         echo '</div>'; // Card end
                         echo '</div>'; // Column end
-                    }
-                    echo '</div>'; // Row end
                 }
-                ?>
+                echo '</div>'; // Row end
+            }
+            ?>
             </div>        
         </div>
     </div>

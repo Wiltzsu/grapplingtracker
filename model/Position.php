@@ -3,13 +3,9 @@
  * Model for interacting with the 'Position' table in the database.
  * 
  * @package Techniquedbmvc
- * @author William  
+ * @author  William  
  * @license MIT License
  */
-
-ini_set('log_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
 /**
  * Class Position
@@ -31,6 +27,15 @@ class Position
         $this->_db = $db;
     }
 
+    /**
+     * Validates the input parameters for creating a new position.
+     * Checks each parameter to ensure its not empty.
+     * 
+     * @param string $positionName        Name of the position.
+     * @param string $positionDescription Description of the position.
+     * 
+     * @return Array Array of error messages, empty if valid.
+     */
     private function _validateInput($positionName, $positionDescription)
     {
         $errors = [];
@@ -40,6 +45,14 @@ class Position
         return $errors;
     }
 
+    /**
+     * Add a new position to the database if input validation passes.
+     * 
+     * @param string $positionName        Name of the position.
+     * @param string $positionDescription Description of the category.
+     * 
+     * @return Array Empty if successful, errors if not.
+     */
     public function addPosition($positionName, $positionDescription)
     {
         $this->_positionName = $positionName;
@@ -51,12 +64,63 @@ class Position
             return $errors;
         }
 
-        $query = "INSERT INTO Position (positionName, positionDescription) VALUES (:positionName, :positionDescription)";
+        $query = "INSERT INTO Position (
+                positionName, positionDescription
+            ) VALUES (
+                :positionName, :positionDescription
+            )";
 
         $statement = $this->_db->prepare($query);
-        $statement->bindParam(":positionName", $this->_positionName, PDO::PARAM_STR);
-        $statement->bindParam(":positionDescription", $this->_positionDescription, PDO::PARAM_STR);
+        $statement->bindParam(
+            ":positionName", 
+            $this->_positionName, PDO::PARAM_STR
+        );
+        $statement->bindParam(
+            ":positionDescription", 
+            $this->_positionDescription, PDO::PARAM_STR
+        );
         $statement->execute();
         return [];
+    }
+
+    /** 
+     * Fetches positions from database.
+     * 
+     * @return Array Return array of positions.
+     */
+    public function readPositions()
+    {
+        $query = "SELECT * FROM Position ORDER BY PositionName";
+
+        $statement = $this->_db->prepare($query);
+
+        $statement->execute();
+
+        $positionArray = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $positionArray;
+    }
+
+    /**
+     * Deletes position from the database.
+     * 
+     * @return null Returns null if 'positionID' is not set.
+     */
+    public function deletePosition()
+    {
+        if (isset($_POST['positionID'])) {
+            // Assign the 'positionID' value from the form to a variable.
+            $positionID = $_POST['positionID'];
+
+            $query = "DELETE FROM Position WHERE positionID=:positionID";
+
+            $delete = $this->_db->prepare($query);
+
+            $delete->bindValue(':positionID', $positionID, PDO::PARAM_INT);
+
+            $delete->execute();
+            header("Location: __DIR__ . /../view_items.php");
+            exit();
+        }
     }
 }

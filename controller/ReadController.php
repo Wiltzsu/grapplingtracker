@@ -1,19 +1,28 @@
 <?php
 require_once __DIR__ . '/../model/Technique.php';
+require_once __DIR__ . '/../model/Category.php';
 require_once __DIR__ . '/../config/Database.php';
 
-ini_set('log_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
+// Database connection.
 $db = Database::connect();
 
-if (!isset($_SESSION['userID'])) {
-    // Handle the case where the userID is not set in the session.
-    echo "User is not logged in.";
-    exit; // Prevent further execution if userID is not available.
-}
-$userID = $_SESSION['userID']; // Properly fetch the userID from session.
+// Fetch the user from the session.
+$userID = $_SESSION['userID'];
 
+/**
+ * Instantiate the technique Model.
+ * Call readTechniques method to fetch the techniques
+ * related to the user.
+ * 
+ * '$techniques' is used in 'viewitems' view to
+ * display the techniques.
+ */
 $readTechniqueController = new Technique($db);
 $techniques = $readTechniqueController->readTechniques($userID);
+
+/**
+ * Same operation as above but with categories.
+ */
+$readCategoryController = new Category($db);
+$categories = $readCategoryController->readCategories();
+

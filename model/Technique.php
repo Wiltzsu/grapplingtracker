@@ -7,10 +7,6 @@
  * @license MIT License
  */
 
-ini_set('log_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 /** 
  * Class Technique.
  * Methods for validating input and adding techniques.
@@ -48,7 +44,8 @@ class Technique
     /**
      * Validates the input parameters for creating a new technique.
      * Checks each parameter to ensure it is not empty.
-     * Further validations can be added to check for data types or format constraints.
+     * Further validations can be added to check for data types or 
+     * format constraints.
      * 
      * @param string $techniqueName Name of the technique.
      * @param int    $categoryID    The ID of the category.
@@ -64,10 +61,11 @@ class Technique
         $difficultyID
     ) {
         $errors = [];
-        if (empty($techniqueName) ||
-            empty($categoryID) ||
-            empty($positionID) ||
-            empty($difficultyID)) {
+        if (empty($techniqueName) 
+            || empty($categoryID) 
+            || empty($positionID) 
+            || empty($difficultyID)
+        ) {
             $errors['emptyField'] = 'Field cannot be empty.';
         }
     
@@ -77,6 +75,7 @@ class Technique
     /**
      * Adds a new technique to database if input validation passes.
      * 
+     * @param int    $userID               User ID.
      * @param string $techniqueName        Name of the technique.
      * @param string $techniqueDescription Description of the technique.
      * @param int    $categoryID           Technique category.
@@ -113,18 +112,38 @@ class Technique
     
         // Prepare the SQL query
         $query = "INSERT INTO Technique (
-            userID, techniqueName, techniqueDescription, categoryID, positionID, difficultyID
+            userID, techniqueName, techniqueDescription,
+            categoryID, positionID, difficultyID
         ) VALUES (
-            :userID, :techniqueName, :techniqueDescription, :categoryID, :positionID, :difficultyID
+            :userID, :techniqueName, :techniqueDescription,
+            :categoryID, :positionID, :difficultyID
         )";
     
         $statement = $this->_db->prepare($query);
-        $statement->bindParam(":userID", $this->_userID, PDO::PARAM_INT);
-        $statement->bindParam(":techniqueName", $this->_techniqueName, PDO::PARAM_STR);
-        $statement->bindParam(":techniqueDescription", $this->_techniqueDescription, PDO::PARAM_STR);
-        $statement->bindParam(":categoryID", $this->_categoryID, PDO::PARAM_INT);
-        $statement->bindParam(":positionID", $this->_positionID, PDO::PARAM_INT);
-        $statement->bindParam(":difficultyID", $this->_difficultyID, PDO::PARAM_INT);
+        $statement->bindParam(
+            ":userID", 
+            $this->_userID, PDO::PARAM_INT
+        );
+        $statement->bindParam(
+            ":techniqueName", 
+            $this->_techniqueName, PDO::PARAM_STR
+        );
+        $statement->bindParam(
+            ":techniqueDescription", 
+            $this->_techniqueDescription, PDO::PARAM_STR
+        );
+        $statement->bindParam(
+            ":categoryID", 
+            $this->_categoryID, PDO::PARAM_INT
+        );
+        $statement->bindParam(
+            ":positionID", 
+            $this->_positionID, PDO::PARAM_INT
+        );
+        $statement->bindParam(
+            ":difficultyID", 
+            $this->_difficultyID, PDO::PARAM_INT
+        );
     
         // Execute the query
         $statement->execute();
@@ -133,15 +152,28 @@ class Technique
     }
     
 
+    /**
+     * Fetch techniques from database.
+     * Using 'userID' session to fetch only techniques added by
+     * the user.
+     * 
+     * @param $userID User id.
+     * 
+     * @return Array  Return array of techniques.
+     */
     public function readTechniques($userID)
     {
-        if (!isset($_SESSION['userID'])) {
-            throw new Exception("User ID is not set in the session.");
-        }
         $userID = $_SESSION['userID'];
     
         // Prepare the SQL statement
-        $query = "SELECT User.userID, techniqueID, techniqueName, techniqueDescription, Category.categoryName, Difficulty.difficulty, Position.positionName
+        $query = "SELECT 
+        User.userID, 
+        techniqueID, 
+        techniqueName, 
+        techniqueDescription, 
+        Category.categoryName, 
+        Difficulty.difficulty, 
+        Position.positionName
         FROM Technique
         INNER JOIN User
         ON Technique.userID = User.userID
@@ -152,20 +184,25 @@ class Technique
         INNER JOIN Position
         ON Technique.positionID = Position.positionID
         WHERE Technique.userID = :userID ORDER BY techniqueID DESC";
-        $stmt = $this->_db->prepare($query);
+        $statement = $this->_db->prepare($query);
     
         // Bind the userID to the placeholder
-        $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
     
         // Execute the statement
-        $stmt->execute();
+        $statement->execute();
     
         // Fetch all results
-        $techniqueArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $techniqueArray = $statement->fetchAll(PDO::FETCH_ASSOC);
     
         return $techniqueArray;
     }
 
+    /**
+     * Deletes technique from the database.
+     * 
+     * @return null Returns null if 'techniqueID' is not set.
+     */
     public function deleteTechnique()
     {
         if (isset($_POST['techniqueID'])) {
@@ -179,7 +216,7 @@ class Technique
             $delete->bindValue(':techniqueID', $techniqueID, PDO::PARAM_INT);
 
             $delete->execute();
-            header("Location: __DIR__ . /..//view_items.php");
+            header("Location: __DIR__ . /../view_items.php");
             exit();
         }
     }
