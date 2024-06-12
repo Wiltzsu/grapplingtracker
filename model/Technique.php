@@ -206,6 +206,7 @@ class Technique
     public function deleteTechnique()
     {
         if (isset($_POST['techniqueID'])) {
+            if (isset($_POST['deleteTechnique'])) {
             // Assign the 'techniqueID' value from the form to a variable
             $techniqueID = $_POST['techniqueID'];
 
@@ -216,8 +217,9 @@ class Technique
             $delete->bindValue(':techniqueID', $techniqueID, PDO::PARAM_INT);
 
             $delete->execute();
-            header("Location: __DIR__ . /../view_items.php");
+            header("Location: __DIR__ . /../view/view_items.php");
             exit();
+            }
         }
     }
 }

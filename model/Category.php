@@ -114,6 +114,7 @@ class Category
     public function deleteCategory()
     {
         if (isset($_POST['categoryID'])) {
+            if (isset($_POST['deleteCategory'])) {
             // Assign the 'categoryID' value from the form to a variable.
             $categoryID = $_POST['categoryID'];
 
@@ -124,8 +125,10 @@ class Category
             $delete->bindValue(':categoryID', $categoryID, PDO::PARAM_INT);
 
             $delete->execute();
-            header("Location: __DIR__ . /../view_items.php");
+            header("Location: __DIR__ . /../view/view_items.php");
             exit();
+            }
+
         }
     }
 }

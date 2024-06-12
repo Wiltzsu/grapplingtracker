@@ -109,6 +109,7 @@ class Position
     public function deletePosition()
     {
         if (isset($_POST['positionID'])) {
+            if (isset($_POST['deletePosition'])) {
             // Assign the 'positionID' value from the form to a variable.
             $positionID = $_POST['positionID'];
 
@@ -119,8 +120,9 @@ class Position
             $delete->bindValue(':positionID', $positionID, PDO::PARAM_INT);
 
             $delete->execute();
-            header("Location: __DIR__ . /../view_items.php");
+            header("Location: __DIR__ . /../view/view_items.php");
             exit();
+            }
         }
     }
 }
