@@ -32,7 +32,7 @@
         <h1>Welcome to Grappling Tracker</h1>
         <p>Your ultimate journal and tracker for grappling techniques.</p>
         <div class="cta-buttons">
-            <a href="view/login.php" class="btn btn-primary btn-lg mr-2">Login</a>
+            <a href="view/login.php" class="btn btn-primary btn-lg">Login</a>
             <a href="view/register.php" class="btn btn-secondary btn-lg">Sign Up</a>
         </div>
     </div>

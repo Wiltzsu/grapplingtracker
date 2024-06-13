@@ -100,5 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $accordionState = [
     'collapseOne' => (!empty($errors) && isset($_POST['submitTechnique'])) ? ' show' : '',
     'collapseTwo' => (!empty($errors) && isset($_POST['submitCategory'])) ? ' show' : '',
-    'collapseThree' => (!empty($errors) && isset($_POST['submitPosition'])) ? ' show' : ''
+    'collapseThree' => (!empty($errors) && isset($_POST['submitPosition'])) ? ' show' : '',
+    'collapseFour' => (!empty($errors) && isset($_POST['submitClass'])) ? ' show' : ''
 ];

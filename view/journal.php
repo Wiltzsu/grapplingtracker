@@ -49,7 +49,7 @@ require_once 'header.php';
         <div class="card-header" id="headingTwo">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Full journal
+                View your log
                 </button>
             </h5>
         </div>

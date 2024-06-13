@@ -18,12 +18,19 @@ require_once 'header.php';
             <strong>Journal:</strong> View and log your daily practice.
         </a>
 
+        <?php if (isset($_SESSION['roleID']) && $_SESSION['roleID'] === 1) { ?>
         <a href="/technique-db-mvc/addnew" class="list-group-item list-group-item-action">
-            <strong>Add:</strong> Add new techniques, categories, and positions.
-        </a>
+        <strong>Add:</strong> Add new techniques, positions, categories and classes.</a>
+        <?php } ?>
+
+        <?php if (isset($_SESSION['roleID']) && $_SESSION['roleID'] === 2) { ?>
+        <a href="/technique-db-mvc/addnew" class="list-group-item list-group-item-action">
+        <strong>Add:</strong> Add new techniques and classes.</a>
+        <?php } ?>
+
 
         <a href="/technique-db-mvc/viewitems" class="list-group-item list-group-item-action">
-            <strong>View:</strong> View your techniques, categories, and positions.
+            <strong>View:</strong> View techniques, categories, and positions.
         </a>
 
         <a href="/technique-db-mvc/profile" class="list-group-item list-group-item-action">

@@ -25,7 +25,7 @@ $roleID = '';
 $greeting3 = 'No sessions.';  // Default message if not logged in
 if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
     $roleID = $_SESSION['roleID'];
-    $greeting3 = htmlspecialchars($roleID);
+    $greeting3 = 'roleid ' . htmlspecialchars($roleID);
 } else {
     header("Location: view/login.php");
 }
@@ -45,3 +45,4 @@ if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
     <div class="card p-4">
         <h2 class="text-center mb-4">Grappling Technique Journal</h2>
         <p class="text-center"><?php echo $greeting1; ?></p>
+        <p class="text-center"><?php echo $greeting3; ?></p>

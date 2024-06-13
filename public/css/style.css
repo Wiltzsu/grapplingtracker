@@ -62,6 +62,13 @@ h2 {
 .btn-secondary {
     background-color: #34babe; /* Bootstrap secondary color */
     border-color: #34babe; /* Matching border color */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #aa62a4; /* Bootstrap primary color */
+    border-color: #aa62a4; /* Matching border color */
 }
 
 /* Footer styles */
