@@ -2,17 +2,12 @@
 // Start the session
 session_start();
 
-// Display errors for debugging (remove or turn off error reporting in a production environment)
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
-error_reporting(E_ALL);
-
 // Check if the user is logged in and then greet them
 $username = '';
 $greeting1 = 'No sessions.';  // Default message if not logged in
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    $greeting1 = "Hello, " . htmlspecialchars($username);
+    $greeting1 = "Hello " . htmlspecialchars($username);
 } else {
     header("Location: login.php");
 }
@@ -45,3 +40,8 @@ if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
     <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
 </head>
 <body>
+
+<div class="container centered-container">
+    <div class="card p-4">
+        <h2 class="text-center mb-4">Grappling Technique Journal</h2>
+        <p class="text-center"><?php echo $greeting1; ?></p>
