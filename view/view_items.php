@@ -131,9 +131,11 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                                     <tr>
                                         <td><?php echo htmlspecialchars($category['categoryName']) ?></td>
                                         <td><?php echo htmlspecialchars($category['categoryDescription']) ?></td>
+                                        <!-- Only show delete button if user is admin -->
+                                        <?php if (isset($_SESSION['roleID']) && $_SESSION['roleID'] === 1) { ?>
                                         <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $category['categoryID']; ?>">
-                                        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete">
-                                    </button></td>
+                                        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete"></button></td>
+                                        <?php } ?>
                                     </tr>
 
                                     <!-- Modal for deletion confirmation -->
@@ -196,9 +198,12 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                                     <tr>
                                         <td><?php echo htmlspecialchars($position['positionName']) ?></td>
                                         <td><?php echo htmlspecialchars($position['positionDescription']) ?></td>
+                                        <!-- Only show delete button if user is admin -->
+                                        <?php if(isset($_SESSION['roleID']) && $_SESSION['roleID'] === 1) {?>
                                         <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $position['positionID']; ?>">
-                                        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete">
-                                    </button></td>
+                                        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete"></button></td>
+                                        <?php } ?>
+
                                     </tr>
 
                                     <!-- Modal for deletion confirmation -->

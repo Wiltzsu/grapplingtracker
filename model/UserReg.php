@@ -1,16 +1,15 @@
 <?php
 /**
- * Contains methods regarding user registration.
+ * File for user registration.
  * 
  * @package Techniquedbmvc
  * @author  William
  * @license MIT License
  */
 
-ini_set('log_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
+ /**
+  * User registration class containing methods.
+  */
 class UserReg
 {
     private $_db;
@@ -19,6 +18,11 @@ class UserReg
     private $_password;
     private $_hashed_password;
 
+    /**
+     * Initializes the class with a database connection.
+     * 
+     * @param $db Database connection.
+     */
     public function __construct(PDO $db)
     {
         $this->_db = $db;
@@ -40,18 +44,20 @@ class UserReg
             $errors['username'] = 'Please enter a valid username.';
         }
 
-        if (strlen($this->_username) < 3 || strlen($this->_username) > 32) {
+        if (strlen($this->_username) < 4 || strlen($this->_username) > 32) {
             $errors['username'] = 'Username has to be between 3 and 32 characters.';
         } else {
-            $username_query = $this->_db->prepare("SELECT 1 FROM User WHERE username = ?");
+            $username_query = $this->_db->prepare(
+                "SELECT 1 FROM User WHERE username = ?"
+            );
             $username_query->execute([$username]);
             if ($username_query->fetch(PDO::FETCH_ASSOC)) {
                 $errors['username'] = 'Username is already taken.';
             }
         }
         
-        if (strlen($this->_password) < 3 || strlen($this->_password) > 72) {
-            $errors['password'] = 'The password must be between 3 and 72 characters.';
+        if (strlen($this->_password) < 4 || strlen($this->_password) > 72) {
+            $errors['password'] = 'Password must be between 3 and 72 characters.';
         }
 
         if ($this->_password !== $_POST['password_confirm']) {
