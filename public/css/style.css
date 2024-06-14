@@ -55,8 +55,8 @@ h2 {
 }
 
 .btn-primary:hover {
-    background-color: #4ca3c5; /* Bootstrap primary color */
-    border-color: #4ca3c5; /* Matching border color */
+    background-color: #a14f9a; /* Bootstrap primary color */
+    border-color: #aa62a4; /* Matching border color */
 }
 
 .btn-secondary {
@@ -67,8 +67,24 @@ h2 {
 }
 
 .btn-secondary:hover {
-    background-color: #aa62a4; /* Bootstrap primary color */
-    border-color: #aa62a4; /* Matching border color */
+    background-color: #099498; /* Bootstrap primary color */
+    border-color: #34babe; /* Matching border color */
+}
+
+/* 'Back' button */
+.svg-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: currentColor;
+    margin-bottom: 10px;
+}
+.svg-button:hover {
+    color: #007bff; /* Change color on hover */
+}
+.svg-button svg {
+    vertical-align: middle;
 }
 
 /* Footer styles */

@@ -1,21 +1,9 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
-error_reporting(E_ALL);
-
-require_once '../controller/UserController2.php';
-require_once '../config/Database.php';
+require_once 'header_front.php';
+require_once __DIR__ . '/../controller/UserController2.php';
+require_once __DIR__ . '/../config/Database.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
-</head>
-<body>
+
     <div class="centered-container">
         <div class="login-container">
             <div class="card p-4">

@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      */
     $errors = $controller->authenticate($input['username'], $input['password']);
     if (!array_filter($errors)) { // Checks if errors array is empty
-        header("Location: /technique-db-mvc/");
+        header("Location: /technique-db-mvc/mainview");
         exit();
     }
 }

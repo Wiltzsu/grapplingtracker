@@ -4,3 +4,4 @@
 /controller/UserController.php
 /controller/UserRegistration.php
 notes.txt
+/view/register.php

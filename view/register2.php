@@ -1,26 +1,14 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
-error_reporting(E_ALL);
 
+require_once 'header_front.php';
 require_once '/opt/lampp/htdocs/technique-db-mvc/config/Database.php';
 require_once '/opt/lampp/htdocs/technique-db-mvc/controller/UserRegController.php';
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
-</head>
-<body>
     <div class="centered-container">
         <div class="register-container">
             <div class="card p-4">
-                <h2 class="text-center mb-4">Register</h2>
+                <h2 class="text-center mb-4">Sign up</h2>
 
                 <form method="POST" action="">
                     <div class="form-group<?= !empty($errors['username']) ? ' has-error' : '' ?>">
@@ -58,7 +46,7 @@ require_once '/opt/lampp/htdocs/technique-db-mvc/controller/UserRegController.ph
 
 
                     <button type="submit" name="submit" class="btn btn-primary btn-block">Register</button>
-                    <a href="view/login.php"><p>Login</p></a>
+                    <a href="login"><p>Login</p></a>
                 </form>
             </div>
         </div>

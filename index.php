@@ -8,7 +8,7 @@ $request = str_replace($base, '', $_SERVER['REQUEST_URI']);
 switch($request)
 {
     case '/':
-        require 'view/main_view.php';
+        require 'view/front_page.php';
         break;
     case '/addnew':
         require 'view/add_new.php';
@@ -23,9 +23,12 @@ switch($request)
         require 'view/journal.php';
         break;
     case '/register':
-        require 'view/register.php';
-        break;
-    case '/register2':
         require 'view/register2.php';
+        break;
+    case '/login':
+        require 'view/login.php';
+        break;
+    case '/mainview':
+        require 'view/main_view.php';
         break;
 }
