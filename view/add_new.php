@@ -199,63 +199,6 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
         }
         ?>
 
-        <div class="card">
-            <div class="card-header" id="headingFour">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    Add a class to the database.
-                    </button>
-                </h5>
-            </div>
-
-            <div id="collapseFour" class="collapse<?= $accordionState['collapseFour']; ?>" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body">
-
-                    <!-- Class Form Column -->
-                    <form method="POST" action="" >
-                        <!-- Instructor name-->
-                        <h4>Add a New Class</h4>
-                        <div class="form-group<?= !empty($errors['empty_field']) ? ' has-error' : '' ?>">
-                                <label for="instructor">Instructor:</label>
-                                <input type="text" class="form-control" id="instructor" name="instructor" required>
-                                <?php if (!empty($errors['empty_field'])): ?>
-                                    <span class="help-block"><?= htmlspecialchars($errors["empty_field"]) ?></span>
-                                <?php endif; ?>
-                            </div>
-
-                            <!-- Training location -->
-                            <div class="form-group<?= !empty($errors['empty_field']) ? ' has-error' : '' ?>">
-                                <label for="location">Training location:</label>
-                                <input type="text" class="form-control" id="location" name="location" required></textarea>
-                                <?php if (!empty($errors['empty_field'])): ?>
-                                    <span class="help-block"><?= htmlspecialchars($errors["empty_field"]) ?></span>
-                                <?php endif; ?>
-                            </div>
-
-                            <!-- Date -->
-                            <div class="form-group<?= !empty($errors['empty_field']) ? ' has-error' : '' ?>">
-                                <label for="date">Date:</label>
-                                <input type="date" class="form-control" id="date" name="date" required></textarea>
-                                <?php if (!empty($errors['empty_field'])): ?>
-                                    <span class="help-block"><?= htmlspecialchars($errors["empty_field"]) ?></span>
-                                <?php endif; ?>
-                            </div>
-
-                            <!-- Description -->
-                            <div class="form-group<?= !empty($errors['empty_field']) ? ' has-error' : '' ?>">
-                                <label for="classDescription">Description:</label>
-                                <textarea class="form-control" id="classDescription" name="classDescription" required></textarea>
-                                <?php if (!empty($errors['empty_field'])): ?>
-                                    <span class="help-block"><?= htmlspecialchars($errors["empty_field"]) ?></span>
-                                <?php endif; ?>
-                            </div>
-
-                        <button type="submit" name="submitTrainingClass" class="btn btn-primary btn2">Add Training Class</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
 
         <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
             <div class="text-center mt-3">

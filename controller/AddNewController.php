@@ -12,7 +12,6 @@
 require_once 'CreateCategoryController.php';
 require_once 'CreatePositionController.php';
 require_once 'CreateTechniqueController.php';
-require_once 'CreateClassController.php';
 
 /**
  * Initialize empty arrays to store errors and input data.
@@ -34,7 +33,6 @@ $db = Database::connect();
 $createTechniqueController = new CreateTechniqueController($db);
 $createCategoryController = new CreateCategoryController($db);
 $createPositionController = new CreatePositionController($db);
-$createClassController = new CreateClassController($db);
 
 /**
  * Check if form is submitted and retrieve input data.
@@ -90,24 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     }
-    elseif (isset($_POST['submitTrainingClass'])) {
-            $instructor = $_POST['instructor'];
-            $location = $_POST['location'];
-            $date = $_POST['date'];
-            $classDescription = $_POST['classDescription'];
-
-            $errors = $createClassController->createTrainingClass(
-                $instructor,
-                $location,
-                $date,
-                $classDescription
-            );
-        
-        if (empty($errors)) {
-            header("Location: /technique-db-mvc/view/add_new.php");
-            exit();
-        }
-    }
 }
 
 /**
@@ -117,5 +97,4 @@ $accordionState = [
     'collapseOne' => (!empty($errors) && isset($_POST['submitTechnique'])) ? ' show' : '',
     'collapseTwo' => (!empty($errors) && isset($_POST['submitCategory'])) ? ' show' : '',
     'collapseThree' => (!empty($errors) && isset($_POST['submitPosition'])) ? ' show' : '',
-    'collapseFour' => (!empty($errors) && isset($_POST['submitClass'])) ? ' show' : ''
 ];

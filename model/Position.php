@@ -132,7 +132,7 @@ class Position
                 $delete->bindValue(':positionID', $positionID, PDO::PARAM_INT);
 
                 $delete->execute();
-                header("Location: __DIR__ . /../view/view_items.php");
+                header("Location: /technique-db-mvc/viewitems");
                 exit();
             }
         }

@@ -32,3 +32,4 @@ $categories = $readCategoryController->readCategories();
  */
 $readPositionController = new Position($db);
 $positions = $readPositionController->readPositions();
+
