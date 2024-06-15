@@ -45,7 +45,7 @@ class Category
         if (empty($categoryName) 
             || empty($categoryDescription)
         ) {
-            $errors['emptyField'] = 'Field cannot be empty.';
+            $errors['empty_field'] = 'Field cannot be empty.';
         }
 
         $categoryExists = $this->_db->prepare(

@@ -44,7 +44,7 @@ class Position
     {
         $errors = [];
         if (empty($positionName) || empty($positionDescription)) {
-            $errors['emtpyField'] = 'Field cannot be empty.';
+            $errors['empty_field'] = 'Field cannot be empty.';
         }
 
         $positionExists = $this->_db->prepare(

@@ -12,16 +12,13 @@
 require_once 'CreateCategoryController.php';
 require_once 'CreatePositionController.php';
 require_once 'CreateTechniqueController.php';
-
-ini_set('log_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+require_once 'CreateClassController.php';
 
 /**
  * Initialize empty arrays to store errors and input data.
  */
 $errors = [
-    'emptyField' => ''
+    'empty_field' => ''
 ];
 
 $input = [
@@ -37,6 +34,7 @@ $db = Database::connect();
 $createTechniqueController = new CreateTechniqueController($db);
 $createCategoryController = new CreateCategoryController($db);
 $createPositionController = new CreatePositionController($db);
+$createClassController = new CreateClassController($db);
 
 /**
  * Check if form is submitted and retrieve input data.
@@ -87,6 +85,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $positionDescription
             );
     
+        if (empty($errors)) {
+            header("Location: /technique-db-mvc/view/add_new.php");
+            exit();
+        }
+    }
+    elseif (isset($_POST['submitTrainingClass'])) {
+            $instructor = $_POST['instructor'];
+            $location = $_POST['location'];
+            $date = $_POST['date'];
+            $classDescription = $_POST['classDescription'];
+
+            $errors = $createClassController->createTrainingClass(
+                $instructor,
+                $location,
+                $date,
+                $classDescription
+            );
+        
         if (empty($errors)) {
             header("Location: /technique-db-mvc/view/add_new.php");
             exit();

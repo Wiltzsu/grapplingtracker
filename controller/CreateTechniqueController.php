@@ -16,10 +16,6 @@ require_once __DIR__ . '/../model/Technique.php';
 require_once 'CreateCategoryController.php';
 require_once 'CreatePositionController.php';
 
-ini_set('log_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 /**
  * Class for technique creation.
  * Instantiates the Model in the constructor.

@@ -68,7 +68,7 @@ class Technique
             || empty($positionID) 
             || empty($difficultyID)
         ) {
-            $errors['emptyField'] = 'Field cannot be empty.';
+            $errors['empty_field'] = 'Field cannot be empty.';
         }
 
         $techniqueExists = $this->_db->prepare(

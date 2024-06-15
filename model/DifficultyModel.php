@@ -12,11 +12,6 @@
 namespace App\Models;
 
 use PDO;
-
-ini_set('log_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 /**
  * Class Difficulty
  * Handles database operations for the class 'Difficulty'.
