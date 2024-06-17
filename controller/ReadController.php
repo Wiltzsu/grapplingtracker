@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../model/Technique.php';
 require_once __DIR__ . '/../model/Category.php';
 require_once __DIR__ . '/../model/Position.php';
+require_once __DIR__ . '/../model/TrainingClass.php';
 require_once __DIR__ . '/../config/Database.php';
 
 // Database connection.
@@ -33,3 +34,8 @@ $categories = $readCategoryController->readCategories();
 $readPositionController = new Position($db);
 $positions = $readPositionController->readPositions();
 
+/**
+ * Same operation as above but with training classes.
+ */
+$readTrainingClassController = new TrainingClass($db);
+$training_classes = $readTrainingClassController->readTrainingClasses($userID);

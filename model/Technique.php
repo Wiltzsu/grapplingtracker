@@ -174,7 +174,6 @@ class Technique
     {
         $userID = $_SESSION['userID'];
     
-        // Prepare the SQL statement
         $query = "SELECT 
         User.userID, 
         techniqueID, 

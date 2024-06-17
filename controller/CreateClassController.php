@@ -15,9 +15,15 @@ class CreateClassController
         $this->_classModel = new TrainingClass($db);
     }
 
-    public function createTrainingClass($instructor, $location, $date, $classDescription)
-    {
-        return $this->_classModel->addClass(
+    public function createTrainingClass(
+        $userID,
+        $instructor,
+        $location,
+        $date,
+        $classDescription
+    ) {
+        return $this->_classModel->addTrainingClass(
+            $userID,
             $instructor,
             $location,
             $date,

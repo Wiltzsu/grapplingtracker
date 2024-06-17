@@ -96,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $classDescription = $_POST['classDescription'];
 
         $errors = $createClassController->createTrainingClass(
+            $userID,
             $instructor,
             $location,
             $date,

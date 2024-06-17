@@ -213,6 +213,14 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
 
                     <!-- Training Class Form Column -->
                     <form method="POST" action="" >
+                        <!-- User ID -->
+                        <div class="form-group<?= !empty($errors['empty_field']) ? ' has-error' : '' ?>">
+                            <input type="" class="form-control" id="userID" name="userID" required value="<?php echo $_SESSION['userID']?>">
+                            <?php if (!empty($errors['empty_field'])): ?>
+                                <span class="help-block"><?= htmlspecialchars($errors["empty_field"]) ?></span>
+                            <?php endif; ?>
+                        </div>
+
                         <!-- Instructor name -->
                         <h4>Add a New Training Class</h4>
                             <div class="form-group<?= !empty($errors['empty_field']) ? ' has-error' : '' ?>">
