@@ -14,6 +14,7 @@ require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../model/Category.php';
 require_once 'CreatePositionController.php';
 require_once 'CreateTechniqueController.php';
+require_once 'CreateClassController.php';
 
 /**
  * Class for creating the category.

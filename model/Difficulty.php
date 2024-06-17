@@ -16,7 +16,7 @@ use PDO;
  * Class Difficulty
  * Handles database operations for the class 'Difficulty'.
  */
-class DifficultyModel
+class Difficulty
 {
     /**
      * @var PDO Database connection.

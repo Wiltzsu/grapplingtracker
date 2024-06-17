@@ -12,6 +12,7 @@ require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../model/Position.php';
 require_once 'CreateTechniqueController.php';
 require_once 'CreateCategoryController.php';
+require_once 'CreateClassController.php';
 
 /**
  * PositionController Class
