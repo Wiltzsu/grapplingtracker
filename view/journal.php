@@ -50,7 +50,7 @@ require_once __DIR__ . '/../config/Database.php';
 
                 <!-- User ID -->
                 <div class="form-group<?= !empty($errors['empty_field']) ? ' has-error' : '' ?>">
-                    <input type="" class="form-control" id="userID" name="userID" required value="<?php echo $_SESSION['userID']?>">
+                    <input type="hidden" class="form-control" id="userID" name="userID" required value="<?php echo $_SESSION['userID']?>">
                 </div>
 
                 <button type="submit" name="submitTechniqueClass" class="btn btn-secondary btn2">Add to journal</button>

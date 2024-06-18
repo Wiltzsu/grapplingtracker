@@ -68,6 +68,7 @@ class Journal
         $query = "SELECT
         Techniques_Classes.techniqueID,
         Technique.techniqueName,
+        Class.userID,
         Class.instructor,
         Class.classDescription,
         journalNoteDate
@@ -79,7 +80,7 @@ class Journal
         INNER JOIN Class
         ON Techniques_Classes.classID = Class.classID
         
-        WHERE Techniques_Classes.userID = :userID
+        WHERE Class.userID = :userID
         
         ORDER BY journalNoteDate DESC";
 
