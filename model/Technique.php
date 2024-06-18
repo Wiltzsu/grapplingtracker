@@ -179,10 +179,12 @@ class Technique
         techniqueID, 
         techniqueName, 
         techniqueDescription, 
-        Category.categoryName, 
+        Category.categoryName,
         Difficulty.difficulty, 
         Position.positionName
+        
         FROM Technique
+        
         INNER JOIN User
         ON Technique.userID = User.userID
         INNER JOIN Category
@@ -191,7 +193,11 @@ class Technique
         ON Technique.difficultyID = Difficulty.difficultyID
         INNER JOIN Position
         ON Technique.positionID = Position.positionID
-        WHERE Technique.userID = :userID ORDER BY techniqueID DESC";
+        
+        WHERE Technique.userID = :userID
+        
+        ORDER BY techniqueID DESC";
+
         $statement = $this->_db->prepare($query);
     
         // Bind the userID to the placeholder

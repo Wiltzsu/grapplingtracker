@@ -244,6 +244,7 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                             <tr>
                                 <th>Instructor</th>
                                 <th>Location</th>
+                                <th>Duration</th>
                                 <th>Date</th>
                                 <th>Description</th>
                                 <th></th>
@@ -257,6 +258,7 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                                     <tr>
                                         <td><?php echo htmlspecialchars($training_class['instructor']) ?></td>
                                         <td><?php echo htmlspecialchars($training_class['location']) ?></td>
+                                        <td><?php echo htmlspecialchars($training_class['classDuration']) ?> min</td>
                                         <td><?php echo htmlspecialchars($training_class['date']) ?></td>
                                         <td><?php echo htmlspecialchars($training_class['classDescription']) ?></td>
                                         <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $training_class['classID']; ?>">
