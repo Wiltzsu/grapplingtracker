@@ -90,8 +90,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     } elseif (isset($_POST['submitTrainingClass'])) {
+        $userID = $_POST['userID'];
         $instructor = $_POST['instructor'];
         $location = $_POST['location'];
+        $duration = $_POST['duration'];
         $date = $_POST['date'];
         $classDescription = $_POST['classDescription'];
 
@@ -99,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userID,
             $instructor,
             $location,
+            $duration,
             $date,
             $classDescription
         );

@@ -12,7 +12,7 @@ require_once __DIR__ . '/../controller/ReadController.php';
 require_once __DIR__ . '/../controller/DeleteController.php';
 ?>
 
-        <div id="accordion">
+<div id="accordion">
 
         <button class="svg-button" onclick="window.location.href='/technique-db-mvc/mainview'">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
@@ -231,20 +231,22 @@ require_once __DIR__ . '/../controller/DeleteController.php';
             <div class="card">
                 <div class="card-header" id="headingFour">
                     <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        View your training classes.
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                        View your classes.
                         </button>
                     </h5>
                 </div>
 
                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                <table class="table table-hover">
+
+                    <table class="table table-hover">
                         <thead class="thead-light">
                             <tr>
                                 <th>Instructor</th>
                                 <th>Location</th>
                                 <th>Date</th>
                                 <th>Description</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -257,16 +259,13 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                                         <td><?php echo htmlspecialchars($training_class['location']) ?></td>
                                         <td><?php echo htmlspecialchars($training_class['date']) ?></td>
                                         <td><?php echo htmlspecialchars($training_class['classDescription']) ?></td>
-                                        <!-- Only show delete button if user is admin -->
-                                        <?php if(isset($_SESSION['roleID']) && $_SESSION['roleID'] === 1) {?>
-                                        <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $training_class['positionID']; ?>">
-                                        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete"></button></td>
-                                        <?php } ?>
-
+                                        <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $training_class['classID']; ?>">
+                                        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete">
+                                    </button></td>
                                     </tr>
 
                                     <!-- Modal for deletion confirmation -->
-                                    <div class="modal fade" id="modal<?php echo $training_class['positionID']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="modal<?php echo $training_class['classID']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -276,29 +275,29 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Are you sure you want to delete the class instructed by"<?php echo htmlspecialchars($training_class['instructor']); ?>"?
+                                                    Are you sure you want to delete the class by "<?php echo htmlspecialchars($training_class['instructor']); ?>"?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     <!-- Form for deletion -->
                                                     <form method="POST" action="">
                                                         <input type="hidden" name="classID" value="<?php echo $training_class['classID']; ?>">
-                                                        <button type="submit" name="deleteTrainingClass" class="btn btn-danger">Delete class</button>
+                                                        <button type="submit" name="deleteTrainingClass" class="btn btn-danger">Delete training class</button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <?php
                             }
                         } else {
-                            echo "No classes found.";
+                            echo "No techniques found.";
                         }?>
                         </tbody>
-                    </table>    
+                    </table>
                 </div>
             </div>
-
 
             <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
                 <div class="text-center mt-3">

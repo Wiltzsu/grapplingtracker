@@ -19,6 +19,7 @@ class CreateClassController
         $userID,
         $instructor,
         $location,
+        $duration,
         $date,
         $classDescription
     ) {
@@ -26,6 +27,7 @@ class CreateClassController
             $userID,
             $instructor,
             $location,
+            $duration,
             $date,
             $classDescription
         );

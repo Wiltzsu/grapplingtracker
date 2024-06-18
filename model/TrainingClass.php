@@ -5,6 +5,7 @@ class TrainingClass
     private $_userID;
     private $_instructor;
     private $_location;
+    private $_duration;
     private $_date;
     private $_classDescription;
 
@@ -13,48 +14,50 @@ class TrainingClass
         $this->_db = $db;
     }
 
-    private function _validateInput($instructor, $location, $date, $classDescription)
-    {
-        
-    }
-
-    public function addTrainingClass($userID,
+    public function addTrainingClass(
+        $userID,
         $instructor,
         $location,
+        $duration,
         $date,
         $classDescription)
     {
         $this->_userID = $userID;
         $this->_instructor = $instructor;
         $this->_location = $location;
+        $this->_duration = $duration;
         $this->_date = $date;
         $this->_classDescription = $classDescription;
 
         $query = "INSERT INTO Class (
-            userID, instructor, location, date, classDescription
+            userID, instructor, location, classDuration, date, classDescription
         ) VALUES (
-            :userID, :instructor, :location, :date, :classDescription
+            :userID, :instructor, :location, :classDuration, :date, :classDescription
         )";
 
         $statement = $this->_db->prepare($query);
         $statement->bindParam(
-            "userID",
+            ":userID",
             $this->_userID, PDO::PARAM_INT
         );
         $statement->bindParam(
-            "instructor",
+            ":instructor",
             $this->_instructor, PDO::PARAM_STR
         );
         $statement->bindParam(
-            "location",
+            ":location",
             $this->_location, PDO::PARAM_STR
         );
         $statement->bindParam(
-            "date",
+            ":classDuration",
+            $this->_duration, PDO::PARAM_INT
+        );
+        $statement->bindParam(
+            ":date",
             $this->_date, PDO::PARAM_STR
         );
         $statement->bindParam(
-            "classDescription",
+            ":classDescription",
             $this->_classDescription, PDO::PARAM_STR
         );
         $statement->execute();
@@ -76,5 +79,25 @@ class TrainingClass
         $class_array = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $class_array;
+    }
+
+    public function deleteTrainingClass()
+    {
+        if (isset($_POST['classID'])) {
+            if (isset($_POST['deleteTrainingClass'])) {
+                // Assign the 'classID' value from the form to a variable
+                $classID = $_POST['classID'];
+
+                $query = "DELETE FROM Class WHERE classID=:classID";
+
+                $delete = $this->_db->prepare($query);
+
+                $delete->bindValue(':classID', $classID, PDO::PARAM_INT);
+
+                $delete->execute();
+                header("Location: /technique-db-mvc/viewitems");
+                exit();
+            }
+        }
     }
 }
