@@ -4,16 +4,18 @@ require_once __DIR__ . '/../model/AddJournalOptions.php';
 require_once __DIR__ . '/../controller/AddJournalController.php';
 require_once __DIR__ . '/../controller/ReadController.php';
 require_once __DIR__ . '/../config/Database.php';
-
-
 require_once __DIR__ . '/../model/TrainingClass.php';
+require_once __DIR__ . '/../model/Technique.php';
+
+$db = Database::connect();
+$techniqueModel = new Technique($db);
+$userID = $_SESSION['userID'];
+$totalTechniquesLearnedMonthly = $techniqueModel->countTechniquesMonthly($userID);
 
 $db = Database::connect();
 $trainingModel = new TrainingClass($db);
 $userID = $_SESSION['userID'];  // Ensure the user is logged in and you have their ID
 $totalMatTimeMonthly = $trainingModel->countMatTimeMonthly($userID);
-
-
 ?>
 
 <div id="accordion">
@@ -165,5 +167,17 @@ $totalMatTimeMonthly = $trainingModel->countMatTimeMonthly($userID);
     var totalMatTimeData = <?= json_encode($totalMatTimeMonthly) ?>;
 </script>
 <script src="/technique-db-mvc/public/js/totalMatTime.js"></script>
+
+    <!-- Canvas for Techniques Learned -->
+    <div class="row p-5">
+        <div class="col-md-12">
+            <canvas id="techniquesLearnedChart"></canvas>
+        </div>
+    </div>
+</div>
+<script>
+    var techniquesLearnedData = <?= json_encode($totalTechniquesLearnedMonthly) ?>;
+</script>
+<script src="/technique-db-mvc/public/js/techniquesLearned.js"></script>
 
 <?php require_once 'footer.php'; ?>

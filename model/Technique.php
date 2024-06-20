@@ -254,4 +254,18 @@ class Technique
 
         return $total_techniques;
     }
+
+    public function countTechniquesMonthly($userID)
+    {
+        $query = "SELECT MONTH(journalNoteDate) as month, COUNT(techniqueID) as count
+                FROM Techniques_Classes
+                WHERE userID = :userID AND YEAR(journalNoteDate) = YEAR(CURDATE())
+                GROUP BY MONTH(journalNoteDate)
+                ORDER BY MONTH(journalNoteDate);";
+
+        $statement = $this->_db->prepare($query);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

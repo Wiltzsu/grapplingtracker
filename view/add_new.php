@@ -8,6 +8,7 @@ require_once 'header.php';
 require_once __DIR__ . '/../controller/AddNewController.php';
 require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../model/AddNewOptions.php';
+
 ?>
 <div id="accordion">
     
@@ -275,35 +276,5 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
             </div>
         </div>
 
-                        <!-- Canvas for Techniques Learned -->
-    <div class="row p-5">
-        <div class="col-md-12">
-            <canvas id="techniquesChart"></canvas>
-        </div>
-    </div>
-</div>
-<script>
-        // Data for Techniques Learned Chart
-        var techniquesCtx = document.getElementById('techniquesChart').getContext('2d');
-    var techniquesChart = new Chart(techniquesCtx, {
-        type: 'bar',
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-            datasets: [{
-                label: 'Techniques Learned',
-                data: [5, 10, 15, 20, 25, 30],
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
+
 <?php require 'footer.php'; ?>

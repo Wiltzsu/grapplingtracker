@@ -120,12 +120,14 @@ class TrainingClass
         return $total_mat_time;
     }
 
-    public function countMatTimeMonthly($userID) {
+    public function countMatTimeMonthly($userID) 
+    {
         $query = "SELECT MONTH(classDate) as month, SUM(classDuration)/60.0 AS hours
                   FROM Class
                   WHERE userID = :userID AND YEAR(classDate) = YEAR(CURDATE())
                   GROUP BY MONTH(classDate)
                   ORDER BY MONTH(classDate)";
+
         $statement = $this->_db->prepare($query);
         $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
         $statement->execute();
