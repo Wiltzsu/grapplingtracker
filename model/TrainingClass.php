@@ -100,4 +100,23 @@ class TrainingClass
             }
         }
     }
+
+    public function countMatTime($userID)
+    {
+        $userID = $_SESSION['userID'];
+
+        $query = "SELECT SUM(classDuration)/60.0 AS totalDurationInHours
+                  FROM Class
+                  WHERE userID = :userID";
+
+        $statement = $this->_db->prepare($query);
+        $statement->bindParam(':userID', $userID,PDO::PARAM_INT);
+
+        $statement->execute();
+
+        // Fetching only the first column from the result, which should be the sum of classDuration
+        $total_mat_time = $statement->fetchColumn();
+
+        return $total_mat_time;
+    }
 }

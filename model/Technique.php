@@ -236,4 +236,22 @@ class Technique
             }
         }
     }
+
+    public function countTechniques($userID)
+    {
+        $userID = $_SESSION['userID'];
+
+        $query = "SELECT COUNT(techniqueID) AS totalTechniquesLearned
+                  FROM Technique
+                  WHERE userID = :userID";
+
+        $statement = $this->_db->prepare($query);
+        $statement->bindParam(':userID', $userID,PDO::PARAM_INT);
+
+        $statement->execute();
+
+        $total_techniques = $statement->fetchColumn();
+
+        return $total_techniques;
+    }
 }

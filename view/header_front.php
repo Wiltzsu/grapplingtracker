@@ -8,11 +8,11 @@
     <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
     <style>
         .hero-section {
-            background: url('https://images.unsplash.com/photo-1585537884613-1a9bcd024983?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
             background-size: cover;
             color: white;
             padding: 100px 0;
             text-align: center;
+            margin-bottom: 5px;
         }
         .hero-section h1,
         .hero-section p {
@@ -23,7 +23,7 @@
                  1px  1px 0 #000; /* creates an outline effect */
         }
         .features {
-            margin: 50px 0;
+            margin: 0;
         }
         .feature-item {
             margin-bottom: 20px;
@@ -35,7 +35,7 @@
 </head>
 <body>
 
-<div class="hero-section">
+<div class="centered-container hero-section">
     <div class="container">
         <h1>Welcome to Grappling Tracker</h1>
         <p>Your ultimate journal and tracker for grappling techniques.</p>

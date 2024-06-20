@@ -10,6 +10,7 @@
  * @license MIT License
  */
 require_once 'header.php';
+require_once __DIR__ . '/../controller/ReadController.php';
 ?>
 
 <div class="card p-4">
@@ -38,11 +39,63 @@ require_once 'header.php';
         </a>
     </div>
 
-    <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
-        <div class="text-center mt-3">
-            <a href="view/logout.php" class="btn btn-primary btn1">Logout</a>
-        </div>
-    <?php }?>
+
 </div>
+<div class="container mt-0">
+    <!-- Row for Total Mat Time -->
+    <div class="row">
+        <div class="col-md-12 mb-3"> <!-- Change grid size to full width for each card -->
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Total Mat Time:</strong></h5>
+                    <p class="card-text" id="matTime">
+                        <?php
+                        if ($total_mat_time !== false) {
+                            echo htmlspecialchars(number_format($total_mat_time, 1)) . ' hours';
+                        } else {
+                            echo "No data available";
+                        }
+                        ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row for Techniques Learned -->
+    <div class="row">
+        <div class="col-md-12 mb-3"> <!-- Change grid size to full width for each card -->
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Techniques Learned:</strong></h5>
+                    <p class="card-text" id="techniquesCount">
+                        <?php
+                        if ($total_techniques !== false) {
+                            echo htmlspecialchars(number_format($total_techniques, 0));
+                        } else {
+                            echo "No data available";
+                        }
+                        ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row for Days at Current Belt Level -->
+    <div class="row">
+        <div class="col-md-12 mb-3"> <!-- Change grid size to full width for each card -->
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Days at Current Belt Level:</strong></h5>
+                    <p class="card-text" id="beltTime">
+                        0 days
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?php require 'footer.php'; ?>

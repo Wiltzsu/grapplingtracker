@@ -22,6 +22,7 @@ $userID = $_SESSION['userID'];
  */
 $readTechniqueController = new Technique($db);
 $techniques = $readTechniqueController->readTechniques($userID);
+$total_techniques = $readTechniqueController->countTechniques($userID);
 
 /**
  * Same operation as above but with categories.
@@ -40,6 +41,7 @@ $positions = $readPositionController->readPositions();
  */
 $readTrainingClassController = new TrainingClass($db);
 $training_classes = $readTrainingClassController->readTrainingClasses($userID);
+$total_mat_time = $readTrainingClassController->countMatTime($userID);
 
 /**
  * Same operation but with journal entries.

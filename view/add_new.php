@@ -18,9 +18,9 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
         </button>
 
         <div class="card">
-            <div class="card-header" id="headingOne">
+            <div class="card-header journalCardStyle" id="headingOne">
                 <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="btn btn-link journalButton" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     Add a technique to the database.
                     </button>
                 </h5>
@@ -108,9 +108,9 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
         if (isset($_SESSION['roleID']) && $_SESSION['roleID'] === 1) {
         ?>
         <div class="card">
-            <div class="card-header" id="headingTwo">
+            <div class="card-header journalCardStyle" id="headingTwo">
                 <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="btn btn-link journalButton" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                     Add a category to the database.
                     </button>
                 </h5>
@@ -156,9 +156,9 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
         if (isset($_SESSION['roleID']) && $_SESSION['roleID'] === 1) {
         ?>
         <div class="card">
-            <div class="card-header" id="headingThree">
+            <div class="card-header journalCardStyle" id="headingThree">
                 <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="btn btn-link journalCardStyle" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     Add a position to the database.
                     </button>
                 </h5>
@@ -200,9 +200,9 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
         ?>
 
         <div class="card">
-            <div class="card-header" id="headingFour">
+            <div class="card-header journalCardStyle" id="headingFour">
                 <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <button class="btn btn-link journalButton" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                     Add a class to the database.
                     </button>
                 </h5>
@@ -274,13 +274,6 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
                 </div>
             </div>
         </div>
-
-
-        <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
-            <div class="text-center mt-3">
-                <a href="view/logout.php" class="btn btn-primary btn1">Logout</a>
-            </div>
-        <?php }?>
 </div>
 
 <?php require 'footer.php'; ?>

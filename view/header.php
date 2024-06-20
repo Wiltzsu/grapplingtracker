@@ -43,6 +43,5 @@ if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
 
 <div class="container centered-container">
     <div class="card p-4">
-        <h2 class="text-center mb-4">Grappling Technique Journal</h2>
+        <h2 class="text-center mb-4">Grappling Tracker</h2>
         <p class="text-center"><?php echo $greeting1; ?></p>
-        <p class="text-center"><?php echo $greeting3; ?></p>

@@ -1,3 +1,9 @@
+<?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
+            <div class="text-center mt-3">
+                <a href="view/logout.php" class="btn btn-danger btn1">Logout</a>
+            </div>
+        <?php }?>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

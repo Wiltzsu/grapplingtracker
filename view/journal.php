@@ -15,9 +15,9 @@ require_once __DIR__ . '/../config/Database.php';
     </button>
 
     <div class="card">
-        <div class="card-header" id="headingOne">
+        <div class="card-header journalCardStyle" id="headingOne">
             <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="btn btn-link journalButton" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Log training
                 </button>
             </h5>
@@ -60,78 +60,78 @@ require_once __DIR__ . '/../config/Database.php';
     </div>
 
     <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        View your training log.
-                        </button>
-                    </h5>
-                </div>
+        <div class="card-header journalCardStyle" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link journalButton" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                View your training log.
+                </button>
+            </h5>
+        </div>
 
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <table class="table table-hover">
-                        <thead class="thead-light">
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Technique</th>
+                        <th>Technique name</th>
+                        <th>Instructor</th>
+                        <th>Created at</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                if (is_array($journal_entries)) {
+                    foreach ($journal_entries as $journal_entry) {
+                        ?>
                             <tr>
-                                <th>Technique</th>
-                                <th>Technique name</th>
-                                <th>Instructor</th>
-                                <th>Created at</th>
-                                <th></th>
+                                <td><?php echo htmlspecialchars($journal_entry['techniqueID']) ?></td>
+                                <td><?php echo htmlspecialchars($journal_entry['techniqueName']) ?></td>
+                                <td><?php echo htmlspecialchars($journal_entry['instructor']) ?></td>
+                                <td><?php echo htmlspecialchars($journal_entry['journalNoteDate']) ?></td>
+                                <!-- Delete button -->
+                                <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $journal_entry['journalNoteDate']; ?>">
+                                <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete"></button></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        if (is_array($journal_entries)) {
-                            foreach ($journal_entries as $journal_entry) {
-                                ?>
-                                    <tr>
-                                        <td><?php echo htmlspecialchars($journal_entry['techniqueID']) ?></td>
-                                        <td><?php echo htmlspecialchars($journal_entry['techniqueName']) ?></td>
-                                        <td><?php echo htmlspecialchars($journal_entry['instructor']) ?></td>
-                                        <td><?php echo htmlspecialchars($journal_entry['journalNoteDate']) ?></td>
-                                        <!-- Delete button -->
-                                        <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $journal_entry['journalNoteDate']; ?>">
-                                        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete"></button></td>
-                                    </tr>
 
-                                    <!-- Modal for deletion confirmation -->
-                                    <div class="modal fade" id="modal<?php echo $journal_entry['journalNoteDate']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to delete the entry created at "<?php echo htmlspecialchars($journal_entry['journalNoteDate']); ?>"?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <!-- Form for deletion -->
-                                                    <form method="POST" action="">
-                                                        <input type="hidden" name="journalNoteDate" value="<?php echo $journal_entry['journalNoteDate']; ?>">
-                                                        <button type="submit" name="journalNoteDate" class="btn btn-danger">Delete entry</button>
-                                                    </form>
-                                                </div>
-                                            </div>
+                            <!-- Modal for deletion confirmation -->
+                            <div class="modal fade" id="modal<?php echo $journal_entry['journalNoteDate']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete the entry created at "<?php echo htmlspecialchars($journal_entry['journalNoteDate']); ?>"?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <!-- Form for deletion -->
+                                            <form method="POST" action="">
+                                                <input type="hidden" name="journalNoteDate" value="<?php echo $journal_entry['journalNoteDate']; ?>">
+                                                <button type="submit" name="journalNoteDate" class="btn btn-danger">Delete entry</button>
+                                            </form>
                                         </div>
                                     </div>
-                                    <?php
-                            }
-                        } else {
-                            echo "No techniques found.";
-                        }?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                                </div>
+                            </div>
+                            <?php
+                    }
+                } else {
+                    echo "No techniques found.";
+                }?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <div class="card">
-        <div class="card-header" id="headingThree">
+        <div class="card-header journalCardStyle" id="headingThree">
             <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <button class="btn btn-link journalButton" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 Quick note
                 </button>
             </h5>
@@ -143,12 +143,6 @@ require_once __DIR__ . '/../config/Database.php';
             </div>        
         </div>
     </div>
-
-    <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
-        <div class="text-center mt-3">
-            <a href="view/logout.php" class="btn btn-primary btn1">Logout</a>
-        </div>
-    <?php }?>
 </div>
 
 <?php require_once 'footer.php'; ?>

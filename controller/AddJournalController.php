@@ -32,8 +32,6 @@ $createJournalController = new CreateJournalController($db);
             $classID,
             $userID
         );
-
-
             header("Location: /technique-db-mvc/journal");
             exit();
         

@@ -1,7 +1,7 @@
 /* General body styles */
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 body {
-    background-color: #bebecb; /* Light gray background */
+    background: rgba(130, 130, 130, 0.201);
     font-family: 'Mukta', Arial, Helvetica, sans-serif; /* Consistent font for the whole page */
     /*background-image: url('https://images.unsplash.com/photo-1439405326854-014607f694d7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');*/
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -10,18 +10,90 @@ body {
     background-size: cover; /* Cover the entire viewport */
 }
 
+.journalCardStyle {
+    background-color: rgba(147, 156, 179, 0);
+}
+
+.journalButton {
+    color: #000000; /* Set your desired color */
+    background-color: #007bff00; /* Example background color; adjust as needed */
+}
+
+.journalButton:hover {
+    color: #cccccc; /* Lighter color on hover */
+}
+
+
+.hero-section {
+    background: url('https://images.unsplash.com/photo-1585537884613-1a9bcd024983?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 10vh 0; /* dynamic padding based on the viewport height */
+    text-align: center;
+    margin-bottom: 50px;
+    min-height: 50vh; /* responsive minimum height */
+    height: auto;
+}
+.hero-section h1 {
+    font-size: 3vw; /* Larger and responsive font size for headings */
+    color: #FFF; /* Example: set text color for visibility */
+    margin-bottom: 1vh; /* Add some vertical spacing */
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Enhance visibility against backgrounds */
+}
+
+.hero-section p {
+    font-size: 1.5vw; /* Slightly larger and responsive font size for paragraphs */
+    color: #DDD; /* Example: set text color for visibility */
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Optional text shadow for better readability */
+}
+
+/* Optimal legibility for smaller devices */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 8vw; /* Increase size for better visibility on smaller screens */
+    }
+
+    .hero-section p {
+        font-size: 4vw; /* Increase paragraph text size for readability on small devices */
+    }
+}
+
+/* Adjustments for very small devices */
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 10vw; /* Even larger size for smallest screens */
+    }
+
+    .hero-section p {
+        font-size: 5vw; /* Ensure legibility on very small devices */
+    }
+}
+
+.features {
+    margin: 0;
+    padding: 50px;
+}
+.feature-item {
+    margin-bottom: 20px;
+}
+.cta-buttons {
+    margin-top: 300px;
+}
+
 /* Centered container for the main content */
 .centered-container {
-    max-width: 800px; /* Max width for the container */
+    max-width: 1000px; /* Max width for the container */
     margin: 40px auto; /* Centering the container */
     padding: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
     background-color: #ffffff; /* White background for the content area */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for 3D effect */
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 0px; /* Rounded corners */
 }
 /* Card styles */
 .card {
-    border: none; /* Remove default border */
+    border: none; /* Remove default bordAer */
 }
 
 /* Header styles within the card */
@@ -32,7 +104,7 @@ h2 {
 
 /* Styling for list items */
 .list-group-item {
-    background-color: #e9ecef; /* Light background for the list items */
+    background-color: #ffffff; /* Light background for the list items */
     color: #495057; /* Darker text for better readability */
     border-radius: 5px; /* Rounded corners for the list items */
     margin-bottom: 10px; /* Space between items */

@@ -1,7 +1,7 @@
 <?php require_once 'header_front.php'; ?>
 
 <div class="d-flex justify-content-center align-items-center">
-    <div class="container features">
+    <div class="centered-container features">
         <h2 class="text-center">Features</h2>
         <div class="row">
             <div class="col-md-4 feature-item text-center">

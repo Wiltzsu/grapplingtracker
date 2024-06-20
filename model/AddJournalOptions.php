@@ -23,9 +23,9 @@ while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
     
     $technique_options .= <<<HTML
     <option value="$techniqueID">
-        Technique: $techniqueName - 
-        Description: $techniqueDescription -
-        Position: $positionName
+        $techniqueName - 
+        $techniqueDescription -
+        $positionName
     </option>
     HTML;
 }
@@ -58,10 +58,9 @@ while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
     // Concatenate the option HTML to the dropdown
     $class_options .= <<<HTML
     <option value="$classID">
-        Instructor: $instructor - 
-        Location: $location - 
-        Date: $date - Description: 
-        $classDescription
+        $instructor - 
+        $location - 
+        $date
     </option>
     HTML;
 }
