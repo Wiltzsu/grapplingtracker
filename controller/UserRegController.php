@@ -9,8 +9,8 @@
  * @license MIT License
  */
 
-require_once './config/Database.php';
-require_once './model/UserReg.php';
+require_once __DIR__ . '/../config/Database.php';
+require_once __DIR__ . '/../model/UserReg.php';
 
 /**
  * 'UserRegController' class contains a method for input validation

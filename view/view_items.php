@@ -12,6 +12,7 @@ require_once __DIR__ . '/../controller/ReadController.php';
 require_once __DIR__ . '/../controller/DeleteController.php';
 ?>
 
+<div class="container-fluid p-5">
 <div id="accordion">
 
         <button class="svg-button" onclick="window.location.href='/technique-db-mvc/mainview'">
@@ -259,7 +260,7 @@ require_once __DIR__ . '/../controller/DeleteController.php';
                                         <td><?php echo htmlspecialchars($training_class['instructor']) ?></td>
                                         <td><?php echo htmlspecialchars($training_class['location']) ?></td>
                                         <td><?php echo htmlspecialchars($training_class['classDuration']) ?> min</td>
-                                        <td><?php echo htmlspecialchars($training_class['date']) ?></td>
+                                        <td><?php echo htmlspecialchars($training_class['classDate']) ?></td>
                                         <td><?php echo htmlspecialchars($training_class['classDescription']) ?></td>
                                         <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $training_class['classID']; ?>">
                                         <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete">
@@ -302,5 +303,8 @@ require_once __DIR__ . '/../controller/DeleteController.php';
             </div>
     </div>
 </div>
+
+</div>
+
 
 <?php require_once 'footer.php'; ?>

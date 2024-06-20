@@ -1,9 +1,7 @@
 <?php
-
 require_once 'header_front.php';
 require_once '/opt/lampp/htdocs/technique-db-mvc/config/Database.php';
 require_once '/opt/lampp/htdocs/technique-db-mvc/controller/UserRegController.php';
-
 ?>
     <div class="centered-container">
         <div class="register-container">

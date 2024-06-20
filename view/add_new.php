@@ -10,6 +10,7 @@ require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../model/AddNewOptions.php';
 
 ?>
+<div class="container-fluid p-5">
 <div id="accordion">
     
         <button class="svg-button" onclick="window.location.href='/technique-db-mvc/mainview'">
@@ -275,6 +276,8 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
                 </div>
             </div>
         </div>
+
+</div>
 
 
 <?php require 'footer.php'; ?>
