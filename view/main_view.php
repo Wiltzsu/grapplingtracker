@@ -11,6 +11,12 @@
  */
 require_once 'header.php';
 require_once __DIR__ . '/../controller/ReadController.php';
+
+
+require_once __DIR__ . '/../controller/BeltLevelController.php';
+
+$beltController = new BeltLevelController();
+$beltTimes = $beltController->getTimeOnEachBelt();
 ?>
 
 <div class="card p-4">
@@ -81,21 +87,5 @@ require_once __DIR__ . '/../controller/ReadController.php';
             </div>
         </div>
     </div>
-
-    <!-- Row for Days at Current Belt Level -->
-    <div class="row">
-        <div class="col-md-12 mb-3"> <!-- Change grid size to full width for each card -->
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title"><strong>Days at Current Belt Level:</strong></h5>
-                    <p class="card-text" id="beltTime">
-                        0 days
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <?php require 'footer.php'; ?>

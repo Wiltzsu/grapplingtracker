@@ -143,6 +143,15 @@ require_once __DIR__ . '/../config/Database.php';
             </div>        
         </div>
     </div>
+
+    <!-- Canvas for Total Mat Time -->
+    <div class="row">
+        <div class="col-md-12">
+            <canvas id="matTimeChart"></canvas>
+        </div>
+    </div>
 </div>
+
+<script src="/technique-db-mvc/public/js/totalMatTime.js"></script>
 
 <?php require_once 'footer.php'; ?>

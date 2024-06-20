@@ -38,6 +38,7 @@ if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
     <title>Welcome</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
