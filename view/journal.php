@@ -4,6 +4,16 @@ require_once __DIR__ . '/../model/AddJournalOptions.php';
 require_once __DIR__ . '/../controller/AddJournalController.php';
 require_once __DIR__ . '/../controller/ReadController.php';
 require_once __DIR__ . '/../config/Database.php';
+
+
+require_once __DIR__ . '/../model/TrainingClass.php';
+
+$db = Database::connect();
+$trainingModel = new TrainingClass($db);
+$userID = $_SESSION['userID'];  // Ensure the user is logged in and you have their ID
+$totalMatTimeMonthly = $trainingModel->countMatTimeMonthly($userID);
+
+
 ?>
 
 <div id="accordion">
@@ -85,7 +95,6 @@ require_once __DIR__ . '/../config/Database.php';
                     foreach ($journal_entries as $journal_entry) {
                         ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($journal_entry['techniqueID']) ?></td>
                                 <td><?php echo htmlspecialchars($journal_entry['techniqueName']) ?></td>
                                 <td><?php echo htmlspecialchars($journal_entry['instructor']) ?></td>
                                 <td><?php echo htmlspecialchars($journal_entry['journalNoteDate']) ?></td>
@@ -145,13 +154,16 @@ require_once __DIR__ . '/../config/Database.php';
     </div>
 
     <!-- Canvas for Total Mat Time -->
-    <div class="row">
+    <div class="row p-5">
         <div class="col-md-12">
             <canvas id="matTimeChart"></canvas>
         </div>
     </div>
 </div>
 
+<script>
+    var totalMatTimeData = <?= json_encode($totalMatTimeMonthly) ?>;
+</script>
 <script src="/technique-db-mvc/public/js/totalMatTime.js"></script>
 
 <?php require_once 'footer.php'; ?>

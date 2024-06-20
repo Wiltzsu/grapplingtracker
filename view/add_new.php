@@ -276,7 +276,7 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
         </div>
 
                         <!-- Canvas for Techniques Learned -->
-    <div class="row">
+    <div class="row p-5">
         <div class="col-md-12">
             <canvas id="techniquesChart"></canvas>
         </div>

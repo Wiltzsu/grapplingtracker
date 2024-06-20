@@ -34,7 +34,7 @@ while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
 $class_options = '';
 
 // Prepare the SQL query using a placeholder for the userID
-$query = "SELECT classID, instructor, location, date, classDescription
+$query = "SELECT classID, instructor, location, classDate, classDescription
           FROM Class
           WHERE userID = :userID";
 
@@ -52,7 +52,7 @@ while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
     $classID = htmlspecialchars($row['classID']);
     $instructor = htmlspecialchars($row['instructor']);
     $location = htmlspecialchars($row['location']);
-    $date = htmlspecialchars($row['date']);
+    $classDate = htmlspecialchars($row['classDate']);
     $classDescription = htmlspecialchars($row['classDescription']);
     
     // Concatenate the option HTML to the dropdown
@@ -60,7 +60,7 @@ while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
     <option value="$classID">
         $instructor - 
         $location - 
-        $date
+        $classDate
     </option>
     HTML;
 }

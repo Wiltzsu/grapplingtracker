@@ -6,7 +6,7 @@ class TrainingClass
     private $_instructor;
     private $_location;
     private $_duration;
-    private $_date;
+    private $_classDate;
     private $_classDescription;
 
     public function __construct($db)
@@ -19,20 +19,20 @@ class TrainingClass
         $instructor,
         $location,
         $duration,
-        $date,
+        $classDate,
         $classDescription)
     {
         $this->_userID = $userID;
         $this->_instructor = $instructor;
         $this->_location = $location;
         $this->_duration = $duration;
-        $this->_date = $date;
+        $this->_classDate = $classDate;
         $this->_classDescription = $classDescription;
 
         $query = "INSERT INTO Class (
-            userID, instructor, location, classDuration, date, classDescription
+            userID, instructor, location, classDuration, classDate, classDescription
         ) VALUES (
-            :userID, :instructor, :location, :classDuration, :date, :classDescription
+            :userID, :instructor, :location, :classDuration, :classDate, :classDescription
         )";
 
         $statement = $this->_db->prepare($query);
@@ -53,8 +53,8 @@ class TrainingClass
             $this->_duration, PDO::PARAM_INT
         );
         $statement->bindParam(
-            ":date",
-            $this->_date, PDO::PARAM_STR
+            ":classDate",
+            $this->_classDate, PDO::PARAM_STR
         );
         $statement->bindParam(
             ":classDescription",
@@ -118,5 +118,17 @@ class TrainingClass
         $total_mat_time = $statement->fetchColumn();
 
         return $total_mat_time;
+    }
+
+    public function countMatTimeMonthly($userID) {
+        $query = "SELECT MONTH(classDate) as month, SUM(classDuration)/60.0 AS hours
+                  FROM Class
+                  WHERE userID = :userID AND YEAR(classDate) = YEAR(CURDATE())
+                  GROUP BY MONTH(classDate)
+                  ORDER BY MONTH(classDate)";
+        $statement = $this->_db->prepare($query);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

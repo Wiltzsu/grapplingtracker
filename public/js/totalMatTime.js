@@ -1,12 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var matTimeCtx = document.getElementById('matTimeChart').getContext('2d');
-    var matTimeChart = new Chart(matTimeCtx, {
+    var ctx = document.getElementById('matTimeChart').getContext('2d');
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var data = new Array(12).fill(null); // Fill array with nulls for months without data
+
+    // Convert data from PHP to be fit for charting
+    totalMatTimeData.forEach(entry => {
+        if (entry.hours > 0) {
+            data[entry.month - 1] = parseFloat(entry.hours); // Ensure hours are correctly placed based on month
+        }
+    });
+
+    var matTimeChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            labels: months,
             datasets: [{
                 label: 'Total Mat Time (hours)',
-                data: [10, 20, 30, 40, 50, 60],
+                data: data,
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1

@@ -41,7 +41,7 @@ $beltTimes = $beltController->getTimeOnEachBelt();
         </a>
 
         <a href="/technique-db-mvc/profile" class="list-group-item list-group-item-action">
-            <strong>Your Profile:</strong> View and edit your personal information.
+            <strong>Belt Tracker:</strong> Set belt level and track your progression.
         </a>
     </div>
 
@@ -50,7 +50,7 @@ $beltTimes = $beltController->getTimeOnEachBelt();
 <div class="container mt-0">
     <!-- Row for Total Mat Time -->
     <div class="row">
-        <div class="col-md-12 mb-3"> <!-- Change grid size to full width for each card -->
+        <div class="col-md-6 mb-3"> <!-- Change grid size to full width for each card -->
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title"><strong>Total Mat Time:</strong></h5>
@@ -66,14 +66,10 @@ $beltTimes = $beltController->getTimeOnEachBelt();
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Row for Techniques Learned -->
-    <div class="row">
-        <div class="col-md-12 mb-3"> <!-- Change grid size to full width for each card -->
+        <div class="col-md-6 mb-3"> <!-- Change grid size to full width for each card -->
             <div class="card h-100">
                 <div class="card-body">
-                    <h5 class="card-title"><strong>Techniques Learned:</strong></h5>
+                    <h5 class="card-title"><strong>Techniques Studied:</strong></h5>
                     <p class="card-text" id="techniquesCount">
                         <?php
                         if ($total_techniques !== false) {
