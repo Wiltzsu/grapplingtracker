@@ -27,7 +27,6 @@ $beltTimes = $beltController->getTimeOnEachBelt();
         </div>
     </div>
 
-
     <div class="container mt-5">
         <h2>Your Belt Progression</h2>
         <div class="row">
