@@ -65,7 +65,7 @@ if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/technique-db-mvc/mainview">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/technique-db-mvc/mainview">Journal <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/technique-db-mvc/addnew">Add new</a>
@@ -84,7 +84,7 @@ if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
       <?php echo $greeting1; ?>
         <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
 
-                  <a href="view/mainview.php" class="btn btn-danger btn1">Logout</a>
+                  <a href="/technique-db-mvc/" class="btn btn-danger btn1">Logout</a>
 
           <?php }?>
       </span>

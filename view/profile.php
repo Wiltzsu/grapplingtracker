@@ -68,7 +68,7 @@ $beltTimes = $beltController->getTimeOnEachBelt();
                     <span class="help-block"><?= htmlspecialchars($errors["empty_field"]) ?></span>
                 <?php endif; ?>
             </div>
-            <button type="submit" name="submitBeltLevel" class="btn btn-primary btn2">Update Belt Level</button>
+            <button type="submit" name="submitBeltLevel" class="btn btn-primary btn2">Update</button>
         </form>
     </div>
 </div>

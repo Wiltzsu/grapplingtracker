@@ -157,7 +157,7 @@ require_once __DIR__ . '/../model/AddNewOptions.php';
         <div class="card">
             <div class="card-header journalCardStyle" id="headingThree">
                 <h5 class="mb-0">
-                    <button class="btn btn-link journalCardStyle" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="btn btn-link journalButton" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     Add a position to the database.
                     </button>
                 </h5>

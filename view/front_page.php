@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-center align-items-center">
     
     <div class="container-fluid features">
-    <div class="cta-buttons">
+    <div class="cta-buttons mb-3">
 
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
@@ -107,50 +107,33 @@
             </div>
         </div>
         
-        <h2 class="text-center">Features</h2>
+        <h1 class="text-center">Features</h1>
 
-        <div class="row">
+        <div class="row m-5 align-items-start">
             <div class="col-md-6 feature-item text-center">
                 <h3>Log Your Practice</h3>
                 <p>Keep track of your daily practice sessions and monitor your progress over time.</p>
+                <img src="/technique-db-mvc/public/img/logPractice.png" alt="Add New Technique" style="max-width: 100%; height: auto;">
             </div>
             <div class="col-md-6 feature-item text-center">
-                <h3>Log Your Practice</h3>
-                <p>Keep track of your daily practice sessions and monitor your progress over time.</p>
+                <h3>Add New Techniques</h3>
+                <p>Expand your repertoire by adding and categorizing new grappling techniques.</p>
+                <img src="/technique-db-mvc/public/img/addNew4.png" alt="Add New Technique" style="max-width: 100%; height: auto;">
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-6 feature-item text-center">
-                    <h3>Add New Techniques</h3>
-                    <p>Expand your repertoire by adding and categorizing new grappling techniques.</p>
-                </div>
-                <div class="col-md-6 feature-item text-center">
-                    <h3>Add New Techniques</h3>
-                    <p>Expand your repertoire by adding and categorizing new grappling techniques.</p>
-                </div>
-            </div>
+<hr>
 
-        <div class="row">
-            <div class="col-md-6 feature-item text-center">
-                <h3>View Techniques</h3>
-                <p>Access your techniques library anytime, anywhere, and stay on top of your game.</p>
-            </div>
-            <div class="col-md-6 feature-item text-center">
-                <h3>View Techniques</h3>
-                <p>Access your techniques library anytime, anywhere, and stay on top of your game.</p>
-            </div>
-        </div>
+<div class="row ml-5 mr-5 mt-5">
+    <div class="col-sm-12 feature-item text-center">
+    <h3>Track your belt progression</h3>
+            
+            <p>Access your techniques library anytime, anywhere, and stay on top of your game.</p>
+            <img src="/technique-db-mvc/public/img/beltProgression.png" alt="Belt Progression" style="max-width: 100%; height: auto;">
 
-        <div class="row align-items-center"> <!-- This ensures vertical centering -->
-            <div class="col-md-6 feature-item text-center">
-                <h3>Track your belt progression</h3>
-                <p>Access your techniques library anytime, anywhere, and stay on top of your game.</p>
-            </div>
-            <div class="col-md-6 feature-item text-center">
-                <img src="/technique-db-mvc/public/img/beltProgression.png" alt="Belt Progression" style="max-width: 100%; height: auto;">
-            </div>
-        </div>
+
+    </div>
+</div>
 
     </div>
 </div>

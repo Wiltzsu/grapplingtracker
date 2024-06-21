@@ -81,7 +81,6 @@ $totalMatTimeMonthly = $trainingModel->countMatTimeMonthly($userID);
                         <table class="table table-hover">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Technique</th>
                                     <th>Technique name</th>
                                     <th>Instructor</th>
                                     <th>Created at</th>
