@@ -46,50 +46,47 @@ if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
     <title>Welcome</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
-    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-<a class="navbar-brand" href="/technique-db-mvc/mainview">Grappling Tracker</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <img src="/technique-db-mvc/public/img/grapplingtrackertransp.png" width="30" height="30" class="d-inline-block align-top" alt="Menu">
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <!-- Navbar links go here -->
-  </div>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/technique-db-mvc/mainview">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/technique-db-mvc/addnew">Add new</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/technique-db-mvc/viewitems">View items</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/technique-db-mvc/profile">Belt progression</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/technique-db-mvc/profile">Guide</a>
-      </li>
-    </ul>
-    <span class="navbar-text">
-    <?php echo $greeting1; ?>
-      <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
+    <a class="navbar-brand" href="/technique-db-mvc/mainview">Grappling Tracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <img src="/technique-db-mvc/public/img/grapplingtrackertransp.png" width="30" height="30" class="d-inline-block align-top" alt="Menu">
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <!-- Navbar links go here -->
+    </div>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/technique-db-mvc/mainview">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/technique-db-mvc/addnew">Add new</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/technique-db-mvc/viewitems">View items</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/technique-db-mvc/profile">Belt progression</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/technique-db-mvc/profile">Guide</a>
+          </li>
+        </ul>
+      <span class="navbar-text">
+      <?php echo $greeting1; ?>
+        <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
 
-                <a href="view/logout.php" class="btn btn-danger btn1">Logout</a>
+                  <a href="view/mainview.php" class="btn btn-danger btn1">Logout</a>
 
-        <?php }?>
-    </span>
-  </div>
+          <?php }?>
+      </span>
+    </div>
 </nav>

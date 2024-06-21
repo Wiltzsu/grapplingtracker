@@ -46,36 +46,40 @@ html, body {
 
 
 .hero-section {
+    font-family: 'Mukta', Arial, Helvetica, sans-serif; /* Consistent font for the whole page */
+
     background: url('/technique-db-mvc/public/img/heroImage.jpg') no-repeat center center;
     background-size: cover;
     color: rgb(0, 0, 0);
     padding: 10vh 0; /* dynamic padding based on the viewport height */
     text-align: center;
     margin-bottom: 50px;
-    min-height: 50vh; /* responsive minimum height */
+    min-height: 55vh; /* responsive minimum height */
     height: auto;
 }
 .hero-section h1 {
-    font-size: 3vw; /* Larger and responsive font size for headings */
+    font-size: 4vw; /* Larger and responsive font size for headings */
+    font-variant: small-caps;
     color: #FFF; /* Example: set text color for visibility */
     margin-bottom: 1vh; /* Add some vertical spacing */
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Enhance visibility against backgrounds */
+    text-shadow: -0.5px -0.5px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Enhance visibility against backgrounds */
 }
 
 .hero-section p {
-    font-size: 1.5vw; /* Slightly larger and responsive font size for paragraphs */
-    color: #DDD; /* Example: set text color for visibility */
+    font-size: 2vw; /* Slightly larger and responsive font size for paragraphs */
+    color: #ffffff; /* Example: set text color for visibility */
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Optional text shadow for better readability */
 }
 
 .features {
-    margin: 0;
+    margin-top: 0;
 }
 .feature-item {
     margin-bottom: 20px;
 }
 .cta-buttons {
-    margin-top: 30px;
+    text-align: center;
+    justify-content: center;
 }
 
 /* Optimal legibility for smaller devices */
@@ -98,17 +102,6 @@ html, body {
     .hero-section p {
         font-size: 5vw; /* Ensure legibility on very small devices */
     }
-}
-
-.features {
-    margin: 0;
-    padding: 50px;
-}
-.feature-item {
-    margin-bottom: 20px;
-}
-.cta-buttons {
-    margin-top: 300px;
 }
 
 /* Centered container for the main content */
