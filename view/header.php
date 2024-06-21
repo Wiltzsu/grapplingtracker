@@ -50,18 +50,21 @@ if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <a class="navbar-brand" href="#">Grappling Tracker</a>
+<a class="navbar-brand" href="/technique-db-mvc/mainview">Grappling Tracker</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <img src="/technique-db-mvc/public/img/grapplingtrackertransp.png" width="30" height="30" class="d-inline-block align-top" alt="Menu">
   </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <!-- Navbar links go here -->
+  </div>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -75,6 +78,9 @@ if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/technique-db-mvc/profile">Belt progression</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/technique-db-mvc/profile">Guide</a>
       </li>
     </ul>
     <span class="navbar-text">
