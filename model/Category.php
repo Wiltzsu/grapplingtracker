@@ -13,9 +13,9 @@
  */
 class Category
 {
-    private $_db;
-    private $_categoryName;
-    private $_categoryDescription;
+    private $db;
+    private $categoryName;
+    private $categoryDescription;
 
     /**
      * Initializes the constructor with a database connection.
@@ -24,7 +24,7 @@ class Category
      */
     public function __construct($db)
     {
-        $this->_db = $db;
+        $this->db = $db;
     }
 
     /**
@@ -48,7 +48,7 @@ class Category
             $errors['empty_field'] = 'Field cannot be empty.';
         }
 
-        $categoryExists = $this->_db->prepare(
+        $categoryExists = $this->db->prepare(
             "SELECT 1 FROM Category WHERE categoryName = ?"
         );
         $categoryExists->execute([$categoryName]);
@@ -68,8 +68,8 @@ class Category
      */
     public function addCategory($categoryName, $categoryDescription)
     {
-        $this->_categoryName = $categoryName;
-        $this->_categoryDescription = $categoryDescription;
+        $this->categoryName = $categoryName;
+        $this->categoryDescription = $categoryDescription;
 
         $errors = $this->_validateInput($categoryName, $categoryDescription);
 
@@ -83,14 +83,14 @@ class Category
             :categoryName, :categoryDescription
         )";
 
-        $statement = $this->_db->prepare($query);
+        $statement = $this->db->prepare($query);
         $statement->bindParam(
             ":categoryName", 
-            $this->_categoryName, PDO::PARAM_STR
+            $this->categoryName, PDO::PARAM_STR
         );
         $statement->bindParam(
             ":categoryDescription", 
-            $this->_categoryDescription, PDO::PARAM_STR
+            $this->categoryDescription, PDO::PARAM_STR
         );
         $statement->execute();
         return [];
@@ -105,7 +105,7 @@ class Category
     {
         $query = "SELECT * FROM Category ORDER BY categoryName";
 
-        $statement = $this->_db->prepare($query);
+        $statement = $this->db->prepare($query);
 
         $statement->execute();
 
@@ -128,7 +128,7 @@ class Category
 
             $query = "DELETE FROM Category WHERE categoryID=:categoryID";
 
-            $delete = $this->_db->prepare($query);
+            $delete = $this->db->prepare($query);
 
             $delete->bindValue(':categoryID', $categoryID, PDO::PARAM_INT);
 
@@ -138,6 +138,12 @@ class Category
             }
 
         }
+    }
+
+    public function getCategoryIdAndName(): array
+    {
+        $statement = $this->db->query('SELECT categoryID, categoryName FROM Category');
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 }
 ?>
