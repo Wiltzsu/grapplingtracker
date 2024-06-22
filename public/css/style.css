@@ -1,13 +1,33 @@
 /* General body styles */
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 body {
-    background: rgba(130, 130, 130, 0.201);
+    display: flex;
+    flex-direction: column;  /* Organizes content in a column */
+    min-height: 100vh;  /* Minimum height to take up the viewport height */
+    background: rgb(255, 255, 255);
     font-family: 'Mukta', Arial, Helvetica, sans-serif; /* Consistent font for the whole page */
     /*background-image: url('https://images.unsplash.com/photo-1439405326854-014607f694d7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');*/
     background-repeat: no-repeat; /* Do not repeat the image */
     background-attachment: fixed; /* Fix the background image during scrolling */
     background-position: center; /* Center the background image */
     background-size: cover; /* Cover the entire viewport */
+}
+
+html, body {
+    height: 100%;  /* Ensure the minimum height for the body is 100% of the viewport */
+    margin: 0;     /* Remove default margin */
+}
+
+.container-fluid {
+    flex: 1;  /* Allows the container to grow and fill the available space */
+}
+
+/* Navbar */
+.nav-item {
+    font-size: 1.2em;
+    color: red;
+    margin-left: 3em;
+
 }
 
 .journalCardStyle {
@@ -24,27 +44,42 @@ body {
 }
 
 
+
 .hero-section {
-    background: url('https://images.unsplash.com/photo-1585537884613-1a9bcd024983?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+    font-family: 'Mukta', Arial, Helvetica, sans-serif; /* Consistent font for the whole page */
+
+    background: url('/technique-db-mvc/public/img/heroImage.jpg') no-repeat center center;
     background-size: cover;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 10vh 0; /* dynamic padding based on the viewport height */
     text-align: center;
     margin-bottom: 50px;
-    min-height: 50vh; /* responsive minimum height */
+    min-height: 55vh; /* responsive minimum height */
     height: auto;
 }
 .hero-section h1 {
-    font-size: 3vw; /* Larger and responsive font size for headings */
+    font-size: 4vw; /* Larger and responsive font size for headings */
+    font-variant: small-caps;
     color: #FFF; /* Example: set text color for visibility */
     margin-bottom: 1vh; /* Add some vertical spacing */
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Enhance visibility against backgrounds */
+    text-shadow: -0.5px -0.5px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Enhance visibility against backgrounds */
 }
 
 .hero-section p {
-    font-size: 1.5vw; /* Slightly larger and responsive font size for paragraphs */
-    color: #DDD; /* Example: set text color for visibility */
+    font-size: 2vw; /* Slightly larger and responsive font size for paragraphs */
+    color: #ffffff; /* Example: set text color for visibility */
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Optional text shadow for better readability */
+}
+
+.features {
+    margin-top: 0;
+}
+.feature-item {
+    margin-bottom: 20px;
+}
+.cta-buttons {
+    text-align: center;
+    justify-content: center;
 }
 
 /* Optimal legibility for smaller devices */
@@ -69,25 +104,14 @@ body {
     }
 }
 
-.features {
-    margin: 0;
-    padding: 50px;
-}
-.feature-item {
-    margin-bottom: 20px;
-}
-.cta-buttons {
-    margin-top: 300px;
-}
-
 /* Centered container for the main content */
 .centered-container {
     max-width: 1000px; /* Max width for the container */
     margin: 40px auto; /* Centering the container */
-    padding: 20px;
+    padding: 2px;
     margin-top: 0;
     margin-bottom: 0;
-    background-color: #ffffff; /* White background for the content area */
+    background-color: #8a8a8a52; /* White background for the content area */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for 3D effect */
     border-radius: 0px; /* Rounded corners */
 }
@@ -111,6 +135,10 @@ h2 {
     transition: transform 0.2s; /* Smooth transform on hover */
 }
 
+.testborder {
+    border: 2px solid #000;
+    border-radius: 2px;
+}
 
 /* Hover effects for list items */
 .list-group-item:hover {
@@ -159,14 +187,6 @@ h2 {
     vertical-align: middle;
 }
 
-/* Footer styles */
-footer {
-    text-align: center;
-    margin-top: 20px;
-    color: #aaa;
-    font-size: 12px;
-}
-
 /* VIEW ITEMS SIZING */
 
 /* Default table styling for all screen sizes */
@@ -204,4 +224,13 @@ footer {
         margin-bottom: 10px; /* Add space between table rows for readability */
         border-bottom: 2px solid #dee2e6; /* Add a border to separate table rows */
     }
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: auto;  /* Pushes the footer to the bottom of the viewport/page */
+    background: #333;  /* Example: dark background for visibility */
+    color: white;  /* Text color for readability */
+    padding: 10px 0;
 }
