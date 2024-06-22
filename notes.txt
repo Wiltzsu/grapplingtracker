@@ -1,0 +1,8 @@
+PRIVACY POLICY
+
+// Debugging: Print session variables
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+
+
