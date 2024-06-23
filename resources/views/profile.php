@@ -2,6 +2,13 @@
 // Start the session
 session_start();
 
+if (!isset($_SESSION['username'])) {
+    header("Location: login");
+    exit();
+}
+
+$greeting1 = $_SESSION['username'] ?? 'No user found';
+
 require_once __DIR__ . '/../../src/controllers/BeltLevelController.php';
 require_once __DIR__ . '/../../src/models/AddJournalOptions.php';
 require_once __DIR__ . '/../../src/controllers/AddJournalController.php';
@@ -15,33 +22,7 @@ require_once __DIR__ . '/../../src/controllers/BeltLevelController.php';
 
 $beltController = new BeltLevelController();
 $beltTimes = $beltController->getTimeOnEachBelt();
-// Check if the user is logged in and then greet them
-$username = '';
-$greeting1 = 'No sessions.';  // Default message if not logged in
-if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-    $username = $_SESSION['username'];
-    $greeting1 = "Hello " . htmlspecialchars($username);
-} else {
-    header("Location: login.php");
-}
 
-$userID = '';
-$greeting2 = 'No sessions.';  // Default message if not logged in
-if (isset($_SESSION['userID']) && !empty($_SESSION['userID'])) {
-    $userID = $_SESSION['userID'];
-    $greeting2 = htmlspecialchars($userID);
-} else {
-    header("Location: view/login.php");
-}
-
-$roleID = '';
-$greeting3 = 'No sessions.';  // Default message if not logged in
-if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
-    $roleID = $_SESSION['roleID'];
-    $greeting3 = 'roleid ' . htmlspecialchars($roleID);
-} else {
-    header("Location: view/login.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,22 +66,18 @@ if (isset($_SESSION['roleID']) && !empty($_SESSION['roleID'])) {
             <a class="nav-link" href="profile">Guide</a>
           </li>
         </ul>
-      <span class="navbar-text">
+        <span class="navbar-text">
       <?php echo $greeting1; ?>
         <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {?>
-
-                  <a href="/technique-db-mvc/" class="btn btn-danger btn1">Logout</a>
-
-          <?php }?>
+            <a href="logout" class="btn btn-danger btn1">Logout</a>
+        <?php }?>
       </span>
     </div>
 </nav>
 
-
-?>
 <div class="container-fluid p-5">
     <!-- Back to main view button -->
-    <button class="svg-button" onclick="window.location.href='/technique-db-mvc/mainview'">
+    <button class="svg-button" onclick="window.location.href='mainview'">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
         </svg>

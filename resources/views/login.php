@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once __DIR__ . '/../../src/controllers/UserController2.php';
 require_once __DIR__ . '/../../config/Database.php';
 require_once __DIR__ . '/../../src/controllers/UserRegController.php';?>
