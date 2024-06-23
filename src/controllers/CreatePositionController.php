@@ -1,0 +1,56 @@
+<?php
+/**
+ * Controller category for interacting with the difficulty model and index.
+ * Includes a constructor and createPosition method.
+ * 
+ * @package Techniquedbmvc
+ * @author  William
+ * @license MIT License
+ */
+
+require_once __DIR__ . '/../../config/Database.php';
+require_once __DIR__ . '/../../src/models/Position.php';
+require_once 'CreateTechniqueController.php';
+require_once 'CreateCategoryController.php';
+require_once 'CreateClassController.php';
+
+/**
+ * PositionController Class
+ */
+class CreatePositionController
+{
+    /**
+     * @var _positionModel Instance of the Position model.
+     */
+    private $_positionModel;
+
+    /**
+     * Initialize with a database connection.
+     * 
+     * @param $db Database connection.
+     */
+    public function __construct($db) 
+    {
+        /**
+         * Initializes the 'position' property to hold an instance of the Position
+         * model passing the database connection to it.
+         */
+        $this->_positionModel = new Position($db);
+    }
+
+    /**
+     * Creates a new position.
+     * 
+     * @return Array Returns an empty array if unsuccessful.
+     * 
+     * @param $positionName        Name of the position.
+     * @param $positionDescription Description of the position.
+     */
+    public function createPosition($positionName, $positionDescription)
+    {
+        return $this->_positionModel->addPosition(
+            $positionName,
+            $positionDescription
+        );
+    }
+}
