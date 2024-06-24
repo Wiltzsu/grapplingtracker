@@ -302,39 +302,24 @@ require_once __DIR__ . '/../../src/controllers/DeleteController.php';*/
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
-                    <?php if (isset($getClasses) && count($getClasses) > 0): ?>
-                        <?php foreach ($getClasses as $class): ?>
-                            <div>
-                                <p>Instructor: <?= htmlspecialchars($class['instructor'], ENT_QUOTES, 'UTF-8') ?></p>
-                                <p>Description: <?= htmlspecialchars($class['classDescription'], ENT_QUOTES, 'UTF-8') ?></p>
-                                <p>Location: <?= htmlspecialchars($class['location'], ENT_QUOTES, 'UTF-8') ?></p>
-                                <p>Time: <?= htmlspecialchars($class['classDuration'], ENT_QUOTES, 'UTF-8') ?></p>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <p>No classes found for this user.</p>
-                    <?php endif; ?>
-                                    
-                    
+                    <tbody>                    
                     <?php
-
-                    if (is_array($training_classes)) {
-                        foreach ($training_classes as $training_class) {
+                    if (is_array($getClasses)) {
+                        foreach ($getClasses as $class) {
                             ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($training_class['instructor']) ?></td>
-                                    <td><?php echo htmlspecialchars($training_class['location']) ?></td>
-                                    <td><?php echo htmlspecialchars($training_class['classDuration']) ?> min</td>
-                                    <td><?php echo htmlspecialchars($training_class['classDate']) ?></td>
-                                    <td><?php echo htmlspecialchars($training_class['classDescription']) ?></td>
-                                    <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $training_class['classID']; ?>">
+                                    <td><?php echo htmlspecialchars($class['instructor']) ?></td>
+                                    <td><?php echo htmlspecialchars($class['location']) ?></td>
+                                    <td><?php echo htmlspecialchars($class['classDuration']) ?> min</td>
+                                    <td><?php echo htmlspecialchars($class['classDate']) ?></td>
+                                    <td><?php echo htmlspecialchars($class['classDescription']) ?></td>
+                                    <td><button type="button" class="btn" data-toggle="modal" data-target="#modal<?php echo $class['classID']; ?>">
                                     <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete">
                                 </button></td>
                                 </tr>
 
                                 <!-- Modal for deletion confirmation -->
-                                <div class="modal fade" id="modal<?php echo $training_class['classID']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="modal<?php echo $class['classID']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -344,20 +329,19 @@ require_once __DIR__ . '/../../src/controllers/DeleteController.php';*/
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to delete the class by "<?php echo htmlspecialchars($training_class['instructor']); ?>"?
+                                                Are you sure you want to delete the class by "<?php echo htmlspecialchars($class['instructor']); ?>"?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 <!-- Form for deletion -->
                                                 <form method="POST" action="">
-                                                    <input type="hidden" name="classID" value="<?php echo $training_class['classID']; ?>">
+                                                    <input type="hidden" name="classID" value="<?php echo $class['classID']; ?>">
                                                     <button type="submit" name="deleteTrainingClass" class="btn btn-danger">Delete training class</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <?php
                         }
                     } else {

@@ -7,7 +7,7 @@ return [
             'host' => 'localhost',
             'user' => 'root',
             'pass' => '',
-            'dbname' => 'journaldb',
+            'dbname' => 'technique_db',
         ],
     ],
 ];

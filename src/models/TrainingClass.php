@@ -64,13 +64,18 @@ class TrainingClass
         return [];
     }
 
-    public function getTrainingClasses()
+    public function getTrainingClasses($userID)
     {
-        $stmt = $this->db->prepare("SELECT * FROM Class");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $userID = $_SESSION['userID'];
 
+        $query = "SELECT * FROM Class WHERE userID = :userID";
+        $statement = $this->db->prepare($query);
 
+        // Bind the userID to the placeholder
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function deleteTrainingClass()

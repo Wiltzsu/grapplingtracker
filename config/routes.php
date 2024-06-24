@@ -14,7 +14,13 @@ return function (RouteCollector $router) {
     $router->get('/viewitems', function () {
         require_once __DIR__ . '/../src/controllers/TrainingClassController.php';
         $controller = new TrainingClassController();
-        $controller->getTrainingClasses();
+        // userID stored in session
+        if (isset($_SESSION['userID'])) {
+            $userID = $_SESSION['userID'];
+            $controller->getTrainingClasses($userID);
+        } else {
+            echo "User not logged in.";
+        }
     });
 
     $router->get('/profile', function () {
