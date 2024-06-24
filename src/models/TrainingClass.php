@@ -1,17 +1,17 @@
 <?php
 class TrainingClass
 {
-    private $_db;
-    private $_userID;
-    private $_instructor;
-    private $_location;
-    private $_duration;
-    private $_classDate;
-    private $_classDescription;
+    private $db;
+    private $userID;
+    private $instructor;
+    private $location;
+    private $duration;
+    private $classDate;
+    private $classDescription;
 
-    public function __construct($db)
+    public function __construct()
     {
-        $this->_db = $db;
+        $this->db = Database::connect();
     }
 
     public function addTrainingClass(
@@ -22,12 +22,12 @@ class TrainingClass
         $classDate,
         $classDescription)
     {
-        $this->_userID = $userID;
-        $this->_instructor = $instructor;
-        $this->_location = $location;
-        $this->_duration = $duration;
-        $this->_classDate = $classDate;
-        $this->_classDescription = $classDescription;
+        $this->userID = $userID;
+        $this->instructor = $instructor;
+        $this->location = $location;
+        $this->duration = $duration;
+        $this->classDate = $classDate;
+        $this->classDescription = $classDescription;
 
         $query = "INSERT INTO Class (
             userID, instructor, location, classDuration, classDate, classDescription
@@ -35,50 +35,42 @@ class TrainingClass
             :userID, :instructor, :location, :classDuration, :classDate, :classDescription
         )";
 
-        $statement = $this->_db->prepare($query);
+        $statement = $this->db->prepare($query);
         $statement->bindParam(
             ":userID",
-            $this->_userID, PDO::PARAM_INT
+            $this->userID, PDO::PARAM_INT
         );
         $statement->bindParam(
             ":instructor",
-            $this->_instructor, PDO::PARAM_STR
+            $this->instructor, PDO::PARAM_STR
         );
         $statement->bindParam(
             ":location",
-            $this->_location, PDO::PARAM_STR
+            $this->location, PDO::PARAM_STR
         );
         $statement->bindParam(
             ":classDuration",
-            $this->_duration, PDO::PARAM_INT
+            $this->duration, PDO::PARAM_INT
         );
         $statement->bindParam(
             ":classDate",
-            $this->_classDate, PDO::PARAM_STR
+            $this->classDate, PDO::PARAM_STR
         );
         $statement->bindParam(
             ":classDescription",
-            $this->_classDescription, PDO::PARAM_STR
+            $this->classDescription, PDO::PARAM_STR
         );
         $statement->execute();
         return [];
     }
 
-    public function readTrainingClasses($userID)
+    public function getTrainingClasses()
     {
-        $userID = $_SESSION['userID'];
+        $stmt = $this->db->prepare("SELECT * FROM Class");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $query = "SELECT * FROM Class WHERE userID = :userID";
-        $statement = $this->_db->prepare($query);
 
-        // Bind the userID to the placeholder
-        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
-
-        $statement->execute();
-
-        $class_array = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        return $class_array;
     }
 
     public function deleteTrainingClass()
@@ -90,7 +82,7 @@ class TrainingClass
 
                 $query = "DELETE FROM Class WHERE classID=:classID";
 
-                $delete = $this->_db->prepare($query);
+                $delete = $this->db->prepare($query);
 
                 $delete->bindValue(':classID', $classID, PDO::PARAM_INT);
 
@@ -109,7 +101,7 @@ class TrainingClass
                   FROM Class
                   WHERE userID = :userID";
 
-        $statement = $this->_db->prepare($query);
+        $statement = $this->db->prepare($query);
         $statement->bindParam(':userID', $userID,PDO::PARAM_INT);
 
         $statement->execute();
@@ -128,7 +120,7 @@ class TrainingClass
                   GROUP BY MONTH(classDate)
                   ORDER BY MONTH(classDate)";
 
-        $statement = $this->_db->prepare($query);
+        $statement = $this->db->prepare($query);
         $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

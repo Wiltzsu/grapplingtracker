@@ -1,6 +1,4 @@
 <?php
-// Start the session
-session_start();
 
 if (!isset($_SESSION['username'])) {
     header("Location: login");
@@ -8,16 +6,6 @@ if (!isset($_SESSION['username'])) {
 }
 
 $greeting1 = $_SESSION['username'] ?? 'No user found';
-require_once __DIR__ . '/../../src/controllers/BeltLevelController.php';
-require_once __DIR__ . '/../../src/models/AddJournalOptions.php';
-require_once __DIR__ . '/../../src/controllers/AddJournalController.php';
-require_once __DIR__ . '/../../src/controllers/ReadController.php';
-require_once __DIR__ . '/../../config/Database.php';
-require_once __DIR__ . '/../../src/models/TrainingClass.php';
-require_once __DIR__ . '/../../src/models/Technique.php';
-require_once __DIR__ . '/../../src/controllers/AddNewController.php';
-require_once __DIR__ . '/../../config/Database.php';
-require_once __DIR__ . '/../../src/models/AddNewOptions.php';
 
 ?>
 <!DOCTYPE html>

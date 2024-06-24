@@ -1,37 +1,3 @@
-<?php
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
-error_reporting(E_ALL);
-require_once '/opt/lampp/htdocs/technique-db-mvc/config/Database.php';
-
-require_once '/opt/lampp/htdocs/technique-db-mvc/controller/UserRegistration.php';
-// Create class for new user registering
-
-
-$error_message = ''; // Initiate an empty error message variable
-
-// Usage of the userRegistration class
-
-// Require database connection file
-$_db = Database::connect();
-// Create a new register object that takes the database connection as a parameter
-$userRegistration = new UserRegistration($_db);
-
-// If submit button is pressed, use the object to run the registerUser method 
-if (isset($_POST['submit'])) {
-    try {
-        $userRegistration->registerUser($_POST['username'], $_POST['email'], $_POST['password']);
-        $_SESSION['username'] = $_POST['username']; // Consider setting this only after successful registration.
-        header("Location: view/login.php"); // This should only happen if no exception was thrown.
-        exit();
-    } catch (Exception $e) {
-        // Log the error
-        error_log($e->getMessage());
-        // Render an error message to the user
-        $error_message = $e->getMessage();
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

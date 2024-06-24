@@ -12,7 +12,9 @@ return function (RouteCollector $router) {
     });
 
     $router->get('/viewitems', function () {
-        require __DIR__ . '/../resources/views/view_items.php';
+        require_once __DIR__ . '/../src/controllers/TrainingClassController.php';
+        $controller = new TrainingClassController();
+        $controller->getTrainingClasses();
     });
 
     $router->get('/profile', function () {
@@ -29,10 +31,6 @@ return function (RouteCollector $router) {
 
     $router->get('/login', function () {
         require __DIR__ . '/../resources/views/login.php';
-    });
-       // POST request to handle the login form submission
-       $router->post('/login', function () {
-        require __DIR__ . '/../src/controllers/UserController2.php';
     });
 
     $router->get('/logout', function () {

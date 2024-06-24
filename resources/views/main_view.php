@@ -1,12 +1,5 @@
 <?php 
-session_start();
-require_once __DIR__ . '/../../src/controllers/BeltLevelController.php';
-require_once __DIR__ . '/../../src/models/AddJournalOptions.php';
-require_once __DIR__ . '/../../src/controllers/AddJournalController.php';
-require_once __DIR__ . '/../../src/controllers/ReadController.php';
-require_once __DIR__ . '/../../config/Database.php';
-require_once __DIR__ . '/../../src/models/TrainingClass.php';
-require_once __DIR__ . '/../../src/models/Technique.php';
+
 
 if (!isset($_SESSION['username'])) {
     header("Location: login");
@@ -15,17 +8,6 @@ if (!isset($_SESSION['username'])) {
 
 $greeting1 = $_SESSION['username'] ?? 'No user found';
 
-$beltController = new BeltLevelController();
-$beltTimes = $beltController->getTimeOnEachBelt();
-
-
-$db = Database::connect();
-$techniqueModel = new Technique($db);
-$userID = $_SESSION['userID'];
-
-$totalTechniquesLearnedMonthly = $techniqueModel->countTechniquesMonthly($userID);
-$trainingModel = new TrainingClass($db);
-$totalMatTimeMonthly = $trainingModel->countMatTimeMonthly($userID);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,6 +106,22 @@ $totalMatTimeMonthly = $trainingModel->countMatTimeMonthly($userID);
                 </div>
 
                 <div class="card">
+                    <div class="card-header journalCardStyle" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link journalButton" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Quick note
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+
+                        </div>        
+                    </div>
+                </div>
+
+                <div class="card">
                     <div class="card-header journalCardStyle" id="headingTwo">
                         <h5 class="mb-0">
                             <button class="btn btn-link journalButton" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -189,22 +187,6 @@ $totalMatTimeMonthly = $trainingModel->countMatTimeMonthly($userID);
                             }?>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header journalCardStyle" id="headingThree">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link journalButton" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Quick note
-                            </button>
-                        </h5>
-                    </div>
-
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                        <div class="card-body">
-
-                        </div>        
                     </div>
                 </div>
             </div>
