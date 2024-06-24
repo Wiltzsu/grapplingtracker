@@ -1,8 +1,9 @@
 <?php
 
 use Phroute\Phroute\RouteCollector;
+use App\Controllers\TrainingClassController;
 
-return function (RouteCollector $router) {
+return function (RouteCollector $router, $container) {
     $router->get('/', function () {
         require __DIR__ . '/../resources/views/front_page.php';
     });
@@ -11,12 +12,10 @@ return function (RouteCollector $router) {
         require __DIR__ . '/../resources/views/add_new.php';
     });
 
-    $router->get('/viewitems', function () {
-        require_once __DIR__ . '/../src/controllers/TrainingClassController.php';
-        $controller = new TrainingClassController();
-        // userID stored in session
-        if (isset($_SESSION['userID'])) {
-            $userID = $_SESSION['userID'];
+    $router->get('/viewitems', function () use ($container) {
+        $userID = $_SESSION['userID'] ?? null;
+        if ($userID) {
+            $controller = $container->get(TrainingClassController::class);
             $controller->getTrainingClasses($userID);
         } else {
             echo "User not logged in.";

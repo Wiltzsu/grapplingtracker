@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../../config/Database.php';
-require_once __DIR__ . '/../../src/models/UserLogin.php';
+require_once __DIR__ . '/../../Config/Database.php';
+require_once __DIR__ . '/../../src/Models/UserLogin.php';
 
 // Initialize the database connection
 $db = Database::connect();

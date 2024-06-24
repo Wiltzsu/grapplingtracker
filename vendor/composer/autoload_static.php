@@ -14,10 +14,6 @@ class ComposerStaticInit7d10387670c4033c3b096fd0b5ed86a2
     );
 
     public static $prefixLengthsPsr4 = array (
-        'W' => 
-        array (
-            'William\\TechniqueDbMvc\\' => 23,
-        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -52,13 +48,13 @@ class ComposerStaticInit7d10387670c4033c3b096fd0b5ed86a2
             'Composer\\XdebugHandler\\' => 23,
             'Composer\\Pcre\\' => 14,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'William\\TechniqueDbMvc\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -122,6 +118,10 @@ class ComposerStaticInit7d10387670c4033c3b096fd0b5ed86a2
         'Composer\\Pcre\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/pcre/src',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 

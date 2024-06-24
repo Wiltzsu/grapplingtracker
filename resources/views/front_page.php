@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/../../src/controllers/UserController.php';
-require_once __DIR__ . '/../../config/Database.php';
-require_once __DIR__ . '/../../src/controllers/UserRegController.php';?>
+require_once __DIR__ . '/../../src/Controllers/UserController.php';
+require_once __DIR__ . '/../../Config/Database.php';
+require_once __DIR__ . '/../../src/Controllers/UserRegController.php';?>
 
 <!DOCTYPE html>
 <html lang="en">
