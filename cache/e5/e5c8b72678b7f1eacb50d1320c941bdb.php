@@ -41,6 +41,8 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>Login</title>
+    <link href=\"/technique-db-mvc/public/css/style.css\" rel=\"stylesheet\">
+
     <link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">
     <style>
         body, html {
@@ -56,47 +58,57 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
     </style>
 </head>
 <body>
-    <div class=\"card p-4\">
-        <form method=\"POST\" action=\"/technique-db-mvc/public/login\">
-            <div class=\"form-group";
-        // line 24
-        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 24)) ? (" has-error") : (""));
-        yield "\">
-                <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" value=\"";
-        // line 25
-        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", true, true, false, 25) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", false, false, false, 25)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", false, false, false, 25), "html", null, true)) : (yield ""));
-        yield "\" placeholder=\"Enter username\">
-                ";
-        // line 26
-        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 26)) {
-            // line 27
-            yield "                    <span class=\"help-block\">";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 27), "html", null, true);
-            yield "</span>
-                ";
-        }
-        // line 29
-        yield "            </div>
-            
-            <div class=\"form-group";
-        // line 31
-        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 31)) ? (" has-error") : (""));
-        yield "\">
-                <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" placeholder=\"Enter password\">
-                ";
-        // line 33
-        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 33)) {
-            // line 34
-            yield "                    <span class=\"help-block\">";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 34), "html", null, true);
-            yield "</span>
-                ";
-        }
-        // line 36
-        yield "            </div>
+    <div class=\"centered-container\">
+        <div class=\"register-container\">
+            <div class=\"card p-4\">
+                <h2 class=\"text-center mb-4\">Login</h2>
 
-            <button type=\"submit\" class=\"btn btn-primary btn-block loginbutton\" name=\"submit\">Login</button>
-        </form>
+                <form method=\"POST\" action=\"/technique-db-mvc/public/login\">
+
+                    <div class=\"form-group";
+        // line 31
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 31)) ? (" has-error") : (""));
+        yield "\">
+                        <label for=\"username\">Username</label>
+                        <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" value=\"";
+        // line 33
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", true, true, false, 33) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", false, false, false, 33)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", false, false, false, 33), "html", null, true)) : (yield ""));
+        yield "\" placeholder=\"Enter username\">
+                        ";
+        // line 34
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 34)) {
+            // line 35
+            yield "                            <span class=\"help-block\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 35), "html", null, true);
+            yield "</span>
+                        ";
+        }
+        // line 37
+        yield "                    </div>
+                    
+                    <div class=\"form-group";
+        // line 39
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 39)) ? (" has-error") : (""));
+        yield "\">
+                        <label for=\"password1\">Password</label>
+                        <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" placeholder=\"Enter password\">
+                        ";
+        // line 42
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 42)) {
+            // line 43
+            yield "                            <span class=\"help-block\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 43), "html", null, true);
+            yield "</span>
+                        ";
+        }
+        // line 45
+        yield "                    </div>
+
+                    <button type=\"submit\" class=\"btn btn-primary btn-block\" name=\"submit\">Login</button>
+                    <a href=\"register\"><p>Register</p></a>        
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>
@@ -125,7 +137,7 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
      */
     public function getDebugInfo()
     {
-        return array (  96 => 36,  90 => 34,  88 => 33,  83 => 31,  79 => 29,  73 => 27,  71 => 26,  67 => 25,  63 => 24,  38 => 1,);
+        return array (  105 => 45,  99 => 43,  97 => 42,  91 => 39,  87 => 37,  81 => 35,  79 => 34,  75 => 33,  70 => 31,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -136,6 +148,8 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>Login</title>
+    <link href=\"/technique-db-mvc/public/css/style.css\" rel=\"stylesheet\">
+
     <link href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\" rel=\"stylesheet\">
     <style>
         body, html {
@@ -151,24 +165,34 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
     </style>
 </head>
 <body>
-    <div class=\"card p-4\">
-        <form method=\"POST\" action=\"/technique-db-mvc/public/login\">
-            <div class=\"form-group{{ errors.username ? ' has-error' : '' }}\">
-                <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" value=\"{{ input.username ?? '' }}\" placeholder=\"Enter username\">
-                {% if errors.username %}
-                    <span class=\"help-block\">{{ errors.username }}</span>
-                {% endif %}
-            </div>
-            
-            <div class=\"form-group{{ errors.password ? ' has-error' : '' }}\">
-                <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" placeholder=\"Enter password\">
-                {% if errors.password %}
-                    <span class=\"help-block\">{{ errors.password }}</span>
-                {% endif %}
-            </div>
+    <div class=\"centered-container\">
+        <div class=\"register-container\">
+            <div class=\"card p-4\">
+                <h2 class=\"text-center mb-4\">Login</h2>
 
-            <button type=\"submit\" class=\"btn btn-primary btn-block loginbutton\" name=\"submit\">Login</button>
-        </form>
+                <form method=\"POST\" action=\"/technique-db-mvc/public/login\">
+
+                    <div class=\"form-group{{ errors.username ? ' has-error' : '' }}\">
+                        <label for=\"username\">Username</label>
+                        <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" value=\"{{ input.username ?? '' }}\" placeholder=\"Enter username\">
+                        {% if errors.username %}
+                            <span class=\"help-block\">{{ errors.username }}</span>
+                        {% endif %}
+                    </div>
+                    
+                    <div class=\"form-group{{ errors.password ? ' has-error' : '' }}\">
+                        <label for=\"password1\">Password</label>
+                        <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" placeholder=\"Enter password\">
+                        {% if errors.password %}
+                            <span class=\"help-block\">{{ errors.password }}</span>
+                        {% endif %}
+                    </div>
+
+                    <button type=\"submit\" class=\"btn btn-primary btn-block\" name=\"submit\">Login</button>
+                    <a href=\"register\"><p>Register</p></a>        
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>

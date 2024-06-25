@@ -31,8 +31,22 @@ return function (RouteCollector $router, $container) {
         require __DIR__ . '/../resources/views/journal.php';
     });
 
-    $router->get('/register', function () {
-        require __DIR__ . '/../resources/views/register2.php';
+    $router->get('/register', function () use ($container) {
+        $controller = $container->get(UserController::class);
+        $controller->showRegisterForm();
+    });
+
+    $router->post('/register', function () use ($container) {
+        $username = $_POST['username'] ?? null;
+        $email = $_POST['email'] ?? null;
+        $password = $_POST['password'] ?? null;
+
+        $controller = $container->get(UserController::class);
+        $errors = $controller->register($username, $email, $password);
+
+        if (!empty($errors)) {
+            $controller->showRegisterForm($errors, $_POST);
+        }
     });
 
     $router->get('/login', function () use ($container) {
