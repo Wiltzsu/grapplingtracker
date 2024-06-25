@@ -1,17 +1,19 @@
 <?php
-
 namespace App\Models;
 
 use PDO;
 
-class TrainingClass {
+class TrainingClass
+{
     private $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(PDO $db)
+    {
         $this->db = $db;
     }
 
-    public function getTrainingClasses($userID) {
+    public function getTrainingClasses($userID)
+    {
         $stmt = $this->db->prepare("SELECT * FROM Class WHERE userID = :userID");
         $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
         $stmt->execute();

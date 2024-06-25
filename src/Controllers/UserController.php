@@ -1,26 +1,27 @@
 <?php
 
-require_once __DIR__ . '/../../Config/Database.php';
-require_once __DIR__ . '/../../src/Models/UserLogin.php';
+namespace App\Controllers;
 
-// Initialize the database connection
-$db = Database::connect();
+use App\Models\User;
 
-// Instantiate the class
-$controller = new UserLogin($db);
+class UserController
+{
+    private $userModel;
 
-// Initialize empty arrays to store errors and input data
-$errors = ['username' => '', 'password' => ''];
-$input = ['username' => '', 'password' => ''];
+    public function __construct(User $userModel)
+    {
+        $this->userModel = $userModel;
+    }
 
+    public function login($username, $password)
+    {
+        $errors = $this->userModel->authenticate($username, $password);
+        if (!empty($errors)) {
+            return $errors; // Return validation errors
+        }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $input['username'] = $_POST['username'] ?? '';
-    $input['password'] = $_POST['password'] ?? '';
-
-    $errors = $controller->authenticate($input['username'], $input['password']);
-    if (!array_filter($errors)) {
-        header("Location: mainview");
+        // Login successful, redirect to the main view
+        header('Location: mainview');
         exit();
     }
 }

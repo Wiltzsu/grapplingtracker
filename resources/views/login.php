@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/../../src/Controllers/UserController.php';
-require_once __DIR__ . '/../../Config/Database.php';
-require_once __DIR__ . '/../../src/Controllers/UserRegController.php';?>
+//require_once __DIR__ . '/../../src/Controllers/UserController.php';
+//require_once __DIR__ . '/../../Config/Database.php';
+//require_once __DIR__ . '/../../src/Controllers/UserRegController.php';?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,7 @@ require_once __DIR__ . '/../../src/Controllers/UserRegController.php';?>
 </head>
 <body>
     <div class="card p-4">
-        <form method="POST" action="">
+        <form method="POST" action="/technique-db-mvc/public/login">
             <div class="form-group<?= !empty($errors['username']) ? ' has-error' : '' ?>">
                 <input type="text" class="form-control" id="username" name="username" value="<?= htmlspecialchars($input['username'] ?? '') ?>" placeholder="Enter username">
                 <?php if (!empty($errors['username'])): ?>
