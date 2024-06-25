@@ -1,8 +1,8 @@
 <?php
 
 use Phroute\Phroute\RouteCollector;
-use App\Controllers\TrainingClassController;
 use App\Controllers\UserController;
+use App\Controllers\TrainingClassController;
 
 return function (RouteCollector $router, $container) {
     $router->get('/', function () {
@@ -36,7 +36,8 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->get('/login', function () use ($container) {
-        require __DIR__ . '/../resources/views/login.php';
+        $controller = $container->get(UserController::class);
+        $controller->showLoginForm();
     });
 
     $router->post('/login', function () use ($container) {
@@ -46,13 +47,9 @@ return function (RouteCollector $router, $container) {
         $controller = $container->get(UserController::class);
         $errors = $controller->login($username, $password);
 
-        if (empty($errors)) {
-            header('Location: /mvc-testing/mainview');
-            exit();
+        if (!empty($errors)) {
+            $controller->showLoginForm($errors, $_POST);
         }
-
-        // Show login page again with errors
-        require __DIR__ . '/../resources/views/login.php';
     });
 
     $router->get('/logout', function () {

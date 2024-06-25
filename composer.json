@@ -18,6 +18,7 @@
     },
     "require": {
         "phroute/phroute": "^2.2",
-        "php-di/php-di": "^7.0"
+        "php-di/php-di": "^7.0",
+        "twig/twig": "^3.10"
     }
 }
