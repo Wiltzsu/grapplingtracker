@@ -11,9 +11,11 @@ use Psr\Container\ContainerInterface;
 use App\Models\User;
 use App\Models\TrainingClass;
 use App\Models\Position;
+use App\Models\Category;
 use App\Controllers\UserController;
 use App\Controllers\TrainingClassController;
 use App\Controllers\PositionController;
+use App\Controllers\CategoryController;
 use Twig\Environment;
 
 /**
@@ -111,6 +113,28 @@ return [
      */
     PositionController::class => DI\create()->constructor(
         DI\get(Position::class),
+        DI\get(Environment::class)
+    ),
+
+    /**
+     * Defines how the 'Category' model should be instantiated.
+     * 
+     * Tells the DI container to create a new 'Category' instance,
+     * injecting the PDO instance to its constructor.
+     */
+    Category::class => DI\create()->constructor(
+        DI\get(PDO::class)
+    ),
+
+    /**
+     * Defines how the 'CategoryController' should be instantiated.
+     * 
+     * Tells the DI container to create a new 'CategoryController'
+     * instance, injecting both the 'Category' instance and the Twig
+     * 'Environment' instance to its constructor.
+     */
+    CategoryController::class => DI\create()->constructor(
+        DI\get(Category::class),
         DI\get(Environment::class)
     ),
 ];

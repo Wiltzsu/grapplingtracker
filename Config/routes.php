@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\CategoryController;
 use Phroute\Phroute\RouteCollector;
 use App\Controllers\UserController;
 use App\Controllers\TrainingClassController;
@@ -24,14 +25,18 @@ return function (RouteCollector $router, $container) {
         $trainingClassController = $container->get(TrainingClassController::class);
         $classes = $trainingClassController->getTrainingClasses($userID);
         
-        $positionsController = $container->get(PositionController::class);
-        $positions = $positionsController->getPositions();
+        $positionController = $container->get(PositionController::class);
+        $positions = $positionController->getPositions();
+
+        $categoryController = $container->get(CategoryController::class);
+        $categories = $categoryController->getCategories();
     
         $twig = $container->get('Twig\Environment');
         $roleID = $_SESSION['roleID'] ?? null;
         echo $twig->render('view_items.twig', [
             'classes' => $classes,
             'positions' => $positions,
+            'categories' => $categories,
             'roleID' => $roleID
         ]);
     });
