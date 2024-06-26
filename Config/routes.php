@@ -3,6 +3,7 @@
 use Phroute\Phroute\RouteCollector;
 use App\Controllers\UserController;
 use App\Controllers\TrainingClassController;
+use App\Controllers\PositionController;
 
 return function (RouteCollector $router, $container) {
     $router->get('/', function () {
@@ -15,12 +16,24 @@ return function (RouteCollector $router, $container) {
 
     $router->get('/viewitems', function () use ($container) {
         $userID = $_SESSION['userID'] ?? null;
-        if ($userID) {
-            $controller = $container->get(TrainingClassController::class);
-            $controller->getTrainingClasses($userID);
-        } else {
-            echo "User not logged in.";
+        if (!$userID) {
+            header('Location: login');
+            exit();
         }
+    
+        $trainingClassController = $container->get(TrainingClassController::class);
+        $classes = $trainingClassController->getTrainingClasses($userID);
+        
+        $positionsController = $container->get(PositionController::class);
+        $positions = $positionsController->getPositions();
+    
+        $twig = $container->get('Twig\Environment');
+        $roleID = $_SESSION['roleID'] ?? null;
+        echo $twig->render('view_items.twig', [
+            'classes' => $classes,
+            'positions' => $positions,
+            'roleID' => $roleID
+        ]);
     });
 
     $router->get('/profile', function () {

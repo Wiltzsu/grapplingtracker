@@ -10,8 +10,10 @@
 use Psr\Container\ContainerInterface;
 use App\Models\User;
 use App\Models\TrainingClass;
+use App\Models\Position;
 use App\Controllers\UserController;
 use App\Controllers\TrainingClassController;
+use App\Controllers\PositionController;
 use Twig\Environment;
 
 /**
@@ -64,8 +66,10 @@ return [
      * Tells the DI container to create a new 'TrainingClassController instance,
      * injecting 'TrainingClass' instance into its constructor.
      */
-    TrainingClassController::class => 
-    DI\create()->constructor(DI\get(TrainingClass::class)),
+    TrainingClassController::class => DI\create()->constructor(
+        DI\get(TrainingClass::class),
+        DI\get(Environment::class)
+    ),
 
     /**
      * Defines how the 'User' model should be instantiated.
@@ -73,7 +77,8 @@ return [
      * Tells the DI container to create a new 'User' instance, injecting the PDO
      * instance to its constructor.
      */
-    User::class => DI\create()->constructor(DI\get(PDO::class)),
+    User::class => DI\create()->constructor(
+        DI\get(PDO::class)),
 
     /**
      * Defines how the 'UserController' should be instantiated.
@@ -84,6 +89,28 @@ return [
      */
     UserController::class => DI\create()->constructor(
         DI\get(User::class), 
+        DI\get(Environment::class)
+    ),
+
+    /**
+     * Defines how the 'Position' model should be instantiated.
+     * 
+     * Tells the DI container to create a new 'Position' instance, injecting
+     * the PDO instance to its constructor.
+     */
+    Position::class => DI\create()->constructor(
+        DI\get(PDO::class)
+    ),
+
+    /**
+     * Defines how the 'PositionController' should be instantiated.
+     * 
+     * Tells the DI container to create a new 'PositionController' instance,
+     * injecting both the 'Position' instance and the Twig 'Environment'
+     * instance to its constructor.
+     */
+    PositionController::class => DI\create()->constructor(
+        DI\get(Position::class),
         DI\get(Environment::class)
     ),
 ];

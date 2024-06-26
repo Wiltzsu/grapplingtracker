@@ -1,8 +1,3 @@
-<?php
-require_once __DIR__ . '/../../src/Controllers/UserController.php';
-require_once __DIR__ . '/../../Config/Database.php';
-require_once __DIR__ . '/../../src/Controllers/UserRegController.php';?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

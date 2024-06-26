@@ -15,8 +15,7 @@ class TrainingClassController
 
     public function getTrainingClasses($userID)
     {
-        $getClasses = $this->trainingClassModel->getTrainingClasses($userID);
-        require __DIR__ . '/../../resources/views/view_items.php';
+        return $this->trainingClassModel->getTrainingClasses($userID);
     }
 }
 ?>
