@@ -13,7 +13,7 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->get('/addnew', function () {
-        require __DIR__ . '/../resources/views/add_new.php';
+        require __DIR__ . '/../resources/views/add_new.twig';
     });
 
     $router->get('/viewitems', function () use ($container) {

@@ -41,7 +41,6 @@
           </li>
         </ul>
         <span class="navbar-text">
-            {{ greeting1 }}
             {% if username %}
                 <a href="logout" class="btn btn-danger btn1">Logout</a>
             {% endif %}
@@ -331,4 +330,4 @@
     </div>
 </div>
 
-<?php require_once 'footer.php'; ?>
+{% include 'footer.twig' %}
