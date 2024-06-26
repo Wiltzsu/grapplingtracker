@@ -12,10 +12,12 @@ use App\Models\User;
 use App\Models\TrainingClass;
 use App\Models\Position;
 use App\Models\Category;
+use App\Models\Technique;
 use App\Controllers\UserController;
 use App\Controllers\TrainingClassController;
 use App\Controllers\PositionController;
 use App\Controllers\CategoryController;
+use App\Controllers\TechniqueController;
 use Twig\Environment;
 
 /**
@@ -135,6 +137,26 @@ return [
      */
     CategoryController::class => DI\create()->constructor(
         DI\get(Category::class),
+        DI\get(Environment::class)
+    ),
+
+    /**
+     * Defines how the 'Technique' model should be instantiated.
+     * 
+     * Tells the DI container to create a new 'Technique' instance,
+     * injecting the PDO instance to its constructor.
+     */
+    Technique::class => DI\create()->constructor(
+        DI\get(PDO::class)
+    ),
+
+    /**
+     * Tells the DI container to create a new 'TechniqueController',
+     * instance, injecting both the 'Technique' instance and the
+     * Twig 'Environment' instance to its constructor.
+     */
+    TechniqueController::class => DI\create()->constructor(
+        DI\get(Technique::class),
         DI\get(Environment::class)
     ),
 ];

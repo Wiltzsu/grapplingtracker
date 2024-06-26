@@ -5,6 +5,7 @@ use Phroute\Phroute\RouteCollector;
 use App\Controllers\UserController;
 use App\Controllers\TrainingClassController;
 use App\Controllers\PositionController;
+use App\Controllers\TechniqueController;
 
 return function (RouteCollector $router, $container) {
     $router->get('/', function () {
@@ -31,13 +32,19 @@ return function (RouteCollector $router, $container) {
         $categoryController = $container->get(CategoryController::class);
         $categories = $categoryController->getCategories();
     
+        $techniqueController = $container->get(TechniqueController::class);
+        $techniques = $techniqueController->getTechniques($userID);
+
         $twig = $container->get('Twig\Environment');
         $roleID = $_SESSION['roleID'] ?? null;
         echo $twig->render('view_items.twig', [
             'classes' => $classes,
             'positions' => $positions,
             'categories' => $categories,
-            'roleID' => $roleID
+            'techniques' => $techniques,
+            'roleID' => $roleID,
+
+            'username' => $_SESSION['username'] ?? null
         ]);
     });
 
