@@ -82,6 +82,12 @@ html, body {
     justify-content: center;
 }
 
+/* Error message color */
+.error-message {
+    color: red;  /* Set the color of the error messages to red */
+    font-weight: bold; /* Optional: makes the text bold */
+}
+
 /* Optimal legibility for smaller devices */
 @media (max-width: 768px) {
     .hero-section h1 {
@@ -107,6 +113,7 @@ html, body {
 /* Centered container for the main content */
 .centered-container {
     max-width: 1000px; /* Max width for the container */
+    min-width: 400px; /* Min width for the container */
     margin: 40px auto; /* Centering the container */
     padding: 2px;
     margin-top: 0;
@@ -115,6 +122,8 @@ html, body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for 3D effect */
     border-radius: 0px; /* Rounded corners */
 }
+
+
 /* Card styles */
 .card {
     border: none; /* Remove default bordAer */

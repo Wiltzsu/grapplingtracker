@@ -12,8 +12,101 @@ return function (RouteCollector $router, $container) {
         require __DIR__ . '/../resources/views/front_page.php';
     });
 
-    $router->get('/addnew', function () {
-        require __DIR__ . '/../resources/views/add_new.twig';
+    $router->get('/register', function () use ($container) {
+        $twig = $container->get('Twig\Environment');
+        echo $twig->render('register.twig');
+    });
+
+    $router->post('/register', function () use ($container) {
+        $username = $_POST['username'] ?? null;
+        $email = $_POST['email'] ?? null;
+        $password = $_POST['password'] ?? null;
+        $password_confirm = $_POST['password_confirm'] ?? null;
+
+        $controller = $container->get(UserController::class);
+        $result = $controller->register($username, $email, $password, $password_confirm);
+
+        if ($result['success']) {
+            header('Location: login');
+            exit();
+        } else {
+            $twig = $container->get('Twig\Environment');
+            echo $twig->render('register.twig', [
+                'errors' => $result['errors'],
+                'input' => $_POST
+            ]);
+        }
+    });
+
+    $router->get('/login', function () use ($container) {
+        $twig = $container->get('Twig\Environment');
+        echo $twig->render('login.twig');
+    });
+    
+    $router->post('/login', function () use ($container) {
+        $username = $_POST['username'] ?? null;
+        $password = $_POST['password'] ?? null;
+    
+        $controller = $container->get(UserController::class);
+        $result = $controller->login($username, $password);
+    
+        if ($result['success']) {
+            header('Location: mainview');
+            exit();
+        } else {
+            $twig = $container->get('Twig\Environment');
+            echo $twig->render('login.twig', [
+                'errors' => $result['errors'],
+                'input' => $_POST
+            ]);
+        }
+    });
+
+    $router->get('/logout', function () {
+        require __DIR__ . '/../resources/views/logout.php';
+    });
+
+    // Route to display the form
+    $router->get('/addnew', function () use ($container) {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        $twig = $container->get('Twig\Environment');
+        $roleID = $_SESSION['roleID'] ?? null;
+        echo $twig->render('add_new.twig', [
+            'userID' => $userID,
+            'roleID' => $roleID,
+
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    });
+
+    $router->post('/addnew', function () use ($container) {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        // Retrieve posted form data
+        $instructor = $_POST['instructor'] ?? null;
+        $location = $_POST['location'] ?? null;
+        $duration = $_POST['duration'] ?? null;
+        $classDate = $_POST['classDate'] ?? null;
+        $classDescription = $_POST['classDescription'] ?? null;
+
+        $trainingClassController = $container->get(TrainingClassController::class);
+        $addTrainingClass = $trainingClassController->postTrainingClass($userID, $instructor, $location, $duration, $classDate, $classDescription);
+
+        $twig = $container->get('Twig\Environment');
+        $userID = $_SESSION['userID'] ?? null;
+        echo $twig->render('add_new.twig', [
+            'addTrainingClass' => $addTrainingClass,
+            'userID' => $userID
+        ]);
     });
 
     $router->get('/viewitems', function () use ($container) {
@@ -56,44 +149,7 @@ return function (RouteCollector $router, $container) {
         require __DIR__ . '/../resources/views/journal.php';
     });
 
-    $router->get('/register', function () use ($container) {
-        $controller = $container->get(UserController::class);
-        $controller->showRegisterForm();
-    });
 
-    $router->post('/register', function () use ($container) {
-        $username = $_POST['username'] ?? null;
-        $email = $_POST['email'] ?? null;
-        $password = $_POST['password'] ?? null;
-
-        $controller = $container->get(UserController::class);
-        $errors = $controller->register($username, $email, $password);
-
-        if (!empty($errors)) {
-            $controller->showRegisterForm($errors, $_POST);
-        }
-    });
-
-    $router->get('/login', function () use ($container) {
-        $controller = $container->get(UserController::class);
-        $controller->showLoginForm();
-    });
-
-    $router->post('/login', function () use ($container) {
-        $username = $_POST['username'] ?? null;
-        $password = $_POST['password'] ?? null;
-
-        $controller = $container->get(UserController::class);
-        $errors = $controller->login($username, $password);
-
-        if (!empty($errors)) {
-            $controller->showLoginForm($errors, $_POST);
-        }
-    });
-
-    $router->get('/logout', function () {
-        require __DIR__ . '/../resources/views/logout.php';
-    });
 
     $router->get('/mainview', function () {
         require __DIR__ . '/../resources/views/main_view.php';

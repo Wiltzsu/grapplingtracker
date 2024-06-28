@@ -80,16 +80,12 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
         <span class=\"navbar-text\">
             ";
         // line 44
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["greeting1"] ?? null), "html", null, true);
-        yield "
-            ";
-        // line 45
         if (($context["username"] ?? null)) {
-            // line 46
+            // line 45
             yield "                <a href=\"logout\" class=\"btn btn-danger btn1\">Logout</a>
             ";
         }
-        // line 48
+        // line 47
         yield "        </span>
     </div>
 </nav>
@@ -125,39 +121,39 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
                     </thead>
                     <tbody>
                     ";
-        // line 82
+        // line 81
         if ( !Twig\Extension\CoreExtension::testEmpty(($context["techniques"] ?? null))) {
-            // line 83
+            // line 82
             yield "                        ";
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(($context["techniques"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["technique"]) {
-                // line 84
+                // line 83
                 yield "                                <tr>
                                     <td>";
+                // line 84
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueName", [], "any", false, false, false, 84), "html", null, true);
+                yield "</td>
+                                    <td>";
                 // line 85
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueName", [], "any", false, false, false, 85), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueDescription", [], "any", false, false, false, 85), "html", null, true);
                 yield "</td>
                                     <td>";
                 // line 86
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueDescription", [], "any", false, false, false, 86), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "categoryName", [], "any", false, false, false, 86), "html", null, true);
                 yield "</td>
                                     <td>";
                 // line 87
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "categoryName", [], "any", false, false, false, 87), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "positionName", [], "any", false, false, false, 87), "html", null, true);
                 yield "</td>
                                     <td>";
                 // line 88
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "positionName", [], "any", false, false, false, 88), "html", null, true);
-                yield "</td>
-                                    <td>";
-                // line 89
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "difficulty", [], "any", false, false, false, 89), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "difficulty", [], "any", false, false, false, 88), "html", null, true);
                 yield "</td>
                                     <td>
                                         <button type=\"button\" class=\"btn\" data-toggle=\"modal\" data-target=\"#modal";
-                // line 91
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueID", [], "any", false, false, false, 91), "html", null, true);
+                // line 90
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueID", [], "any", false, false, false, 90), "html", null, true);
                 yield "\">
                                             <img src=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg\" alt=\"Delete\">
                                         </button>
@@ -166,8 +162,8 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
 
                                 <!-- Modal for deletion confirmation -->
                                 <div class=\"modal fade\" id=\"modal";
-                // line 98
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueID", [], "any", false, false, false, 98), "html", null, true);
+                // line 97
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueID", [], "any", false, false, false, 97), "html", null, true);
                 yield "\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
                                     <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
                                         <div class=\"modal-content\">
@@ -179,8 +175,8 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
                                             </div>
                                             <div class=\"modal-body\">
                                                 Are you sure you want to delete the technique \"";
-                // line 108
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueName", [], "any", false, false, false, 108), "html", null, true);
+                // line 107
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueName", [], "any", false, false, false, 107), "html", null, true);
                 yield "\"?
                                             </div>
                                             <div class=\"modal-footer\">
@@ -188,8 +184,8 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
                                                 <!-- Form for deletion -->
                                                 <form method=\"POST\" action=\"\">
                                                     <input type=\"hidden\" name=\"techniqueID\" value=\"";
-                // line 114
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueID", [], "any", false, false, false, 114), "html", null, true);
+                // line 113
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["technique"], "techniqueID", [], "any", false, false, false, 113), "html", null, true);
                 yield "\">
                                                     <button type=\"submit\" name=\"deleteTechnique\" class=\"btn btn-danger\">Delete technique</button>
                                                 </form>
@@ -202,14 +198,14 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['technique'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 122
+            // line 121
             yield "                    ";
         } else {
-            // line 123
+            // line 122
             yield "                        <p>No techniques found.</p>
                     ";
         }
-        // line 124
+        // line 123
         yield "  
                     </tbody>
                 </table>
@@ -235,45 +231,45 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
                     </thead>
                     <tbody>
                     ";
-        // line 148
+        // line 147
         if ( !Twig\Extension\CoreExtension::testEmpty(($context["categories"] ?? null))) {
-            // line 149
+            // line 148
             yield "                        ";
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(($context["categories"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
-                // line 150
+                // line 149
                 yield "                                <tr>
                                     <td>";
-                // line 151
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryName", [], "any", false, false, false, 151), "html", null, true);
+                // line 150
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryName", [], "any", false, false, false, 150), "html", null, true);
                 yield "</td>
                                     <td>";
-                // line 152
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryDescription", [], "any", false, false, false, 152), "html", null, true);
+                // line 151
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryDescription", [], "any", false, false, false, 151), "html", null, true);
                 yield "</td>
                                     <!-- Only show delete button if user is admin -->
                                     ";
-                // line 154
+                // line 153
                 if ((($context["roleID"] ?? null) == 1)) {
                     yield "                                   
                                     <td>
                                         <button type=\"button\" class=\"btn\" data-toggle=\"modal\" data-target=\"#modal";
-                    // line 156
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryID", [], "any", false, false, false, 156), "html", null, true);
+                    // line 155
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryID", [], "any", false, false, false, 155), "html", null, true);
                     yield "\">
                                             <img src=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg\" alt=\"Delete\">
                                         </button>
                                     </td>
                                     ";
                 }
-                // line 161
+                // line 160
                 yield "                                </tr>
 
                                 <!-- Modal for deletion confirmation -->
                                 <div class=\"modal fade\" id=\"modal";
-                // line 164
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryID", [], "any", false, false, false, 164), "html", null, true);
+                // line 163
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryID", [], "any", false, false, false, 163), "html", null, true);
                 yield "\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
                                     <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
                                         <div class=\"modal-content\">
@@ -285,8 +281,8 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
                                             </div>
                                             <div class=\"modal-body\">
                                                 Are you sure you want to delete the category \"";
-                // line 174
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryName", [], "any", false, false, false, 174), "html", null, true);
+                // line 173
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryName", [], "any", false, false, false, 173), "html", null, true);
                 yield "\"?
                                             </div>
                                             <div class=\"modal-footer\">
@@ -294,8 +290,8 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
                                                 <!-- Form for deletion -->
                                                 <form method=\"POST\" action=\"\">
                                                     <input type=\"hidden\" name=\"categoryID\" value=\"";
-                // line 180
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryID", [], "any", false, false, false, 180), "html", null, true);
+                // line 179
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryID", [], "any", false, false, false, 179), "html", null, true);
                 yield "\">
                                                     <button type=\"submit\" name=\"deleteCategory\" class=\"btn btn-danger\">Delete category</button>
                                                 </form>
@@ -308,14 +304,14 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 188
+            // line 187
             yield "                    ";
         } else {
-            // line 189
+            // line 188
             yield "                        <p>No positions found.</p>
                     ";
         }
-        // line 190
+        // line 189
         yield "  
                     </tbody>
                 </table>
@@ -341,47 +337,47 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
                     </thead>
                     <tbody>
                     ";
-        // line 214
+        // line 213
         if ( !Twig\Extension\CoreExtension::testEmpty(($context["positions"] ?? null))) {
-            // line 215
+            // line 214
             yield "                        ";
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(($context["positions"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["position"]) {
-                // line 216
+                // line 215
                 yield "                                <tr>
                                     <td>";
-                // line 217
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionName", [], "any", false, false, false, 217), "html", null, true);
+                // line 216
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionName", [], "any", false, false, false, 216), "html", null, true);
                 yield "</td>
                                     <td>";
-                // line 218
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionDescription", [], "any", false, false, false, 218), "html", null, true);
+                // line 217
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionDescription", [], "any", false, false, false, 217), "html", null, true);
                 yield "</td>
 
                                     <!-- Only show delete button if user is admin -->
                                     ";
-                // line 221
+                // line 220
                 if ((($context["roleID"] ?? null) == 1)) {
-                    // line 222
+                    // line 221
                     yield "                                    <td>
                                         <button type=\"button\" class=\"btn\" data-toggle=\"modal\" data-target=\"#modal";
-                    // line 223
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 223), "html", null, true);
+                    // line 222
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 222), "html", null, true);
                     yield "\">
                                             <img src=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg\" alt=\"Delete\">
                                         </button>
                                     </td>
                                     ";
                 }
-                // line 228
+                // line 227
                 yield "
                                 </tr>
 
                                 <!-- Modal for deletion confirmation -->
                                 <div class=\"modal fade\" id=\"modal";
-                // line 232
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 232), "html", null, true);
+                // line 231
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 231), "html", null, true);
                 yield "\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
                                     <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
                                         <div class=\"modal-content\">
@@ -393,8 +389,8 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
                                             </div>
                                             <div class=\"modal-body\">
                                                 Are you sure you want to delete the position \"";
-                // line 242
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionName", [], "any", false, false, false, 242), "html", null, true);
+                // line 241
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionName", [], "any", false, false, false, 241), "html", null, true);
                 yield "\"?
                                             </div>
                                             <div class=\"modal-footer\">
@@ -402,8 +398,8 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
                                                 <!-- Form for deletion -->
                                                 <form method=\"POST\" action=\"\">
                                                     <input type=\"hidden\" name=\"positionID\" value=\"";
-                // line 248
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 248), "html", null, true);
+                // line 247
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 247), "html", null, true);
                 yield "\">
                                                     <button type=\"submit\" name=\"deletePosition\" class=\"btn btn-danger\">Delete position</button>
                                                 </form>
@@ -416,14 +412,14 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['position'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 256
+            // line 255
             yield "                    ";
         } else {
-            // line 257
+            // line 256
             yield "                        <p>No positions found.</p>
                     ";
         }
-        // line 258
+        // line 257
         yield "   
                     </tbody>
                 </table>    
@@ -452,34 +448,34 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
                     </thead>
                     <tbody>
                     ";
-        // line 285
+        // line 284
         if ( !Twig\Extension\CoreExtension::testEmpty(($context["classes"] ?? null))) {
-            // line 286
+            // line 285
             yield "                        ";
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(($context["classes"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["class"]) {
-                // line 287
+                // line 286
                 yield "                            <tr>
                                 <td>";
+                // line 287
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["class"], "instructor", [], "any", false, false, false, 287), "html", null, true);
+                yield "</td>
+                                <td>";
                 // line 288
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["class"], "instructor", [], "any", false, false, false, 288), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["class"], "location", [], "any", false, false, false, 288), "html", null, true);
                 yield "</td>
                                 <td>";
                 // line 289
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["class"], "location", [], "any", false, false, false, 289), "html", null, true);
-                yield "</td>
-                                <td>";
-                // line 290
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["class"], "classDuration", [], "any", false, false, false, 290), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["class"], "classDuration", [], "any", false, false, false, 289), "html", null, true);
                 yield " min</td>
                                 <td>";
-                // line 291
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["class"], "classDate", [], "any", false, false, false, 291), "html", null, true);
+                // line 290
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["class"], "classDate", [], "any", false, false, false, 290), "html", null, true);
                 yield "</td>
                                 <td>";
-                // line 292
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["class"], "classDescription", [], "any", false, false, false, 292), "html", null, true);
+                // line 291
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["class"], "classDescription", [], "any", false, false, false, 291), "html", null, true);
                 yield "</td>
 
                                 <td><button type=\"button\" class=\"btn\" data-toggle=\"modal\" data-target=\"#modal<?php echo \$class['classID']; ?>\">
@@ -516,14 +512,14 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['class'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 324
+            // line 323
             yield "                    ";
         } else {
-            // line 325
+            // line 324
             yield "                        <p>No classes found for this user.</p>
                     ";
         }
-        // line 326
+        // line 325
         yield "   
                     </tbody>
                 </table>
@@ -533,8 +529,8 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
 </div>
 
 ";
-        // line 334
-        yield from         $this->loadTemplate("footer.twig", "view_items.twig", 334)->unwrap()->yield($context);
+        // line 333
+        yield from         $this->loadTemplate("footer.twig", "view_items.twig", 333)->unwrap()->yield($context);
         return; yield '';
     }
 
@@ -559,7 +555,7 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  537 => 334,  527 => 326,  523 => 325,  520 => 324,  482 => 292,  478 => 291,  474 => 290,  470 => 289,  466 => 288,  463 => 287,  458 => 286,  456 => 285,  427 => 258,  423 => 257,  420 => 256,  406 => 248,  397 => 242,  384 => 232,  378 => 228,  370 => 223,  367 => 222,  365 => 221,  359 => 218,  355 => 217,  352 => 216,  347 => 215,  345 => 214,  319 => 190,  315 => 189,  312 => 188,  298 => 180,  289 => 174,  276 => 164,  271 => 161,  263 => 156,  258 => 154,  253 => 152,  249 => 151,  246 => 150,  241 => 149,  239 => 148,  213 => 124,  209 => 123,  206 => 122,  192 => 114,  183 => 108,  170 => 98,  160 => 91,  155 => 89,  151 => 88,  147 => 87,  143 => 86,  139 => 85,  136 => 84,  131 => 83,  129 => 82,  93 => 48,  89 => 46,  87 => 45,  83 => 44,  38 => 1,);
+        return array (  533 => 333,  523 => 325,  519 => 324,  516 => 323,  478 => 291,  474 => 290,  470 => 289,  466 => 288,  462 => 287,  459 => 286,  454 => 285,  452 => 284,  423 => 257,  419 => 256,  416 => 255,  402 => 247,  393 => 241,  380 => 231,  374 => 227,  366 => 222,  363 => 221,  361 => 220,  355 => 217,  351 => 216,  348 => 215,  343 => 214,  341 => 213,  315 => 189,  311 => 188,  308 => 187,  294 => 179,  285 => 173,  272 => 163,  267 => 160,  259 => 155,  254 => 153,  249 => 151,  245 => 150,  242 => 149,  237 => 148,  235 => 147,  209 => 123,  205 => 122,  202 => 121,  188 => 113,  179 => 107,  166 => 97,  156 => 90,  151 => 88,  147 => 87,  143 => 86,  139 => 85,  135 => 84,  132 => 83,  127 => 82,  125 => 81,  89 => 47,  85 => 45,  83 => 44,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -607,7 +603,6 @@ class __TwigTemplate_7384ed68b5405a572b73f3238890ace5 extends Template
           </li>
         </ul>
         <span class=\"navbar-text\">
-            {{ greeting1 }}
             {% if username %}
                 <a href=\"logout\" class=\"btn btn-danger btn1\">Logout</a>
             {% endif %}

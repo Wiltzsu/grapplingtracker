@@ -39,7 +39,9 @@
           </li>
         </ul>
       <span class="navbar-text">
-
+            {% if username %}
+                <a href="logout" class="btn btn-danger btn1">Logout</a>
+            {% endif %}
       </span>
     </div>
 </nav>
@@ -204,10 +206,10 @@
                 <div class="card-body">
 
                     <!-- Training Class Form Column -->
-                    <form method="POST" action="" >
+                    <form method="POST" action="/addnew" >
                         <!-- User ID -->
                         <div class="form-group">
-                            <input type="hidden" class="form-control" id="userID" name="userID" required value="<?php echo $_SESSION['userID']?>">
+                            <input type="" class="form-control" id="userID" name="userID" required value="{{ userID }}">
                         </div>
 
                         <!-- Instructor name -->

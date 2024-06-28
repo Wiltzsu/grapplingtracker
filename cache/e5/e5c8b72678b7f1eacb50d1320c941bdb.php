@@ -78,7 +78,7 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
         // line 34
         if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 34)) {
             // line 35
-            yield "                            <span class=\"help-block\">";
+            yield "                            <span class=\"help-block error-message\">";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 35), "html", null, true);
             yield "</span>
                         ";
@@ -96,7 +96,7 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
         // line 42
         if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 42)) {
             // line 43
-            yield "                            <span class=\"help-block\">";
+            yield "                            <span class=\"help-block error-message\">";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 43), "html", null, true);
             yield "</span>
                         ";
@@ -176,7 +176,7 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
                         <label for=\"username\">Username</label>
                         <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" value=\"{{ input.username ?? '' }}\" placeholder=\"Enter username\">
                         {% if errors.username %}
-                            <span class=\"help-block\">{{ errors.username }}</span>
+                            <span class=\"help-block error-message\">{{ errors.username }}</span>
                         {% endif %}
                     </div>
                     
@@ -184,7 +184,7 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
                         <label for=\"password1\">Password</label>
                         <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" placeholder=\"Enter password\">
                         {% if errors.password %}
-                            <span class=\"help-block\">{{ errors.password }}</span>
+                            <span class=\"help-block error-message\">{{ errors.password }}</span>
                         {% endif %}
                     </div>
 
