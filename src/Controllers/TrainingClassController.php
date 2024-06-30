@@ -8,12 +8,10 @@ use Twig\Environment;
 class TrainingClassController
 {
     private $trainingClassModel;
-    private $twig;
 
-    public function __construct(TrainingClass $trainingClassModel, Environment $twig)
+    public function __construct(TrainingClass $trainingClassModel)
     {
         $this->trainingClassModel = $trainingClassModel;
-        $this->twig = $twig;
     }
 
     public function getTrainingClasses($userID)

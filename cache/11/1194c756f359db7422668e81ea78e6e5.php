@@ -39,11 +39,13 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
         // line 2
         yield "
 <div class=\"container p-5\">
+    <!-- Back button -->
     <button class=\"svg-button\" onclick=\"window.location.href='addnew'\">
     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" fill=\"currentColor\" class=\"bi bi-arrow-return-left\" viewBox=\"0 0 16 16\">
         <path fill-rule=\"evenodd\" d=\"M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5\"/>
     </svg>
     </button>
+    
     <form method=\"POST\" action=\"\">
         <h4>Add a New Technique</h4>
         
@@ -100,8 +102,8 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
 </div>
 
 ";
-        // line 64
-        yield from         $this->loadTemplate("footer.twig", "addnew/add_technique.twig", 64)->unwrap()->yield($context);
+        // line 66
+        yield from         $this->loadTemplate("footer.twig", "addnew/add_technique.twig", 66)->unwrap()->yield($context);
         return; yield '';
     }
 
@@ -126,7 +128,7 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  104 => 64,  40 => 2,  38 => 1,);
+        return array (  106 => 66,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -134,11 +136,13 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
         return new Source("{% include '@Header/header.twig' %}
 
 <div class=\"container p-5\">
+    <!-- Back button -->
     <button class=\"svg-button\" onclick=\"window.location.href='addnew'\">
     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" fill=\"currentColor\" class=\"bi bi-arrow-return-left\" viewBox=\"0 0 16 16\">
         <path fill-rule=\"evenodd\" d=\"M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5\"/>
     </svg>
     </button>
+    
     <form method=\"POST\" action=\"\">
         <h4>Add a New Technique</h4>
         

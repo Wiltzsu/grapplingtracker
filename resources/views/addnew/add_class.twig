@@ -9,61 +9,60 @@
     </button>
     
     <!-- Training Class Form Column -->
-    <form method="POST" action="/technique-db-mvc/public/addnew" >
+    <form method="POST" action="/technique-db-mvc/public/addclass" >
         <!-- User ID -->
         <div class="form-group">
-            <input type="" class="form-control" id="userID" name="userID" required value="{{ userID }}">
+            <input type="hidden" class="form-control" id="userID" name="userID" required value="{{ userID }}">
         </div>
 
         <!-- Instructor name -->
         <h4>Add a New Training Class</h4>
-            <div class="form-group{{ errors.emptyfield or errors.instructor ? ' has-error' : '' }}">
+            <div class="form-group{{ errors.instructor ? ' has-error' : '' }}">
                 <label for="instructor">Instructor:</label>
                 <input type="text" class="form-control" id="instructor" name="instructor" value="{{ input.instructor ?? '' }}" placeholder="Instructor name">
-                {% if errors.emptyfield %}
-                    <span class="help-block">{{ errors.emptyfield }}</span>
-                {% elseif errors.instructor %}
-                    <span class="help-block">{{ errors.instructor }}</span>
+                {% if errors.instructor %}
+                    <span class="help-block error-message">{{ errors.instructor }}</span>
                 {% endif %}
             </div>
-
 
             <!-- Location -->
             <div class="form-group{{ errors.location ? ' has-error' : '' }}">
                 <label for="location">Location:</label>
                 <input type="textarea" class="form-control" id="location" name="location" value="{{ input.location ?? '' }}" placeholder="Class location" >
                 {% if errors.location %}
-                    <span class="help-block">{{ errors.location }}</span>
+                    <span class="help-block error-message">{{ errors.location }}</span>
                 {% endif %}
             </div>
 
             <!-- Duration -->
             <div class="form-group{{ errors.duration ? ' has-error' : '' }}">
                 <label for="duration">Duration (minutes):</label>
-                <input type="number" class="form-control" id="duration" name="duration" value="{{ input.duration  ?? '' }}" placeholder="Class duration" >
+                <input type="number" class="form-control" id="duration" name="duration" value="{{ input.duration  ?? '' }}" placeholder="Class duration">
                 {% if errors.duration %}
-                    <span class="help-block">{{ errors.duration }}</span>
+                    <span class="help-block error-message">{{ errors.duration }}</span>
                 {% endif %}
             </div>
 
             <!-- Date -->
-            <div class="form-group{{ errors.emptyfield ? ' has-error' : '' }}">
+            <div class="form-group{{ errors.classDate ? ' has-error' : '' }}">
                 <label for="date">Date:</label>
-                <input type="date" class="form-control" id="date" name="classDate" value="{{ input.date  ?? '' }}" >
-                {% if errors.emptyfield %}
-                    <span class="help-block">{{ errors.emptyfield }}</span>
+                <input type="date" class="form-control" id="date" name="classDate" value="{{ input.classDate  ?? '' }}" >
+                {% if errors.classDate %}
+                    <span class="help-block error-message">{{ errors.classDate }}</span>
                 {% endif %}
             </div>
 
             <!-- classDescription -->
             <div class="form-group{{ errors.classDescription ? ' has-error' : '' }}">
-                <label for="classDescription">Description / type:</label>
-                <textarea class="form-control" id="classDescription" name="classDescription" value="{{ input.classDescription  ?? '' }}"></textarea>
+                <label for="classDescription">Description:</label>
+                <textarea class="form-control" id="classDescription" name="classDescription" value="{{ input.classDescription  ?? '' }}" placeholder="Gi/nogi/wrestling etc."></textarea>
                 {% if errors.classDescription %}
-                    <span class="help-block">{{ errors.classDescription }}</span>
+                    <span class="help-block error-message">{{ errors.classDescription }}</span>
                 {% endif %}
             </div>
             
         <button type="submit" name="submit" class="btn btn-primary btn2">Add Class</button>
     </form>
 </div>
+
+{% include 'footer.twig' %}

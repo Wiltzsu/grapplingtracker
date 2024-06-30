@@ -176,11 +176,12 @@ return function (RouteCollector $router, $container) {
             exit();
         } else {
             $twig = $container->get('Twig\Environment');
-            echo $twig->render('add_new.twig', [
+            echo $twig->render('addnew/add_class.twig', [
                 'userID' => $_SESSION['userID'] ?? null,
                 'username' => $_SESSION['username'] ?? null,
                 'roleID' => $_SESSION['roleID'] ?? null,
                 'errors' => $result['errors'],
+                'input' => $_POST
             ]);
         }
 

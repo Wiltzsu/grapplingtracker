@@ -62,7 +62,11 @@ class __TwigTemplate_fae9ba812d77b0576fe064053a9ee66f extends Template
             </div>
         <button type=\"submit\" name=\"submitPosition\" class=\"btn btn-primary btn2\">Add Position</button>
     </form>
-</div>";
+</div>
+
+";
+        // line 29
+        yield from         $this->loadTemplate("footer.twig", "addnew/add_position.twig", 29)->unwrap()->yield($context);
         return; yield '';
     }
 
@@ -87,7 +91,7 @@ class __TwigTemplate_fae9ba812d77b0576fe064053a9ee66f extends Template
      */
     public function getDebugInfo()
     {
-        return array (  40 => 2,  38 => 1,);
+        return array (  69 => 29,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -118,6 +122,8 @@ class __TwigTemplate_fae9ba812d77b0576fe064053a9ee66f extends Template
             </div>
         <button type=\"submit\" name=\"submitPosition\" class=\"btn btn-primary btn2\">Add Position</button>
     </form>
-</div>", "addnew/add_position.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/addnew/add_position.twig");
+</div>
+
+{% include 'footer.twig' %}", "addnew/add_position.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/addnew/add_position.twig");
     }
 }

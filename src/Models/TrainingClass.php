@@ -31,30 +31,34 @@ class TrainingClass
     {
         $errors = [];
         // Check for empty fields
-        if (empty($instructor) || empty($location) || empty($duration) || empty($date) || empty($description)) {
-            $errors['emptyfield'] = 'Field cannot be empty.';
-        }
-    
-        // Validate instructor's name (e.g., only letters and spaces)
-        if (!preg_match("/^[a-zA-Z\s]+$/", $instructor)) {
+        if (empty($instructor)) {
+            $errors['instructor'] = 'Instructor field cannot be empty.';
+        } else if (!preg_match("/^[a-zA-Z\s]+$/", $instructor)) {
             $errors['instructor'] = 'Instructor name can only contain letters and spaces.';
         }
-    
-        // Validate location (simple example, can be more specific based on your requirements)
-        if (!preg_match("/^[a-zA-Z0-9\s]+$/", $location)) {
+
+        if (empty($location)) {
+            $errors['location'] = 'Location field cannot be empty.';
+        } else if (!preg_match("/^[a-zA-Z0-9\s]+$/", $location)) {
             $errors['location'] = 'Location can only contain letters, numbers, and spaces.';
         }
-    
-        // Validate duration (ensure it's a number and within a reasonable range)
-        if (!filter_var($duration, FILTER_VALIDATE_INT) || $duration <= 0 || $duration > 480) {
+
+        if (empty($duration)) {
+            $errors['duration'] = 'Duration field cannot be empty.';
+        } else if (!filter_var($duration, FILTER_VALIDATE_INT) || $duration <= 0 || $duration > 480) {
             $errors['duration'] = 'Duration must be a positive integer and less than 480 minutes.';
+        } 
+
+        if (empty($date)) {
+            $errors['classDate'] = 'Choose a date.';
         }
-    
-        // Validate description (length check)
-        if (strlen($description) > 1000) {
+
+        if (empty($description)) {
+            $errors['classDescription'] = 'Description field cannot be empty.';
+        } else if (strlen($description) > 1000) {
             $errors['classDescription'] = 'Description must not exceed 1000 characters.';
         }
-    
+
         return $errors;
     }
     

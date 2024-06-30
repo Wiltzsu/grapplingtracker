@@ -82,7 +82,7 @@ body {
 /* Error message color */
 .error-message {
     color: red;  /* Set the color of the error messages to red */
-    font-weight: bold; /* Optional: makes the text bold */
+    font-style: italic;
 }
 
 /* Optimal legibility for smaller devices */
