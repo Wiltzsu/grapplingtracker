@@ -50,24 +50,56 @@ class __TwigTemplate_448eb5cc1e98bb57975988b5a8fa9c6c extends Template
     <form method=\"POST\" action=\"\">
         <h4>Add a New Category</h4>
         <!-- Category name -->
-        <div class=\"form-group\">
+        <div class=\"form-group";
+        // line 15
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "categoryName", [], "any", false, false, false, 15)) ? (" has-error") : (""));
+        yield "\">
             <label for=\"categoryName\">Category Name:</label>
-            <input type=\"text\" class=\"form-control\" id=\"categoryName\" name=\"categoryName\" required>
-        </div>
+            <input type=\"text\" class=\"form-control\" id=\"categoryName\" name=\"categoryName\" value=\"";
+        // line 17
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "categoryName", [], "any", false, false, false, 17), "html", null, true);
+        yield "\" placeholder=\"Takedown, Submission...\">
+            ";
+        // line 18
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "categoryName", [], "any", false, false, false, 18)) {
+            // line 19
+            yield "                <span class=\"help-block error-message\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "categoryName", [], "any", false, false, false, 19), "html", null, true);
+            yield "</span>
+            ";
+        }
+        // line 21
+        yield "        </div>
 
         <!-- Description -->
-        <div class=\"form-group\">
+        <div class=\"form-group";
+        // line 24
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "categoryDescription", [], "any", false, false, false, 24)) ? (" has-error") : (""));
+        yield "\">
             <label for=\"categoryDescription\">Description:</label>
-            <textarea class=\"form-control\" id=\"categoryDescription\" name=\"categoryDescription\" required></textarea>
-        </div>
+            <textarea class=\"form-control\" id=\"categoryDescription\" name=\"categoryDescription\" value=\"";
+        // line 26
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "categoryDescription", [], "any", true, true, false, 26) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "categoryDescription", [], "any", false, false, false, 26)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "categoryDescription", [], "any", false, false, false, 26), "html", null, true)) : (yield ""));
+        yield "\" placeholder=\"\"></textarea>
+            ";
+        // line 27
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "categoryDescription", [], "any", false, false, false, 27)) {
+            // line 28
+            yield "                <span class=\"help-block error-message\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "categoryDescription", [], "any", false, false, false, 28), "html", null, true);
+            yield "</span>
+            ";
+        }
+        // line 30
+        yield "        </div>
 
         <button type=\"submit\" name=\"submitCategory\" class=\"btn btn-primary btn2\">Add Category</button>
     </form>
 </div>
 
 ";
-        // line 30
-        yield from         $this->loadTemplate("footer.twig", "addnew/add_category.twig", 30)->unwrap()->yield($context);
+        // line 36
+        yield from         $this->loadTemplate("footer.twig", "addnew/add_category.twig", 36)->unwrap()->yield($context);
         return; yield '';
     }
 
@@ -92,7 +124,7 @@ class __TwigTemplate_448eb5cc1e98bb57975988b5a8fa9c6c extends Template
      */
     public function getDebugInfo()
     {
-        return array (  70 => 30,  40 => 2,  38 => 1,);
+        return array (  102 => 36,  94 => 30,  88 => 28,  86 => 27,  82 => 26,  77 => 24,  72 => 21,  66 => 19,  64 => 18,  60 => 17,  55 => 15,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -111,15 +143,21 @@ class __TwigTemplate_448eb5cc1e98bb57975988b5a8fa9c6c extends Template
     <form method=\"POST\" action=\"\">
         <h4>Add a New Category</h4>
         <!-- Category name -->
-        <div class=\"form-group\">
+        <div class=\"form-group{{ errors.categoryName ? ' has-error' : '' }}\">
             <label for=\"categoryName\">Category Name:</label>
-            <input type=\"text\" class=\"form-control\" id=\"categoryName\" name=\"categoryName\" required>
+            <input type=\"text\" class=\"form-control\" id=\"categoryName\" name=\"categoryName\" value=\"{{ input.categoryName }}\" placeholder=\"Takedown, Submission...\">
+            {% if errors.categoryName %}
+                <span class=\"help-block error-message\">{{ errors.categoryName }}</span>
+            {% endif %}
         </div>
 
         <!-- Description -->
-        <div class=\"form-group\">
+        <div class=\"form-group{{ errors.categoryDescription ? ' has-error' : '' }}\">
             <label for=\"categoryDescription\">Description:</label>
-            <textarea class=\"form-control\" id=\"categoryDescription\" name=\"categoryDescription\" required></textarea>
+            <textarea class=\"form-control\" id=\"categoryDescription\" name=\"categoryDescription\" value=\"{{ input.categoryDescription  ?? '' }}\" placeholder=\"\"></textarea>
+            {% if errors.categoryDescription %}
+                <span class=\"help-block error-message\">{{ errors.categoryDescription }}</span>
+            {% endif %}
         </div>
 
         <button type=\"submit\" name=\"submitCategory\" class=\"btn btn-primary btn2\">Add Category</button>

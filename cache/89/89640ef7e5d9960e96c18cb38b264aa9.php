@@ -50,23 +50,55 @@ class __TwigTemplate_fae9ba812d77b0576fe064053a9ee66f extends Template
     <form method=\"POST\" action=\"\" >
         <!-- Position name -->
         <h4>Add a New Position</h4>
-        <div class=\"form-group\">
-                <label for=\"positionName\">Position Name:</label>
-                <input type=\"text\" class=\"form-control\" id=\"positionName\" name=\"positionName\" required>
-            </div>
+        <div class=\"form-group";
+        // line 15
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "positionName", [], "any", false, false, false, 15)) ? (" has-error") : (""));
+        yield "\">
+                <label for=\"positionName\">Position name:</label>
+                <input type=\"text\" class=\"form-control\" id=\"positionName\" name=\"positionName\" value=\"";
+        // line 17
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "positionName", [], "any", true, true, false, 17) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "positionName", [], "any", false, false, false, 17)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "positionName", [], "any", false, false, false, 17), "html", null, true)) : (yield ""));
+        yield "\" placeholder=\"Closed guard, Side control...\">
+                ";
+        // line 18
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "positionName", [], "any", false, false, false, 18)) {
+            // line 19
+            yield "                    <span class=\"help-block error-message\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "positionName", [], "any", false, false, false, 19), "html", null, true);
+            yield "</span>
+                ";
+        }
+        // line 21
+        yield "            </div>
 
             <!-- Description -->
-            <div class=\"form-group\">
+            <div class=\"form-group";
+        // line 24
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "positionDescription", [], "any", false, false, false, 24)) ? (" has-error") : (""));
+        yield "\">
                 <label for=\"positionDescription\">Description:</label>
-                <textarea class=\"form-control\" id=\"positionDescription\" name=\"positionDescription\" required></textarea>
-            </div>
+                <textarea class=\"form-control\" id=\"positionDescription\" name=\"positionDescription\" value=\"";
+        // line 26
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "positionDescription", [], "any", true, true, false, 26) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "positionDescription", [], "any", false, false, false, 26)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "positionDescription", [], "any", false, false, false, 26), "html", null, true)) : (yield ""));
+        yield "\" placeholder=\"\"></textarea>
+                ";
+        // line 27
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "positionDescription", [], "any", false, false, false, 27)) {
+            // line 28
+            yield "                    <span class=\"help-block error-message\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "positionDescription", [], "any", false, false, false, 28), "html", null, true);
+            yield "</span>
+                ";
+        }
+        // line 30
+        yield "            </div>
         <button type=\"submit\" name=\"submitPosition\" class=\"btn btn-primary btn2\">Add Position</button>
     </form>
 </div>
 
 ";
-        // line 29
-        yield from         $this->loadTemplate("footer.twig", "addnew/add_position.twig", 29)->unwrap()->yield($context);
+        // line 35
+        yield from         $this->loadTemplate("footer.twig", "addnew/add_position.twig", 35)->unwrap()->yield($context);
         return; yield '';
     }
 
@@ -91,7 +123,7 @@ class __TwigTemplate_fae9ba812d77b0576fe064053a9ee66f extends Template
      */
     public function getDebugInfo()
     {
-        return array (  69 => 29,  40 => 2,  38 => 1,);
+        return array (  101 => 35,  94 => 30,  88 => 28,  86 => 27,  82 => 26,  77 => 24,  72 => 21,  66 => 19,  64 => 18,  60 => 17,  55 => 15,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -110,15 +142,21 @@ class __TwigTemplate_fae9ba812d77b0576fe064053a9ee66f extends Template
     <form method=\"POST\" action=\"\" >
         <!-- Position name -->
         <h4>Add a New Position</h4>
-        <div class=\"form-group\">
-                <label for=\"positionName\">Position Name:</label>
-                <input type=\"text\" class=\"form-control\" id=\"positionName\" name=\"positionName\" required>
+        <div class=\"form-group{{ errors.positionName ? ' has-error' : '' }}\">
+                <label for=\"positionName\">Position name:</label>
+                <input type=\"text\" class=\"form-control\" id=\"positionName\" name=\"positionName\" value=\"{{ input.positionName  ?? '' }}\" placeholder=\"Closed guard, Side control...\">
+                {% if errors.positionName %}
+                    <span class=\"help-block error-message\">{{ errors.positionName }}</span>
+                {% endif %}
             </div>
 
             <!-- Description -->
-            <div class=\"form-group\">
+            <div class=\"form-group{{ errors.positionDescription ? ' has-error' : '' }}\">
                 <label for=\"positionDescription\">Description:</label>
-                <textarea class=\"form-control\" id=\"positionDescription\" name=\"positionDescription\" required></textarea>
+                <textarea class=\"form-control\" id=\"positionDescription\" name=\"positionDescription\" value=\"{{ input.positionDescription  ?? '' }}\" placeholder=\"\"></textarea>
+                {% if errors.positionDescription %}
+                    <span class=\"help-block error-message\">{{ errors.positionDescription }}</span>
+                {% endif %}
             </div>
         <button type=\"submit\" name=\"submitPosition\" class=\"btn btn-primary btn2\">Add Position</button>
     </form>

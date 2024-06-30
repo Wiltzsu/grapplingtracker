@@ -21,7 +21,7 @@ class Position
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function validateAddPositions($positionName, $positionDescription)
+    public function validateAddPosition($positionName, $positionDescription)
     {
         $errors = [];
 
@@ -47,7 +47,7 @@ class Position
         $this->positionName = $positionName;
         $this->positionDescription = $positionDescription;
 
-        $errors = $this->validateAddPositions($positionName, $positionDescription);
+        $errors = $this->validateAddPosition($positionName, $positionDescription);
         if (!empty($errors)) {
             return $errors;
         }

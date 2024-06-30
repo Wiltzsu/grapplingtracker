@@ -40,16 +40,22 @@ class __TwigTemplate_3d4bfb713c3e771c8bd0e72745862219 extends Template
         yield "
 <div class=\"container-fluid p-5\">
 
-<ul class=\"list-group list-group-flush\">
-  <li class=\"list-group-item\"><a href=\"addtechnique\">Add technique</a></li>
-  <li class=\"list-group-item\"><a href=\"addcategory\">Add category</a></li>
-  <li class=\"list-group-item\"><a href=\"addposition\">Add position</a></li>
-  <li class=\"list-group-item\"><a href=\"addclass\">Add class</a></li>
-</ul>
+  <!-- Back to main view button -->
+  <button class=\"svg-button\" onclick=\"window.location.href='mainview'\">
+      <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" fill=\"currentColor\" class=\"bi bi-arrow-return-left\" viewBox=\"0 0 16 16\">
+      <path fill-rule=\"evenodd\" d=\"M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5\"/></svg>
+  </button>
+  
+  <ul class=\"list-group list-group-flush\">
+    <li class=\"list-group-item\"><a href=\"addtechnique\">Add technique</a></li>
+    <li class=\"list-group-item\"><a href=\"addcategory\">Add category</a></li>
+    <li class=\"list-group-item\"><a href=\"addposition\">Add position</a></li>
+    <li class=\"list-group-item\"><a href=\"addclass\">Add class</a></li>
+  </ul>
 
 ";
-        // line 12
-        yield from         $this->loadTemplate("footer.twig", "addnew/add_new.twig", 12)->unwrap()->yield($context);
+        // line 18
+        yield from         $this->loadTemplate("footer.twig", "addnew/add_new.twig", 18)->unwrap()->yield($context);
         return; yield '';
     }
 
@@ -74,7 +80,7 @@ class __TwigTemplate_3d4bfb713c3e771c8bd0e72745862219 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  52 => 12,  40 => 2,  38 => 1,);
+        return array (  58 => 18,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -83,12 +89,18 @@ class __TwigTemplate_3d4bfb713c3e771c8bd0e72745862219 extends Template
 
 <div class=\"container-fluid p-5\">
 
-<ul class=\"list-group list-group-flush\">
-  <li class=\"list-group-item\"><a href=\"addtechnique\">Add technique</a></li>
-  <li class=\"list-group-item\"><a href=\"addcategory\">Add category</a></li>
-  <li class=\"list-group-item\"><a href=\"addposition\">Add position</a></li>
-  <li class=\"list-group-item\"><a href=\"addclass\">Add class</a></li>
-</ul>
+  <!-- Back to main view button -->
+  <button class=\"svg-button\" onclick=\"window.location.href='mainview'\">
+      <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" fill=\"currentColor\" class=\"bi bi-arrow-return-left\" viewBox=\"0 0 16 16\">
+      <path fill-rule=\"evenodd\" d=\"M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5\"/></svg>
+  </button>
+  
+  <ul class=\"list-group list-group-flush\">
+    <li class=\"list-group-item\"><a href=\"addtechnique\">Add technique</a></li>
+    <li class=\"list-group-item\"><a href=\"addcategory\">Add category</a></li>
+    <li class=\"list-group-item\"><a href=\"addposition\">Add position</a></li>
+    <li class=\"list-group-item\"><a href=\"addclass\">Add class</a></li>
+  </ul>
 
 {% include 'footer.twig' %}", "addnew/add_new.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/addnew/add_new.twig");
     }

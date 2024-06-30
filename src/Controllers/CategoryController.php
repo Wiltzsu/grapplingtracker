@@ -17,4 +17,14 @@ class CategoryController
     {
         return $this->categoryModel->getCategories();
     }
+
+    public function postCategory($categoryName, $categoryDescription)
+    {
+        $errors = $this->categoryModel->addCategory($categoryName, $categoryDescription);
+        if (!empty($errors)) {
+            return ['errors' => $errors, 'success' => false];
+        }
+
+        return ['success' => true];
+    }
 }

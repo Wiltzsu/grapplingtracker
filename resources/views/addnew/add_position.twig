@@ -12,15 +12,21 @@
     <form method="POST" action="" >
         <!-- Position name -->
         <h4>Add a New Position</h4>
-        <div class="form-group">
-                <label for="positionName">Position Name:</label>
-                <input type="text" class="form-control" id="positionName" name="positionName" required>
+        <div class="form-group{{ errors.positionName ? ' has-error' : '' }}">
+                <label for="positionName">Position name:</label>
+                <input type="text" class="form-control" id="positionName" name="positionName" value="{{ input.positionName  ?? '' }}" placeholder="Closed guard, Side control...">
+                {% if errors.positionName %}
+                    <span class="help-block error-message">{{ errors.positionName }}</span>
+                {% endif %}
             </div>
 
             <!-- Description -->
-            <div class="form-group">
+            <div class="form-group{{ errors.positionDescription ? ' has-error' : '' }}">
                 <label for="positionDescription">Description:</label>
-                <textarea class="form-control" id="positionDescription" name="positionDescription" required></textarea>
+                <textarea class="form-control" id="positionDescription" name="positionDescription" value="{{ input.positionDescription  ?? '' }}" placeholder=""></textarea>
+                {% if errors.positionDescription %}
+                    <span class="help-block error-message">{{ errors.positionDescription }}</span>
+                {% endif %}
             </div>
         <button type="submit" name="submitPosition" class="btn btn-primary btn2">Add Position</button>
     </form>
