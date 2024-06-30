@@ -76,7 +76,7 @@ return function (RouteCollector $router, $container) {
 
         $twig = $container->get('Twig\Environment');
         $roleID = $_SESSION['roleID'] ?? null;
-        echo $twig->render('add_new.twig', [
+        echo $twig->render('addnew/add_new.twig', [
             'userID' => $userID,
             'roleID' => $roleID,
 
@@ -84,7 +84,76 @@ return function (RouteCollector $router, $container) {
         ]);
     });
 
-    $router->post('/addnew', function () use ($container) {
+    $router->get('/addtechnique', function () use ($container) {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        $twig = $container->get('Twig\Environment');
+        $roleID = $_SESSION['roleID'] ?? null;
+        echo $twig->render('addnew/add_technique.twig', [
+            'userID' => $userID,
+            'roleID' => $roleID,
+
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    });
+
+    $router->get('/addcategory', function () use ($container) {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        $twig = $container->get('Twig\Environment');
+        $roleID = $_SESSION['roleID'] ?? null;
+        echo $twig->render('addnew/add_category.twig', [
+            'userID' => $userID,
+            'roleID' => $roleID,
+
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    });
+
+    $router->get('/addposition', function () use ($container) {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        $twig = $container->get('Twig\Environment');
+        $roleID = $_SESSION['roleID'] ?? null;
+        echo $twig->render('addnew/add_position.twig', [
+            'userID' => $userID,
+            'roleID' => $roleID,
+
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    });
+
+    $router->get('/addclass', function () use ($container) {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        $twig = $container->get('Twig\Environment');
+        $roleID = $_SESSION['roleID'] ?? null;
+        echo $twig->render('addnew/add_class.twig', [
+            'userID' => $userID,
+            'roleID' => $roleID,
+
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    });
+
+
+    $router->post('/addclass', function () use ($container) {
         $userID = $_SESSION['userID'] ?? null;
         if (!$userID) {
             header('Location: login');
@@ -99,14 +168,23 @@ return function (RouteCollector $router, $container) {
         $classDescription = $_POST['classDescription'] ?? null;
 
         $trainingClassController = $container->get(TrainingClassController::class);
-        $addTrainingClass = $trainingClassController->postTrainingClass($userID, $instructor, $location, $duration, $classDate, $classDescription);
+        $result = $trainingClassController->postTrainingClass($userID, $instructor, $location, $duration, $classDate, $classDescription);
 
-        $twig = $container->get('Twig\Environment');
-        $userID = $_SESSION['userID'] ?? null;
-        echo $twig->render('add_new.twig', [
-            'addTrainingClass' => $addTrainingClass,
-            'userID' => $userID
-        ]);
+        
+        if ($result['success']) {
+            header('Location: addnew');
+            exit();
+        } else {
+            $twig = $container->get('Twig\Environment');
+            echo $twig->render('add_new.twig', [
+                'userID' => $_SESSION['userID'] ?? null,
+                'username' => $_SESSION['username'] ?? null,
+                'roleID' => $_SESSION['roleID'] ?? null,
+                'errors' => $result['errors'],
+            ]);
+        }
+
+
     });
 
     $router->get('/viewitems', function () use ($container) {

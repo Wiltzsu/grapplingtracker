@@ -25,12 +25,11 @@ class TrainingClassController
     {
         $errors = $this->trainingClassModel->addTrainingClass($userID, $instructor, $location, $duration, $classDate, $classDescription);
         if (!empty($errors)) {
-            return ['errors' => $errors];
+            return ['errors' => $errors, 'success' => false];
         }
 
         return ['success' => true];
     }
-
 
 }
 ?>

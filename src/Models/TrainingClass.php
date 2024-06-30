@@ -32,7 +32,7 @@ class TrainingClass
         $errors = [];
         // Check for empty fields
         if (empty($instructor) || empty($location) || empty($duration) || empty($date) || empty($description)) {
-            $errors['emptyfield'] = 'All fields must be filled out.';
+            $errors['emptyfield'] = 'Field cannot be empty.';
         }
     
         // Validate instructor's name (e.g., only letters and spaces)
@@ -50,15 +50,9 @@ class TrainingClass
             $errors['duration'] = 'Duration must be a positive integer and less than 480 minutes.';
         }
     
-        // Validate date (ensure it's a valid date and not in the past)
-        $dateObject = DateTime::createFromFormat('Y-m-d', $date);
-        if (!$dateObject || $dateObject < new DateTime()) {
-            $errors['date'] = 'Please enter a valid future date in YYYY-MM-DD format.';
-        }
-    
         // Validate description (length check)
         if (strlen($description) > 1000) {
-            $errors['description'] = 'Description must not exceed 1000 characters.';
+            $errors['classDescription'] = 'Description must not exceed 1000 characters.';
         }
     
         return $errors;
@@ -83,6 +77,7 @@ class TrainingClass
         if (!empty($errors)) {
             return $errors;  // Return validation errors
         }
+        var_dump($instructor, $location, $duration, $classDate, $classDescription);
 
         $query = "INSERT INTO Class (
             userID, instructor, location, classDuration, classDate, classDescription

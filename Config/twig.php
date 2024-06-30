@@ -26,6 +26,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
  */
 $loader = new FilesystemLoader(__DIR__ . '/../resources/views');
 
+// Add a namespace for headers
+$loader->addPath(__DIR__ . '/../resources/views/', 'Header');
+
 /**
  * Creates a new instance of the 'Environment' class, passing the
  * 'FilesystemLoader' instance '$loader' and an array of options.

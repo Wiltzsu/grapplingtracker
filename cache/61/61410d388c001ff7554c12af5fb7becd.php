@@ -90,6 +90,15 @@ class __TwigTemplate_50edc791f1622b0b84eef7e35ce00079 extends Template
 
 
 <div class=\"container-fluid p-5\">
+
+<ul class=\"list-group list-group-flush\">
+  <li class=\"list-group-item\">An item</li>
+  <li class=\"list-group-item\">A second item</li>
+  <li class=\"list-group-item\">A third item</li>
+  <li class=\"list-group-item\">A fourth item</li>
+  <li class=\"list-group-item\">And a fifth one</li>
+</ul>
+
     <div id=\"accordion\">
         <button class=\"svg-button\" onclick=\"window.location.href='mainview'\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" fill=\"currentColor\" class=\"bi bi-arrow-return-left\" viewBox=\"0 0 16 16\">
@@ -248,47 +257,135 @@ class __TwigTemplate_50edc791f1622b0b84eef7e35ce00079 extends Template
                 <div class=\"card-body\">
 
                     <!-- Training Class Form Column -->
-                    <form method=\"POST\" action=\"/addnew\" >
+                    <form method=\"POST\" action=\"/technique-db-mvc/public/addnew\" >
                         <!-- User ID -->
                         <div class=\"form-group\">
                             <input type=\"\" class=\"form-control\" id=\"userID\" name=\"userID\" required value=\"";
-        // line 212
+        // line 221
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["userID"] ?? null), "html", null, true);
         yield "\">
                         </div>
 
                         <!-- Instructor name -->
                         <h4>Add a New Training Class</h4>
-                            <div class=\"form-group\">
+                            <div class=\"form-group";
+        // line 226
+        yield (((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "emptyfield", [], "any", false, false, false, 226) || CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "instructor", [], "any", false, false, false, 226))) ? (" has-error") : (""));
+        yield "\">
                                 <label for=\"instructor\">Instructor:</label>
-                                <input type=\"text\" class=\"form-control\" id=\"instructor\" name=\"instructor\" required>
-                            </div>
+                                <input type=\"text\" class=\"form-control\" id=\"instructor\" name=\"instructor\" value=\"";
+        // line 228
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "instructor", [], "any", true, true, false, 228) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "instructor", [], "any", false, false, false, 228)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "instructor", [], "any", false, false, false, 228), "html", null, true)) : (yield ""));
+        yield "\" placeholder=\"Instructor name\">
+                                ";
+        // line 229
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "emptyfield", [], "any", false, false, false, 229)) {
+            // line 230
+            yield "                                    <span class=\"help-block\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "emptyfield", [], "any", false, false, false, 230), "html", null, true);
+            yield "</span>
+                                ";
+        } elseif (CoreExtension::getAttribute($this->env, $this->source,         // line 231
+($context["errors"] ?? null), "instructor", [], "any", false, false, false, 231)) {
+            // line 232
+            yield "                                    <span class=\"help-block\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "instructor", [], "any", false, false, false, 232), "html", null, true);
+            yield "</span>
+                                ";
+        }
+        // line 234
+        yield "                            </div>
+
 
                             <!-- Location -->
-                            <div class=\"form-group\">
+                            <div class=\"form-group";
+        // line 238
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "location", [], "any", false, false, false, 238)) ? (" has-error") : (""));
+        yield "\">
                                 <label for=\"location\">Location:</label>
-                                <input type=\"textarea\" class=\"form-control\" id=\"location\" name=\"location\" required>
-                            </div>
+                                <input type=\"textarea\" class=\"form-control\" id=\"location\" name=\"location\" value=\"";
+        // line 240
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "location", [], "any", true, true, false, 240) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "location", [], "any", false, false, false, 240)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "location", [], "any", false, false, false, 240), "html", null, true)) : (yield ""));
+        yield "\" placeholder=\"Class location\" >
+                                ";
+        // line 241
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "location", [], "any", false, false, false, 241)) {
+            // line 242
+            yield "                                    <span class=\"help-block\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "location", [], "any", false, false, false, 242), "html", null, true);
+            yield "</span>
+                                ";
+        }
+        // line 244
+        yield "                            </div>
 
                             <!-- Duration -->
-                            <div class=\"form-group\">
+                            <div class=\"form-group";
+        // line 247
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "duration", [], "any", false, false, false, 247)) ? (" has-error") : (""));
+        yield "\">
                                 <label for=\"duration\">Duration (minutes):</label>
-                                <input type=\"number\" class=\"form-control\" id=\"duration\" name=\"duration\" required>
-                            </div>
+                                <input type=\"number\" class=\"form-control\" id=\"duration\" name=\"duration\" value=\"";
+        // line 249
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "duration", [], "any", true, true, false, 249) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "duration", [], "any", false, false, false, 249)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "duration", [], "any", false, false, false, 249), "html", null, true)) : (yield ""));
+        yield "\" placeholder=\"Class duration\" >
+                                ";
+        // line 250
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "duration", [], "any", false, false, false, 250)) {
+            // line 251
+            yield "                                    <span class=\"help-block\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "duration", [], "any", false, false, false, 251), "html", null, true);
+            yield "</span>
+                                ";
+        }
+        // line 253
+        yield "                            </div>
 
                             <!-- Date -->
-                            <div class=\"form-group\">
+                            <div class=\"form-group";
+        // line 256
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "emptyfield", [], "any", false, false, false, 256)) ? (" has-error") : (""));
+        yield "\">
                                 <label for=\"date\">Date:</label>
-                                <input type=\"date\" class=\"form-control\" id=\"date\" name=\"date\" required>
-                            </div>
+                                <input type=\"date\" class=\"form-control\" id=\"date\" name=\"classDate\" value=\"";
+        // line 258
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "date", [], "any", true, true, false, 258) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "date", [], "any", false, false, false, 258)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "date", [], "any", false, false, false, 258), "html", null, true)) : (yield ""));
+        yield "\" >
+                                ";
+        // line 259
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "emptyfield", [], "any", false, false, false, 259)) {
+            // line 260
+            yield "                                    <span class=\"help-block\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "emptyfield", [], "any", false, false, false, 260), "html", null, true);
+            yield "</span>
+                                ";
+        }
+        // line 262
+        yield "                            </div>
 
                             <!-- classDescription -->
-                            <div class=\"form-group\">
+                            <div class=\"form-group";
+        // line 265
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "classDescription", [], "any", false, false, false, 265)) ? (" has-error") : (""));
+        yield "\">
                                 <label for=\"classDescription\">Description / type:</label>
-                                <textarea class=\"form-control\" id=\"classDescription\" name=\"classDescription\" required></textarea>
-                            </div>
+                                <textarea class=\"form-control\" id=\"classDescription\" name=\"classDescription\" value=\"";
+        // line 267
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "classDescription", [], "any", true, true, false, 267) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "classDescription", [], "any", false, false, false, 267)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "classDescription", [], "any", false, false, false, 267), "html", null, true)) : (yield ""));
+        yield "\"></textarea>
+                                ";
+        // line 268
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "classDescription", [], "any", false, false, false, 268)) {
+            // line 269
+            yield "                                    <span class=\"help-block\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "classDescription", [], "any", false, false, false, 269), "html", null, true);
+            yield "</span>
+                                ";
+        }
+        // line 271
+        yield "                            </div>
                             
-                        <button type=\"submit\" name=\"submitTrainingClass\" class=\"btn btn-primary btn2\">Add Class</button>
+                        <button type=\"submit\" name=\"submit\" class=\"btn btn-primary btn2\">Add Class</button>
                     </form>
                 </div>
             </div>
@@ -297,8 +394,8 @@ class __TwigTemplate_50edc791f1622b0b84eef7e35ce00079 extends Template
 </div>
 
 ";
-        // line 254
-        yield from         $this->loadTemplate("footer.twig", "add_new.twig", 254)->unwrap()->yield($context);
+        // line 281
+        yield from         $this->loadTemplate("footer.twig", "add_new.twig", 281)->unwrap()->yield($context);
         return; yield '';
     }
 
@@ -323,7 +420,7 @@ class __TwigTemplate_50edc791f1622b0b84eef7e35ce00079 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  301 => 254,  256 => 212,  87 => 45,  83 => 43,  81 => 42,  38 => 1,);
+        return array (  398 => 281,  386 => 271,  380 => 269,  378 => 268,  374 => 267,  369 => 265,  364 => 262,  358 => 260,  356 => 259,  352 => 258,  347 => 256,  342 => 253,  336 => 251,  334 => 250,  330 => 249,  325 => 247,  320 => 244,  314 => 242,  312 => 241,  308 => 240,  303 => 238,  297 => 234,  291 => 232,  289 => 231,  284 => 230,  282 => 229,  278 => 228,  273 => 226,  265 => 221,  87 => 45,  83 => 43,  81 => 42,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -378,6 +475,15 @@ class __TwigTemplate_50edc791f1622b0b84eef7e35ce00079 extends Template
 
 
 <div class=\"container-fluid p-5\">
+
+<ul class=\"list-group list-group-flush\">
+  <li class=\"list-group-item\">An item</li>
+  <li class=\"list-group-item\">A second item</li>
+  <li class=\"list-group-item\">A third item</li>
+  <li class=\"list-group-item\">A fourth item</li>
+  <li class=\"list-group-item\">And a fifth one</li>
+</ul>
+
     <div id=\"accordion\">
         <button class=\"svg-button\" onclick=\"window.location.href='mainview'\">
         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" fill=\"currentColor\" class=\"bi bi-arrow-return-left\" viewBox=\"0 0 16 16\">
@@ -536,7 +642,7 @@ class __TwigTemplate_50edc791f1622b0b84eef7e35ce00079 extends Template
                 <div class=\"card-body\">
 
                     <!-- Training Class Form Column -->
-                    <form method=\"POST\" action=\"/addnew\" >
+                    <form method=\"POST\" action=\"/technique-db-mvc/public/addnew\" >
                         <!-- User ID -->
                         <div class=\"form-group\">
                             <input type=\"\" class=\"form-control\" id=\"userID\" name=\"userID\" required value=\"{{ userID }}\">
@@ -544,36 +650,54 @@ class __TwigTemplate_50edc791f1622b0b84eef7e35ce00079 extends Template
 
                         <!-- Instructor name -->
                         <h4>Add a New Training Class</h4>
-                            <div class=\"form-group\">
+                            <div class=\"form-group{{ errors.emptyfield or errors.instructor ? ' has-error' : '' }}\">
                                 <label for=\"instructor\">Instructor:</label>
-                                <input type=\"text\" class=\"form-control\" id=\"instructor\" name=\"instructor\" required>
+                                <input type=\"text\" class=\"form-control\" id=\"instructor\" name=\"instructor\" value=\"{{ input.instructor ?? '' }}\" placeholder=\"Instructor name\">
+                                {% if errors.emptyfield %}
+                                    <span class=\"help-block\">{{ errors.emptyfield }}</span>
+                                {% elseif errors.instructor %}
+                                    <span class=\"help-block\">{{ errors.instructor }}</span>
+                                {% endif %}
                             </div>
 
+
                             <!-- Location -->
-                            <div class=\"form-group\">
+                            <div class=\"form-group{{ errors.location ? ' has-error' : '' }}\">
                                 <label for=\"location\">Location:</label>
-                                <input type=\"textarea\" class=\"form-control\" id=\"location\" name=\"location\" required>
+                                <input type=\"textarea\" class=\"form-control\" id=\"location\" name=\"location\" value=\"{{ input.location ?? '' }}\" placeholder=\"Class location\" >
+                                {% if errors.location %}
+                                    <span class=\"help-block\">{{ errors.location }}</span>
+                                {% endif %}
                             </div>
 
                             <!-- Duration -->
-                            <div class=\"form-group\">
+                            <div class=\"form-group{{ errors.duration ? ' has-error' : '' }}\">
                                 <label for=\"duration\">Duration (minutes):</label>
-                                <input type=\"number\" class=\"form-control\" id=\"duration\" name=\"duration\" required>
+                                <input type=\"number\" class=\"form-control\" id=\"duration\" name=\"duration\" value=\"{{ input.duration  ?? '' }}\" placeholder=\"Class duration\" >
+                                {% if errors.duration %}
+                                    <span class=\"help-block\">{{ errors.duration }}</span>
+                                {% endif %}
                             </div>
 
                             <!-- Date -->
-                            <div class=\"form-group\">
+                            <div class=\"form-group{{ errors.emptyfield ? ' has-error' : '' }}\">
                                 <label for=\"date\">Date:</label>
-                                <input type=\"date\" class=\"form-control\" id=\"date\" name=\"date\" required>
+                                <input type=\"date\" class=\"form-control\" id=\"date\" name=\"classDate\" value=\"{{ input.date  ?? '' }}\" >
+                                {% if errors.emptyfield %}
+                                    <span class=\"help-block\">{{ errors.emptyfield }}</span>
+                                {% endif %}
                             </div>
 
                             <!-- classDescription -->
-                            <div class=\"form-group\">
+                            <div class=\"form-group{{ errors.classDescription ? ' has-error' : '' }}\">
                                 <label for=\"classDescription\">Description / type:</label>
-                                <textarea class=\"form-control\" id=\"classDescription\" name=\"classDescription\" required></textarea>
+                                <textarea class=\"form-control\" id=\"classDescription\" name=\"classDescription\" value=\"{{ input.classDescription  ?? '' }}\"></textarea>
+                                {% if errors.classDescription %}
+                                    <span class=\"help-block\">{{ errors.classDescription }}</span>
+                                {% endif %}
                             </div>
                             
-                        <button type=\"submit\" name=\"submitTrainingClass\" class=\"btn btn-primary btn2\">Add Class</button>
+                        <button type=\"submit\" name=\"submit\" class=\"btn btn-primary btn2\">Add Class</button>
                     </form>
                 </div>
             </div>
