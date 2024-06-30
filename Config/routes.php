@@ -135,6 +135,35 @@ return function (RouteCollector $router, $container) {
         ]);
     });
 
+    $router->post('/addposition', function () use ($container) {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        // Retrieve posted form data
+        $positionName = $_POST['positionName'] ?? null;
+        $positionDescription = $_POST['positionDescription'] ?? null;
+
+        $positionController = $container->get(PositionController::class);
+        $result = $positionController->postPosition($positionName, $positionDescription);
+
+        if ($result['success']) {
+            header('Location: addnew');
+            exit;
+        } else {
+            $twig = $container->get('Twig\Environment');
+            echo $twig->render('addnew/add_position.twig', [
+                'userID' => $_SESSION['userID'] ?? null,
+                'username' => $_SESSION['username'] ?? null,
+                'roleID' => $_SESSION['roleID'] ?? null,
+                'errors' => $result['errors'],
+                'input' => $_POST
+            ]);
+        }
+    });
+
     $router->get('/addclass', function () use ($container) {
         $userID = $_SESSION['userID'] ?? null;
         if (!$userID) {

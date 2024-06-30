@@ -30,7 +30,7 @@ class TrainingClass
     public function validateAddTrainingClass($instructor, $location, $duration, $date, $description)
     {
         $errors = [];
-        // Check for empty fields
+
         if (empty($instructor)) {
             $errors['instructor'] = 'Instructor field cannot be empty.';
         } else if (!preg_match("/^[a-zA-Z\s]+$/", $instructor)) {
@@ -68,8 +68,8 @@ class TrainingClass
         $location,
         $duration,
         $classDate,
-        $classDescription)
-    {
+        $classDescription
+    ) {
         $this->userID = $userID;
         $this->instructor = $instructor;
         $this->location = $location;
@@ -79,9 +79,8 @@ class TrainingClass
 
         $errors = $this->validateAddTrainingClass($instructor, $location, $duration, $classDate, $classDescription);
         if (!empty($errors)) {
-            return $errors;  // Return validation errors
+            return $errors;
         }
-        var_dump($instructor, $location, $duration, $classDate, $classDescription);
 
         $query = "INSERT INTO Class (
             userID, instructor, location, classDuration, classDate, classDescription

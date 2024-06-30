@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\TrainingClass;
-use Twig\Environment;
 
 class TrainingClassController
 {
