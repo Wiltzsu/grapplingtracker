@@ -13,53 +13,19 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->get('/register', function () use ($container) {
-        $twig = $container->get('Twig\Environment');
-        echo $twig->render('register.twig');
+        echo $container->get('Twig\Environment')->render('register.twig');
     });
 
     $router->post('/register', function () use ($container) {
-        $username = $_POST['username'] ?? null;
-        $email = $_POST['email'] ?? null;
-        $password = $_POST['password'] ?? null;
-        $password_confirm = $_POST['password_confirm'] ?? null;
-
-        $controller = $container->get(UserController::class);
-        $result = $controller->register($username, $email, $password, $password_confirm);
-
-        if ($result['success']) {
-            header('Location: login');
-            exit();
-        } else {
-            $twig = $container->get('Twig\Environment');
-            echo $twig->render('register.twig', [
-                'errors' => $result['errors'],
-                'input' => $_POST
-            ]);
-        }
+        $container->get(App\Controllers\UserController::class)->register($_POST);
     });
 
     $router->get('/login', function () use ($container) {
-        $twig = $container->get('Twig\Environment');
-        echo $twig->render('login.twig');
+        echo $container->get('Twig\Environment')->render('login.twig');
     });
     
     $router->post('/login', function () use ($container) {
-        $username = $_POST['username'] ?? null;
-        $password = $_POST['password'] ?? null;
-    
-        $controller = $container->get(UserController::class);
-        $result = $controller->login($username, $password);
-    
-        if ($result['success']) {
-            header('Location: mainview');
-            exit();
-        } else {
-            $twig = $container->get('Twig\Environment');
-            echo $twig->render('login.twig', [
-                'errors' => $result['errors'],
-                'input' => $_POST
-            ]);
-        }
+        $container->get(App\Controllers\UserController::class)->login($_POST);
     });
 
     $router->get('/logout', function () {
