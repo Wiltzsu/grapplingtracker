@@ -45,7 +45,7 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
         <path fill-rule=\"evenodd\" d=\"M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5\"/>
     </svg>
     </button>
-    
+
     <form method=\"POST\" action=\"\">
         <h4>Add a New Technique</h4>
         
@@ -73,10 +73,25 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
         <div class=\"form-group\">
             <label for=\"techniqueCategory\">Category:</label>
             <select class=\"form-control\" id=\"categoryID\" name=\"categoryID\" required>
-                <option value=\"\">Select a Category</option>
-
-            </select>
-
+                <option value=\"\">Select a Category</option> 
+                ";
+        // line 39
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable(($context["categories"] ?? null));
+        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+            // line 40
+            yield "                    <option value=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryID", [], "any", false, false, false, 40), "html", null, true);
+            yield "\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["category"], "categoryName", [], "any", false, false, false, 40), "html", null, true);
+            yield "</option>
+                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 42
+        yield "            </select>
         </div>
 
         <!-- Position -->
@@ -84,17 +99,24 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
             <label for=\"techniquePosition\">Position:</label>
             <select class=\"form-control\" id=\"positionID\" name=\"positionID\" required>
                 <option value=\"\">Select a Position</option>
-            </select>
-        </div>
-
-        <!-- Difficulty -->
-        <div class=\"form-group\">
-            <label for=\"techniqueDifficulty\">Difficulty:</label>
-            <select class=\"form-control\" id=\"difficultyID\" name=\"difficultyID\" required>
-                <option value=\"\">Select a Difficulty</option>
-
-            </select>
-
+                ";
+        // line 50
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable(($context["positions"] ?? null));
+        foreach ($context['_seq'] as $context["_key"] => $context["position"]) {
+            // line 51
+            yield "                    <option value=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 51), "html", null, true);
+            yield "\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionName", [], "any", false, false, false, 51), "html", null, true);
+            yield "</option>
+                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['position'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 53
+        yield "            </select>
         </div>
 
         <button type=\"submit\" name=\"submitTechnique\" class=\"btn btn-primary btn2\">Add Technique</button>
@@ -102,8 +124,8 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
 </div>
 
 ";
-        // line 66
-        yield from         $this->loadTemplate("footer.twig", "addnew/add_technique.twig", 66)->unwrap()->yield($context);
+        // line 60
+        yield from         $this->loadTemplate("footer.twig", "addnew/add_technique.twig", 60)->unwrap()->yield($context);
         return; yield '';
     }
 
@@ -128,7 +150,7 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  106 => 66,  40 => 2,  38 => 1,);
+        return array (  128 => 60,  119 => 53,  108 => 51,  104 => 50,  94 => 42,  83 => 40,  79 => 39,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -142,7 +164,7 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
         <path fill-rule=\"evenodd\" d=\"M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5\"/>
     </svg>
     </button>
-    
+
     <form method=\"POST\" action=\"\">
         <h4>Add a New Technique</h4>
         
@@ -170,10 +192,11 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
         <div class=\"form-group\">
             <label for=\"techniqueCategory\">Category:</label>
             <select class=\"form-control\" id=\"categoryID\" name=\"categoryID\" required>
-                <option value=\"\">Select a Category</option>
-
+                <option value=\"\">Select a Category</option> 
+                {% for category in categories %}
+                    <option value=\"{{ category.categoryID }}\">{{ category.categoryName }}</option>
+                {% endfor %}
             </select>
-
         </div>
 
         <!-- Position -->
@@ -181,17 +204,10 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
             <label for=\"techniquePosition\">Position:</label>
             <select class=\"form-control\" id=\"positionID\" name=\"positionID\" required>
                 <option value=\"\">Select a Position</option>
+                {% for position in positions %}
+                    <option value=\"{{ position.positionID }}\">{{ position.positionName }}</option>
+                {% endfor %}
             </select>
-        </div>
-
-        <!-- Difficulty -->
-        <div class=\"form-group\">
-            <label for=\"techniqueDifficulty\">Difficulty:</label>
-            <select class=\"form-control\" id=\"difficultyID\" name=\"difficultyID\" required>
-                <option value=\"\">Select a Difficulty</option>
-
-            </select>
-
         </div>
 
         <button type=\"submit\" name=\"submitTechnique\" class=\"btn btn-primary btn2\">Add Technique</button>

@@ -7,6 +7,11 @@ use PDO;
 class Technique
 {
     private $db;
+    private $userID;
+    private $techniqueName;
+    private $techniqueDescription;
+    private $categoryID;
+    private $positionID;
 
     public function __construct(PDO $db)
     {
@@ -22,9 +27,8 @@ class Technique
         techniqueID, 
         techniqueName, 
         techniqueDescription, 
-        Category.categoryName,
-        Difficulty.difficulty, 
-        Position.positionName
+        Category.categoryID,
+        Position.positionID
         
         FROM Technique
         
@@ -32,8 +36,7 @@ class Technique
         ON Technique.userID = User.userID
         INNER JOIN Category
         ON Technique.categoryID = Category.categoryID
-        INNER JOIN Difficulty
-        ON Technique.difficultyID = Difficulty.difficultyID
+
         INNER JOIN Position
         ON Technique.positionID = Position.positionID
         
@@ -49,6 +52,88 @@ class Technique
         // Execute the statement
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function validateAddTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID)
+    {
+        $errors = [];
+
+        if (empty($techniqueName)) {
+            $errors['techniqueName'] = 'Insert a technique name.';
+        } else if (!preg_match("/^[a-zA-Z\s]+$/", $techniqueName)) {
+            $errors['techniqueName'] = 'Technique name can only contain letters and spaces.';
+        }
+
+        if (empty($techniqueDescription)) {
+            $errors['techniqueDescription'] = 'Insert a description.';
+        } else if(!preg_match("/^[a-zA-Z\s]+$/", $techniqueName)) {
+            $errors['techniqueDescription'] = 'Technique description can only contain letters and spaces.';
+        }
+
+        if (empty($categoryID)) {
+            $errors['categoryID'] = 'Choose a category.';
+        }
+
+        if (empty($positionID)) {
+            $errors['positionID'] = 'Choose a position.';
+        }
+
+        return $errors;
+    }
+
+    public function addTechnique(
+        $userID,
+        $techniqueName,
+        $techniqueDescription,
+        $categoryID,
+        $positionID,
+    ) {
+        $this->userID = $userID;
+        $this->techniqueName = $techniqueName;
+        $this->techniqueDescription = $techniqueDescription;
+        $this->categoryID = $categoryID;
+        $this->positionID = $positionID;
+
+        $errors = $this->validateAddTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID);
+        if (!empty($errors)) {
+            return $errors;
+        }
+
+        // Prepare the SQL query
+        $query = "INSERT INTO Technique (
+            userID, techniqueName, techniqueDescription,
+            categoryID, positionID
+        ) VALUES (
+            :userID, :techniqueName, :techniqueDescription,
+            :categoryID, :positionID
+        )";
+    
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(
+            ":userID", 
+            $this->userID, PDO::PARAM_INT
+        );
+        $statement->bindParam(
+            ":techniqueName", 
+            $this->techniqueName, PDO::PARAM_STR
+        );
+        $statement->bindParam(
+            ":techniqueDescription", 
+            $this->techniqueDescription, PDO::PARAM_STR
+        );
+        $statement->bindParam(
+            ":categoryID", 
+            $this->categoryID, PDO::PARAM_INT
+        );
+        $statement->bindParam(
+            ":positionID", 
+            $this->positionID, PDO::PARAM_INT
+        );
+    
+        // Execute the query
+        $statement->execute();
+    
+        return []; // Indicate success
     }
 }
 ?>

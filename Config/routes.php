@@ -91,14 +91,55 @@ return function (RouteCollector $router, $container) {
             exit();
         }
 
+        // Get categories for form dropdown.
+        $categoryController = $container->get(App\Controllers\CategoryController::class);
+        $categories = $categoryController->getCategoriesForForm();
+
+        // Get positions for form dropdown.
+        $positionController = $container->get(App\Controllers\PositionController::class);
+        $positions = $positionController->getPositionsForForm();
+
         $twig = $container->get('Twig\Environment');
         $roleID = $_SESSION['roleID'] ?? null;
         echo $twig->render('addnew/add_technique.twig', [
             'userID' => $userID,
             'roleID' => $roleID,
-
-            'username' => $_SESSION['username'] ?? null
+            'username' => $_SESSION['username'] ?? null,
+            'categories' => $categories,  // Pass categories to the view
+            'positions' => $positions // Pass positions to the view
         ]);
+    });
+
+    $router->post('/addtechnique', function () use ($container) {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        // Retrieve posted form data
+        $techniqueName = $_POST['techniqueName'] ?? null;
+        $techniqueDescription = $_POST['techniqueDescription'] ?? null;
+        $categoryID = $_POST['categoryID'] ?? null;
+        $positionID = $_POST['positionID'] ?? null;
+        $difficultyID = $_POST['difficultyID'] ?? null;
+
+        $techniqueController = $container->get(TechniqueController::class);
+        $result = $techniqueController->postTechnique($userID, $techniqueName, $techniqueDescription, $categoryID, $positionID, $difficultyID);
+
+        if ($result['success']) {
+            header('Location: addnew');
+            exit();
+        } else {
+            $twig = $container->get('Twig\Environment');
+            echo $twig->render('addnew/add_technique.twig', [
+                'userID' => $_SESSION['userID'] ?? null,
+                'username' => $_SESSION['username'] ?? null,
+                'roleID' => $_SESSION['roleID'] ?? null,
+                'errors' => $result['errors'],
+                'input' => $_POST
+            ]);
+        }
     });
 
     $router->get('/addcategory', function () use ($container) {

@@ -4,9 +4,11 @@ namespace App\Controllers;
 
 use App\Models\Category;
 
+
 class CategoryController
 {
     private $categoryModel;
+
 
     public function __construct(Category $categoryModel)
     {
@@ -26,5 +28,10 @@ class CategoryController
         }
 
         return ['success' => true];
+    }
+
+    public function getCategoriesForForm() {
+        $categories = $this->categoryModel->getCategories();
+        return $categories;
     }
 }

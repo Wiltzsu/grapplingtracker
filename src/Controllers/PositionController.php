@@ -27,4 +27,10 @@ class PositionController
 
         return ['success' => true];
     }
+
+    public function getPositionsForForm()
+    {
+        $positions = $this->positionModel->getPositions();
+        return $positions;
+    }
 }

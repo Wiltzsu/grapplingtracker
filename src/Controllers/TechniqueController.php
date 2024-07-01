@@ -17,5 +17,17 @@ class TechniqueController
     {
         return $this->techniqueModel->getTechniques($userID);
     }
+
+    public function postTechnique($userID, $techniqueName, $techniqueDescription, $categoryID, $positionID, $difficultyID)
+    {
+        $errors = $this->techniqueModel->addTechnique($userID, $techniqueName, $techniqueDescription, $categoryID, $positionID, $difficultyID);
+        {
+            if (!empty($errors)) {
+                return ['errors' => $errors, 'success' => false];
+            }
+
+            return ['success' => true];
+        }
+    }
 }
 ?>

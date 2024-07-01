@@ -15,14 +15,14 @@ class Category
         $this->db = $db;
     }
 
-    public function getCategories()
+    public function getCategories(): array
     {
         $statement = $this->db->prepare("SELECT * FROM Category");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function validateAddCategory($categoryName, $categoryDescription)
+    public function validateAddCategory($categoryName, $categoryDescription): array
     {
         $errors = [];
 
@@ -41,10 +41,8 @@ class Category
         return $errors;
     }
 
-    public function addCategory(
-        $categoryName,
-        $categoryDescription
-    ) {
+    public function addCategory($categoryName, $categoryDescription): array
+    {
         $this->categoryName = $categoryName;
         $this->categoryDescription = $categoryDescription;
 
