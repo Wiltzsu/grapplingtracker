@@ -327,9 +327,24 @@ return function (RouteCollector $router, $container) {
         require __DIR__ . '/../resources/views/journal.php';
     });
 
+    $router->get('/mainview', function () use ($container) {
+        $twig = $container->get('Twig\Environment');
+        echo $twig->render('mainview/main_view.twig', [
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    });
 
+    $router->get('/logtraining', function () use ($container) {
+        $twig = $container->get('Twig\Environment');
+        echo $twig->render('mainview/log_training.twig', [
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    });
 
-    $router->get('/mainview', function () {
-        require __DIR__ . '/../resources/views/main_view.php';
+    $router->get('/quicknote', function () use ($container) {
+        $twig = $container->get('Twig\Environment');
+        echo $twig->render('mainview/quick_note.twig', [
+            'username' => $_SESSION['username'] ?? null
+        ]);
     });
 };

@@ -1,0 +1,28 @@
+{% include '@Header/header.twig' %}
+<!-- Journal Form -->
+<form method="POST" action="">
+    <h4>Add a journal note</h4>
+    <!-- Technique ID -->
+    <div class="form-group">
+        <label for="techniqueID">Technique:</label>
+        <select class="form-control" id="techniqueID" name="techniqueID" required>
+            <option value="">Select a technique</option>
+            <?= $technique_options; ?>
+        </select>
+    </div>
+    <!-- Class ID -->
+    <div class="form-group">
+        <label for="classID">Class:</label>
+        <select class="form-control" id="classID" name="classID" required>
+            <option value="">Select a class</option>
+            <?= $class_options; ?>
+        </select>
+    </div>
+    <!-- User ID -->
+    <div class="form-group<?= !empty($errors['empty_field']) ? ' has-error' : '' ?>">
+        <input type="hidden" class="form-control" id="userID" name="userID" required value="<?php echo $_SESSION['userID']?>">
+    </div>
+    <button type="submit" name="submitTechniqueClass" class="btn btn-secondary btn2">Add to journal</button>
+</form>
+
+{% include 'footer.twig' %}
