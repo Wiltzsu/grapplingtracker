@@ -200,58 +200,15 @@ return function (RouteCollector $router, $container) {
         }
     });
 
+
     $router->get('/addclass', function () use ($container) {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
-        $twig = $container->get('Twig\Environment');
-        $roleID = $_SESSION['roleID'] ?? null;
-        echo $twig->render('addnew/add_class.twig', [
-            'userID' => $userID,
-            'roleID' => $roleID,
-
-            'username' => $_SESSION['username'] ?? null
-        ]);
+        $container->get(App\Controllers\TrainingClassController::class)->addClassForm();
     });
-
 
     $router->post('/addclass', function () use ($container) {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
-        // Retrieve posted form data
-        $instructor = $_POST['instructor'] ?? null;
-        $location = $_POST['location'] ?? null;
-        $duration = $_POST['duration'] ?? null;
-        $classDate = $_POST['classDate'] ?? null;
-        $classDescription = $_POST['classDescription'] ?? null;
-
-        $trainingClassController = $container->get(TrainingClassController::class);
-        $result = $trainingClassController->postTrainingClass($userID, $instructor, $location, $duration, $classDate, $classDescription);
-
-        
-        if ($result['success']) {
-            header('Location: addnew');
-            exit();
-        } else {
-            $twig = $container->get('Twig\Environment');
-            echo $twig->render('addnew/add_class.twig', [
-                'userID' => $_SESSION['userID'] ?? null,
-                'username' => $_SESSION['username'] ?? null,
-                'roleID' => $_SESSION['roleID'] ?? null,
-                'errors' => $result['errors'],
-                'input' => $_POST
-            ]);
-        }
-
-
+        $container->get(App\Controllers\TrainingClassController::class)->postTrainingClass($_POST);
     });
+
 
     $router->get('/viewitems', function () use ($container) {
         $userID = $_SESSION['userID'] ?? null;

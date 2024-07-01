@@ -26,7 +26,7 @@ class TrainingClass
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function validateAddTrainingClass($instructor, $location, $duration, $date, $description)
+    public function validateCreateNewClass($instructor, $location, $duration, $date, $description)
     {
         $errors = [];
 
@@ -61,7 +61,7 @@ class TrainingClass
         return $errors;
     }
     
-    public function addTrainingClass(
+    public function createNewClass(
         $userID,
         $instructor,
         $location,
@@ -76,7 +76,7 @@ class TrainingClass
         $this->classDate = $classDate;
         $this->classDescription = $classDescription;
 
-        $errors = $this->validateAddTrainingClass($instructor, $location, $duration, $classDate, $classDescription);
+        $errors = $this->validateCreateNewClass($instructor, $location, $duration, $classDate, $classDescription);
         if (!empty($errors)) {
             return $errors;
         }
