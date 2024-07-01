@@ -135,5 +135,37 @@ class Technique
     
         return []; // Indicate success
     }
+
+    public function countTechniques($userID)
+    {
+        $userID = $_SESSION['userID'];
+
+        $query = "SELECT COUNT(techniqueID) AS totalTechniquesLearned
+                  FROM Technique
+                  WHERE userID = :userID";
+
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':userID', $userID,PDO::PARAM_INT);
+
+        $statement->execute();
+
+        $total_techniques = $statement->fetchColumn();
+
+        return $total_techniques;
+    }
+
+    public function countTechniquesMonthly($userID)
+    {
+        $query = "SELECT MONTH(journalNoteDate) as month, COUNT(techniqueID) as count
+                FROM Techniques_Classes
+                WHERE userID = :userID AND YEAR(journalNoteDate) = YEAR(CURDATE())
+                GROUP BY MONTH(journalNoteDate)
+                ORDER BY MONTH(journalNoteDate);";
+
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

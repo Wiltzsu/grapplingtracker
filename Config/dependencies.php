@@ -18,6 +18,7 @@ use App\Controllers\TrainingClassController;
 use App\Controllers\PositionController;
 use App\Controllers\CategoryController;
 use App\Controllers\TechniqueController;
+use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 
 /**
@@ -53,7 +54,12 @@ return [
      * @return Instance Returns a Twig Environment instance.
      */
     Environment::class => function () {
-        return include __DIR__ . '/twig.php';
+        $loader = new FilesystemLoader(__DIR__ . '/../resources/views');
+        $loader->addPath(__DIR__ . '/../resources/views/', 'Header');
+        return new Environment($loader, [
+            'cache' => __DIR__ . '/../cache',
+            'debug' => true,
+        ]);
     },
 
     /**
