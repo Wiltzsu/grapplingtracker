@@ -22,7 +22,7 @@ class Category
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function validateAddCategory($categoryName, $categoryDescription): array
+    public function validateCreateNewCategory($categoryName, $categoryDescription): array
     {
         $errors = [];
 
@@ -41,12 +41,12 @@ class Category
         return $errors;
     }
 
-    public function addCategory($categoryName, $categoryDescription): array
+    public function createNewCategory($categoryName, $categoryDescription): array
     {
         $this->categoryName = $categoryName;
         $this->categoryDescription = $categoryDescription;
 
-        $errors = $this->validateAddCategory($categoryName, $categoryDescription);
+        $errors = $this->validateCreateNewCategory($categoryName, $categoryDescription);
         if (!empty($errors)) {
             return $errors;
         }

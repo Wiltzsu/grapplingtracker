@@ -3,16 +3,18 @@
 namespace App\Controllers;
 
 use App\Models\Category;
-
+use App\Models\Position;
+use Twig\Environment;
 
 class CategoryController
 {
     private $categoryModel;
+    private $twig;
 
-
-    public function __construct(Category $categoryModel)
+    public function __construct(Category $categoryModel, Environment $twig)
     {
         $this->categoryModel = $categoryModel;
+        $this->twig = $twig;
     }
 
     public function getCategories()
@@ -20,14 +22,46 @@ class CategoryController
         return $this->categoryModel->getCategories();
     }
 
-    public function postCategory($categoryName, $categoryDescription)
+    public function addCategoryForm()
     {
-        $errors = $this->categoryModel->addCategory($categoryName, $categoryDescription);
-        if (!empty($errors)) {
-            return ['errors' => $errors, 'success' => false];
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
         }
 
-        return ['success' => true];
+        $roleID = $_SESSION['roleID'] ?? null;
+        $username = $_SESSION['username'] ?? null;
+
+        echo $this->twig->render('addnew/add_category.twig', [
+            'userID' => $userID,
+            'roleID' => $roleID,
+            'username' => $username
+        ]);
+    }
+
+    public function postCategory($formData)
+    {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        $categoryName = $formData['categoryName'] ?? null;
+        $categoryDescription = $formData['categoryDescription'] ?? null;
+
+        $errors = $this->categoryModel->createNewCategory(
+            $categoryName,
+            $categoryDescription
+        );
+        
+        if (!empty($errors)) {
+            echo $this->twig->render('addnew/add_position.twig', ['errors' => $errors, 'input' => $formData]);
+        } else {
+            header('Location: addnew');
+            exit();
+        }
     }
 
     public function getCategoriesForForm() {

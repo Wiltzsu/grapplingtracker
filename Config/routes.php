@@ -109,49 +109,11 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->get('/addcategory', function () use ($container) {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
-        $twig = $container->get('Twig\Environment');
-        $roleID = $_SESSION['roleID'] ?? null;
-        echo $twig->render('addnew/add_category.twig', [
-            'userID' => $userID,
-            'roleID' => $roleID,
-
-            'username' => $_SESSION['username'] ?? null
-        ]);
+        $container->get(App\Controllers\CategoryController::class)->addCategoryForm();
     });
 
     $router->post('/addcategory', function () use ($container) {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
-        // Retrieve posted form data
-        $categoryName = $_POST['categoryName'] ?? null;
-        $categoryDescription = $_POST['categoryDescription'] ?? null;
-
-        $categoryController = $container->get(CategoryController::class);
-        $result = $categoryController->postCategory($categoryName, $categoryDescription);
-
-        if ($result['success']) {
-            header('Location: addnew');
-            exit();
-        } else {
-            $twig = $container->get('Twig\Environment');
-            echo $twig->render('addnew/add_category.twig', [
-                'userID' => $_SESSION['userID'] ?? null,
-                'username' => $_SESSION['username'] ?? null,
-                'roleID' => $_SESSION['roleID'] ?? null,
-                'errors' => $result['errors'],
-                'input' => $_POST
-            ]);
-        }
+        $container->get(App\Controllers\CategoryController::class)->postCategory($_POST);
     });
 
     $router->get('/addposition', function () use ($container) {
