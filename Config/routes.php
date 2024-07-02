@@ -51,29 +51,7 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->get('/addtechnique', function () use ($container) {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
-        // Get categories for form dropdown.
-        $categoryController = $container->get(App\Controllers\CategoryController::class);
-        $categories = $categoryController->getCategoriesForForm();
-
-        // Get positions for form dropdown.
-        $positionController = $container->get(App\Controllers\PositionController::class);
-        $positions = $positionController->getPositionsForForm();
-
-        $twig = $container->get('Twig\Environment');
-        $roleID = $_SESSION['roleID'] ?? null;
-        echo $twig->render('addnew/add_technique.twig', [
-            'userID' => $userID,
-            'roleID' => $roleID,
-            'username' => $_SESSION['username'] ?? null,
-            'categories' => $categories,  // Pass categories to the view
-            'positions' => $positions // Pass positions to the view
-        ]);
+        $container->get(App\Controllers\TechniqueController::class)->addTechniqueForm();
     });
 
     $router->post('/addtechnique', function () use ($container) {

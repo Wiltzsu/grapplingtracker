@@ -158,11 +158,16 @@ return [
 
     /**
      * Tells the DI container to create a new 'TechniqueController',
-     * instance, injecting both the 'Technique' instance and the
-     * Twig 'Environment' instance to its constructor.
+     * instance, injecting the 
+     * 'Technique' instance,
+     * Twig 'Environment' instance,
+     * 'Category' instance and
+     * 'Position' instance to its constructor.
      */
     TechniqueController::class => DI\create()->constructor(
         DI\get(Technique::class),
+        DI\get(Category::class),
+        DI\get(Position::class),
         DI\get(Environment::class)
     ),
 ];

@@ -54,7 +54,7 @@ class Technique
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function validateAddTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID)
+    public function validateCreateNewTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID)
     {
         $errors = [];
 
@@ -81,7 +81,7 @@ class Technique
         return $errors;
     }
 
-    public function addTechnique(
+    public function createNewTechnique(
         $userID,
         $techniqueName,
         $techniqueDescription,
@@ -94,7 +94,7 @@ class Technique
         $this->categoryID = $categoryID;
         $this->positionID = $positionID;
 
-        $errors = $this->validateAddTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID);
+        $errors = $this->validateCreateNewTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID);
         if (!empty($errors)) {
             return $errors;
         }
