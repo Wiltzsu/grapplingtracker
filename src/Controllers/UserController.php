@@ -16,7 +16,12 @@ class UserController
         $this->twig = $twig;
     }
 
-    public function login($request)
+    public function showLoginForm() :void
+    {
+        echo $this->twig->render('login.twig');
+    }
+
+    public function login($request) :void
     {
         $username = $request['username'] ?? '';
         $password = $request['password'] ?? '';
@@ -30,7 +35,12 @@ class UserController
         }
     }
 
-    public function register($request)
+    public function showRegisterForm() :void
+    {
+        echo $this->twig->render('register.twig');
+    }
+
+    public function register($request) :void
     {
         $username = $request['username'] ?? '';
         $email = $request['email'] ?? '';
@@ -45,5 +55,26 @@ class UserController
             header('Location: login');
             exit();
         }
+    }
+
+    public function logout() :void
+    {
+        // Unset all session variables
+        $_SESSION = array();
+
+        // Delete the session cookie
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+
+        // Destroy the session
+        session_destroy();
+
+        // Redirect to home page
+        header("Location: /technique-db-mvc/public");
     }
 }

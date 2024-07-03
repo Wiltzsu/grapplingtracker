@@ -14,7 +14,7 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->get('/register', function () use ($container) {
-        echo $container->get('Twig\Environment')->render('register.twig');
+        $container->get(App\Controllers\UserController::class)->showRegisterForm();
     });
 
     $router->post('/register', function () use ($container) {
@@ -22,18 +22,17 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->get('/login', function () use ($container) {
-        echo $container->get('Twig\Environment')->render('login.twig');
+        $container->get(App\Controllers\UserController::class)->showLoginForm();
     });
     
     $router->post('/login', function () use ($container) {
         $container->get(App\Controllers\UserController::class)->login($_POST);
     });
 
-    $router->get('/logout', function () {
-        require __DIR__ . '/../resources/views/logout.php';
+    $router->get('/logout', function () use ($container) {
+        $container->get(App\Controllers\UserController::class)->logout($_POST);
     });
 
-    // Route to display the form
     $router->get('/addnew', function () use ($container) {
         $container->get(App\Controllers\AddNewController::class)->showAddNewList();
     });
