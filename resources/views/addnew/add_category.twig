@@ -14,7 +14,7 @@
         <!-- Category name -->
         <div class="form-group{{ errors.categoryName ? ' has-error' : '' }}">
             <label for="categoryName">Category Name:</label>
-            <input type="text" class="form-control" id="categoryName" name="categoryName" value="{{ input.categoryName }}" placeholder="Takedown, Submission...">
+            <input type="text" class="form-control" id="categoryName" name="categoryName" value="{{ input.categoryName }}" placeholder="">
             {% if errors.categoryName %}
                 <span class="help-block error-message">{{ errors.categoryName }}</span>
             {% endif %}

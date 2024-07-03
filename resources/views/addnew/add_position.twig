@@ -14,7 +14,7 @@
         <h4>Add a New Position</h4>
         <div class="form-group{{ errors.positionName ? ' has-error' : '' }}">
                 <label for="positionName">Position name:</label>
-                <input type="text" class="form-control" id="positionName" name="positionName" value="{{ input.positionName  ?? '' }}" placeholder="Closed guard, Side control...">
+                <input type="text" class="form-control" id="positionName" name="positionName" value="{{ input.positionName  ?? '' }}" placeholder="">
                 {% if errors.positionName %}
                     <span class="help-block error-message">{{ errors.positionName }}</span>
                 {% endif %}

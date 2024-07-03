@@ -1,28 +1,44 @@
 {% include '@Header/header.twig' %}
-<!-- Journal Form -->
-<form method="POST" action="">
-    <h4>Add a journal note</h4>
-    <!-- Technique ID -->
-    <div class="form-group">
-        <label for="techniqueID">Technique:</label>
-        <select class="form-control" id="techniqueID" name="techniqueID" required>
-            <option value="">Select a technique</option>
-            <?= $technique_options; ?>
-        </select>
-    </div>
-    <!-- Class ID -->
-    <div class="form-group">
-        <label for="classID">Class:</label>
-        <select class="form-control" id="classID" name="classID" required>
-            <option value="">Select a class</option>
-            <?= $class_options; ?>
-        </select>
-    </div>
-    <!-- User ID -->
-    <div class="form-group<?= !empty($errors['empty_field']) ? ' has-error' : '' ?>">
-        <input type="hidden" class="form-control" id="userID" name="userID" required value="<?php echo $_SESSION['userID']?>">
-    </div>
-    <button type="submit" name="submitTechniqueClass" class="btn btn-secondary btn2">Add to journal</button>
-</form>
 
+<div class="container-fluid p-5"
+
+  <!-- Back to main view button -->
+  <button class="svg-button" onclick="window.location.href='mainview'">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/></svg>
+  </button>
+
+    <!-- Journal Form -->
+    <form method="POST" action="">
+        <h4>Add a journal note</h4>
+
+        <!-- User ID -->
+        <div class="form-group">
+            <input type="" class="form-control" id="userID" name="userID" required value="{{ userID }}">
+        </div>
+
+        <!-- Technique ID -->
+        <div class="form-group">
+            <label for="techniqueID">Technique:</label>
+            <select class="form-control" id="techniqueID" name="techniqueID" required>
+                <option value="">Select a technique</option>
+                {% for technique in techniques %}
+                    <option value="{{ technique.techniqueID }}">{{ technique.techniqueName }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- Class ID -->
+        <div class="form-group">
+            <label for="classID">Class:</label>
+            <select class="form-control" id="classID" name="classID" required>
+                <option value="">Select a class</option>
+                {% for class in classes %}
+                    <option value="{{ class.classID }}">{{ class.instructor}} - {{ class.classDate }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" name="submitTechniqueClass" class="btn btn-secondary btn2">Add to journal</button>
+    </form>
+</div>
 {% include 'footer.twig' %}

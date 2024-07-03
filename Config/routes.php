@@ -33,6 +33,13 @@ return function (RouteCollector $router, $container) {
         $container->get(App\Controllers\UserController::class)->logout($_POST);
     });
 
+    $router->get('/mainview', function () use ($container) {
+        $twig = $container->get('Twig\Environment');
+        echo $twig->render('mainview/main_view.twig', [
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    });
+
     $router->get('/addnew', function () use ($container) {
         $container->get(App\Controllers\AddNewController::class)->showAddNewList();
     });
@@ -83,18 +90,10 @@ return function (RouteCollector $router, $container) {
         require __DIR__ . '/../resources/views/journal.php';
     });
 
-    $router->get('/mainview', function () use ($container) {
-        $twig = $container->get('Twig\Environment');
-        echo $twig->render('mainview/main_view.twig', [
-            'username' => $_SESSION['username'] ?? null
-        ]);
-    });
+
 
     $router->get('/logtraining', function () use ($container) {
-        $twig = $container->get('Twig\Environment');
-        echo $twig->render('mainview/log_training.twig', [
-            'username' => $_SESSION['username'] ?? null
-        ]);
+        $container->get(App\Controllers\MainViewController::class)->showJournalNoteForm();
     });
 
     $router->get('/quicknote', function () use ($container) {

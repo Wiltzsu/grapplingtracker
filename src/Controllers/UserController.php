@@ -59,10 +59,10 @@ class UserController
 
     public function logout() :void
     {
-        // Unset all session variables
+        // Clear all session variables to ensure no data persists after logout.
         $_SESSION = array();
 
-        // Delete the session cookie
+        // Delete the session cookie.
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
             setcookie(session_name(), '', time() - 42000,
@@ -71,10 +71,10 @@ class UserController
             );
         }
 
-        // Destroy the session
+        // Destroy the session.
         session_destroy();
 
-        // Redirect to home page
+        // Redirect to home page.
         header("Location: /technique-db-mvc/public");
     }
 }

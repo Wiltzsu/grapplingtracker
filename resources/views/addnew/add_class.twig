@@ -18,8 +18,8 @@
         <!-- Instructor name -->
         <h4>Add a New Training Class</h4>
             <div class="form-group{{ errors.instructor ? ' has-error' : '' }}">
-                <label for="instructor">Instructor:</label>
-                <input type="text" class="form-control" id="instructor" name="instructor" value="{{ input.instructor ?? '' }}" placeholder="Instructor name">
+                <label for="instructor">Instructor name:</label>
+                <input type="text" class="form-control" id="instructor" name="instructor" value="{{ input.instructor ?? '' }}" placeholder="">
                 {% if errors.instructor %}
                     <span class="help-block error-message">{{ errors.instructor }}</span>
                 {% endif %}
@@ -28,7 +28,7 @@
             <!-- Location -->
             <div class="form-group{{ errors.location ? ' has-error' : '' }}">
                 <label for="location">Location:</label>
-                <input type="textarea" class="form-control" id="location" name="location" value="{{ input.location ?? '' }}" placeholder="Class location" >
+                <input type="textarea" class="form-control" id="location" name="location" value="{{ input.location ?? '' }}" placeholder="" >
                 {% if errors.location %}
                     <span class="help-block error-message">{{ errors.location }}</span>
                 {% endif %}
@@ -37,7 +37,7 @@
             <!-- Duration -->
             <div class="form-group{{ errors.duration ? ' has-error' : '' }}">
                 <label for="duration">Duration (minutes):</label>
-                <input type="number" class="form-control" id="duration" name="duration" value="{{ input.duration  ?? '' }}" placeholder="Class duration">
+                <input type="number" class="form-control" id="duration" name="duration" value="{{ input.duration  ?? '' }}" placeholder="">
                 {% if errors.duration %}
                     <span class="help-block error-message">{{ errors.duration }}</span>
                 {% endif %}
@@ -55,7 +55,7 @@
             <!-- classDescription -->
             <div class="form-group{{ errors.classDescription ? ' has-error' : '' }}">
                 <label for="classDescription">Description:</label>
-                <textarea class="form-control" id="classDescription" name="classDescription" value="{{ input.classDescription  ?? '' }}" placeholder="Gi/nogi/wrestling etc."></textarea>
+                <textarea class="form-control" id="classDescription" name="classDescription" value="{{ input.classDescription  ?? '' }}" placeholder=""></textarea>
                 {% if errors.classDescription %}
                     <span class="help-block error-message">{{ errors.classDescription }}</span>
                 {% endif %}
