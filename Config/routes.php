@@ -73,35 +73,7 @@ return function (RouteCollector $router, $container) {
 
 
     $router->get('/viewitems', function () use ($container) {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-    
-        $trainingClassController = $container->get(TrainingClassController::class);
-        $classes = $trainingClassController->getTrainingClasses($userID);
-        
-        $positionController = $container->get(PositionController::class);
-        $positions = $positionController->getPositions();
-
-        $categoryController = $container->get(CategoryController::class);
-        $categories = $categoryController->getCategories();
-    
-        $techniqueController = $container->get(TechniqueController::class);
-        $techniques = $techniqueController->getTechniques($userID);
-
-        $twig = $container->get('Twig\Environment');
-        $roleID = $_SESSION['roleID'] ?? null;
-        echo $twig->render('view_items.twig', [
-            'classes' => $classes,
-            'positions' => $positions,
-            'categories' => $categories,
-            'techniques' => $techniques,
-            'roleID' => $roleID,
-
-            'username' => $_SESSION['username'] ?? null
-        ]);
+        $container->get(App\Controllers\ViewItemsController::class)->showViewItemsAccordion();
     });
 
     $router->get('/profile', function () {
