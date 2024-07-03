@@ -3,6 +3,7 @@
 use App\Controllers\CategoryController;
 use Phroute\Phroute\RouteCollector;
 use App\Controllers\UserController;
+use App\Controllers\AddNewController;
 use App\Controllers\TrainingClassController;
 use App\Controllers\PositionController;
 use App\Controllers\TechniqueController;
@@ -34,20 +35,7 @@ return function (RouteCollector $router, $container) {
 
     // Route to display the form
     $router->get('/addnew', function () use ($container) {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
-        $twig = $container->get('Twig\Environment');
-        $roleID = $_SESSION['roleID'] ?? null;
-        echo $twig->render('addnew/add_new.twig', [
-            'userID' => $userID,
-            'roleID' => $roleID,
-
-            'username' => $_SESSION['username'] ?? null
-        ]);
+        $container->get(App\Controllers\AddNewController::class)->showAddNewList();
     });
 
     $router->get('/addtechnique', function () use ($container) {
