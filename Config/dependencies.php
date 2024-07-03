@@ -1,7 +1,8 @@
 <?php
+
 /**
  * Dependency Injection Container Configuration
- * 
+ *
  * This file configures a Dependency Injection (DI) container using PHP-DI.
  * It defines how various classes and services should be instantiated and
  * injected throughout the application.
@@ -24,17 +25,17 @@ use Twig\Environment;
 /**
  * Returns an array that defines how different classes and services should
  * be instantiated an injected.
- * 
+ *
  * @return Array Returns an array of settings for the DI container.
  */
 return [
     /**
      * Defines how the 'PDO' class (for database connections) should be
      * instantiated.
-     * 
+     *
      * The anonymous function receives a 'ContainerInterface' instance to
      * access other configurations or settings.
-     * 
+     *
      * @return PDO Returns a PDO instance configured with database settings.
      */
     PDO::class => function (ContainerInterface $c) {
@@ -50,21 +51,42 @@ return [
     },
     /**
      * Defines how the 'Environment' class from Twig should be instantiated.
-     * 
-     * @return Instance Returns a Twig Environment instance.
+     * This function is responsible for creating and configuring an instance
+     * of the Twig Environment.
+     * It uses the Twig loader for templates and sets cachnig and debug
+     * options.
+     *
+     * @return Instance Returns a Twig Environment instance configured with
+     * paths and settings.
      */
-    Environment::class => function () {
-        $loader = new FilesystemLoader(__DIR__ . '/../resources/views');
-        $loader->addPath(__DIR__ . '/../resources/views/', 'Header');
-        return new Environment($loader, [
-            'cache' => __DIR__ . '/../cache',
-            'debug' => true,
-        ]);
+    Environment::class => function (ContainerInterface $c) {
+        // Retrieve Twig settings from the settings array in the DI container.
+        $twigSettings = $c->get('settings')['twig'];
+
+        // Create a new Twig Loader to manage how Twig templates are loaded.
+        // The loader is configured with a base path for views.
+        // 'views_path' is defined in 'settings.php'.
+        $loader = new FilesystemLoader($twigSettings['views_path']);
+        // Here the same base view path is added with a namespace 'Header',
+        // which can be used to organize templates.
+        $loader->addPath($twigSettings['views_path'], 'Header');
+        $loader->addPath($twigSettings['views_path'], 'Footer');
+
+        // Return a new Twig Environment object, constructed with the loader
+        // and an array of options.
+        // Options include the path to the cache directory and whether to
+        // enable debugging.
+        return new Environment(
+            $loader, [
+            'cache' => $twigSettings['cache_path'],
+            'debug' => $twigSettings['debug'],
+            ]
+        );
     },
 
     /**
      * Defines how the 'TrainingClass' model should be instantiated.
-     * 
+     *
      * Tells the DI container to create a new 'TrainingClass' instance,
      * injecting the PDO instance to its constructor.
      */
@@ -72,7 +94,7 @@ return [
 
     /**
      * Defines how the 'TrainingClassController' should be instantiated.
-     * 
+     *
      * Tells the DI container to create a new 'TrainingClassController instance,
      * injecting 'TrainingClass' instance into its constructor.
      */
@@ -83,28 +105,29 @@ return [
 
     /**
      * Defines how the 'User' model should be instantiated.
-     * 
+     *
      * Tells the DI container to create a new 'User' instance, injecting the PDO
      * instance to its constructor.
      */
     User::class => DI\create()->constructor(
-        DI\get(PDO::class)),
+        DI\get(PDO::class)
+    ),
 
     /**
      * Defines how the 'UserController' should be instantiated.
-     * 
+     *
      * Tells the DI container to create a new 'UserController' instance,
      * injecting both the 'User' instance and the Twig 'Environment' instance
      * to its constructor.
      */
     UserController::class => DI\create()->constructor(
-        DI\get(User::class), 
+        DI\get(User::class),
         DI\get(Environment::class)
     ),
 
     /**
      * Defines how the 'Position' model should be instantiated.
-     * 
+     *
      * Tells the DI container to create a new 'Position' instance, injecting
      * the PDO instance to its constructor.
      */
@@ -114,7 +137,7 @@ return [
 
     /**
      * Defines how the 'PositionController' should be instantiated.
-     * 
+     *
      * Tells the DI container to create a new 'PositionController' instance,
      * injecting both the 'Position' instance and the Twig 'Environment'
      * instance to its constructor.
@@ -126,7 +149,7 @@ return [
 
     /**
      * Defines how the 'Category' model should be instantiated.
-     * 
+     *
      * Tells the DI container to create a new 'Category' instance,
      * injecting the PDO instance to its constructor.
      */
@@ -136,7 +159,7 @@ return [
 
     /**
      * Defines how the 'CategoryController' should be instantiated.
-     * 
+     *
      * Tells the DI container to create a new 'CategoryController'
      * instance, injecting both the 'Category' instance and the Twig
      * 'Environment' instance to its constructor.
@@ -148,7 +171,7 @@ return [
 
     /**
      * Defines how the 'Technique' model should be instantiated.
-     * 
+     *
      * Tells the DI container to create a new 'Technique' instance,
      * injecting the PDO instance to its constructor.
      */
@@ -158,7 +181,7 @@ return [
 
     /**
      * Tells the DI container to create a new 'TechniqueController',
-     * instance, injecting the 
+     * instance, injecting the
      * 'Technique' instance,
      * Twig 'Environment' instance,
      * 'Category' instance and

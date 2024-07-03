@@ -8,8 +8,8 @@ use App\Controllers\PositionController;
 use App\Controllers\TechniqueController;
 
 return function (RouteCollector $router, $container) {
-    $router->get('/', function () {
-        require __DIR__ . '/../resources/views/front_page.php';
+    $router->get('/', function() use ($container) {
+        echo $container->get('Twig\Environment')->render('front_page.php');
     });
 
     $router->get('/register', function () use ($container) {
@@ -55,35 +55,7 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->post('/addtechnique', function () use ($container) {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
-        // Retrieve posted form data
-        $techniqueName = $_POST['techniqueName'] ?? null;
-        $techniqueDescription = $_POST['techniqueDescription'] ?? null;
-        $categoryID = $_POST['categoryID'] ?? null;
-        $positionID = $_POST['positionID'] ?? null;
-        $difficultyID = $_POST['difficultyID'] ?? null;
-
-        $techniqueController = $container->get(TechniqueController::class);
-        $result = $techniqueController->postTechnique($userID, $techniqueName, $techniqueDescription, $categoryID, $positionID, $difficultyID);
-
-        if ($result['success']) {
-            header('Location: addnew');
-            exit();
-        } else {
-            $twig = $container->get('Twig\Environment');
-            echo $twig->render('addnew/add_technique.twig', [
-                'userID' => $_SESSION['userID'] ?? null,
-                'username' => $_SESSION['username'] ?? null,
-                'roleID' => $_SESSION['roleID'] ?? null,
-                'errors' => $result['errors'],
-                'input' => $_POST
-            ]);
-        }
+        $container->get(App\Controllers\TechniqueController::class)->postTechnique($_POST);
     });
 
     $router->get('/addcategory', function () use ($container) {

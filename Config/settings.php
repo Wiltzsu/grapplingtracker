@@ -29,4 +29,9 @@ return [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         ],
     ],
+    'twig' => [
+        'views_path' => __DIR__ . '/../resources/views',
+        'cache_path' => __DIR__ . '/../cache',
+        'debug' => true,
+    ]
 ];

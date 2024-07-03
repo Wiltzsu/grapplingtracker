@@ -50,15 +50,32 @@ class TechniqueController
         ]);
     }
 
-    public function postTechnique($userID, $techniqueName, $techniqueDescription, $categoryID, $positionID, $difficultyID)
+    public function postTechnique($formData)
     {
-        $errors = $this->techniqueModel->createNewTechnique($userID, $techniqueName, $techniqueDescription, $categoryID, $positionID, $difficultyID);
-        {
-            if (!empty($errors)) {
-                return ['errors' => $errors, 'success' => false];
-            }
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
 
-            return ['success' => true];
+        $techniqueName = $formData['techniqueName'] ?? null;
+        $techniqueDescription = $formData['techniqueDescription'] ?? null;
+        $categoryID = $formData['categoryID'] ?? null;
+        $positionID = $formData['positionID'] ?? null;
+
+        $errors = $this->techniqueModel->createNewTechnique(
+            $userID,
+            $techniqueName,
+            $techniqueDescription,
+            $categoryID,
+            $positionID
+        );
+        
+        if (!empty($errors)) {
+            echo $this->twig->render('addnew/add_technique.twig', ['errors' => $errors, 'input' => $formData]);
+        } else {
+            header('Location: addnew');
+            exit();
         }
     }
 }
