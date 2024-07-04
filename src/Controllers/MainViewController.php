@@ -14,11 +14,7 @@ class MainViewController
         private Technique $techniqueModel, 
         private TrainingClass $trainingClassModel,
         private Environment $twig,
-    ) {
-        $this->journalNoteModel = $journalNoteModel;
-        $this->techniqueModel = $techniqueModel;
-        $this->trainingClassModel = $trainingClassModel;
-        $this->twig = $twig;
+    ) { 
     }
 
     public function getTechniquesClasses()

@@ -9,10 +9,8 @@ class TrainingClassController
 {
     public function __construct(
         private TrainingClass $trainingClassModel,
-        private Environment $twig)
-    {
-        $this->trainingClassModel = $trainingClassModel;
-        $this->twig = $twig;
+        private Environment $twig
+    ) {
     }
 
     public function getTrainingClasses($userID)

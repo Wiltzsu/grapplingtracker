@@ -16,11 +16,6 @@ class ViewItemsController
         private Category $categoryModel,
         private Technique $techniqueModel
     ) {
-        $this->twig = $twig;
-        $this->trainingClassModel = $trainingClassModel;
-        $this->positionModel = $positionModel;
-        $this->categoryModel = $categoryModel;
-        $this->techniqueModel = $techniqueModel;
     }
 
     public function showViewItemsAccordion()

@@ -7,13 +7,10 @@ use Twig\Environment;
 
 class PositionController
 {
-    private $positionModel;
-    private $twig;
-
-    public function __construct(Position $positionModel, Environment $twig)
-    {
-        $this->positionModel = $positionModel;
-        $this->twig = $twig;
+    public function __construct(
+        private Position $positionModel,
+        private Environment $twig
+    ) {
     }
 
     public function getPositions()

@@ -6,11 +6,9 @@ use Twig\Environment;
 
 class AddNewController
 {
-    private $twig;
-
-    public function __construct(Environment $twig)
-    {
-        $this->twig = $twig;
+    public function __construct(
+        private Environment $twig
+    ) {
     }
 
     public function showAddNewList() :void

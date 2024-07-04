@@ -9,17 +9,12 @@ use Twig\Environment;
 
 class TechniqueController
 {
-    private $techniqueModel;
-    private $categoryModel;
-    private $positionModel;
-    private $twig;
-
-    public function __construct(Technique $techniqueModel, Category $categoryModel, Position $positionModel, Environment $twig)
-    {
-        $this->techniqueModel = $techniqueModel;
-        $this->categoryModel = $categoryModel;
-        $this->positionModel = $positionModel;
-        $this->twig = $twig;
+    public function __construct(
+        private Technique $techniqueModel,
+        private Category $categoryModel,
+        private Position $positionModel,
+        private Environment $twig
+    ) {
     }
 
     public function getTechniques($userID)

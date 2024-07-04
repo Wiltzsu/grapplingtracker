@@ -8,13 +8,10 @@ use Twig\Environment;
 
 class CategoryController
 {
-    private $categoryModel;
-    private $twig;
-
-    public function __construct(Category $categoryModel, Environment $twig)
-    {
-        $this->categoryModel = $categoryModel;
-        $this->twig = $twig;
+    public function __construct(
+        private Category $categoryModel,
+        private Environment $twig
+    ) {
     }
 
     public function getCategories()

@@ -7,13 +7,10 @@ use Twig\Environment;
 
 class UserController
 {
-    private $userModel;
-    private $twig;
-
-    public function __construct(User $userModel, Environment $twig)
-    {
-        $this->userModel = $userModel;
-        $this->twig = $twig;
+    public function __construct(
+        private User $userModel,
+        private Environment $twig
+    ) {
     }
 
     public function showLoginForm() :void
