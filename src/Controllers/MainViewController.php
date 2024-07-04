@@ -74,7 +74,7 @@ class MainViewController
         }
     }
 
-    public function showJournalEntries()
+    public function showMainView()
     {
         $userID = $_SESSION['userID'] ?? null;
         if (!$userID) {
@@ -83,13 +83,16 @@ class MainViewController
         }
 
         $techniquesClasses = $this->journalNoteModel->getTechniquesClasses($userID);
+        $matTimeData = $this->trainingClassModel->countMatTimeMonthly($userID);
+        $techniquesData = $this->techniqueModel->countTechniquesMonthly($userID);
                 
         echo $this->twig->render('mainview/main_view.twig', [
             'techniquesClasses' => $techniquesClasses,
+            'totalMatTimeMonthly' => $matTimeData,
+            'totalTechniquesLearnedMonthly' => $techniquesData,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
             'username' => $_SESSION['username'] ?? null
         ]);
-        
     }
 }

@@ -7,52 +7,62 @@
                 <li class="list-group-item"><a href="logtraining">Add journal entry.</a></li>
                 <li class="list-group-item"><a href="quicknote">Make a quick note.</a></li>
             </ul>
-            <table class="table table-hover">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Technique name</th>
-                        <th>Instructor</th>
-                        <th>Created at</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% if techniquesClasses is not empty %}
-                    {% for techniqueClass in techniquesClasses %}
-                    <tr>
-                        <td>{{ techniqueClass.techniqueID }}</td>
-                        <td>{{ techniqueClass.classID }}</td>
-                        <td>{{ techniqueClass.journalNoteDate }}</td>
-                        <td>
-                            <form method="POST" action="">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                {% else %}
-                    <tr>
-                        <td colspan="4">No entries found.</td>
-                    </tr>
-                {% endif %}
-                </tbody>
-            </table>
         </div>
+    </div>
+
+    <div class="row p-3">
+        <div class="col-sm-6">
+            <canvas id="matTimeChart"></canvas>
+        </div>
+        <div class="col-sm-6">
+            <canvas id="techniquesLearnedChart"></canvas>
+        </div>
+    </div>
+
+    <div class="row p-5">
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Technique name</th>
+                    <th>Instructor</th>
+                    <th>Created at</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% if techniquesClasses is not empty %}
+                {% for techniqueClass in techniquesClasses %}
+                <tr>
+                    <td>{{ techniqueClass.techniqueID }}</td>
+                    <td>{{ techniqueClass.classID }}</td>
+                    <td>{{ techniqueClass.journalNoteDate }}</td>
+                    <td>
+                        <form method="POST" action="">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">No entries found.</td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
     </div>
 </div>
 
-<canvas id="matTimeChart"></canvas>
-<canvas id="techniquesLearnedChart"></canvas>
+
 
 <script>
-    var totalMatTimeData = <?= json_encode($totalMatTimeMonthly) ?>;
+    // Assuming 'totalMatTimeMonthly' and 'totalTechniquesLearnedMonthly' are passed to the Twig template
+    var totalMatTimeData = {{ totalMatTimeMonthly|json_encode|raw }};
+    var techniquesLearnedData = {{ totalTechniquesLearnedMonthly|json_encode|raw }};
+
+    // Include your scripts here that use these variables
 </script>
 
 <script src="/technique-db-mvc/public/js/totalMatTime.js"></script>
-
-<script>
-    var techniquesLearnedData = <?= json_encode($totalTechniquesLearnedMonthly) ?>;
-</script>
-
 <script src="/technique-db-mvc/public/js/techniquesLearned.js"></script>
-{% include '@Footer/footer.twig' %}
+

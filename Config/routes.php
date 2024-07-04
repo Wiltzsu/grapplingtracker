@@ -28,7 +28,7 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->get('/mainview', function () use ($container) {
-        $container->get(App\Controllers\MainViewController::class)->showJournalEntries();
+        $container->get(App\Controllers\MainViewController::class)->showMainView();
 
     });
 
