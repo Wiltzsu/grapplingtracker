@@ -17,12 +17,12 @@ class MainViewController
     ) { 
     }
 
-    public function getTechniquesClasses()
+    public function getTechniquesClasses() :array
     {
         return $this->journalNoteModel->getTechniquesClasses();
     }
 
-    public function showJournalNoteForm()
+    public function showJournalNoteForm() :void
     {
         $userID = $_SESSION['userID'] ?? null;
 
@@ -62,7 +62,7 @@ class MainViewController
         }
     }
 
-    public function showMainView()
+    public function showMainView() :void
     {
         $userID = $_SESSION['userID'] ?? null;
 

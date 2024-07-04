@@ -13,12 +13,12 @@ class PositionController
     ) {
     }
 
-    public function getPositions()
+    public function getPositions() :array
     {
         return $this->positionModel->getPositions();
     }
 
-    public function addPositionForm()
+    public function addPositionForm() :void
     {
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
@@ -30,7 +30,7 @@ class PositionController
         ]);
     }
 
-    public function postPosition($formData)
+    public function postPosition($formData) :void
     {
         $positionName = $formData['positionName'] ?? null;
         $positionDescription = $formData['positionDescription'] ?? null;
@@ -47,7 +47,7 @@ class PositionController
         }
     }
 
-    public function getPositionsForForm()
+    public function getPositionsForForm() :array
     {
         $positions = $this->positionModel->getPositions();
         return $positions;

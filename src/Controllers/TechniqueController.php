@@ -17,12 +17,12 @@ class TechniqueController
     ) {
     }
 
-    public function getTechniques($userID)
+    public function getTechniques($userID) :array
     {
         return $this->techniqueModel->getTechniques($userID);
     }
 
-    public function addTechniqueForm()
+    public function addTechniqueForm() :void
     {
         $categories = $this->categoryModel->getCategories();
         $positions = $this->positionModel->getPositions();
@@ -39,7 +39,7 @@ class TechniqueController
         ]);
     }
 
-    public function postTechnique($formData)
+    public function postTechnique($formData) :void
     {
         $userID = $_SESSION['userID'] ?? null;
 

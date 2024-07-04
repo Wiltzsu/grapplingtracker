@@ -18,9 +18,9 @@ class ViewItemsController
     ) {
     }
 
-    public function showViewItemsAccordion()
+    public function showViewItemsAccordion() :void
     {
-        $userID = $_SESSION['userID'];
+        $userID = $_SESSION['userID'] ?? null;
 
         $classes = $this->trainingClassModel->getTrainingClasses($userID);
         $positions = $this->positionModel->getPositions();

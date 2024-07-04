@@ -14,12 +14,12 @@ class CategoryController
     ) {
     }
 
-    public function getCategories()
+    public function getCategories() :array
     {
         return $this->categoryModel->getCategories();
     }
 
-    public function addCategoryForm()
+    public function addCategoryForm() :void
     {
         $userID = $_SESSION['userID'] ?? null;
         $roleID = $_SESSION['roleID'] ?? null;
@@ -32,7 +32,7 @@ class CategoryController
         ]);
     }
 
-    public function postCategory($formData)
+    public function postCategory($formData) :void
     {
         $categoryName = $formData['categoryName'] ?? null;
         $categoryDescription = $formData['categoryDescription'] ?? null;
@@ -50,7 +50,8 @@ class CategoryController
         }
     }
 
-    public function getCategoriesForForm() {
+    public function getCategoriesForForm() :array
+    {
         $categories = $this->categoryModel->getCategories();
         return $categories;
     }

@@ -13,12 +13,12 @@ class TrainingClassController
     ) {
     }
 
-    public function getTrainingClasses($userID)
+    public function getTrainingClasses($userID) :array
     {
         return $this->trainingClassModel->getTrainingClasses($userID);
     }
 
-    public function addClassForm()
+    public function addClassForm() :void
     {
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
