@@ -29,10 +29,6 @@ class MainViewController
     public function showJournalNoteForm()
     {
         $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
 
         $techniques = $this->techniqueModel->getTechniques($userID);
         $classes = $this->trainingClassModel->getTrainingClasses($userID);
@@ -52,10 +48,6 @@ class MainViewController
     public function postJournalEntry($formData) :void
     {
         $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
 
         $technique = $formData['techniqueID'] ?? null;
         $trainingClass = $formData['classID'] ?? null;
@@ -77,10 +69,6 @@ class MainViewController
     public function showMainView()
     {
         $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
 
         $techniquesClasses = $this->journalNoteModel->getTechniquesClasses($userID);
         $matTimeData = $this->trainingClassModel->countMatTimeMonthly($userID);

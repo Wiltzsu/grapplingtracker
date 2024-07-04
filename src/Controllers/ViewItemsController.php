@@ -25,17 +25,13 @@ class ViewItemsController
 
     public function showViewItemsAccordion()
     {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
+        $userID = $_SESSION['userID'];
 
         $classes = $this->trainingClassModel->getTrainingClasses($userID);
         $positions = $this->positionModel->getPositions();
         $categories = $this->categoryModel->getCategories();
         $techniques = $this->techniqueModel->getTechniques($userID);
-        
+
         echo $this->twig->render('view_items.twig', [
             'classes' => $classes,
             'positions' => $positions,

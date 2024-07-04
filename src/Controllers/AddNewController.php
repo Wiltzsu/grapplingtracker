@@ -15,17 +15,11 @@ class AddNewController
 
     public function showAddNewList() :void
     {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
 
         echo $this->twig->render('addnew/add_new.twig', [
-            'userID' => $userID,
+            'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username
         ]);

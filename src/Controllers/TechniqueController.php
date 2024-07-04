@@ -29,12 +29,6 @@ class TechniqueController
 
     public function addTechniqueForm()
     {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
         $categories = $this->categoryModel->getCategories();
         $positions = $this->positionModel->getPositions();
 
@@ -42,7 +36,7 @@ class TechniqueController
         $username = $_SESSION['username'] ?? null;
 
         echo $this->twig->render('addnew/add_technique.twig', [
-            'userID' => $userID,
+            'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username,
             'categories' => $categories,
@@ -53,10 +47,6 @@ class TechniqueController
     public function postTechnique($formData)
     {
         $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
 
         $techniqueName = $formData['techniqueName'] ?? null;
         $techniqueDescription = $formData['techniqueDescription'] ?? null;

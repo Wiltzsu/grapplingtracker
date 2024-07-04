@@ -22,17 +22,11 @@ class TrainingClassController
 
     public function addClassForm()
     {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
 
         echo $this->twig->render('addnew/add_class.twig', [
-            'userID' => $userID,
+            'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username
         ]);
@@ -40,11 +34,7 @@ class TrainingClassController
 
     public function postTrainingClass($formData) :void
     {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
+        $userID = $_SESSION['userID'];
 
         $instructor = $formData['instructor'] ?? null;
         $location = $formData['location'] ?? null;

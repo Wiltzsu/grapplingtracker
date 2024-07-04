@@ -25,11 +25,6 @@ class CategoryController
     public function addCategoryForm()
     {
         $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
 
@@ -42,12 +37,6 @@ class CategoryController
 
     public function postCategory($formData)
     {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
         $categoryName = $formData['categoryName'] ?? null;
         $categoryDescription = $formData['categoryDescription'] ?? null;
 

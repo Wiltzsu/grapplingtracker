@@ -7,6 +7,14 @@ return function (RouteCollector $router, $container) {
         echo $container->get('Twig\Environment')->render('front_page.php');
     });
 
+    $router->filter('auth', function() {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+    });
+
     $router->get('/register', function () use ($container) {
         $container->get(App\Controllers\UserController::class)->showRegisterForm();
     });
@@ -25,72 +33,68 @@ return function (RouteCollector $router, $container) {
 
     $router->get('/logout', function () use ($container) {
         $container->get(App\Controllers\UserController::class)->logout($_POST);
-    });
+    }, ['before' => 'auth']);
 
     $router->get('/mainview', function () use ($container) {
         $container->get(App\Controllers\MainViewController::class)->showMainView();
-
-    });
+    }, ['before' => 'auth']);
 
     $router->get('/addnew', function () use ($container) {
         $container->get(App\Controllers\AddNewController::class)->showAddNewList();
-    });
+    }, ['before' => 'auth']);
 
     $router->get('/addtechnique', function () use ($container) {
         $container->get(App\Controllers\TechniqueController::class)->addTechniqueForm();
-    });
+    }, ['before' => 'auth']);
 
     $router->post('/addtechnique', function () use ($container) {
         $container->get(App\Controllers\TechniqueController::class)->postTechnique($_POST);
-    });
+    }, ['before' => 'auth']);
 
     $router->get('/addcategory', function () use ($container) {
         $container->get(App\Controllers\CategoryController::class)->addCategoryForm();
-    });
+    }, ['before' => 'auth']);
 
     $router->post('/addcategory', function () use ($container) {
         $container->get(App\Controllers\CategoryController::class)->postCategory($_POST);
-    });
+    }, ['before' => 'auth']);
 
     $router->get('/addposition', function () use ($container) {
        $container->get(App\Controllers\PositionController::class)->addPositionForm();
-    });
+    }, ['before' => 'auth']);
 
     $router->post('/addposition', function () use ($container) {
         $container->get(App\Controllers\PositionController::class)->postPosition($_POST);
-    });
-
+    }, ['before' => 'auth']);
 
     $router->get('/addclass', function () use ($container) {
         $container->get(App\Controllers\TrainingClassController::class)->addClassForm();
-    });
+    }, ['before' => 'auth']);
 
     $router->post('/addclass', function () use ($container) {
         $container->get(App\Controllers\TrainingClassController::class)->postTrainingClass($_POST);
-    });
+    }, ['before' => 'auth']);
 
 
     $router->get('/viewitems', function () use ($container) {
         $container->get(App\Controllers\ViewItemsController::class)->showViewItemsAccordion();
-    });
+    }, ['before' => 'auth']);
 
     $router->get('/profile', function () {
         require __DIR__ . '/../resources/views/profile.php';
-    });
+    }, ['before' => 'auth']);
 
     $router->get('/journal', function () {
         require __DIR__ . '/../resources/views/journal.php';
-    });
-
-
+    }, ['before' => 'auth']);
 
     $router->get('/logtraining', function () use ($container) {
         $container->get(App\Controllers\MainViewController::class)->showJournalNoteForm();
-    });
+    }, ['before' => 'auth']);
 
     $router->post('/logtraining', function () use ($container) {
         $container->get(App\Controllers\MainViewController::class)->postJournalEntry($_POST);
-    });
+    }, ['before' => 'auth']);
 
     $router->get('/quicknote', function () use ($container) {
         $twig = $container->get('Twig\Environment');

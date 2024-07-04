@@ -23,17 +23,11 @@ class PositionController
 
     public function addPositionForm()
     {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
 
         echo $this->twig->render('addnew/add_position.twig', [
-            'userID' => $userID,
+            'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username
         ]);
@@ -41,12 +35,6 @@ class PositionController
 
     public function postPosition($formData)
     {
-        $userID = $_SESSION['userID'] ?? null;
-        if (!$userID) {
-            header('Location: login');
-            exit();
-        }
-
         $positionName = $formData['positionName'] ?? null;
         $positionDescription = $formData['positionDescription'] ?? null;
 
