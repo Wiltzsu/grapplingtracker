@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\JournalNote;
 use App\Models\Technique;
 use App\Models\TrainingClass;
 use Twig\Environment;
@@ -9,10 +10,12 @@ use Twig\Environment;
 class MainViewController
 {
     public function __construct(
+        private JournalNote $journalNoteModel,
         private Technique $techniqueModel, 
         private TrainingClass $trainingClassModel,
         private Environment $twig
     ) {
+        $this->journalNoteModel = $journalNoteModel;
         $this->techniqueModel = $techniqueModel;
         $this->trainingClassModel = $trainingClassModel;
         $this->twig = $twig;
@@ -39,5 +42,30 @@ class MainViewController
             'techniques' => $techniques,
             'classes' => $classes
         ]);
+    }
+
+    public function postJournalEntry($formData) :void
+    {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        $technique = $formData['techniqueID'] ?? null;
+        $trainingClass = $formData['classID'] ?? null;
+
+        $errors = $this->journalNoteModel->createNewJournalNote(
+            $technique,
+            $trainingClass,
+            $userID
+        );
+
+        if (!empty($errors)) {
+            echo $this->twig->render('mainview/log_training.twig', ['errors' => $errors, 'input' => $formData]);
+        } else {
+            header('Location: mainview');
+            exit();
+        }
     }
 }

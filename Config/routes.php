@@ -96,6 +96,10 @@ return function (RouteCollector $router, $container) {
         $container->get(App\Controllers\MainViewController::class)->showJournalNoteForm();
     });
 
+    $router->post('/logtraining', function () use ($container) {
+        $container->get(App\Controllers\MainViewController::class)->postJournalEntry($_POST);
+    });
+
     $router->get('/quicknote', function () use ($container) {
         $twig = $container->get('Twig\Environment');
         echo $twig->render('mainview/quick_note.twig', [

@@ -76,7 +76,14 @@ class TrainingClass
         $this->classDate = $classDate;
         $this->classDescription = $classDescription;
 
-        $errors = $this->validateCreateNewClass($instructor, $location, $duration, $classDate, $classDescription);
+        $errors = $this->validateCreateNewClass(
+            $instructor,
+            $location,
+            $duration,
+            $classDate,
+            $classDescription
+        );
+        
         if (!empty($errors)) {
             return $errors;
         }

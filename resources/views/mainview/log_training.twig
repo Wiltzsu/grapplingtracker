@@ -18,27 +18,35 @@
         </div>
 
         <!-- Technique ID -->
-        <div class="form-group">
+        <div class="form-group{{ errors.technique ? ' has-error' : '' }}">
             <label for="techniqueID">Technique:</label>
-            <select class="form-control" id="techniqueID" name="techniqueID" required>
+            <select class="form-control" id="techniqueID" name="techniqueID" value="{{ input.technique ?? '' }}">
                 <option value="">Select a technique</option>
                 {% for technique in techniques %}
                     <option value="{{ technique.techniqueID }}">{{ technique.techniqueName }}</option>
                 {% endfor %}
             </select>
+                {% if errors.technique %}
+                    <span class="help-block error-message">{{ errors.technique }}</span>
+                {% endif %}
         </div>
+
         <!-- Class ID -->
-        <div class="form-group">
+        <div class="form-group{{ errors.class ? ' has-error' : '' }}">
             <label for="classID">Class:</label>
-            <select class="form-control" id="classID" name="classID" required>
+            <select class="form-control" id="classID" name="classID" value="{{ input.class ?? '' }}">
                 <option value="">Select a class</option>
                 {% for class in classes %}
                     <option value="{{ class.classID }}">{{ class.instructor}} - {{ class.classDate }}</option>
                 {% endfor %}
             </select>
+                {% if errors.class %}
+                    <span class="help-block error-message">{{ errors.class }}</span>
+                {% endif %}
         </div>
 
-        <button type="submit" name="submitTechniqueClass" class="btn btn-secondary btn2">Add to journal</button>
+        <button type="submit" name="submit" class="btn btn-secondary btn2">Add to journal</button>
     </form>
 </div>
-{% include 'footer.twig' %}
+
+{% include '@Footer/footer.twig' %}

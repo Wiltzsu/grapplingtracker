@@ -7,10 +7,9 @@ use Twig\Environment;
 
 class TrainingClassController
 {
-    private $trainingClassModel;
-    private $twig;
-
-    public function __construct(TrainingClass $trainingClassModel, Environment $twig)
+    public function __construct(
+        private TrainingClass $trainingClassModel,
+        private Environment $twig)
     {
         $this->trainingClassModel = $trainingClassModel;
         $this->twig = $twig;
@@ -39,7 +38,7 @@ class TrainingClassController
         ]);
     }
 
-    public function postTrainingClass($formData)
+    public function postTrainingClass($formData) :void
     {
         $userID = $_SESSION['userID'] ?? null;
         if (!$userID) {
