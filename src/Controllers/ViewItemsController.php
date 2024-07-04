@@ -1,19 +1,26 @@
 <?php
-
 namespace App\Controllers;
 
+use App\Models\TrainingClass;
+use App\Models\Position;
+use App\Models\Category;
+use App\Models\Technique;
 use Twig\Environment;
-use Psr\Container\ContainerInterface;
 
 class ViewItemsController
 {
-    private $twig;
-    private $container;
-
-    public function __construct(Environment $twig, ContainerInterface $container)
-    {
+    public function __construct(
+        private Environment $twig,
+        private TrainingClass $trainingClassModel,
+        private Position $positionModel,
+        private Category $categoryModel,
+        private Technique $techniqueModel
+    ) {
         $this->twig = $twig;
-        $this->container = $container;
+        $this->trainingClassModel = $trainingClassModel;
+        $this->positionModel = $positionModel;
+        $this->categoryModel = $categoryModel;
+        $this->techniqueModel = $techniqueModel;
     }
 
     public function showViewItemsAccordion()
@@ -24,29 +31,19 @@ class ViewItemsController
             exit();
         }
 
-        $trainingClassController = $this->container->get(TrainingClassController::class);
-        $classes = $trainingClassController->getTrainingClasses($userID);
+        $classes = $this->trainingClassModel->getTrainingClasses($userID);
+        $positions = $this->positionModel->getPositions();
+        $categories = $this->categoryModel->getCategories();
+        $techniques = $this->techniqueModel->getTechniques($userID);
         
-        $positionController = $this->container->get(PositionController::class);
-        $positions = $positionController->getPositions();
-
-        $categoryController = $this->container->get(CategoryController::class);
-        $categories = $categoryController->getCategories();
-    
-        $techniqueController = $this->container->get(TechniqueController::class);
-        $techniques = $techniqueController->getTechniques($userID);
-
-        $roleID = $_SESSION['roleID'] ?? null;
-        $username = $_SESSION['username'] ?? null;
-        
-        $twig = $this->container->get('Twig\Environment');
-        echo $twig->render('view_items.twig', [
+        echo $this->twig->render('view_items.twig', [
             'classes' => $classes,
             'positions' => $positions,
             'categories' => $categories,
             'techniques' => $techniques,
-            'roleID' => $roleID,
-            'username' => $username
+            'userID' => $userID,
+            'roleID' => $_SESSION['roleID'] ?? null,
+            'username' => $_SESSION['username'] ?? null
         ]);
     }
 }

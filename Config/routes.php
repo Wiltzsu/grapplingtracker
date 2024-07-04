@@ -1,12 +1,6 @@
 <?php
 
-use App\Controllers\CategoryController;
 use Phroute\Phroute\RouteCollector;
-use App\Controllers\UserController;
-use App\Controllers\AddNewController;
-use App\Controllers\TrainingClassController;
-use App\Controllers\PositionController;
-use App\Controllers\TechniqueController;
 
 return function (RouteCollector $router, $container) {
     $router->get('/', function() use ($container) {
@@ -34,10 +28,8 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->get('/mainview', function () use ($container) {
-        $twig = $container->get('Twig\Environment');
-        echo $twig->render('mainview/main_view.twig', [
-            'username' => $_SESSION['username'] ?? null
-        ]);
+        $container->get(App\Controllers\MainViewController::class)->showJournalEntries();
+
     });
 
     $router->get('/addnew', function () use ($container) {

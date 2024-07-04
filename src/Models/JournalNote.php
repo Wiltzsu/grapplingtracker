@@ -16,6 +16,17 @@ class JournalNote
         $this->db = $db;
     }
 
+    public function getTechniquesClasses()
+    {
+        $statement = $this->db->prepare(
+            "SELECT * FROM Techniques_Classes
+            "
+        );
+        
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function validateCreateNewJournalNote($techniqueID, $classID)
     {
         $errors = [];

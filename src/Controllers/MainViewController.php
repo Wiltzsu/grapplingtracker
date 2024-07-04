@@ -13,12 +13,17 @@ class MainViewController
         private JournalNote $journalNoteModel,
         private Technique $techniqueModel, 
         private TrainingClass $trainingClassModel,
-        private Environment $twig
+        private Environment $twig,
     ) {
         $this->journalNoteModel = $journalNoteModel;
         $this->techniqueModel = $techniqueModel;
         $this->trainingClassModel = $trainingClassModel;
         $this->twig = $twig;
+    }
+
+    public function getTechniquesClasses()
+    {
+        return $this->journalNoteModel->getTechniquesClasses();
     }
 
     public function showJournalNoteForm()
@@ -67,5 +72,24 @@ class MainViewController
             header('Location: mainview');
             exit();
         }
+    }
+
+    public function showJournalEntries()
+    {
+        $userID = $_SESSION['userID'] ?? null;
+        if (!$userID) {
+            header('Location: login');
+            exit();
+        }
+
+        $techniquesClasses = $this->journalNoteModel->getTechniquesClasses($userID);
+                
+        echo $this->twig->render('mainview/main_view.twig', [
+            'techniquesClasses' => $techniquesClasses,
+            'userID' => $userID,
+            'roleID' => $_SESSION['roleID'] ?? null,
+            'username' => $_SESSION['username'] ?? null
+        ]);
+        
     }
 }

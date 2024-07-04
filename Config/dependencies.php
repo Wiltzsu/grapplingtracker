@@ -18,7 +18,9 @@ use App\Controllers\UserController;
 use App\Controllers\TrainingClassController;
 use App\Controllers\PositionController;
 use App\Controllers\CategoryController;
+use App\Controllers\MainViewController;
 use App\Controllers\TechniqueController;
+use App\Models\JournalNote;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 
@@ -193,4 +195,30 @@ return [
         DI\get(Position::class),
         DI\get(Environment::class)
     ),
+
+    /**
+     * Defines how the 'JournalNote' model should be instantiated.
+     * 
+     * Tells the DI container to create a new 'JournalNote'
+     * instance, injecting the PDO instance to its constructor.
+     */
+    JournalNote::class => DI\create()->constructor(
+        DI\get(PDO::class)
+    ),
+
+    /**
+     * Tells the DI container to create a new 'MainViewController'
+     * instance, injecting the
+     * 'JournalNote' instance,
+     * 'Technique' instance,
+     * 'TrainingClass' instance,
+     * Twig 'Environment' instance,
+     * to its constructor.
+     */
+    MainViewController::class => DI\create()->constructor(
+        DI\get(JournalNote::class),
+        DI\get(Technique::class),
+        DI\get(TrainingClass::class),
+        DI\get(Environment::class)
+    )
 ];
