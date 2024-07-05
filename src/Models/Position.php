@@ -40,17 +40,10 @@ class Position
         return $errors;
     }
 
-    public function createPosition(
-        $positionName,
-        $positionDescription
-    ) {
+    public function createNewPosition($positionName, $positionDescription) :bool
+    {
         $this->positionName = $positionName;
         $this->positionDescription = $positionDescription;
-
-        $errors = $this->validateCreatePosition($positionName, $positionDescription);
-        if (!empty($errors)) {
-            return $errors;
-        }
 
         $query = "INSERT INTO Position (
             positionName, positionDescription
@@ -67,8 +60,8 @@ class Position
             ":positionDescription",
             $this->positionDescription, PDO::PARAM_STR
         );
-        $statement->execute();
-        return [];
+        
+        return $statement->execute();    
     }
 }
 ?>

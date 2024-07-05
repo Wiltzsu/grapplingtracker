@@ -41,15 +41,10 @@ class Category
         return $errors;
     }
 
-    public function createNewCategory($categoryName, $categoryDescription): array
+    public function createNewCategory($categoryName, $categoryDescription): bool
     {
         $this->categoryName = $categoryName;
         $this->categoryDescription = $categoryDescription;
-
-        $errors = $this->validateCreateNewCategory($categoryName, $categoryDescription);
-        if (!empty($errors)) {
-            return $errors;
-        }
 
         $query = "INSERT INTO Category (
             categoryName, categoryDescription
@@ -66,7 +61,7 @@ class Category
             ":categoryDescription",
             $this->categoryDescription, PDO::PARAM_STR
         );
-        $statement->execute();
-        return [];
+        
+        return $statement->execute();
     }
 }

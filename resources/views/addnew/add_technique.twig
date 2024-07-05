@@ -13,22 +13,26 @@
         
         <!-- User ID -->
         <div class="form-group">
-            <input type="hidden" class="form-control" id="userID" name="userID" required value="{{ userID }}">
+            <input type="" class="form-control" id="userID" name="userID" required value="{{ userID }}">
 
         </div>
 
         <!-- Name -->
-        <div class="form-group">
+        <div class="form-group{{ errors.techniqueName ? ' has-error' : '' }}">
             <label for="techniqueName">Technique Name:</label>
-            <input type="text" class="form-control" id="techniqueName" name="techniqueName" required>
-
+            <input type="text" class="form-control" id="techniqueName" name="techniqueName" value="{{ input.techniqueName ?? '' }}">
+            {% if errors.techniqueName %}
+                <span class="help-block error-message">{{ errors.techniqueName }}</span>
+            {% endif %}
         </div>
 
         <!-- Description -->
-        <div class="form-group">
+        <div class="form-group{{ errors.techniqueDescription ? ' has-error' : '' }}">
             <label for="techniqueDescription">Description:</label>
-            <textarea class="form-control" id="techniqueDescription" name="techniqueDescription" required></textarea>
-
+            <textarea class="form-control" id="techniqueDescription" name="techniqueDescription" value="{{ input.techniqueDescription ?? '' }}"></textarea>
+            {% if errors.techniqueDescription %}
+                <span class="help-block error-message">{{ errors.techniqueDescription }}</span>
+            {% endif %}
         </div>
 
         <!-- Category -->
@@ -39,6 +43,9 @@
                 {% for category in categories %}
                     <option value="{{ category.categoryID }}">{{ category.categoryName }}</option>
                 {% endfor %}
+                {% if errors.categoryID %}
+                    <span class="help-block error-message">{{ errors.categoryID }}</span>
+                {% endif %}
             </select>
         </div>
 
@@ -50,10 +57,13 @@
                 {% for position in positions %}
                     <option value="{{ position.positionID }}">{{ position.positionName }}</option>
                 {% endfor %}
+                {% if errors.positionID %}
+                    <span class="help-block error-message">{{ errors.positionID }}</span>
+                {% endif %}
             </select>
         </div>
 
-        <button type="submit" name="submitTechnique" class="btn btn-primary btn2">Add Technique</button>
+        <button type="submit" name="submit" class="btn btn-primary btn2">Add Technique</button>
     </form>
 </div>
 

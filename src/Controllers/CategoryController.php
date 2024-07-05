@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\Category;
-use App\Models\Position;
 use Twig\Environment;
 
 class CategoryController
@@ -37,14 +36,20 @@ class CategoryController
         $categoryName = $formData['categoryName'] ?? null;
         $categoryDescription = $formData['categoryDescription'] ?? null;
 
-        $errors = $this->categoryModel->createNewCategory(
+        $errors = $this->categoryModel->validateCreateNewCategory(
             $categoryName,
             $categoryDescription
         );
         
         if (!empty($errors)) {
-            echo $this->twig->render('addnew/add_position.twig', ['errors' => $errors, 'input' => $formData]);
+            echo $this->twig->render('addnew/add_category.twig', ['errors' => $errors, 'input' => $formData]);
         } else {
+            $this->categoryModel->createNewCategory(
+                $userID = $_SESSION['userID'],
+                $categoryName,
+                $categoryDescription
+            );
+            
             header('Location: addnew');
             exit();
         }

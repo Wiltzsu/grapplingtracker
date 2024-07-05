@@ -35,13 +35,18 @@ class PositionController
         $positionName = $formData['positionName'] ?? null;
         $positionDescription = $formData['positionDescription'] ?? null;
 
-        $errors = $this->positionModel->createPosition(
+        $errors = $this->positionModel->validateCreatePosition(
             $positionName,
             $positionDescription);
 
         if (!empty($errors)) {
             echo $this->twig->render('addnew/add_position.twig', ['errors' => $errors, 'input' => $formData]);
         } else {
+            $this->positionModel->createNewPosition(
+                $positionName,
+                $positionDescription
+            );
+
             header('Location: addnew');
             exit();
         }

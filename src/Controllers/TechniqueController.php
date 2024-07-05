@@ -42,14 +42,17 @@ class TechniqueController
     public function postTechnique($formData) :void
     {
         $userID = $_SESSION['userID'] ?? null;
-
+    
         $techniqueName = $formData['techniqueName'] ?? null;
         $techniqueDescription = $formData['techniqueDescription'] ?? null;
         $categoryID = $formData['categoryID'] ?? null;
         $positionID = $formData['positionID'] ?? null;
-
-        $errors = $this->techniqueModel->createNewTechnique(
-            $userID,
+    
+        // Get lists for categories and positions to refill the form
+        $categories = $this->categoryModel->getCategories();
+        $positions = $this->positionModel->getPositions();
+    
+        $errors = $this->techniqueModel->validateCreateNewTechnique(
             $techniqueName,
             $techniqueDescription,
             $categoryID,
@@ -57,12 +60,28 @@ class TechniqueController
         );
         
         if (!empty($errors)) {
-            echo $this->twig->render('addnew/add_technique.twig', ['errors' => $errors, 'input' => $formData]);
+            // Pass all the originally submitted data back to the form along with the errors
+            echo $this->twig->render('addnew/add_technique.twig', [
+                'errors' => $errors,
+                'input' => $formData,
+                'categories' => $categories,
+                'positions' => $positions,
+                'userID' => $userID
+            ]);
         } else {
+            $this->techniqueModel->createNewTechnique(
+                $userID,
+                $techniqueName,
+                $techniqueDescription,
+                $categoryID,
+                $positionID
+            );
+            
             header('Location: addnew');
             exit();
         }
     }
+    
 
 }
 ?>

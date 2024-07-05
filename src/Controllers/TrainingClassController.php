@@ -26,7 +26,8 @@ class TrainingClassController
         echo $this->twig->render('addnew/add_class.twig', [
             'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
-            'username' => $username
+            'username' => $username,
+            'input' => $_POST
         ]);
     }
 
@@ -40,8 +41,7 @@ class TrainingClassController
         $classDate = $formData['classDate'] ?? null;
         $classDescription = $formData['classDescription'] ?? null;
 
-        $errors = $this->trainingClassModel->createNewClass(
-            $userID,
+        $errors = $this->trainingClassModel->validateCreateNewClass(
             $instructor,
             $location,
             $duration,
@@ -50,8 +50,22 @@ class TrainingClassController
         );
 
         if (!empty($errors)) {
-            echo $this->twig->render('addnew/add_class.twig', ['errors' => $errors, 'input' => $formData]);
+            echo $this->twig->render('addnew/add_class.twig', [
+                'errors' => $errors,
+                'input' => $formData,
+                'userID' => $userID
+            ]);
         } else {
+            
+            $this->trainingClassModel->createNewClass(
+                $userID,
+                $instructor,
+                $location,
+                $duration,
+                $classDate,
+                $classDescription
+            );
+            
             header('Location: addnew');
             exit();
         }

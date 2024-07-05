@@ -94,11 +94,6 @@ class Technique
         $this->categoryID = $categoryID;
         $this->positionID = $positionID;
 
-        $errors = $this->validateCreateNewTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID);
-        if (!empty($errors)) {
-            return $errors;
-        }
-
         // Prepare the SQL query
         $query = "INSERT INTO Technique (
             userID, techniqueName, techniqueDescription,

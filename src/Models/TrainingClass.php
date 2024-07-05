@@ -76,18 +76,6 @@ class TrainingClass
         $this->classDate = $classDate;
         $this->classDescription = $classDescription;
 
-        $errors = $this->validateCreateNewClass(
-            $instructor,
-            $location,
-            $duration,
-            $classDate,
-            $classDescription
-        );
-        
-        if (!empty($errors)) {
-            return $errors;
-        }
-
         $query = "INSERT INTO Class (
             userID, instructor, location, classDuration, classDate, classDescription
         ) VALUES (
