@@ -16,17 +16,35 @@ class JournalNote
         $this->db = $db;
     }
 
-    public function getTechniquesClasses()
+    public function getTechniquesClasses($userID)
     {
-        $statement = $this->db->prepare(
-            "SELECT * FROM Techniques_Classes
-            "
-        );
-        
+        $userID = $_SESSION['userID'];
+
+        // Correct SQL query string
+        $query = "SELECT
+            User.userID, 
+            Technique.techniqueName,
+            Class.instructor,
+            Techniques_Classes.journalNoteDate
+                
+            FROM Techniques_Classes
+    
+            INNER JOIN User ON Techniques_Classes.userID = User.userID
+            INNER JOIN Technique ON Techniques_Classes.techniqueID = Technique.techniqueID
+            INNER JOIN Class ON Techniques_Classes.classID = Class.classID
+                
+            WHERE Techniques_Classes.userID = :userID
+                
+            ORDER BY journalNoteDate DESC";
+    
+        // Prepare the query using the correct SQL string
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
         $statement->execute();
+    
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    
     public function validateCreateNewJournalNote($techniqueID, $classID)
     {
         $errors = [];
@@ -80,7 +98,6 @@ class JournalNote
             $this->userID, PDO::PARAM_INT
         );
 
-        $statement->execute();
-        return [];
+        return $statement->execute();
     }
 }

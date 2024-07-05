@@ -32,25 +32,20 @@ class Technique
         
         FROM Technique
         
-        INNER JOIN User
-        ON Technique.userID = User.userID
-        INNER JOIN Category
-        ON Technique.categoryID = Category.categoryID
-
-        INNER JOIN Position
-        ON Technique.positionID = Position.positionID
+        INNER JOIN User ON Technique.userID = User.userID
+        INNER JOIN Category ON Technique.categoryID = Category.categoryID
+        INNER JOIN Position ON Technique.positionID = Position.positionID
         
         WHERE Technique.userID = :userID
         
         ORDER BY techniqueID DESC";
 
         $statement = $this->db->prepare($query);
-    
         // Bind the userID to the placeholder
         $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
-    
         // Execute the statement
         $statement->execute();
+        
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -140,7 +135,7 @@ class Technique
                   WHERE userID = :userID";
 
         $statement = $this->db->prepare($query);
-        $statement->bindParam(':userID', $userID,PDO::PARAM_INT);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
 
         $statement->execute();
 

@@ -4,7 +4,7 @@ use Phroute\Phroute\RouteCollector;
 
 return function (RouteCollector $router, $container) {
     $router->get('/', function() use ($container) {
-        echo $container->get('Twig\Environment')->render('front_page.php');
+        echo $container->get('Twig\Environment')->render('front_page.twig');
     });
 
     $router->filter('auth', function() {

@@ -141,6 +141,7 @@ class TrainingClass
         $statement = $this->db->prepare($query);
         $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
         $statement->execute();
+        
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }

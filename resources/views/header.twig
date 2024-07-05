@@ -39,9 +39,9 @@
           </li>
         </ul>
       <span class="navbar-text">
-            {% if username %}
-                <a href="logout" class="btn btn-danger btn1">Logout</a>
-            {% endif %}
-      </span>
+        {% if username %}
+           {{ username }} 
+            <a href="logout" class="btn btn-danger btn1">Logout</a>
+        {% endif %}
     </div>
 </nav>

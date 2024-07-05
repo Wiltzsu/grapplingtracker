@@ -17,9 +17,9 @@ class MainViewController
     ) { 
     }
 
-    public function getTechniquesClasses() :array
+    public function getTechniquesClasses($userID) :array
     {
-        return $this->journalNoteModel->getTechniquesClasses();
+        return $this->journalNoteModel->getTechniquesClasses($userID);
     }
 
     public function showJournalNoteForm() :void

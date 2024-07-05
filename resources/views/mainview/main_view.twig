@@ -33,8 +33,8 @@
             {% if techniquesClasses is not empty %}
                 {% for techniqueClass in techniquesClasses %}
                 <tr>
-                    <td>{{ techniqueClass.techniqueID }}</td>
-                    <td>{{ techniqueClass.classID }}</td>
+                    <td>{{ techniqueClass.techniqueName }}</td>
+                    <td>{{ techniqueClass.instructor }}</td>
                     <td>{{ techniqueClass.journalNoteDate }}</td>
                     <td>
                         <form method="POST" action="">
