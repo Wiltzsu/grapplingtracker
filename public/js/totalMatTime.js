@@ -1,13 +1,13 @@
-document.addEventListener('DOMContentLoaded', function ()
-{
-    var ctx = document.getElementById('matTimeChart').getContext('2d');
+document.addEventListener('DOMContentLoaded', function () {
+    var canvas = document.getElementById('matTimeChart');
+    canvas.style.height = '400px'; // Set the height directly
+
+    var ctx = canvas.getContext('2d');
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var data = new Array(12).fill(null); // Fill array with nulls for months without data
 
-    // Convert data from PHP to be fit for charting
     totalMatTimeData.forEach(entry => {
         if (entry.hours > 0) {
-            // Ensure hours are correctly placed based on month
             data[entry.month - 1] = parseFloat(entry.hours);
         }
     });
@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function ()
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false, // This ensures the canvas height is respected
             scales: {
                 y: {
                     beginAtZero: true

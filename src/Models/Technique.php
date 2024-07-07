@@ -45,7 +45,7 @@ class Technique
         $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
         // Execute the statement
         $statement->execute();
-        
+
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -146,16 +146,17 @@ class Technique
 
     public function countTechniquesMonthly($userID)
     {
-        $query = "SELECT MONTH(journalNoteDate) as month, COUNT(techniqueID) as count
-                FROM Techniques_Classes
-                WHERE userID = :userID AND YEAR(journalNoteDate) = YEAR(CURDATE())
-                GROUP BY MONTH(journalNoteDate)
-                ORDER BY MONTH(journalNoteDate);";
-
+        $query = "SELECT MONTH(insertDate) as month, COUNT(techniqueID) as count
+                FROM Technique
+                WHERE userID = :userID AND YEAR(insertDate) = YEAR(CURDATE())
+                GROUP BY MONTH(insertDate)
+                ORDER BY MONTH(insertDate);";
+    
         $statement = $this->db->prepare($query);
         $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 }
 ?>

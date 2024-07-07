@@ -75,17 +75,29 @@ return function (RouteCollector $router, $container) {
         $container->get(App\Controllers\TrainingClassController::class)->postTrainingClass($_POST);
     }, ['before' => 'auth']);
 
-
-    $router->get('/viewitems', function () use ($container) {
-        $container->get(App\Controllers\ViewItemsController::class)->showViewItemsAccordion();
+    
+    $router->get('/viewtechniques', function () use ($container) {
+        $container->get(App\Controllers\ViewItemsController::class)->showTechniqueView();
     }, ['before' => 'auth']);
 
-    $router->get('/profile', function () {
-        require __DIR__ . '/../resources/views/profile.php';
+    $router->get('/viewclasses', function () use ($container) {
+        $container->get(App\Controllers\ViewItemsController::class)->showClassView();
     }, ['before' => 'auth']);
 
-    $router->get('/journal', function () {
-        require __DIR__ . '/../resources/views/journal.php';
+    $router->get('/viewpositions', function () use ($container) {
+        $container->get(App\Controllers\ViewItemsController::class)->showPositionView();
+    }, ['before' => 'auth']);
+
+    $router->get('/viewcategories', function () use ($container) {
+        $container->get(App\Controllers\ViewItemsController::class)->showCategoryView();
+    }, ['before' => 'auth']);
+
+    $router->get('/profile', function () use ($container) {
+        $container->get(App\Controllers\ProfileController::class)->showProfile();
+    }, ['before' => 'auth']);
+
+    $router->get('/beltprogression', function () use ($container) {
+        $container->get(App\Controllers\BeltProgressionController::class)->showBeltProgression();
     }, ['before' => 'auth']);
 
     $router->get('/logtraining', function () use ($container) {

@@ -8,6 +8,7 @@
  * injected throughout the application.
  */
 
+use App\Controllers\BeltProgressionController;
 use Psr\Container\ContainerInterface;
 use App\Models\User;
 use App\Models\TrainingClass;
@@ -20,6 +21,7 @@ use App\Controllers\PositionController;
 use App\Controllers\CategoryController;
 use App\Controllers\MainViewController;
 use App\Controllers\TechniqueController;
+use App\Models\BeltProgression;
 use App\Models\JournalNote;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
@@ -72,6 +74,7 @@ return [
         // Here the same base view path is added with a namespace 'Header',
         // which can be used to organize templates.
         $loader->addPath($twigSettings['views_path'], 'Header');
+        $loader->addPath($twigSettings['views_path'], 'HeaderViewItems');
         $loader->addPath($twigSettings['views_path'], 'Footer');
 
         // Return a new Twig Environment object, constructed with the loader
@@ -197,16 +200,6 @@ return [
     ),
 
     /**
-     * Defines how the 'JournalNote' model should be instantiated.
-     * 
-     * Tells the DI container to create a new 'JournalNote'
-     * instance, injecting the PDO instance to its constructor.
-     */
-    JournalNote::class => DI\create()->constructor(
-        DI\get(PDO::class)
-    ),
-
-    /**
      * Tells the DI container to create a new 'MainViewController'
      * instance, injecting the
      * 'JournalNote' instance,
@@ -216,9 +209,30 @@ return [
      * to its constructor.
      */
     MainViewController::class => DI\create()->constructor(
-        DI\get(JournalNote::class),
         DI\get(Technique::class),
         DI\get(TrainingClass::class),
+        DI\get(Environment::class)
+    ),
+
+    /**
+     * Defines how 'BeltProgression' model should be instantiated.
+     * 
+     * Tells the DI container to create a new 'BeltProgression'
+     * instance, injecting the PDO instance to its constructor.
+     */
+    BeltProgression::class => DI\create()->constructor(
+        DI\get(PDO::class)
+    ),
+
+    /**
+     * Tells the DI container to create a new 'BeltProgressionController'
+     * instance, injecting the
+     * 'BeltProgression' instance,
+     * Twig 'Environment' instance
+     * to its constructor.
+     */
+    BeltProgressionController::class => DI\create()->constructor(
+        DI\get(BeltProgression::class),
         DI\get(Environment::class)
     )
 ];
