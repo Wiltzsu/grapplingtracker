@@ -136,27 +136,41 @@ class Technique
 
         $statement = $this->db->prepare($query);
         $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
-
         $statement->execute();
-
         $total_techniques = $statement->fetchColumn();
 
         return $total_techniques;
     }
 
-    public function countTechniquesMonthly($userID)
+    public function getTechniquesMonthly($userID)
     {
         $query = "SELECT MONTH(insertDate) as month, COUNT(techniqueID) as count
-                FROM Technique
-                WHERE userID = :userID AND YEAR(insertDate) = YEAR(CURDATE())
-                GROUP BY MONTH(insertDate)
-                ORDER BY MONTH(insertDate);";
+                  FROM Technique
+                  WHERE userID = :userID AND YEAR(insertDate) = YEAR(CURDATE())
+                  GROUP BY MONTH(insertDate)
+                  ORDER BY MONTH(insertDate);";
     
         $statement = $this->db->prepare($query);
         $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
         $statement->execute();
+
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    public function getTechniquesPerPosition($userID)
+    {
+        $query = "SELECT Position.positionName, COUNT(Technique.techniqueID) AS count
+        FROM Technique
+        JOIN Position ON Technique.positionID = Position.positionID
+        WHERE Technique.userID = :userID
+        GROUP BY Position.positionName
+        ORDER BY Position.positionName;";
+                
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

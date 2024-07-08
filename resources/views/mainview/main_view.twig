@@ -22,7 +22,7 @@
         <div class="col-sm-3">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card Title 3</h5>
+                    <h5 class="card-title">Roll counter</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
             </div>
@@ -30,7 +30,7 @@
         <div class="col-sm-3">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card Title 4</h5>
+                    <h5 class="card-title">Days since starting</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
             </div>
@@ -39,11 +39,12 @@
 
     <div class="row p-5">
         <div class="col-sm-7">
-            <canvas id="matTimeChart" height="100"></canvas>
+            <canvas id="matTimeChart"></canvas>
         </div>
 
-        <div class="col-sm-5">
-            <canvas id="techniquesLearnedChart"></canvas>
+        <div class="col-sm-5 d-flex justify-content-center align-items-center">
+            <canvas id="techniquesPerPosition"></canvas>
+            <div id="techniquePositionChartData" data-labels="{{ techniquesPerPositionLabels }}" data-values="{{ techniquesPerPositionValues }}" style="display: none;"></div>
         </div>
     </div>
 
@@ -83,6 +84,9 @@
 
         <div class="col-sm-6">
             Quick note section
+
+            <canvas id="techniquesLearnedChart"></canvas>
+
         </div>
     </div>
 
@@ -100,4 +104,4 @@
 
 <script src="/technique-db-mvc/public/js/totalMatTime.js"></script>
 <script src="/technique-db-mvc/public/js/techniquesLearned.js"></script>
-
+<script src="/technique-db-mvc/public/js/techniquesPerPosition.js"></script>

@@ -69,6 +69,10 @@ body {
 .svg-button svg {
     vertical-align: middle;
 }
+#matTimeChart, #techniquesPerPosition {
+    height: 300px !important;  /* Adjust the height as needed */
+    width: 100%;  /* Maintain the width responsiveness */
+}
 
 /* VIEW ITEMS SIZING */
 
