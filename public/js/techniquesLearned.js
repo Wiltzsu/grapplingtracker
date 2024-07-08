@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -40,4 +42,15 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
+
+    // Resize Observer to handle canvas resizing properly
+    var resizeObserver = new ResizeObserver(entries => {
+        for (let entry of entries) {
+            if (entry.target === canvas) {
+                techniquesLearnedChart.resize();
+            }
+        }
+    });
+
+    resizeObserver.observe(canvas);
 });

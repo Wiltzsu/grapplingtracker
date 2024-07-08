@@ -1,28 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var ctx = document.getElementById('combinedChart').getContext('2d');
-    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var canvas = document.getElementById('combinedChart');
+    canvas.style.height = '400px'; // Optional: Direct height setup if needed
 
-    // Initialize the data arrays
+    var ctx = canvas.getContext('2d');
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var matTimeData = new Array(12).fill(0);
     var techniquesData = new Array(12).fill(0);
 
-    // Fill matTimeData from your data source
+    // Populate data from your data sources
     totalMatTimeData.forEach(entry => {
         if (entry.hours > 0) {
             matTimeData[entry.month - 1] = parseFloat(entry.hours);
         }
     });
 
-    // Fill techniquesData from your data source
     techniquesLearnedData.forEach(entry => {
         if (entry.count > 0) {
             techniquesData[entry.month - 1] = parseInt(entry.count, 10);
         }
     });
 
-    // Creating the Chart
     var combinedChart = new Chart(ctx, {
-        type: 'line', // You can use 'bar' type if you prefer
+        type: 'line',
         data: {
             labels: months,
             datasets: [{
@@ -61,32 +60,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     display: true,
                     position: 'right',
                     grid: {
-                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                        drawOnChartArea: false,
                     },
                 }
             }
         }
     });
-});
 
-document.addEventListener('DOMContentLoaded', function () {
-    var canvas = document.getElementById('combinedChart');
-    var ctx = canvas.getContext('2d');
-
-    // Define the Resize Observer
+    // Resize Observer to handle canvas resizing properly
     var resizeObserver = new ResizeObserver(entries => {
         for (let entry of entries) {
             if (entry.target === canvas) {
-                combinedChart.resize(); // Redraw or reinitialize your chart based on new size
+                combinedChart.resize();
             }
         }
     });
 
-    // Observe the canvas element
     resizeObserver.observe(canvas);
-
-    // Initialize your chart as usual
-    var combinedChart = new Chart(ctx, {
-        // your chart configuration
-    });
 });

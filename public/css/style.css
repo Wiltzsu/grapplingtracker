@@ -20,10 +20,11 @@ body {
 
 }
 
-#combinedChart, #techniquesPerPosition {
+#combinedChart, #techniquesPerPosition, #techniquesLearnedChart {
     height: 300px!important;
     width: 100%;
 }
+
 
 /* Error message color */
 .error-message {

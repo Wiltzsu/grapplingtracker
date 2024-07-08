@@ -96,10 +96,6 @@ return function (RouteCollector $router, $container) {
         $container->get(App\Controllers\ProfileController::class)->showProfile();
     }, ['before' => 'auth']);
 
-    $router->get('/beltprogression', function () use ($container) {
-        $container->get(App\Controllers\BeltProgressionController::class)->showBeltProgression();
-    }, ['before' => 'auth']);
-
     $router->get('/logtraining', function () use ($container) {
         $container->get(App\Controllers\MainViewController::class)->showJournalNoteForm();
     }, ['before' => 'auth']);
