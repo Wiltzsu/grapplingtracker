@@ -8,21 +8,20 @@
  * injected throughout the application.
  */
 
-use App\Controllers\BeltProgressionController;
 use Psr\Container\ContainerInterface;
 use App\Models\User;
 use App\Models\TrainingClass;
 use App\Models\Position;
 use App\Models\Category;
 use App\Models\Technique;
+use App\Models\Profile;
 use App\Controllers\UserController;
 use App\Controllers\TrainingClassController;
 use App\Controllers\PositionController;
 use App\Controllers\CategoryController;
 use App\Controllers\MainViewController;
 use App\Controllers\TechniqueController;
-use App\Models\BeltProgression;
-use App\Models\JournalNote;
+use App\Controllers\ProfileController;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 
@@ -202,7 +201,6 @@ return [
     /**
      * Tells the DI container to create a new 'MainViewController'
      * instance, injecting the
-     * 'JournalNote' instance,
      * 'Technique' instance,
      * 'TrainingClass' instance,
      * Twig 'Environment' instance,
@@ -215,24 +213,27 @@ return [
     ),
 
     /**
-     * Defines how 'BeltProgression' model should be instantiated.
+     * Defines how the 'Profile' model should be instantiated.
      * 
-     * Tells the DI container to create a new 'BeltProgression'
-     * instance, injecting the PDO instance to its constructor.
+     * Tells the DI container to create a new 'Profile' instance,
+     * injecting the PDO instance to its constructor.
      */
-    BeltProgression::class => DI\create()->constructor(
+    Profile::class => DI\create()->constructor(
         DI\get(PDO::class)
     ),
 
-    /**
-     * Tells the DI container to create a new 'BeltProgressionController'
+    /** Tells the DI container to create a new 'ProfileController'
      * instance, injecting the
-     * 'BeltProgression' instance,
-     * Twig 'Environment' instance
+     * 'Profile' instance,
+     * 'Technique' instance,
+     * 'TrainingClass' instance,
+     * Twig 'Environment' instance,
      * to its constructor.
      */
-    BeltProgressionController::class => DI\create()->constructor(
-        DI\get(BeltProgression::class),
+    ProfileController::class => DI\create()->constructor(
+        DI\get(Profile::class),
+        DI\get(Technique::class),
+        DI\get(TrainingClass::class),
         DI\get(Environment::class)
-    )
+    ),
 ];

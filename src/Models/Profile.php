@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use PDO;
-
-class BeltProgression
+class Profile
 {
     
 }

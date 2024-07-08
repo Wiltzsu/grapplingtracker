@@ -39,7 +39,7 @@
 
     <div class="row p-5">
         <div class="col-sm-7">
-            <canvas id="matTimeChart"></canvas>
+            <canvas id="combinedChart"></canvas>
         </div>
 
         <div class="col-sm-5 d-flex justify-content-center align-items-center">
@@ -85,8 +85,6 @@
         <div class="col-sm-6">
             Quick note section
 
-            <canvas id="techniquesLearnedChart"></canvas>
-
         </div>
     </div>
 
@@ -98,10 +96,7 @@
     // Assuming 'totalMatTimeMonthly' and 'totalTechniquesLearnedMonthly' are passed to the Twig template
     var totalMatTimeData = {{ totalMatTimeMonthly|json_encode|raw }};
     var techniquesLearnedData = {{ totalTechniquesLearnedMonthly|json_encode|raw }};
-
-    // Include your scripts here that use these variables
 </script>
 
-<script src="/technique-db-mvc/public/js/totalMatTime.js"></script>
-<script src="/technique-db-mvc/public/js/techniquesLearned.js"></script>
 <script src="/technique-db-mvc/public/js/techniquesPerPosition.js"></script>
+<script src="/technique-db-mvc/public/js/techniqueMatTimeChart.js"></script>

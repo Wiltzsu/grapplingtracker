@@ -1,0 +1,18 @@
+{% include '@Header/header.twig' %}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <canvas id="techniquesLearnedChart"></canvas>
+    </div>
+</div>
+
+<script>
+    // Assuming 'totalMatTimeMonthly' and 'totalTechniquesLearnedMonthly' are passed to the Twig template
+    var totalMatTimeData = {{ totalMatTimeMonthly|json_encode|raw }};
+    var techniquesLearnedData = {{ totalTechniquesLearnedMonthly|json_encode|raw }};
+
+    // Include your scripts here that use these variables
+</script>
+<script src="/technique-db-mvc/public/js/totalMatTime.js"></script>
+<script src="/technique-db-mvc/public/js/techniquesLearned.js"></script>

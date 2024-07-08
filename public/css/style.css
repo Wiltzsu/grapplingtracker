@@ -20,6 +20,11 @@ body {
 
 }
 
+#combinedChart, #techniquesPerPosition {
+    height: 300px!important;
+    width: 100%;
+}
+
 /* Error message color */
 .error-message {
     color: red;  /* Set the color of the error messages to red */
@@ -68,10 +73,6 @@ body {
 }
 .svg-button svg {
     vertical-align: middle;
-}
-#matTimeChart, #techniquesPerPosition {
-    height: 300px !important;  /* Adjust the height as needed */
-    width: 100%;  /* Maintain the width responsiveness */
 }
 
 /* VIEW ITEMS SIZING */
