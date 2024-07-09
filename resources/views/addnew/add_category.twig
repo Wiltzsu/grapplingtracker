@@ -10,7 +10,7 @@
             <label for="categoryName" class="mt-3">Category Name:</label>
             <input type="text" class="form-control" id="categoryName" name="categoryName" value="{{ input.categoryName }}" placeholder="">
             {% if errors.categoryName %}
-                <span class="help-block error-message">{{ errors.categoryName }}</span>
+                <span class="form-text error-message">{{ errors.categoryName }}</span>
             {% endif %}
         </div>
 
@@ -19,7 +19,7 @@
             <label for="categoryDescription" class="mt-3">Description:</label>
             <textarea class="form-control" id="categoryDescription" name="categoryDescription" value="{{ input.categoryDescription  ?? '' }}" placeholder=""></textarea>
             {% if errors.categoryDescription %}
-                <span class="help-block error-message">{{ errors.categoryDescription }}</span>
+                <span class="form-text error-message">{{ errors.categoryDescription }}</span>
             {% endif %}
         </div>
 

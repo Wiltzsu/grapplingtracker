@@ -18,13 +18,13 @@ class CategoryController
         return $this->categoryModel->getCategories();
     }
 
-    public function addCategoryForm() :void
+    public function addCategoryForm()
     {
         $userID = $_SESSION['userID'] ?? null;
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
 
-        echo $this->twig->render('addnew/add_category.twig', [
+        return $this->twig->render('addnew/add_category.twig', [
             'userID' => $userID,
             'roleID' => $roleID,
             'username' => $username

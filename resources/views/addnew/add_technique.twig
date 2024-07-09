@@ -15,7 +15,7 @@
             <label for="techniqueName" class="mt-3">Technique Name:</label>
             <input type="text" class="form-control" id="techniqueName" name="techniqueName" value="{{ input.techniqueName ?? '' }}">
             {% if errors.techniqueName %}
-                <span class="help-block error-message">{{ errors.techniqueName }}</span>
+                <span class="form-text error-message">{{ errors.techniqueName }}</span>
             {% endif %}
         </div>
 
@@ -24,7 +24,7 @@
             <label for="techniqueDescription" class="mt-3">Description:</label>
             <textarea class="form-control" id="techniqueDescription" name="techniqueDescription" value="{{ input.techniqueDescription ?? '' }}"></textarea>
             {% if errors.techniqueDescription %}
-                <span class="help-block error-message">{{ errors.techniqueDescription }}</span>
+                <span class="form-text error-message">{{ errors.techniqueDescription }}</span>
             {% endif %}
         </div>
 
@@ -37,7 +37,7 @@
                     <option value="{{ category.categoryID }}">{{ category.categoryName }}</option>
                 {% endfor %}
                 {% if errors.categoryID %}
-                    <span class="help-block error-message">{{ errors.categoryID }}</span>
+                    <span class="form-text error-message">{{ errors.categoryID }}</span>
                 {% endif %}
             </select>
         </div>
@@ -51,7 +51,7 @@
                     <option value="{{ position.positionID }}">{{ position.positionName }}</option>
                 {% endfor %}
                 {% if errors.positionID %}
-                    <span class="help-block error-message">{{ errors.positionID }}</span>
+                    <span class="form-text error-message">{{ errors.positionID }}</span>
                 {% endif %}
             </select>
         </div>

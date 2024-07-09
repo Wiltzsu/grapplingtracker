@@ -10,7 +10,7 @@
                 <label for="positionName" class="mt-3">Position name:</label>
                 <input type="text" class="form-control" id="positionName" name="positionName" value="{{ input.positionName  ?? '' }}" placeholder="">
                 {% if errors.positionName %}
-                    <span class="help-block error-message">{{ errors.positionName }}</span>
+                    <span class="form-text error-message">{{ errors.positionName }}</span>
                 {% endif %}
             </div>
 
@@ -19,7 +19,7 @@
                 <label for="positionDescription" class="mt-3">Description:</label>
                 <textarea class="form-control" id="positionDescription" name="positionDescription" value="{{ input.positionDescription  ?? '' }}" placeholder=""></textarea>
                 {% if errors.positionDescription %}
-                    <span class="help-block error-message">{{ errors.positionDescription }}</span>
+                    <span class="form-text error-message">{{ errors.positionDescription }}</span>
                 {% endif %}
             </div>
         <button type="submit" name="submitPosition" class="btn btn-primary mt-3">Add Position</button>

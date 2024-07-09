@@ -30,7 +30,7 @@
                     <label for="username">Username</label>
                         <input type="text" class="form-control" id="username" name="username" value="{{ input.username ?? '' }}" placeholder="Enter username">
                         {% if errors.username %}
-                            <span class="help-block error-message">{{ errors.username }}</span>
+                            <span class="form-text error-message">{{ errors.username }}</span>
                         {% endif %}
                     </div>
 
@@ -38,7 +38,7 @@
                     <label for="email">Email</label>
                         <input type="text" class="form-control" id="email" name="email" value="{{ input.email ?? '' }}" placeholder="Enter email">
                         {% if errors.email %}
-                            <span class="help-block error-message">{{ errors.email }}</span>
+                            <span class="form-text error-message">{{ errors.email }}</span>
                         {% endif %}
                     </div>
 
@@ -46,7 +46,7 @@
                         <label for="password1">Password</label>
                         <input type="password" class="form-control" id="password1" name="password" placeholder="Enter password">
                         {% if errors.password %}
-                            <span class="help-block error-message">{{ errors.password }}</span>
+                            <span class="form-text error-message">{{ errors.password }}</span>
                         {% endif %}
                     </div>
 
@@ -54,7 +54,7 @@
                         <label for="password2">Re-enter password</label>
                         <input type="password" class="form-control" id="password2" name="password_confirm" placeholder="Enter password">
                         {% if errors.password %}
-                            <span class="help-block error-message">{{ errors.password }}</span>
+                            <span class="form-text error-message">{{ errors.password }}</span>
                         {% endif %}
                     </div>
 

@@ -30,11 +30,7 @@ body {
     color: #ffffff!important; /* White text color */
 }
 
-/* Error message color */
-.error-message {
-    color: red;  /* Set the color of the error messages to red */
-    font-style: italic;
-}
+
 
 /* Centered container for the main content */
 .centered-container {

@@ -12,6 +12,8 @@ class TrainingClass
     private $duration;
     private $classDate;
     private $classDescription;
+    private $rounds;
+    private $roundDuration;
 
     public function __construct(PDO $db)
     {

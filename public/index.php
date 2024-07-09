@@ -16,7 +16,7 @@ $routes($router, $container);
 $dispatcher = new Dispatcher($router->getData());
 
 // Get the base path
-$basePath = '/technique-db-mvc/public'; // Replace with your base path if different
+$basePath = '/technique-db-mvc/public';
 
 // Strip the base path from the request URI
 $parsedUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -26,7 +26,7 @@ $path = str_replace($basePath, '', $parsedUrl);
 try {
     $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $path);
 
-    echo $response; // Assuming it's now always a Response object
+    echo $response;
 } catch (Phroute\Phroute\Exception\HttpRouteNotFoundException $e) {
     echo '404 Not Found';
 } catch (Phroute\Phroute\Exception\HttpMethodNotAllowedException $e) {
