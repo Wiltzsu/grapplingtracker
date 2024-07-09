@@ -1,24 +1,18 @@
 {% include '@Header/header.twig' %}
+{% include '@HeaderAddItems/header_additems.twig' %}
 
-<div class="container-fluid p-5">
-    <!-- Back button -->
-    <button class="svg-button" onclick="window.location.href='addnew'">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5"/>
-    </svg>
-    </button>
-
+<div class="container">
     <form method="POST" action="">
-        <h4>Add a New Technique</h4>
+        <h5>Add a technique</h5>
         
         <!-- User ID -->
         <div class="form-group">
-            <input type="" class="form-control" id="userID" name="userID" required value="{{ userID }}">
+            <input type="hidden" class="form-control" id="userID" name="userID" required value="{{ userID }}">
         </div>
 
         <!-- Name -->
         <div class="form-group{{ errors.techniqueName ? ' has-error' : '' }}">
-            <label for="techniqueName">Technique Name:</label>
+            <label for="techniqueName" class="mt-3">Technique Name:</label>
             <input type="text" class="form-control" id="techniqueName" name="techniqueName" value="{{ input.techniqueName ?? '' }}">
             {% if errors.techniqueName %}
                 <span class="help-block error-message">{{ errors.techniqueName }}</span>
@@ -27,7 +21,7 @@
 
         <!-- Description -->
         <div class="form-group{{ errors.techniqueDescription ? ' has-error' : '' }}">
-            <label for="techniqueDescription">Description:</label>
+            <label for="techniqueDescription" class="mt-3">Description:</label>
             <textarea class="form-control" id="techniqueDescription" name="techniqueDescription" value="{{ input.techniqueDescription ?? '' }}"></textarea>
             {% if errors.techniqueDescription %}
                 <span class="help-block error-message">{{ errors.techniqueDescription }}</span>
@@ -36,7 +30,7 @@
 
         <!-- Category -->
         <div class="form-group">
-            <label for="techniqueCategory">Category:</label>
+            <label for="techniqueCategory" class="mt-3">Category:</label>
             <select class="form-control" id="categoryID" name="categoryID" required>
                 <option value="">Select a Category</option> 
                 {% for category in categories %}
@@ -50,7 +44,7 @@
 
         <!-- Position -->
         <div class="form-group">
-            <label for="techniquePosition">Position:</label>
+            <label for="techniquePosition" class="mt-3">Position:</label>
             <select class="form-control" id="positionID" name="positionID" required>
                 <option value="">Select a Position</option>
                 {% for position in positions %}
@@ -62,6 +56,6 @@
             </select>
         </div>
 
-        <button type="submit" name="submit" class="btn btn-primary">Add Technique</button>
+        <button type="submit" name="submit" class="btn btn-primary mt-3">Add Technique</button>
     </form>
 </div>

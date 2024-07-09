@@ -7,10 +7,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\RouteCollector;
 
-$container = require __DIR__ . '/../Config/container.php';
+$container = require __DIR__ . '/../config/container.php';
 $router = new RouteCollector();
 
-$routes = require __DIR__ . '/../Config/routes.php';
+$routes = require __DIR__ . '/../config/routes.php';
 $routes($router, $container);
 
 $dispatcher = new Dispatcher($router->getData());

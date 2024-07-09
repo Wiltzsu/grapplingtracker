@@ -75,6 +75,7 @@ return [
         // which can be used to organize templates.
         $loader->addPath($twigSettings['views_path'], 'Header');
         $loader->addPath($twigSettings['views_path'], 'HeaderViewItems');
+        $loader->addPath($twigSettings['views_path'], 'HeaderAddItems');
         $loader->addPath($twigSettings['views_path'], 'Footer');
 
         // Return a new Twig Environment object, constructed with the loader

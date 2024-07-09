@@ -25,6 +25,10 @@ body {
     width: 100%;
 }
 
+.dark-list-group .list-group-item {
+    background-color: #343a40; /* Dark grey background */
+    color: #ffffff!important; /* White text color */
+}
 
 /* Error message color */
 .error-message {
