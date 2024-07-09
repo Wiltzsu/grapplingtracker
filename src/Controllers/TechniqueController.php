@@ -81,7 +81,5 @@ class TechniqueController
             exit();
         }
     }
-    
-
 }
 ?>

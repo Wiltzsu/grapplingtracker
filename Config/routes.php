@@ -39,6 +39,10 @@ return function (RouteCollector $router, $container) {
         $container->get(App\Controllers\MainViewController::class)->showMainView();
     }, ['before' => 'auth']);
 
+    $router->post('/mainview', function () use ($container) {
+        $container->get(App\Controllers\MainViewController::class)->handlePostRequest($_POST);
+    }, ['before' => 'auth']);
+
     $router->get('/addnew', function () use ($container) {
         $container->get(App\Controllers\AddNewController::class)->showAddNewList();
     }, ['before' => 'auth']);
@@ -75,7 +79,6 @@ return function (RouteCollector $router, $container) {
         $container->get(App\Controllers\TrainingClassController::class)->postTrainingClass($_POST);
     }, ['before' => 'auth']);
 
-    
     $router->get('/viewtechniques', function () use ($container) {
         $container->get(App\Controllers\ViewItemsController::class)->showTechniqueView();
     }, ['before' => 'auth']);
@@ -95,19 +98,4 @@ return function (RouteCollector $router, $container) {
     $router->get('/profile', function () use ($container) {
         $container->get(App\Controllers\ProfileController::class)->showProfile();
     }, ['before' => 'auth']);
-
-    $router->get('/logtraining', function () use ($container) {
-        $container->get(App\Controllers\MainViewController::class)->showJournalNoteForm();
-    }, ['before' => 'auth']);
-
-    $router->post('/logtraining', function () use ($container) {
-        $container->get(App\Controllers\MainViewController::class)->postJournalEntry($_POST);
-    }, ['before' => 'auth']);
-
-    $router->get('/quicknote', function () use ($container) {
-        $twig = $container->get('Twig\Environment');
-        echo $twig->render('mainview/quick_note.twig', [
-            'username' => $_SESSION['username'] ?? null
-        ]);
-    });
 };

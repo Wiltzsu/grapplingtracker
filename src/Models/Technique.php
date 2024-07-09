@@ -27,8 +27,8 @@ class Technique
         techniqueID, 
         techniqueName, 
         techniqueDescription, 
-        Category.categoryID,
-        Position.positionID
+        Category.categoryName,
+        Position.positionName
         
         FROM Technique
         
@@ -121,9 +121,7 @@ class Technique
         );
     
         // Execute the query
-        $statement->execute();
-    
-        return []; // Indicate success
+        $statement->execute();    
     }
 
     public function countTechniques($userID)

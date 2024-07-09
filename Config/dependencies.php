@@ -15,6 +15,7 @@ use App\Models\Position;
 use App\Models\Category;
 use App\Models\Technique;
 use App\Models\Profile;
+use App\Models\Note;
 use App\Controllers\UserController;
 use App\Controllers\TrainingClassController;
 use App\Controllers\PositionController;
@@ -209,6 +210,7 @@ return [
     MainViewController::class => DI\create()->constructor(
         DI\get(Technique::class),
         DI\get(TrainingClass::class),
+        DI\get(Note::class),
         DI\get(Environment::class)
     ),
 
@@ -235,5 +237,15 @@ return [
         DI\get(Technique::class),
         DI\get(TrainingClass::class),
         DI\get(Environment::class)
+    ),
+
+    /**
+     * Defines how the 'Note' model should be instantiated.
+     * 
+     * Tells the DI container to create a new 'Note' instance,
+     * injecting the PDO instance to its constructor.
+     */
+    Note::class => DI\create()->constructor(
+        DI\get(PDO::class)
     ),
 ];
