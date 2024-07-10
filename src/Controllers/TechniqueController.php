@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Technique;
 use App\Models\Category;
 use App\Models\Position;
+use App\Models\TrainingClass;
 use Twig\Environment;
 
 class TechniqueController
@@ -13,6 +14,7 @@ class TechniqueController
         private Technique $techniqueModel,
         private Category $categoryModel,
         private Position $positionModel,
+        private TrainingClass $trainingClassModel,
         private Environment $twig
     ) {
     }
@@ -24,8 +26,11 @@ class TechniqueController
 
     public function addTechniqueForm() :string
     {
+        $userID = $_SESSION['userID'];
+
         $categories = $this->categoryModel->getCategories();
         $positions = $this->positionModel->getPositions();
+        $trainingClass = $this->trainingClassModel->getTrainingClasses($userID);
     
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
@@ -36,7 +41,8 @@ class TechniqueController
             'roleID' => $roleID,
             'username' => $username,
             'categories' => $categories,
-            'positions' => $positions
+            'positions' => $positions,
+            'trainingClasses' => $trainingClass
         ]);
     }
 
@@ -57,16 +63,19 @@ class TechniqueController
         $techniqueDescription = $formData['techniqueDescription'] ?? null;
         $categoryID = $formData['categoryID'] ?? null;
         $positionID = $formData['positionID'] ?? null;
+        $classID = $formData['classID'] ?? null;
     
         // Get lists for categories and positions to refill the form
         $categories = $this->categoryModel->getCategories();
         $positions = $this->positionModel->getPositions();
+        $trainingClasses = $this->trainingClassModel->getTrainingClasses($userID);
     
         $errors = $this->techniqueModel->validateCreateNewTechnique(
             $techniqueName,
             $techniqueDescription,
             $categoryID,
-            $positionID
+            $positionID,
+            $classID
         );
         
         if (!empty($errors)) {
@@ -76,6 +85,7 @@ class TechniqueController
                 'input' => $formData,
                 'categories' => $categories,
                 'positions' => $positions,
+                'trainingClasses' => $trainingClasses,
                 'userID' => $userID
             ]);
         } else {
@@ -84,7 +94,8 @@ class TechniqueController
                 $techniqueName,
                 $techniqueDescription,
                 $categoryID,
-                $positionID
+                $positionID,
+                $classID
             );
             
             header('Location: addnew');

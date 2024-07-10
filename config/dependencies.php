@@ -197,6 +197,7 @@ return [
         DI\get(Technique::class),
         DI\get(Category::class),
         DI\get(Position::class),
+        DI\get(TrainingClass::class),
         DI\get(Environment::class)
     ),
 

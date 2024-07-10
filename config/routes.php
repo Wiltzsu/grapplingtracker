@@ -50,7 +50,6 @@ return function (RouteCollector $router, $container) {
     $router->get('/addtechnique', function () use ($container) {
         return $container->get(App\Controllers\TechniqueController::class)->addTechniqueForm();
     }, ['before' => 'auth']);
-    
 
     $router->post('/addtechnique', function () use ($container) {
         return $container->get(App\Controllers\TechniqueController::class)->postTechnique($_POST);

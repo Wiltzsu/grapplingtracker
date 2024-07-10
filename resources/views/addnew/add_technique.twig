@@ -32,7 +32,7 @@
         <div class="form-group">
             <label for="techniqueCategory" class="mt-3">Category:</label>
             <select class="form-control" id="categoryID" name="categoryID" required>
-                <option value="">Select a Category</option> 
+                <option value="">Select a category</option> 
                 {% for category in categories %}
                     <option value="{{ category.categoryID }}">{{ category.categoryName }}</option>
                 {% endfor %}
@@ -46,13 +46,24 @@
         <div class="form-group">
             <label for="techniquePosition" class="mt-3">Position:</label>
             <select class="form-control" id="positionID" name="positionID" required>
-                <option value="">Select a Position</option>
+                <option value="">Select a position</option>
                 {% for position in positions %}
                     <option value="{{ position.positionID }}">{{ position.positionName }}</option>
                 {% endfor %}
                 {% if errors.positionID %}
                     <span class="form-text error-message">{{ errors.positionID }}</span>
                 {% endif %}
+            </select>
+        </div>
+
+        <!-- Class -->
+        <div class="form-group">
+            <label for="classID" class="mt-3">Training class:</label>
+            <select class="form-control" id="classID" name="classID">
+                <option value="">Select a training class</option>
+                {% for trainingClass in trainingClasses %}
+                    <option value="{{ trainingClass.classID }}">{{ trainingClass.instructor }} {{ trainingClass.location }} {{ trainingClass.classDate }}</option>
+                {% endfor %}
             </select>
         </div>
 

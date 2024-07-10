@@ -69,7 +69,9 @@ class TrainingClass
         $location,
         $duration,
         $classDate,
-        $classDescription
+        $classDescription,
+        $rounds,
+        $roundDuration
     ) {
         $this->userID = $userID;
         $this->instructor = $instructor;
@@ -77,11 +79,13 @@ class TrainingClass
         $this->duration = $duration;
         $this->classDate = $classDate;
         $this->classDescription = $classDescription;
+        $this->rounds = $rounds;
+        $this->roundDuration = $roundDuration;
 
         $query = "INSERT INTO Class (
-            userID, instructor, location, classDuration, classDate, classDescription
+            userID, instructor, location, classDuration, classDate, classDescription, rounds, roundDuration
         ) VALUES (
-            :userID, :instructor, :location, :classDuration, :classDate, :classDescription
+            :userID, :instructor, :location, :classDuration, :classDate, :classDescription, :rounds, :roundDuration
         )";
 
         $statement = $this->db->prepare($query);
@@ -108,6 +112,14 @@ class TrainingClass
         $statement->bindParam(
             ":classDescription",
             $this->classDescription, PDO::PARAM_STR
+        );
+        $statement->bindParam(
+            ":rounds",
+            $this->rounds, PDO::PARAM_INT
+        );
+        $statement->bindParam(
+            ":roundDuration",
+            $this->roundDuration, PDO::PARAM_INT
         );
         $statement->execute();
         return [];

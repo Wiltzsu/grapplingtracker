@@ -40,6 +40,8 @@ class TrainingClassController
         $duration = $formData['duration'] ?? null;
         $classDate = $formData['classDate'] ?? null;
         $classDescription = $formData['classDescription'] ?? null;
+        $rounds = $formData['rounds'] ?? null;
+        $roundDuration = $formData['roundDuration'] ?? null;
 
         $errors = $this->trainingClassModel->validateCreateNewClass(
             $instructor,
@@ -63,7 +65,9 @@ class TrainingClassController
                 $location,
                 $duration,
                 $classDate,
-                $classDescription
+                $classDescription,
+                $rounds,
+                $roundDuration
             );
             
             header('Location: addnew');

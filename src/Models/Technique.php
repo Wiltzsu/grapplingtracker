@@ -12,6 +12,7 @@ class Technique
     private $techniqueDescription;
     private $categoryID;
     private $positionID;
+    private $classID;
 
     public function __construct(PDO $db)
     {
@@ -23,19 +24,19 @@ class Technique
         $userID = $_SESSION['userID'];
     
         $query = "SELECT 
-        User.userID, 
-        techniqueID, 
-        techniqueName, 
-        techniqueDescription, 
-        Category.categoryName,
-        Position.positionName
-        
-        FROM Technique
-        
-        INNER JOIN User ON Technique.userID = User.userID
-        INNER JOIN Category ON Technique.categoryID = Category.categoryID
-        INNER JOIN Position ON Technique.positionID = Position.positionID
-        
+                    User.userID, 
+                    Technique.techniqueID, 
+                    Technique.techniqueName, 
+                    Technique.techniqueDescription, 
+                    Category.categoryName,
+                    Position.positionName,
+                    Class.location
+                FROM Technique
+                INNER JOIN User ON Technique.userID = User.userID
+                INNER JOIN Category ON Technique.categoryID = Category.categoryID
+                INNER JOIN Position ON Technique.positionID = Position.positionID
+                LEFT JOIN Class ON Technique.classID = Class.classID
+
         WHERE Technique.userID = :userID
         
         ORDER BY techniqueID DESC";
@@ -82,20 +83,22 @@ class Technique
         $techniqueDescription,
         $categoryID,
         $positionID,
+        $classID
     ) {
         $this->userID = $userID;
         $this->techniqueName = $techniqueName;
         $this->techniqueDescription = $techniqueDescription;
         $this->categoryID = $categoryID;
         $this->positionID = $positionID;
+        $this->classID = $classID;
 
         // Prepare the SQL query
         $query = "INSERT INTO Technique (
             userID, techniqueName, techniqueDescription,
-            categoryID, positionID
+            categoryID, positionID, classID
         ) VALUES (
             :userID, :techniqueName, :techniqueDescription,
-            :categoryID, :positionID
+            :categoryID, :positionID, :classID
         )";
     
         $statement = $this->db->prepare($query);
@@ -118,6 +121,10 @@ class Technique
         $statement->bindParam(
             ":positionID", 
             $this->positionID, PDO::PARAM_INT
+        );
+        $statement->bindParam(
+            ":classID",
+            $this->classID, PDO::PARAM_INT
         );
     
         // Execute the query
