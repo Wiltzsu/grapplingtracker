@@ -18,19 +18,19 @@ class PositionController
         return $this->positionModel->getPositions();
     }
 
-    public function addPositionForm() :void
+    public function addPositionForm() :string
     {
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
 
-        echo $this->twig->render('addnew/add_position.twig', [
+        return $this->twig->render('addnew/add_position.twig', [
             'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username
         ]);
     }
 
-    public function postPosition($formData) :void
+    public function postPosition($formData) :string
     {
         $positionName = $formData['positionName'] ?? null;
         $positionDescription = $formData['positionDescription'] ?? null;
@@ -40,7 +40,7 @@ class PositionController
             $positionDescription);
 
         if (!empty($errors)) {
-            echo $this->twig->render('addnew/add_position.twig', ['errors' => $errors, 'input' => $formData]);
+            return $this->twig->render('addnew/add_position.twig', ['errors' => $errors, 'input' => $formData]);
         } else {
             $this->positionModel->createNewPosition(
                 $positionName,

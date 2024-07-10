@@ -18,19 +18,12 @@ class ViewItemsController
     ) {
     }
 
-    public function showViewItemsAccordion() :void
+    public function showTechniqueView() :string
     {
         $userID = $_SESSION['userID'] ?? null;
 
-        $classes = $this->trainingClassModel->getTrainingClasses($userID);
-        $positions = $this->positionModel->getPositions();
-        $categories = $this->categoryModel->getCategories();
         $techniques = $this->techniqueModel->getTechniques($userID);
-
-        echo $this->twig->render('view_items.twig', [
-            'classes' => $classes,
-            'positions' => $positions,
-            'categories' => $categories,
+        return $this->twig->render('viewitems/view_techniques.twig', [
             'techniques' => $techniques,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
@@ -38,25 +31,12 @@ class ViewItemsController
         ]);
     }
 
-    public function showTechniqueView() :void
-    {
-        $userID = $_SESSION['userID'] ?? null;
-
-        $techniques = $this->techniqueModel->getTechniques($userID);
-        echo $this->twig->render('viewitems/view_techniques.twig', [
-            'techniques' => $techniques,
-            'userID' => $userID,
-            'roleID' => $_SESSION['roleID'] ?? null,
-            'username' => $_SESSION['username'] ?? null
-        ]);
-    }
-
-    public function showClassView() :void
+    public function showClassView() :string
     {
         $userID = $_SESSION['userID'] ?? null;
 
         $classes = $this->trainingClassModel->getTrainingClasses($userID);
-        echo $this->twig->render('viewitems/view_classes.twig', [
+        return $this->twig->render('viewitems/view_classes.twig', [
             'classes' => $classes,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
@@ -64,12 +44,12 @@ class ViewItemsController
         ]);
     }
 
-    public function showPositionView() :void
+    public function showPositionView() :string
     {
         $userID = $_SESSION['userID'] ?? null;
 
         $positions = $this->positionModel->getPositions($userID);
-        echo $this->twig->render('viewitems/view_positions.twig', [
+        return $this->twig->render('viewitems/view_positions.twig', [
             'positions' => $positions,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
@@ -77,12 +57,12 @@ class ViewItemsController
         ]);
     }
 
-    public function showCategoryView() :void
+    public function showCategoryView() :string
     {
         $userID = $_SESSION['userID'] ?? null;
 
         $categories = $this->categoryModel->getCategories($userID);
-        echo $this->twig->render('viewitems/view_categories.twig', [
+        return $this->twig->render('viewitems/view_categories.twig', [
             'categories' => $categories,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,

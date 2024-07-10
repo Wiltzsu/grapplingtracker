@@ -16,15 +16,15 @@ return function (RouteCollector $router, $container) {
     });
 
     $router->get('/register', function () use ($container) {
-        $container->get(App\Controllers\UserController::class)->showRegisterForm();
+        return $container->get(App\Controllers\UserController::class)->showRegisterForm();
     });
 
     $router->post('/register', function () use ($container) {
-        $container->get(App\Controllers\UserController::class)->register($_POST);
+        return $container->get(App\Controllers\UserController::class)->register($_POST);
     });
 
     $router->get('/login', function () use ($container) {
-        $container->get(App\Controllers\UserController::class)->showLoginForm();
+        return $container->get(App\Controllers\UserController::class)->showLoginForm();
     });
     
     $router->post('/login', function () use ($container) {
@@ -36,7 +36,7 @@ return function (RouteCollector $router, $container) {
     }, ['before' => 'auth']);
 
     $router->get('/mainview', function () use ($container) {
-        $container->get(App\Controllers\MainViewController::class)->showMainView();
+        return $container->get(App\Controllers\MainViewController::class)->showMainView();
     }, ['before' => 'auth']);
 
     $router->post('/mainview', function () use ($container) {
@@ -48,54 +48,55 @@ return function (RouteCollector $router, $container) {
     }, ['before' => 'auth']);
 
     $router->get('/addtechnique', function () use ($container) {
-        $container->get(App\Controllers\TechniqueController::class)->addTechniqueForm();
+        return $container->get(App\Controllers\TechniqueController::class)->addTechniqueForm();
     }, ['before' => 'auth']);
+    
 
     $router->post('/addtechnique', function () use ($container) {
-        $container->get(App\Controllers\TechniqueController::class)->postTechnique($_POST);
+        return $container->get(App\Controllers\TechniqueController::class)->postTechnique($_POST);
     }, ['before' => 'auth']);
 
     $router->get('/addcategory', function () use ($container) {
-        $container->get(App\Controllers\CategoryController::class)->addCategoryForm();
+        return $container->get(App\Controllers\CategoryController::class)->addCategoryForm();
     }, ['before' => 'auth']);
 
     $router->post('/addcategory', function () use ($container) {
-        $container->get(App\Controllers\CategoryController::class)->postCategory($_POST);
+        return $container->get(App\Controllers\CategoryController::class)->postCategory($_POST);
     }, ['before' => 'auth']);
 
     $router->get('/addposition', function () use ($container) {
-       $container->get(App\Controllers\PositionController::class)->addPositionForm();
+       return $container->get(App\Controllers\PositionController::class)->addPositionForm();
     }, ['before' => 'auth']);
 
     $router->post('/addposition', function () use ($container) {
-        $container->get(App\Controllers\PositionController::class)->postPosition($_POST);
+        return $container->get(App\Controllers\PositionController::class)->postPosition($_POST);
     }, ['before' => 'auth']);
 
     $router->get('/addclass', function () use ($container) {
-        $container->get(App\Controllers\TrainingClassController::class)->addClassForm();
+        return $container->get(App\Controllers\TrainingClassController::class)->addClassForm();
     }, ['before' => 'auth']);
 
     $router->post('/addclass', function () use ($container) {
-        $container->get(App\Controllers\TrainingClassController::class)->postTrainingClass($_POST);
+        return $container->get(App\Controllers\TrainingClassController::class)->postTrainingClass($_POST);
     }, ['before' => 'auth']);
 
     $router->get('/viewtechniques', function () use ($container) {
-        $container->get(App\Controllers\ViewItemsController::class)->showTechniqueView();
+        return $container->get(App\Controllers\ViewItemsController::class)->showTechniqueView();
     }, ['before' => 'auth']);
 
     $router->get('/viewclasses', function () use ($container) {
-        $container->get(App\Controllers\ViewItemsController::class)->showClassView();
+        return $container->get(App\Controllers\ViewItemsController::class)->showClassView();
     }, ['before' => 'auth']);
 
     $router->get('/viewpositions', function () use ($container) {
-        $container->get(App\Controllers\ViewItemsController::class)->showPositionView();
+        return $container->get(App\Controllers\ViewItemsController::class)->showPositionView();
     }, ['before' => 'auth']);
 
     $router->get('/viewcategories', function () use ($container) {
-        $container->get(App\Controllers\ViewItemsController::class)->showCategoryView();
+        return $container->get(App\Controllers\ViewItemsController::class)->showCategoryView();
     }, ['before' => 'auth']);
 
     $router->get('/profile', function () use ($container) {
-        $container->get(App\Controllers\ProfileController::class)->showProfile();
+        return $container->get(App\Controllers\ProfileController::class)->showProfile();
     }, ['before' => 'auth']);
 };

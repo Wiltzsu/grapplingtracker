@@ -17,7 +17,7 @@ class MainViewController
     ) { 
     }
 
-    public function showMainView() :void
+    public function showMainView() :string
     {
         $userID = $_SESSION['userID'] ?? null;
     
@@ -39,7 +39,7 @@ class MainViewController
         $techniquesData = $this->techniqueModel->getTechniquesMonthly($userID);
         $combinedChartData = $this->prepareCombinedChartData($matTimeData, $techniquesData);
     
-        echo $this->twig->render('mainview/main_view.twig', [
+        return $this->twig->render('mainview/main_view.twig', [
             'techniquesClasses' => $techniquesClasses,
             'totalMatTimeMonthly' => $matTimeData,
             'totalTechniquesLearnedMonthly' => $techniquesData,

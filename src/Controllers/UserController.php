@@ -13,9 +13,9 @@ class UserController
     ) {
     }
 
-    public function showLoginForm() :void
+    public function showLoginForm() :string
     {
-        echo $this->twig->render('login.twig');
+        return $this->twig->render('login.twig');
     }
 
     public function login($request) :void
@@ -32,12 +32,12 @@ class UserController
         }
     }
 
-    public function showRegisterForm() :void
+    public function showRegisterForm() :string
     {
-        echo $this->twig->render('register.twig');
+        return $this->twig->render('register.twig');
     }
 
-    public function register($request) :void
+    public function register($request) :string
     {
         $username = $request['username'] ?? '';
         $email = $request['email'] ?? '';
@@ -47,7 +47,7 @@ class UserController
         $errors = $this->userModel->registerUser($username, $email, $password, $password_confirm);
 
         if (!empty($errors)) {
-            echo $this->twig->render('register.twig', ['errors' => $errors, 'input' => $request]);
+            return $this->twig->render('register.twig', ['errors' => $errors, 'input' => $request]);
         } else {
             header('Location: login');
             exit();

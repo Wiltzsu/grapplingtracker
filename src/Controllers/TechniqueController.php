@@ -22,15 +22,16 @@ class TechniqueController
         return $this->techniqueModel->getTechniques($userID);
     }
 
-    public function addTechniqueForm() :void
+    public function addTechniqueForm() :string
     {
         $categories = $this->categoryModel->getCategories();
         $positions = $this->positionModel->getPositions();
-
+    
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
-
-        echo $this->twig->render('addnew/add_technique.twig', [
+    
+        // Generate HTML content using Twig and return it instead of echoing
+        return $this->twig->render('addnew/add_technique.twig', [
             'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username,
@@ -39,7 +40,16 @@ class TechniqueController
         ]);
     }
 
-    public function postTechnique($formData) :void
+    public function handlePostRequest($formData) :void
+    {        
+        if (isset($formData['delete'])) {
+            $this->deleteTechnique(['techniqueID']);
+        } else {
+            $this->postTechnique($formData);
+        }
+    }
+
+    public function postTechnique($formData) :string
     {
         $userID = $_SESSION['userID'] ?? null;
     
@@ -61,7 +71,7 @@ class TechniqueController
         
         if (!empty($errors)) {
             // Pass all the originally submitted data back to the form along with the errors
-            echo $this->twig->render('addnew/add_technique.twig', [
+            return $this->twig->render('addnew/add_technique.twig', [
                 'errors' => $errors,
                 'input' => $formData,
                 'categories' => $categories,
@@ -80,6 +90,13 @@ class TechniqueController
             header('Location: addnew');
             exit();
         }
+    }
+
+    public function deleteTechnique($techniqueID)
+    {
+        $this->techniqueModel->deleteTechnique($techniqueID);
+        header('Location: viewtechniques');
+        exit();
     }
 }
 ?>

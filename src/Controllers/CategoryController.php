@@ -18,7 +18,7 @@ class CategoryController
         return $this->categoryModel->getCategories();
     }
 
-    public function addCategoryForm()
+    public function addCategoryForm() :string
     {
         $userID = $_SESSION['userID'] ?? null;
         $roleID = $_SESSION['roleID'] ?? null;
@@ -31,7 +31,7 @@ class CategoryController
         ]);
     }
 
-    public function postCategory($formData) :void
+    public function postCategory($formData) :string
     {
         $categoryName = $formData['categoryName'] ?? null;
         $categoryDescription = $formData['categoryDescription'] ?? null;
@@ -42,7 +42,7 @@ class CategoryController
         );
         
         if (!empty($errors)) {
-            echo $this->twig->render('addnew/add_category.twig', ['errors' => $errors, 'input' => $formData]);
+            return $this->twig->render('addnew/add_category.twig', ['errors' => $errors, 'input' => $formData]);
         } else {
             $this->categoryModel->createNewCategory(
                 $userID = $_SESSION['userID'],

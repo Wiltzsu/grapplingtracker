@@ -18,12 +18,12 @@ class TrainingClassController
         return $this->trainingClassModel->getTrainingClasses($userID);
     }
 
-    public function addClassForm() :void
+    public function addClassForm() :string
     {
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
 
-        echo $this->twig->render('addnew/add_class.twig', [
+        return $this->twig->render('addnew/add_class.twig', [
             'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username,
@@ -31,7 +31,7 @@ class TrainingClassController
         ]);
     }
 
-    public function postTrainingClass($formData) :void
+    public function postTrainingClass($formData) :string
     {
         $userID = $_SESSION['userID'];
 
@@ -50,7 +50,7 @@ class TrainingClassController
         );
 
         if (!empty($errors)) {
-            echo $this->twig->render('addnew/add_class.twig', [
+            return $this->twig->render('addnew/add_class.twig', [
                 'errors' => $errors,
                 'input' => $formData,
                 'userID' => $userID
