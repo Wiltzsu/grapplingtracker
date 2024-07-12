@@ -239,7 +239,7 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
         yield ";
 </script>
 
-<script src=\"/technique-db-mvc/public/js/techniquesPerPosition.js\"></script>
+<script src=\"/technique-db-mvc/js/techniquesPerPosition.js\"></script>
 <script src=\"/technique-db-mvc/public/js/techniqueMatTimeChart.js\"></script>
 ";
         return; yield '';
@@ -397,7 +397,7 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
     var techniquesLearnedData = {{ totalTechniquesLearnedMonthly|json_encode|raw }};
 </script>
 
-<script src=\"/technique-db-mvc/public/js/techniquesPerPosition.js\"></script>
+<script src=\"/technique-db-mvc/js/techniquesPerPosition.js\"></script>
 <script src=\"/technique-db-mvc/public/js/techniqueMatTimeChart.js\"></script>
 ", "mainview/main_view.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/mainview/main_view.twig");
     }
