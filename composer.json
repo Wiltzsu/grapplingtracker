@@ -1,5 +1,7 @@
 {
     "name": "william/technique-db-mvc",
+    "description": "Journal that you can track your grappling progress with.",
+    "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-4": {
