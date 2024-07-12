@@ -5,6 +5,12 @@
     <!-- Category Form Column -->
     <form method="POST" action="">
         <h5>Add a category</h5>
+
+        <!-- User ID -->
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="userID" name="userID" required value="{{ userID }}">
+        </div>
+
         <!-- Category name -->
         <div class="form-group{{ errors.categoryName ? ' has-error' : '' }}">
             <label for="categoryName" class="mt-3">Category Name:</label>

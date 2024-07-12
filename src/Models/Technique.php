@@ -19,23 +19,23 @@ class Technique
         $this->db = $db;
     }
 
-    public function getTechniques($userID)
+    public function getTechniques($userID) :array
     {
         $userID = $_SESSION['userID'];
     
         $query = "SELECT 
-                    User.userID, 
-                    Technique.techniqueID, 
-                    Technique.techniqueName, 
-                    Technique.techniqueDescription, 
-                    Category.categoryName,
-                    Position.positionName,
-                    Class.location
-                FROM Technique
-                INNER JOIN User ON Technique.userID = User.userID
-                INNER JOIN Category ON Technique.categoryID = Category.categoryID
-                INNER JOIN Position ON Technique.positionID = Position.positionID
-                LEFT JOIN Class ON Technique.classID = Class.classID
+            User.userID, 
+            Technique.techniqueID, 
+            Technique.techniqueName, 
+            Technique.techniqueDescription, 
+            Category.categoryName,
+            Position.positionName,
+            Class.location
+        FROM Technique
+        INNER JOIN User ON Technique.userID = User.userID
+        INNER JOIN Category ON Technique.categoryID = Category.categoryID
+        INNER JOIN Position ON Technique.positionID = Position.positionID
+        LEFT JOIN Class ON Technique.classID = Class.classID
 
         WHERE Technique.userID = :userID
         

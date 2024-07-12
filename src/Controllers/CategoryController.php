@@ -13,9 +13,9 @@ class CategoryController
     ) {
     }
 
-    public function getCategories() :array
+    public function getCategories($userID) :array
     {
-        return $this->categoryModel->getCategories();
+        return $this->categoryModel->getCategories($userID);
     }
 
     public function addCategoryForm() :string
@@ -35,29 +35,31 @@ class CategoryController
     {
         $categoryName = $formData['categoryName'] ?? null;
         $categoryDescription = $formData['categoryDescription'] ?? null;
+        $userID = $formData['userID'] ?? null;
 
         $errors = $this->categoryModel->validateCreateNewCategory(
             $categoryName,
-            $categoryDescription
+            $categoryDescription,
+            $userID
         );
         
         if (!empty($errors)) {
             return $this->twig->render('addnew/add_category.twig', ['errors' => $errors, 'input' => $formData]);
         } else {
             $this->categoryModel->createNewCategory(
-                $userID = $_SESSION['userID'],
                 $categoryName,
-                $categoryDescription
+                $categoryDescription,
+                $userID
             );
             
-            header('Location: addnew');
+            header('Location: addcategory');
             exit();
         }
     }
 
-    public function getCategoriesForForm() :array
+    public function getCategoriesForForm($userID) :array
     {
-        $categories = $this->categoryModel->getCategories();
+        $categories = $this->categoryModel->getCategories($userID);
         return $categories;
     }
 }

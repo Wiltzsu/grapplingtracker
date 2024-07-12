@@ -30,8 +30,6 @@ body {
     color: #ffffff!important; /* White text color */
 }
 
-
-
 /* Centered container for the main content */
 .centered-container {
     max-width: 1000px; /* Max width for the container */
@@ -45,36 +43,6 @@ body {
     border-radius: 0px; /* Rounded corners */
 }
 
-/* Styling for list items */
-.list-group-item {
-    background-color: #ffffff; /* Light background for the list items */
-    color: #495057; /* Darker text for better readability */
-    border-radius: 5px; /* Rounded corners for the list items */
-    margin-bottom: 10px; /* Space between items */
-    transition: transform 0.2s; /* Smooth transform on hover */
-}
-
-/* Hover effects for list items */
-.list-group-item:hover {
-    transform: scale(1.01); /* Slight scale up on hover */
-    background-color: #dde5ed; /* Light blue background on hover */
-}
-
-/* 'Back' button */
-.svg-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    color: currentColor;
-    margin-bottom: 10px;
-}
-.svg-button:hover {
-    color: #007bff; /* Change color on hover */
-}
-.svg-button svg {
-    vertical-align: middle;
-}
 
 /* VIEW ITEMS SIZING */
 

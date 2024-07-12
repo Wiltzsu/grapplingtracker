@@ -9,18 +9,33 @@ class Category
     private $db;
     private $categoryName;
     private $categoryDescription;
+    private $userID;
 
     public function __construct(PDO $db)
     {
         $this->db = $db;
     }
 
-    public function getCategories(): array
-    {
-        $statement = $this->db->prepare("SELECT * FROM Category");
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
+public function getCategories($userID): array
+{
+    $query = "SELECT 
+                Category.categoryID, 
+                Category.categoryName, 
+                Category.categoryDescription, 
+                User.userID
+              FROM Category
+              LEFT JOIN User ON Category.userID = User.userID
+              WHERE Category.userID = :userID OR Category.userID IS NULL
+              ORDER BY categoryID DESC";
+
+    $statement = $this->db->prepare($query);
+    // Bind the userID to the placeholder
+    $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+    // Execute the statement
+    $statement->execute();
+
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
 
     public function validateCreateNewCategory($categoryName, $categoryDescription): array
     {
@@ -41,15 +56,16 @@ class Category
         return $errors;
     }
 
-    public function createNewCategory($categoryName, $categoryDescription): bool
+    public function createNewCategory($categoryName, $categoryDescription, $userID): bool
     {
         $this->categoryName = $categoryName;
         $this->categoryDescription = $categoryDescription;
+        $this->userID = $userID;
 
         $query = "INSERT INTO Category (
-            categoryName, categoryDescription
+            categoryName, categoryDescription, userID
         ) VALUES (
-            :categoryName, :categoryDescription
+            :categoryName, :categoryDescription, :userID
         )";
 
         $statement = $this->db->prepare($query);
@@ -60,6 +76,10 @@ class Category
         $statement->bindParam(
             ":categoryDescription",
             $this->categoryDescription, PDO::PARAM_STR
+        );
+        $statement->bindParam(
+            ":userID",
+            $this->userID, PDO::PARAM_INT
         );
         
         return $statement->execute();

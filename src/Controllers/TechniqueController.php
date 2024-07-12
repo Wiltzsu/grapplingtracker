@@ -28,7 +28,7 @@ class TechniqueController
     {
         $userID = $_SESSION['userID'];
 
-        $categories = $this->categoryModel->getCategories();
+        $categories = $this->categoryModel->getCategories($userID);
         $positions = $this->positionModel->getPositions();
         $trainingClass = $this->trainingClassModel->getTrainingClasses($userID);
     
@@ -66,7 +66,7 @@ class TechniqueController
         $classID = $formData['classID'] ?? null;
     
         // Get lists for categories and positions to refill the form
-        $categories = $this->categoryModel->getCategories();
+        $categories = $this->categoryModel->getCategories($userID);
         $positions = $this->positionModel->getPositions();
         $trainingClasses = $this->trainingClassModel->getTrainingClasses($userID);
     
