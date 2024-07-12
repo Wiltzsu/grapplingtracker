@@ -63,7 +63,7 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
             <div class=\"card p-4\">
                 <h2 class=\"text-center mb-4\">Login</h2>
 
-                <form method=\"POST\" action=\"/technique-db-mvc/public/login\">
+                <form method=\"POST\" action=\"login\">
 
                     <div class=\"form-group";
         // line 31
@@ -170,7 +170,7 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
             <div class=\"card p-4\">
                 <h2 class=\"text-center mb-4\">Login</h2>
 
-                <form method=\"POST\" action=\"/technique-db-mvc/public/login\">
+                <form method=\"POST\" action=\"login\">
 
                     <div class=\"form-group{{ errors.username ? ' has-error' : '' }}\">
                         <label for=\"username\">Username</label>
