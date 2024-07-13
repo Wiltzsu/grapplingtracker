@@ -110,7 +110,17 @@ class __TwigTemplate_b822501e073814de2bf6711662366dff extends Template
         yield "  
                 </tbody>
             </table>
+            <nav aria-label=\"...\">
+  <ul class=\"pagination pagination-sm\">
+    <li class=\"page-item active\" aria-current=\"page\">
+      <span class=\"page-link\">1</span>
+    </li>
+    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">2</a></li>
+    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li>
+  </ul>
+</nav>
         </div>
+        
     </div>
 </div>";
         return; yield '';
@@ -180,7 +190,17 @@ class __TwigTemplate_b822501e073814de2bf6711662366dff extends Template
                 {% endif %}  
                 </tbody>
             </table>
+            <nav aria-label=\"...\">
+  <ul class=\"pagination pagination-sm\">
+    <li class=\"page-item active\" aria-current=\"page\">
+      <span class=\"page-link\">1</span>
+    </li>
+    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">2</a></li>
+    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li>
+  </ul>
+</nav>
         </div>
+        
     </div>
 </div>", "viewitems/view_techniques.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/viewitems/view_techniques.twig");
     }

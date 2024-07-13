@@ -38,10 +38,10 @@ class __TwigTemplate_674d5bf050f1439c1f1f5d38842dc248 extends Template
     <div class=\"container\">
         <div class=\"justify-content-between\" id=\"navbarNavAltMarkup\">
             <div class=\"navbar-nav\">
-                <a class=\"nav-link\" aria-current=\"page\" href=\"addtechnique\">Add technique</a>
-                <a class=\"nav-link\" href=\"addclass\">Add class</a>
-                <a class=\"nav-link\" href=\"addposition\">Add position</a>
-                <a class=\"nav-link\" href=\"addcategory\">Add category</a>
+                <a class=\"nav-link\" aria-current=\"page\" href=\"addtechnique\">Technique</a>
+                <a class=\"nav-link\" href=\"addclass\">Class</a>
+                <a class=\"nav-link\" href=\"addposition\">Position</a>
+                <a class=\"nav-link\" href=\"addcategory\">Category</a>
             </div>
         </div>
     </div>
@@ -71,10 +71,10 @@ class __TwigTemplate_674d5bf050f1439c1f1f5d38842dc248 extends Template
     <div class=\"container\">
         <div class=\"justify-content-between\" id=\"navbarNavAltMarkup\">
             <div class=\"navbar-nav\">
-                <a class=\"nav-link\" aria-current=\"page\" href=\"addtechnique\">Add technique</a>
-                <a class=\"nav-link\" href=\"addclass\">Add class</a>
-                <a class=\"nav-link\" href=\"addposition\">Add position</a>
-                <a class=\"nav-link\" href=\"addcategory\">Add category</a>
+                <a class=\"nav-link\" aria-current=\"page\" href=\"addtechnique\">Technique</a>
+                <a class=\"nav-link\" href=\"addclass\">Class</a>
+                <a class=\"nav-link\" href=\"addposition\">Position</a>
+                <a class=\"nav-link\" href=\"addcategory\">Category</a>
             </div>
         </div>
     </div>

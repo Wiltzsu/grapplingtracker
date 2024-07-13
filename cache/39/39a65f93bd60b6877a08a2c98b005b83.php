@@ -38,10 +38,10 @@ class __TwigTemplate_1f314ad94ea4be36a18fb25555a81ce7 extends Template
     <div class=\"container\">
         <div class=\"justify-content-between\" id=\"navbarNavAltMarkup\">
             <div class=\"navbar-nav\">
-                <a class=\"nav-link\" aria-current=\"page\" href=\"viewtechniques\">View techniques</a>
-                <a class=\"nav-link\" href=\"viewclasses\">View classes</a>
-                <a class=\"nav-link\" href=\"viewpositions\">View positions</a>
-                <a class=\"nav-link\" href=\"viewcategories\">View categories</a>
+                <a class=\"nav-link\" aria-current=\"page\" href=\"viewtechniques\">Techniques</a>
+                <a class=\"nav-link\" href=\"viewclasses\">Classes</a>
+                <a class=\"nav-link\" href=\"viewpositions\">Positions</a>
+                <a class=\"nav-link\" href=\"viewcategories\">Categories</a>
             </div>
         </div>
     </div>
@@ -102,10 +102,10 @@ function updateValue(selectedNumber) {
     <div class=\"container\">
         <div class=\"justify-content-between\" id=\"navbarNavAltMarkup\">
             <div class=\"navbar-nav\">
-                <a class=\"nav-link\" aria-current=\"page\" href=\"viewtechniques\">View techniques</a>
-                <a class=\"nav-link\" href=\"viewclasses\">View classes</a>
-                <a class=\"nav-link\" href=\"viewpositions\">View positions</a>
-                <a class=\"nav-link\" href=\"viewcategories\">View categories</a>
+                <a class=\"nav-link\" aria-current=\"page\" href=\"viewtechniques\">Techniques</a>
+                <a class=\"nav-link\" href=\"viewclasses\">Classes</a>
+                <a class=\"nav-link\" href=\"viewpositions\">Positions</a>
+                <a class=\"nav-link\" href=\"viewcategories\">Categories</a>
             </div>
         </div>
     </div>
