@@ -27,7 +27,9 @@
                 <h2 class="text-center mb-4">Login</h2>
 
                 <form method="POST" action="login">
-
+                    {% if errors.activation %}
+                        <div class="alert alert-danger">{{ errors.activation }}</div>
+                    {% endif %}
                     <div class="form-group{{ errors.username ? ' has-error' : '' }}">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" id="username" name="username" value="{{ input.username ?? '' }}" placeholder="Enter username">

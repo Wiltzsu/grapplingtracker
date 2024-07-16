@@ -64,44 +64,52 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
                 <h2 class=\"text-center mb-4\">Login</h2>
 
                 <form method=\"POST\" action=\"login\">
-
-                    <div class=\"form-group";
-        // line 31
-        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 31)) ? (" has-error") : (""));
+                    ";
+        // line 30
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "activation", [], "any", false, false, false, 30)) {
+            // line 31
+            yield "                        <div class=\"alert alert-danger\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "activation", [], "any", false, false, false, 31), "html", null, true);
+            yield "</div>
+                    ";
+        }
+        // line 33
+        yield "                    <div class=\"form-group";
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 33)) ? (" has-error") : (""));
         yield "\">
                         <label for=\"username\">Username</label>
                         <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" value=\"";
-        // line 33
-        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", true, true, false, 33) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", false, false, false, 33)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", false, false, false, 33), "html", null, true)) : (yield ""));
+        // line 35
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", true, true, false, 35) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", false, false, false, 35)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "username", [], "any", false, false, false, 35), "html", null, true)) : (yield ""));
         yield "\" placeholder=\"Enter username\">
                         ";
-        // line 34
-        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 34)) {
-            // line 35
+        // line 36
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 36)) {
+            // line 37
             yield "                            <span class=\"form-text error-message\">";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 35), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "username", [], "any", false, false, false, 37), "html", null, true);
             yield "</span>
                         ";
         }
-        // line 37
+        // line 39
         yield "                    </div>
                     
                     <div class=\"form-group";
-        // line 39
-        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 39)) ? (" has-error") : (""));
+        // line 41
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 41)) ? (" has-error") : (""));
         yield "\">
                         <label for=\"password1\">Password</label>
                         <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" placeholder=\"Enter password\">
                         ";
-        // line 42
-        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 42)) {
-            // line 43
+        // line 44
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 44)) {
+            // line 45
             yield "                            <span class=\"form-text error-message\">";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 43), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "password", [], "any", false, false, false, 45), "html", null, true);
             yield "</span>
                         ";
         }
-        // line 45
+        // line 47
         yield "                    </div>
 
                     <button type=\"submit\" class=\"btn btn-primary btn-block\" name=\"submit\">Login</button>
@@ -137,7 +145,7 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
      */
     public function getDebugInfo()
     {
-        return array (  105 => 45,  99 => 43,  97 => 42,  91 => 39,  87 => 37,  81 => 35,  79 => 34,  75 => 33,  70 => 31,  38 => 1,);
+        return array (  113 => 47,  107 => 45,  105 => 44,  99 => 41,  95 => 39,  89 => 37,  87 => 36,  83 => 35,  77 => 33,  71 => 31,  69 => 30,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -171,7 +179,9 @@ class __TwigTemplate_5e24879da76d8dd8bc217efcb91cfe8c extends Template
                 <h2 class=\"text-center mb-4\">Login</h2>
 
                 <form method=\"POST\" action=\"login\">
-
+                    {% if errors.activation %}
+                        <div class=\"alert alert-danger\">{{ errors.activation }}</div>
+                    {% endif %}
                     <div class=\"form-group{{ errors.username ? ' has-error' : '' }}\">
                         <label for=\"username\">Username</label>
                         <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" value=\"{{ input.username ?? '' }}\" placeholder=\"Enter username\">

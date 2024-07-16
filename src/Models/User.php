@@ -43,6 +43,9 @@ class User
         $user = $query->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
+            if (!$user['is_active']) {
+                return ['activation' => 'Account is not activated.'];
+            }
             // Authentication successful, set session variables
             $_SESSION['userID'] = $user['userID'];
             $_SESSION['username'] = $username;
