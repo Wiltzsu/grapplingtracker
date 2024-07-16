@@ -11,6 +11,7 @@ class User
     private $email;
     private $password;
     private $hashed_password;
+    private $token;
 
     public function __construct(PDO $db)
     {
@@ -113,11 +114,12 @@ class User
      *
      * @return array Empty if successful, errors if not.
      */
-    public function registerUser($username, $email, $password)
+    public function registerUser($username, $email, $password, $token)
     {
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
+        $this->token = $token;
 
         $errors = $this->validateRegistration($username, $email, $password);
         if (!empty($errors)) {
@@ -125,15 +127,21 @@ class User
         }
 
         $this->hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO User (username, email, password) 
-                  VALUES (:username, :email, :password)";
+        $query = "INSERT INTO User (username, email, password, token) 
+                  VALUES (:username, :email, :password, :token)";
 
         $statement = $this->db->prepare($query);
         $statement->bindParam(":username", $this->username, PDO::PARAM_STR);
         $statement->bindParam(":email", $this->email, PDO::PARAM_STR);
         $statement->bindParam(":password", $this->hashed_password, PDO::PARAM_STR);
+        $statement->bindParam(":token", $this->token, PDO::PARAM_STR);
         $statement->execute();
+    }
 
-        return []; // Return an empty array to signify no errors.
+    public function activateUser($token) :bool
+    {
+        $query = "UPDATE User SET is_active = TRUE WHERE token = :token";
+        $statement = $this->db->prepare($query);
+        return $statement->execute(['token' => $token]);
     }
 }

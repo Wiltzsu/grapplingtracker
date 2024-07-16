@@ -23,6 +23,10 @@ return function (RouteCollector $router, $container) {
         return $container->get(App\Controllers\UserController::class)->register($_POST);
     });
 
+    $router->get('/activate', function () use ($container) {
+        return $container->get(App\Controllers\UserController::class)->activate($_GET);
+    });
+
     $router->get('/login', function () use ($container) {
         return $container->get(App\Controllers\UserController::class)->showLoginForm();
     });

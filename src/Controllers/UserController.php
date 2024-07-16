@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\User;
 use Twig\Environment;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class UserController
 {
@@ -42,15 +44,57 @@ class UserController
         $username = $request['username'] ?? '';
         $email = $request['email'] ?? '';
         $password = $request['password'] ?? '';
-        $password_confirm = $_POST['password_confirm'] ?? '';
 
-        $errors = $this->userModel->registerUser($username, $email, $password, $password_confirm);
+        // Generate a secure random token
+        $token = bin2hex(random_bytes(16));
+
+        $errors = $this->userModel->registerUser($username, $email, $password, $token);
 
         if (!empty($errors)) {
             return $this->twig->render('register.twig', ['errors' => $errors, 'input' => $request]);
         } else {
+            $this->sendActivationEmail($email, $token);
             header('Location: login');
             exit();
+        }
+    }
+
+    function sendActivationEmail($email, $token)
+    {
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'william.lonnberg@gmail.com';
+            $mail->Password = 'svun yijs pjui gosb';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+            $mail->setFrom('noreply@example.com', 'Mailer');
+            $mail->addAddress($email);
+            $mail->isHTML(true);
+            $mail->Subject = 'Activate your account';
+            $mail->Body = "Please click here to activate your account: <a href='http://localhost/technique-db-mvc/public/activate?token=$token'>Activate Account</a>";
+            $mail->send();
+            echo 'Activation email has been sent.';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
+    public function activate($request) :string
+    {
+        $token = $request['token'] ?? '';
+
+        if ($token) {
+            $result = $this->userModel->activateUser($token);
+            if ($result) {
+                return $this->twig->render('activation_success.twig');
+            } else {
+                return $this->twig->render('activation_failure.twig', ['error' => 'Invalid token or account already activated.']);
+            }
+        } else {
+            return $this->twig->render('activation_failure.twig', ['error' => 'No token provided.']);
         }
     }
 
