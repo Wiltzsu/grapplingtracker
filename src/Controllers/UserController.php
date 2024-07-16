@@ -59,7 +59,7 @@ class UserController
         }
     }
 
-    function sendActivationEmail($email, $token)
+    public function sendActivationEmail($email, $token)
     {
         $mail = new PHPMailer(true);
         try {
