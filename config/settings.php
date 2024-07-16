@@ -15,9 +15,9 @@
 
 return [
     'database' => [
-        'dsn' => 'mysql:host=localhost;dbname=journaldb',
-        'username' => 'root',
-        'password' => '',
+        'dsn' => 'mysql:host=localhost;dbname=u942333698_grapp_track_db',
+        'username' => 'u942333698_jorma',
+        'password' => 'Vi51kfal@',
         'options' => [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             /**
