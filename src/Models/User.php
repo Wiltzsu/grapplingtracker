@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use PDO;
+use DateTime;
 
 class User
 {
@@ -16,6 +17,36 @@ class User
     public function __construct(PDO $db)
     {
         $this->db = $db;
+    }
+
+    private function getLoginAttempts($userID)
+    {
+        date_default_timezone_set('Europe/Helsinki');
+
+        $limit = new DateTime(); // Create a DateTime object for the current time.
+        $limit->modify('-5 minute'); // Adjust the time to 5 minutes in the past.
+
+        $query = $this->db->prepare(
+            "
+            SELECT COUNT(*) 
+            FROM Login_Attempts 
+            WHERE userID = ? AND attempt_time > ?
+        "
+        );
+        $query->execute([$userID, $limit->format('Y-m-d H:i:s')]);
+        return (int) $query->fetchColumn();
+    }
+
+    private function recordLoginAttempt($userID)
+    {
+        $query = $this->db->prepare("INSERT INTO Login_Attempts (userID, attempt_time) VALUES (?, NOW())");
+        $query->execute([$userID]);
+    }
+
+    private function canAttemptLogin($userID)
+    {
+        $attempts = $this->getLoginAttempts($userID);
+        return $attempts < 5;
     }
 
     public function validateLogin($username, $password)
@@ -42,16 +73,29 @@ class User
         $query->execute([$username]);
         $user = $query->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($password, $user['password'])) {
+        if ($user) {
+            if (!$this->canAttemptLogin($user['userID'])) {
+                // Block login attempt because the limit is reached
+                return ['password' => 'Too many login attempts. Try again later.'];
+            }
+
+            // Record attempt (early for potential failures)
+            $this->recordLoginAttempt($user['userID']);
+
+            if (!password_verify($password, $user['password'])) {
+                // Login failed, return error message
+                return ['password' => 'Login or password do not match.'];
+            }
+
             if (!$user['is_active']) {
                 return ['activation' => 'Account is not activated.'];
             }
+
             // Authentication successful, set session variables
             $_SESSION['userID'] = $user['userID'];
             $_SESSION['username'] = $username;
             $_SESSION['roleID'] = $user['roleID'];
             $_SESSION['logged_in'] = true;
-            return [];
         } else {
             return ['password' => 'Login or password do not match.'];
         }
@@ -141,7 +185,7 @@ class User
         $statement->execute();
     }
 
-    public function activateUser($token) :bool
+    public function activateUser($token): bool
     {
         $query = "UPDATE User SET is_active = TRUE WHERE token = :token";
         $statement = $this->db->prepare($query);
