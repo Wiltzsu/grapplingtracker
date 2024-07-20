@@ -63,7 +63,7 @@ class TechniqueController
         $techniqueDescription = $formData['techniqueDescription'] ?? null;
         $categoryID = $formData['categoryID'] ?? null;
         $positionID = $formData['positionID'] ?? null;
-        $classID = $formData['classID'] ?? null;
+        $classID = !empty($formData['classID']) ? $formData['classID'] : null;
     
         // Get lists for categories and positions to refill the form
         $categories = $this->categoryModel->getCategories($userID);

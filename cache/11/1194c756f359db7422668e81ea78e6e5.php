@@ -179,9 +179,7 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["trainingClass"], "classID", [], "any", false, false, false, 65), "html", null, true);
             yield "\">";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["trainingClass"], "instructor", [], "any", false, false, false, 65), "html", null, true);
-            yield " ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["trainingClass"], "location", [], "any", false, false, false, 65), "html", null, true);
-            yield " ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["trainingClass"], "classDate", [], "any", false, false, false, 65), "html", null, true);
             yield "</option>
                 ";
@@ -220,7 +218,7 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  193 => 67,  178 => 65,  174 => 64,  164 => 56,  158 => 54,  155 => 53,  144 => 51,  140 => 50,  130 => 42,  124 => 40,  121 => 39,  110 => 37,  106 => 36,  97 => 29,  91 => 27,  89 => 26,  85 => 25,  80 => 23,  75 => 20,  69 => 18,  67 => 17,  63 => 16,  58 => 14,  51 => 10,  42 => 3,  40 => 2,  38 => 1,);
+        return array (  191 => 67,  178 => 65,  174 => 64,  164 => 56,  158 => 54,  155 => 53,  144 => 51,  140 => 50,  130 => 42,  124 => 40,  121 => 39,  110 => 37,  106 => 36,  97 => 29,  91 => 27,  89 => 26,  85 => 25,  80 => 23,  75 => 20,  69 => 18,  67 => 17,  63 => 16,  58 => 14,  51 => 10,  42 => 3,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -289,7 +287,7 @@ class __TwigTemplate_588a573c09652e4e67157c348c768f56 extends Template
             <select class=\"form-control\" id=\"classID\" name=\"classID\">
                 <option value=\"\">Select a training class</option>
                 {% for trainingClass in trainingClasses %}
-                    <option value=\"{{ trainingClass.classID }}\">{{ trainingClass.instructor }} {{ trainingClass.location }} {{ trainingClass.classDate }}</option>
+                    <option value=\"{{ trainingClass.classID }}\">{{ trainingClass.instructor }}{{ trainingClass.location }}{{ trainingClass.classDate }}</option>
                 {% endfor %}
             </select>
         </div>

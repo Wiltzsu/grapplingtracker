@@ -122,10 +122,12 @@ class Technique
             ":positionID", 
             $this->positionID, PDO::PARAM_INT
         );
-        $statement->bindParam(
-            ":classID",
-            $this->classID, PDO::PARAM_INT
-        );
+        // Before binding, check if classID is null and handle appropriately
+        if ($this->classID !== null) {
+            $statement->bindParam(":classID", $this->classID, PDO::PARAM_INT);
+        } else {
+            $statement->bindValue(":classID", $this->classID, PDO::PARAM_NULL);
+        };
     
         // Execute the query
         $statement->execute();    
