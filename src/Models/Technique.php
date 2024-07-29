@@ -19,7 +19,7 @@ class Technique
         $this->db = $db;
     }
 
-    public function getTechniques($userID) :array
+    public function getTechniques($userID, $limit = null) :array
     {
         $userID = $_SESSION['userID'];
     
@@ -36,14 +36,22 @@ class Technique
         INNER JOIN Category ON Technique.categoryID = Category.categoryID
         INNER JOIN Position ON Technique.positionID = Position.positionID
         LEFT JOIN Class ON Technique.classID = Class.classID
-
         WHERE Technique.userID = :userID
-        
         ORDER BY techniqueID DESC";
+
+        // Append a limit to the query if it is set
+        if ($limit !== null) {
+            $query .= " LIMIT :limit";
+        }
 
         $statement = $this->db->prepare($query);
         // Bind the userID to the placeholder
         $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+
+        if ($limit !== null) {
+            $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
+        }
+
         // Execute the statement
         $statement->execute();
 

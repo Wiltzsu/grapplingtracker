@@ -42,7 +42,7 @@ class __TwigTemplate_4c08075eab426a6f83997fab37ea2630 extends Template
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>Grappling Tracker</title>
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
-    <link href=\"/technique-db-mvc/public/css/style.css\" rel=\"stylesheet\">
+    <link href=\"/technique-db-mvc/public/style.css\" rel=\"stylesheet\">
     <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js\" integrity=\"sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r\" crossorigin=\"anonymous\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js\" integrity=\"sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy\" crossorigin=\"anonymous\"></script>
@@ -136,7 +136,7 @@ class __TwigTemplate_4c08075eab426a6f83997fab37ea2630 extends Template
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <title>Grappling Tracker</title>
     <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\">
-    <link href=\"/technique-db-mvc/public/css/style.css\" rel=\"stylesheet\">
+    <link href=\"/technique-db-mvc/public/style.css\" rel=\"stylesheet\">
     <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js\" integrity=\"sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r\" crossorigin=\"anonymous\"></script>
     <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js\" integrity=\"sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy\" crossorigin=\"anonymous\"></script>

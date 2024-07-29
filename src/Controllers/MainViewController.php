@@ -22,7 +22,7 @@ class MainViewController
         $userID = $_SESSION['userID'] ?? null;
     
         // Populates the techniques list.
-        $techniquesClasses = $this->techniqueModel->getTechniques($userID);
+        $techniquesClasses = $this->techniqueModel->getTechniques($userID, 10);
 
         // Populates the quick notes list.
         $quickNotes = $this->noteClassModel->getQuickNotes($userID);

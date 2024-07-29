@@ -1,0 +1,106 @@
+// Importing Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+// Define variables for colors and commonly used properties
+$background-dark: #343a40;
+$text-light: #ffffff;
+$background-light: #f1f1f1;
+$background-medium: #e9ecef;
+$border-color: #dee2e6;
+$content-background: #8a8a8a52;
+$login-button-color: #2944E5;
+$login-button-text-color: #ffffff;
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: rgb(255, 255, 255);
+    font-family: 'Mukta', Arial, Helvetica, sans-serif;
+}
+
+.nav-item {
+    font-size: 1.2em;
+    margin-left: 3em;
+}
+
+.login-button {
+    background-color: $login-button-color;
+    color: $login-button-text-color;
+    padding: 24px 208px; // Compact padding declaration
+    font-size: 24px;
+    font-weight: 600;
+    border-radius: .25rem; // Align border-radius with Bootstrap standards, optional
+    display: inline-block; // Make it inline-block if not already within a button tag
+    text-align: center; // Center the text if it’s not a button element
+    width: auto; // Set width to auto or a specific width depending on design
+    border: none; // Remove border if it's styled as a Bootstrap button
+
+    &:hover {
+        background-color: darken($login-button-color, 10%); // Darken on hover for interactive effect
+    }
+}
+
+#combinedChart, #techniquesPerPosition, #techniquesLearnedChart, #matTimeChart {
+    height: 300px !important;
+    width: 100%;
+}
+
+.dark-list-group {
+    .list-group-item {
+        background-color: $background-dark;
+        color: $text-light !important;
+    }
+}
+
+.centered-container {
+    max-width: 1000px;
+    min-width: 400px;
+    margin: 40px auto 0;
+    padding: 2px;
+    background-color: $content-background;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 0;
+}
+
+// Default table styling
+.table-hover {
+    tbody {
+        tr:hover {
+            background-color: $background-light;
+        }
+    }
+    thead {
+        th {
+            background-color: $background-medium;
+            border-bottom: 2px solid $border-color;
+        }
+    }
+}
+
+// Responsive styling for smaller screens
+@media (max-width: 768px) {
+    .userID-column,
+    .category-column,
+    .position-column,
+    .difficulty-column,
+    .action-column {
+        display: none;
+    }
+    .table {
+        td, th {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        thead {
+            display: none;
+        }
+        tbody {
+            tr {
+                margin-bottom: 10px;
+                border-bottom: 2px solid $border-color;
+            }
+        }
+    }
+}

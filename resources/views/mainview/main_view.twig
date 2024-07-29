@@ -3,79 +3,34 @@
 <div class="container-fluid">
     <div class="row p-5">
         <h3 class="col-12">Dashboard</h3>
-        <div class="col-sm-3 mb-2">
-            <div class="card">
-                <div class="card-body shadow">
-                    <h5 class="card-title">Card Title 1</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3 mb-2">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h5 class="card-title">Card Title 2</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3 mb-2">
-            <div class="card mb-2">
-                <div class="card-body shadow">
-                    <h5 class="card-title">Roll counter</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-body shadow">
-                    <h5 class="card-title">Days since starting</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row p-5">
-        <div class="col-sm-7">
-            <canvas id="combinedChart"></canvas>
-        </div>
-
-        <div class="col-sm-5 d-flex justify-content-center align-items-center">
-            <canvas id="techniquesPerPosition"></canvas>
-            <div id="techniquePositionChartData" data-labels="{{ techniquesPerPositionLabels }}" data-values="{{ techniquesPerPositionValues }}" style="display: none;"></div>
-        </div>
-    </div>
-
-    <div class="row p-5">
         <div class="col-sm-8">
-        <table class="table table-hover">
-            <thead class="thead-light">
-                <tr>
-                    <th>Technique name</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Position</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% if techniquesClasses is not empty %}
-                {% for techniqueClass in techniquesClasses %}
-                <tr>
-                    <td>{{ techniqueClass.techniqueName }}</td>
-                    <td>{{ techniqueClass.techniqueDescription }}</td>
-                    <td>{{ techniqueClass.categoryName }}</td>
-                    <td>{{ techniqueClass.positionName }}</td>
-                </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td colspan="4">No entries found.</td>
-                </tr>
-            {% endif %}
-            </tbody>
-        </table>
+            <h4>Techniques</h4>
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Technique name</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Position</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if techniquesClasses is not empty %}
+                        {% for techniqueClass in techniquesClasses %}
+                        <tr>
+                            <td>{{ techniqueClass.techniqueName }}</td>
+                            <td>{{ techniqueClass.techniqueDescription }}</td>
+                            <td>{{ techniqueClass.categoryName }}</td>
+                            <td>{{ techniqueClass.positionName }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="4">No entries found.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
         </div>
 
         <div class="col-sm-4">
@@ -93,7 +48,6 @@
                         <span class="help-block error-message">{{ errors.content }}</span>
                     {% endif %}
                 </div>
-
                 <button type="submit" name="submit" class="btn btn-primary mb-2">Submit</button>
             </form>
 
@@ -117,6 +71,72 @@
             {% endif %}
         </div>
     </div>
+
+        <div class="row p-5">
+            <div class="col-sm-7">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Techniques Studied</button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Mat Time</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Belt Progression</button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <canvas id="techniquesLearnedChart"></canvas>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <canvas id="matTimeChart"></canvas>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <canvas id="beltProgressChart"></canvas>
+                        <div id="beltChartData" data-labels='{{ beltTimes|json_encode(constant('JSON_UNESCAPED_SLASHES'))|raw }}' data-values='{{ daysOnBelt|json_encode(constant('JSON_UNESCAPED_SLASHES'))|raw }}'></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-5 d-flex justify-content-center align-items-center">
+                <canvas id="techniquesPerPosition"></canvas>
+                <div id="techniquePositionChartData" data-labels="{{ techniquesPerPositionLabels }}" data-values="{{ techniquesPerPositionValues }}" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div class="row p-5">
+            <div class="col-sm-3 mb-2">
+                <div class="card">
+                    <div class="card-body shadow">
+                        <h5 class="card-title">Card Title 1</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-2">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Card Title 2</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 mb-2">
+                <div class="card mb-2">
+                    <div class="card-body shadow">
+                        <h5 class="card-title">Roll counter</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body shadow">
+                        <h5 class="card-title">Days since starting</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 <script>
@@ -126,3 +146,7 @@
 
 <script src="/technique-db-mvc/public/js/techniquesPerPosition.js"></script>
 <script src="/technique-db-mvc/public/js/techniqueMatTimeChart.js"></script>
+
+<script src="/technique-db-mvc/public/js/totalMatTime.js"></script>
+<script src="/technique-db-mvc/public/js/techniquesLearned.js"></script>
+<script src="/technique-db-mvc/public/js/beltChart.js"></script>

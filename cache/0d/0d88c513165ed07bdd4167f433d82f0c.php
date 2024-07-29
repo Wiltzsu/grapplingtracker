@@ -41,112 +41,62 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
 <div class=\"container-fluid\">
     <div class=\"row p-5\">
         <h3 class=\"col-12\">Dashboard</h3>
-        <div class=\"col-sm-3 mb-2\">
-            <div class=\"card\">
-                <div class=\"card-body shadow\">
-                    <h5 class=\"card-title\">Card Title 1</h5>
-                    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class=\"col-sm-3 mb-2\">
-            <div class=\"card shadow\">
-                <div class=\"card-body\">
-                    <h5 class=\"card-title\">Card Title 2</h5>
-                    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class=\"col-sm-3 mb-2\">
-            <div class=\"card mb-2\">
-                <div class=\"card-body shadow\">
-                    <h5 class=\"card-title\">Roll counter</h5>
-                    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class=\"col-sm-3\">
-            <div class=\"card\">
-                <div class=\"card-body shadow\">
-                    <h5 class=\"card-title\">Days since starting</h5>
-                    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class=\"row p-5\">
-        <div class=\"col-sm-7\">
-            <canvas id=\"combinedChart\"></canvas>
-        </div>
-
-        <div class=\"col-sm-5 d-flex justify-content-center align-items-center\">
-            <canvas id=\"techniquesPerPosition\"></canvas>
-            <div id=\"techniquePositionChartData\" data-labels=\"";
-        // line 47
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["techniquesPerPositionLabels"] ?? null), "html", null, true);
-        yield "\" data-values=\"";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["techniquesPerPositionValues"] ?? null), "html", null, true);
-        yield "\" style=\"display: none;\"></div>
-        </div>
-    </div>
-
-    <div class=\"row p-5\">
         <div class=\"col-sm-8\">
-        <table class=\"table table-hover\">
-            <thead class=\"thead-light\">
-                <tr>
-                    <th>Technique name</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Position</th>
-                </tr>
-            </thead>
-            <tbody>
-            ";
-        // line 63
+            <h4>Techniques</h4>
+            <table class=\"table table-hover\">
+                <thead class=\"thead-light\">
+                    <tr>
+                        <th>Technique name</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Position</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ";
+        // line 18
         if ( !Twig\Extension\CoreExtension::testEmpty(($context["techniquesClasses"] ?? null))) {
-            // line 64
-            yield "                ";
+            // line 19
+            yield "                        ";
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(($context["techniquesClasses"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["techniqueClass"]) {
-                // line 65
-                yield "                <tr>
-                    <td>";
-                // line 66
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "techniqueName", [], "any", false, false, false, 66), "html", null, true);
+                // line 20
+                yield "                        <tr>
+                            <td>";
+                // line 21
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "techniqueName", [], "any", false, false, false, 21), "html", null, true);
                 yield "</td>
-                    <td>";
-                // line 67
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "techniqueDescription", [], "any", false, false, false, 67), "html", null, true);
+                            <td>";
+                // line 22
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "techniqueDescription", [], "any", false, false, false, 22), "html", null, true);
                 yield "</td>
-                    <td>";
-                // line 68
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "categoryName", [], "any", false, false, false, 68), "html", null, true);
+                            <td>";
+                // line 23
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "categoryName", [], "any", false, false, false, 23), "html", null, true);
                 yield "</td>
-                    <td>";
-                // line 69
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "positionName", [], "any", false, false, false, 69), "html", null, true);
+                            <td>";
+                // line 24
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "positionName", [], "any", false, false, false, 24), "html", null, true);
                 yield "</td>
-                </tr>
-                ";
+                        </tr>
+                        ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['techniqueClass'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 72
-            yield "            ";
+            // line 27
+            yield "                    ";
         } else {
-            // line 73
-            yield "                <tr>
-                    <td colspan=\"4\">No entries found.</td>
-                </tr>
-            ";
+            // line 28
+            yield "                        <tr>
+                            <td colspan=\"4\">No entries found.</td>
+                        </tr>
+                    ";
         }
-        // line 77
-        yield "            </tbody>
-        </table>
+        // line 32
+        yield "                </tbody>
+            </table>
         </div>
 
         <div class=\"col-sm-4\">
@@ -155,55 +105,54 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
                 <h4>Make a note</h4>
                 <div class=\"form-group\">
                     <input type=\"hidden\" class=\"form-control\" id=\"userID\" name=\"userID\" required value=\"";
-        // line 86
+        // line 41
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["userID"] ?? null), "html", null, true);
         yield "\">
                 </div>
                 <!-- Content -->
                 <div class=\"form-group";
-        // line 89
-        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 89)) ? (" has-error") : (""));
+        // line 44
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 44)) ? (" has-error") : (""));
         yield "\">
                     <textarea class=\"form-control\" id=\"quicknote\" name=\"quicknote\" value=\"";
-        // line 90
-        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", true, true, false, 90) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", false, false, false, 90)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", false, false, false, 90), "html", null, true)) : (yield ""));
+        // line 45
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", true, true, false, 45) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", false, false, false, 45)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", false, false, false, 45), "html", null, true)) : (yield ""));
         yield "\"></textarea>
                     <div class=\"form-text mb-2\">Write and delete quick notes.</div>
                     ";
-        // line 92
-        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 92)) {
-            // line 93
+        // line 47
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 47)) {
+            // line 48
             yield "                        <span class=\"help-block error-message\">";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 93), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 48), "html", null, true);
             yield "</span>
                     ";
         }
-        // line 95
+        // line 50
         yield "                </div>
-
                 <button type=\"submit\" name=\"submit\" class=\"btn btn-primary mb-2\">Submit</button>
             </form>
 
             ";
-        // line 100
+        // line 54
         if ( !Twig\Extension\CoreExtension::testEmpty(($context["quickNotes"] ?? null))) {
-            // line 101
+            // line 55
             yield "                ";
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(($context["quickNotes"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["quickNote"]) {
-                // line 102
+                // line 56
                 yield "                <div class=\"card mb-2\">
                     <div class=\"card-body d-flex justify-content-between align-items-center\">
                         <p class=\"card-text mb-0\">";
-                // line 104
-                yield Twig\Extension\CoreExtension::nl2br($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["quickNote"], "content", [], "any", false, false, false, 104), "html", null, true));
+                // line 58
+                yield Twig\Extension\CoreExtension::nl2br($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["quickNote"], "content", [], "any", false, false, false, 58), "html", null, true));
                 yield "</p>
                         <form method=\"POST\" action=\"mainview\"> <!-- Specify the correct path -->
                             <input type=\"hidden\" name=\"delete\" value=\"1\">
                             <input type=\"hidden\" name=\"quicknoteID\" value=\"";
-                // line 107
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["quickNote"], "quicknoteID", [], "any", false, false, false, 107), "html", null, true);
+                // line 61
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["quickNote"], "quicknoteID", [], "any", false, false, false, 61), "html", null, true);
                 yield "\">
                             <button type=\"submit\" class=\"btn\">
                                 <img src=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg\" alt=\"Delete\">
@@ -216,32 +165,111 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['quickNote'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 115
+            // line 69
             yield "            ";
         } else {
-            // line 116
+            // line 70
             yield "                <p>No notes found.</p>
             ";
         }
-        // line 118
+        // line 72
         yield "        </div>
+    </div>
+
+        <div class=\"row p-5\">
+            <div class=\"col-sm-7\">
+                <nav>
+                    <div class=\"nav nav-tabs\" id=\"nav-tab\" role=\"tablist\">
+                        <button class=\"nav-link active\" id=\"nav-home-tab\" data-bs-toggle=\"tab\" data-bs-target=\"#nav-home\" type=\"button\" role=\"tab\" aria-controls=\"nav-home\" aria-selected=\"true\">Techniques Studied</button>
+                        <button class=\"nav-link\" id=\"nav-profile-tab\" data-bs-toggle=\"tab\" data-bs-target=\"#nav-profile\" type=\"button\" role=\"tab\" aria-controls=\"nav-profile\" aria-selected=\"false\">Mat Time</button>
+                        <button class=\"nav-link\" id=\"nav-contact-tab\" data-bs-toggle=\"tab\" data-bs-target=\"#nav-contact\" type=\"button\" role=\"tab\" aria-controls=\"nav-contact\" aria-selected=\"false\">Belt Progression</button>
+                    </div>
+                </nav>
+                <div class=\"tab-content\" id=\"nav-tabContent\">
+                    <div class=\"tab-pane fade show active\" id=\"nav-home\" role=\"tabpanel\" aria-labelledby=\"nav-home-tab\">
+                        <canvas id=\"techniquesLearnedChart\"></canvas>
+                    </div>
+                    <div class=\"tab-pane fade\" id=\"nav-profile\" role=\"tabpanel\" aria-labelledby=\"nav-profile-tab\">
+                        <canvas id=\"matTimeChart\"></canvas>
+                    </div>
+                    <div class=\"tab-pane fade\" id=\"nav-contact\" role=\"tabpanel\" aria-labelledby=\"nav-contact-tab\">
+                        <canvas id=\"beltProgressChart\"></canvas>
+                        <div id=\"beltChartData\" data-labels='";
+        // line 93
+        yield json_encode(($context["beltTimes"] ?? null), Twig\Extension\CoreExtension::constant("JSON_UNESCAPED_SLASHES"));
+        yield "' data-values='";
+        yield json_encode(($context["daysOnBelt"] ?? null), Twig\Extension\CoreExtension::constant("JSON_UNESCAPED_SLASHES"));
+        yield "'></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=\"col-sm-5 d-flex justify-content-center align-items-center\">
+                <canvas id=\"techniquesPerPosition\"></canvas>
+                <div id=\"techniquePositionChartData\" data-labels=\"";
+        // line 100
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["techniquesPerPositionLabels"] ?? null), "html", null, true);
+        yield "\" data-values=\"";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["techniquesPerPositionValues"] ?? null), "html", null, true);
+        yield "\" style=\"display: none;\"></div>
+            </div>
+        </div>
+
+        <div class=\"row p-5\">
+            <div class=\"col-sm-3 mb-2\">
+                <div class=\"card\">
+                    <div class=\"card-body shadow\">
+                        <h5 class=\"card-title\">Card Title 1</h5>
+                        <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class=\"col-sm-3 mb-2\">
+                <div class=\"card shadow\">
+                    <div class=\"card-body\">
+                        <h5 class=\"card-title\">Card Title 2</h5>
+                        <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class=\"col-sm-3 mb-2\">
+                <div class=\"card mb-2\">
+                    <div class=\"card-body shadow\">
+                        <h5 class=\"card-title\">Roll counter</h5>
+                        <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class=\"col-sm-3\">
+                <div class=\"card\">
+                    <div class=\"card-body shadow\">
+                        <h5 class=\"card-title\">Days since starting</h5>
+                        <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 
 <script>
     var totalMatTimeData = ";
-        // line 123
+        // line 143
         yield json_encode(($context["totalMatTimeMonthly"] ?? null));
         yield ";
     var techniquesLearnedData = ";
-        // line 124
+        // line 144
         yield json_encode(($context["totalTechniquesLearnedMonthly"] ?? null));
         yield ";
 </script>
 
 <script src=\"/technique-db-mvc/public/js/techniquesPerPosition.js\"></script>
 <script src=\"/technique-db-mvc/public/js/techniqueMatTimeChart.js\"></script>
-";
+
+<script src=\"/technique-db-mvc/public/js/totalMatTime.js\"></script>
+<script src=\"/technique-db-mvc/public/js/techniquesLearned.js\"></script>
+<script src=\"/technique-db-mvc/public/js/beltChart.js\"></script>";
         return; yield '';
     }
 
@@ -266,7 +294,7 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
      */
     public function getDebugInfo()
     {
-        return array (  238 => 124,  234 => 123,  227 => 118,  223 => 116,  220 => 115,  206 => 107,  200 => 104,  196 => 102,  191 => 101,  189 => 100,  182 => 95,  176 => 93,  174 => 92,  169 => 90,  165 => 89,  159 => 86,  148 => 77,  142 => 73,  139 => 72,  130 => 69,  126 => 68,  122 => 67,  118 => 66,  115 => 65,  110 => 64,  108 => 63,  87 => 47,  40 => 2,  38 => 1,);
+        return array (  263 => 144,  259 => 143,  211 => 100,  199 => 93,  176 => 72,  172 => 70,  169 => 69,  155 => 61,  149 => 58,  145 => 56,  140 => 55,  138 => 54,  132 => 50,  126 => 48,  124 => 47,  119 => 45,  115 => 44,  109 => 41,  98 => 32,  92 => 28,  89 => 27,  80 => 24,  76 => 23,  72 => 22,  68 => 21,  65 => 20,  60 => 19,  58 => 18,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -276,79 +304,34 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
 <div class=\"container-fluid\">
     <div class=\"row p-5\">
         <h3 class=\"col-12\">Dashboard</h3>
-        <div class=\"col-sm-3 mb-2\">
-            <div class=\"card\">
-                <div class=\"card-body shadow\">
-                    <h5 class=\"card-title\">Card Title 1</h5>
-                    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class=\"col-sm-3 mb-2\">
-            <div class=\"card shadow\">
-                <div class=\"card-body\">
-                    <h5 class=\"card-title\">Card Title 2</h5>
-                    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class=\"col-sm-3 mb-2\">
-            <div class=\"card mb-2\">
-                <div class=\"card-body shadow\">
-                    <h5 class=\"card-title\">Roll counter</h5>
-                    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div class=\"col-sm-3\">
-            <div class=\"card\">
-                <div class=\"card-body shadow\">
-                    <h5 class=\"card-title\">Days since starting</h5>
-                    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class=\"row p-5\">
-        <div class=\"col-sm-7\">
-            <canvas id=\"combinedChart\"></canvas>
-        </div>
-
-        <div class=\"col-sm-5 d-flex justify-content-center align-items-center\">
-            <canvas id=\"techniquesPerPosition\"></canvas>
-            <div id=\"techniquePositionChartData\" data-labels=\"{{ techniquesPerPositionLabels }}\" data-values=\"{{ techniquesPerPositionValues }}\" style=\"display: none;\"></div>
-        </div>
-    </div>
-
-    <div class=\"row p-5\">
         <div class=\"col-sm-8\">
-        <table class=\"table table-hover\">
-            <thead class=\"thead-light\">
-                <tr>
-                    <th>Technique name</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Position</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% if techniquesClasses is not empty %}
-                {% for techniqueClass in techniquesClasses %}
-                <tr>
-                    <td>{{ techniqueClass.techniqueName }}</td>
-                    <td>{{ techniqueClass.techniqueDescription }}</td>
-                    <td>{{ techniqueClass.categoryName }}</td>
-                    <td>{{ techniqueClass.positionName }}</td>
-                </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td colspan=\"4\">No entries found.</td>
-                </tr>
-            {% endif %}
-            </tbody>
-        </table>
+            <h4>Techniques</h4>
+            <table class=\"table table-hover\">
+                <thead class=\"thead-light\">
+                    <tr>
+                        <th>Technique name</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Position</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if techniquesClasses is not empty %}
+                        {% for techniqueClass in techniquesClasses %}
+                        <tr>
+                            <td>{{ techniqueClass.techniqueName }}</td>
+                            <td>{{ techniqueClass.techniqueDescription }}</td>
+                            <td>{{ techniqueClass.categoryName }}</td>
+                            <td>{{ techniqueClass.positionName }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan=\"4\">No entries found.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
         </div>
 
         <div class=\"col-sm-4\">
@@ -366,7 +349,6 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
                         <span class=\"help-block error-message\">{{ errors.content }}</span>
                     {% endif %}
                 </div>
-
                 <button type=\"submit\" name=\"submit\" class=\"btn btn-primary mb-2\">Submit</button>
             </form>
 
@@ -390,6 +372,72 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
             {% endif %}
         </div>
     </div>
+
+        <div class=\"row p-5\">
+            <div class=\"col-sm-7\">
+                <nav>
+                    <div class=\"nav nav-tabs\" id=\"nav-tab\" role=\"tablist\">
+                        <button class=\"nav-link active\" id=\"nav-home-tab\" data-bs-toggle=\"tab\" data-bs-target=\"#nav-home\" type=\"button\" role=\"tab\" aria-controls=\"nav-home\" aria-selected=\"true\">Techniques Studied</button>
+                        <button class=\"nav-link\" id=\"nav-profile-tab\" data-bs-toggle=\"tab\" data-bs-target=\"#nav-profile\" type=\"button\" role=\"tab\" aria-controls=\"nav-profile\" aria-selected=\"false\">Mat Time</button>
+                        <button class=\"nav-link\" id=\"nav-contact-tab\" data-bs-toggle=\"tab\" data-bs-target=\"#nav-contact\" type=\"button\" role=\"tab\" aria-controls=\"nav-contact\" aria-selected=\"false\">Belt Progression</button>
+                    </div>
+                </nav>
+                <div class=\"tab-content\" id=\"nav-tabContent\">
+                    <div class=\"tab-pane fade show active\" id=\"nav-home\" role=\"tabpanel\" aria-labelledby=\"nav-home-tab\">
+                        <canvas id=\"techniquesLearnedChart\"></canvas>
+                    </div>
+                    <div class=\"tab-pane fade\" id=\"nav-profile\" role=\"tabpanel\" aria-labelledby=\"nav-profile-tab\">
+                        <canvas id=\"matTimeChart\"></canvas>
+                    </div>
+                    <div class=\"tab-pane fade\" id=\"nav-contact\" role=\"tabpanel\" aria-labelledby=\"nav-contact-tab\">
+                        <canvas id=\"beltProgressChart\"></canvas>
+                        <div id=\"beltChartData\" data-labels='{{ beltTimes|json_encode(constant('JSON_UNESCAPED_SLASHES'))|raw }}' data-values='{{ daysOnBelt|json_encode(constant('JSON_UNESCAPED_SLASHES'))|raw }}'></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=\"col-sm-5 d-flex justify-content-center align-items-center\">
+                <canvas id=\"techniquesPerPosition\"></canvas>
+                <div id=\"techniquePositionChartData\" data-labels=\"{{ techniquesPerPositionLabels }}\" data-values=\"{{ techniquesPerPositionValues }}\" style=\"display: none;\"></div>
+            </div>
+        </div>
+
+        <div class=\"row p-5\">
+            <div class=\"col-sm-3 mb-2\">
+                <div class=\"card\">
+                    <div class=\"card-body shadow\">
+                        <h5 class=\"card-title\">Card Title 1</h5>
+                        <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class=\"col-sm-3 mb-2\">
+                <div class=\"card shadow\">
+                    <div class=\"card-body\">
+                        <h5 class=\"card-title\">Card Title 2</h5>
+                        <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class=\"col-sm-3 mb-2\">
+                <div class=\"card mb-2\">
+                    <div class=\"card-body shadow\">
+                        <h5 class=\"card-title\">Roll counter</h5>
+                        <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class=\"col-sm-3\">
+                <div class=\"card\">
+                    <div class=\"card-body shadow\">
+                        <h5 class=\"card-title\">Days since starting</h5>
+                        <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
 <script>
@@ -399,6 +447,9 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
 
 <script src=\"/technique-db-mvc/public/js/techniquesPerPosition.js\"></script>
 <script src=\"/technique-db-mvc/public/js/techniqueMatTimeChart.js\"></script>
-", "mainview/main_view.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/mainview/main_view.twig");
+
+<script src=\"/technique-db-mvc/public/js/totalMatTime.js\"></script>
+<script src=\"/technique-db-mvc/public/js/techniquesLearned.js\"></script>
+<script src=\"/technique-db-mvc/public/js/beltChart.js\"></script>", "mainview/main_view.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/mainview/main_view.twig");
     }
 }

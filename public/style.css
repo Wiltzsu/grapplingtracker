@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: rgb(255, 255, 255);
+  font-family: "Mukta", Arial, Helvetica, sans-serif;
+}
+
+.nav-item {
+  font-size: 1.2em;
+  margin-left: 3em;
+}
+
+.login-button {
+  background-color: #2944E5;
+  color: #ffffff;
+  padding: 24px 208px;
+  font-size: 24px;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  border: none;
+}
+.login-button:hover {
+  background-color: #1830c3;
+}
+
+#combinedChart, #techniquesPerPosition, #techniquesLearnedChart, #matTimeChart {
+  height: 300px !important;
+  width: 100%;
+}
+
+.dark-list-group .list-group-item {
+  background-color: #343a40;
+  color: #ffffff !important;
+}
+
+.centered-container {
+  max-width: 1000px;
+  min-width: 400px;
+  margin: 40px auto 0;
+  padding: 2px;
+  background-color: rgba(138, 138, 138, 0.3215686275);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+}
+.table-hover thead th {
+  background-color: #e9ecef;
+  border-bottom: 2px solid #dee2e6;
+}
+
+@media (max-width: 768px) {
+  .userID-column,
+  .category-column,
+  .position-column,
+  .difficulty-column,
+  .action-column {
+    display: none;
+  }
+  .table td, .table th {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .table thead {
+    display: none;
+  }
+  .table tbody tr {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #dee2e6;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
