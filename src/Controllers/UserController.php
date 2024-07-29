@@ -116,6 +116,6 @@ class UserController
         session_destroy();
 
         // Redirect to home page.
-        header("Location: /technique-db-mvc/public");
+        header("Location: /");
     }
 }
