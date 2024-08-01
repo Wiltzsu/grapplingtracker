@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Grappling Tracker</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/technique-db-mvc/public/css/style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 
 <div class="container-fluid">
-        <h1>Grappling Tracker</h1>
-        <p>Your ultimate journal and tracker for grappling techniques.</p>
-
-        <a href="login" class="btn btn-primary btn-lg" role="button" aria-disabled="true">Login</a>
-        <a href="register" class="btn btn-warning btn-lg" role="button" aria-disabled="true">Sign up</a>
-
+    <div class="row">
+        <div class="col-md-6 d-flex align-items-center justify-content-center dynamic-text-background" style="min-height: 100vh;">
+            <h2 id="dynamicText"></h2>
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-center get-started-background" style="min-height: 100vh;">
+            <div>
+                <h3 class="text-center get-started">Get started</h3>
+                <a href="login" class="btn btn-lg custom-button login-button">Login</a>
+                <a href="register" class="btn btn-lg custom-button signup-button">Sign up</a>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script src="/technique-db-mvc/public/js/frontPageAnimation.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
