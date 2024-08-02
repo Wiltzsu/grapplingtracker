@@ -11,21 +11,25 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 d-flex align-items-center justify-content-center dynamic-text-background" style="min-height: 100vh;">
+        <div class="col-12">
+            <h1 class="page-title position-absolute top-0 start-0 ms-4 mt-3">Grappling Tracker</h1>
+        </div>
+        <!-- Ensure that dynamic text does not display on small screens -->
+        <div class="col-lg-7 d-none d-lg-flex align-items-center justify-content-center dynamic-text-background" style="min-height: 100vh;">
             <h2 id="dynamicText"></h2>
         </div>
-        <div class="col-md-6 d-flex align-items-center justify-content-center get-started-background" style="min-height: 100vh;">
-            <div>
-                <h3 class="text-center get-started">Get started</h3>
-                <a href="login" class="btn btn-lg custom-button login-button">Login</a>
-                <a href="register" class="btn btn-lg custom-button signup-button">Sign up</a>
+        <!-- Center buttons vertically and horizontally on all screens -->
+        <div class="col-12 col-lg-5 d-flex flex-column align-items-center justify-content-center get-started-background" style="min-height: 100vh;">
+            <div class="text-center">
+                <h3 class="get-started mb-4">Get started</h3>
+                <a href="login" class="btn btn-lg custom-button login-button mb-3">Log in</a>
+                <a href="register" class="btn btn-lg custom-button signup-button mb-3">Sign up</a>
             </div>
         </div>
     </div>
 </div>
 
 <script src="/technique-db-mvc/public/js/frontPageAnimation.js"></script>
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

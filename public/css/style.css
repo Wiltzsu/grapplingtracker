@@ -7,46 +7,92 @@ body {
   font-family: "Mukta", Arial, Helvetica, sans-serif;
 }
 
+.get-started-background {
+  background-color: rgb(32, 30, 67);
+}
+
 .nav-item {
   font-size: 1.2em;
   margin-left: 3em;
 }
 
+#dynamicText {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+  font-size: 48px; /* Adjust size as necessary */
+  white-space: nowrap; /* Prevents the text from wrapping */
+  overflow: hidden; /* Keeps everything contained */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align text to the left */
+  margin-left: 30px;
+}
+
+.cursor {
+  opacity: 1;
+  animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+  50% {
+    opacity: 0;
+  }
+}
 .custom-button {
   padding: 16px 80px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
-  border-radius: 10px;
+  border-radius: 50px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
   font-family: "Poppins", sans-serif;
 }
 
-.get-started {
-  font-size: 34px;
+/* Default color for large screens */
+.page-title {
+  color: #000000; /* Black color */
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 20px;
+  font-size: 24px;
   font-weight: bold;
 }
 
+/* Media query for small screens */
+@media (max-width: 968px) {
+  .page-title {
+    color: #FFFFFF; /* White color for smaller screens */
+  }
+}
+.get-started {
+  font-size: 34px;
+  font-weight: bold;
+  color: white;
+}
+
 .login-button {
-  background: #191919;
-  color: #f1f1f1;
+  background: #FEAE6F;
+  color: #191919;
 }
 .login-button:hover {
-  background-color: white;
+  background-color: #fbcda9;
   color: #191919;
-  border: 2px solid #191919;
 }
 
 .signup-button {
-  background: #191919;
-  color: #f1f1f1;
+  background: #FEAE6F;
+  color: #191919;
 }
 .signup-button:hover {
-  background-color: white;
+  background-color: #fbcda9;
   color: #191919;
-  border: 2px solid #191919;
 }
 
 #combinedChart, #techniquesPerPosition, #techniquesLearnedChart, #matTimeChart {

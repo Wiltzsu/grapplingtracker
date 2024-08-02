@@ -8,11 +8,11 @@ $background-light: #f1f1f1;
 $background-medium: #e9ecef;
 $border-color: #dee2e6;
 $content-background: #8a8a8a52;
-$button-dark: #191919; // Dark button background
-$button-light: #f1f1f1; // Light button background
+$button-orange: #FEAE6F;
+$button-orange-background: #fbcda9;
 $button-light-text: #FEFEFE;
 $button-dark-text: #191919;
-$button-dark-border: #191919;
+$get-started-background: rgb(32, 30, 67);
 
 body {
     display: flex;
@@ -22,46 +22,97 @@ body {
     font-family: 'Mukta', Arial, Helvetica, sans-serif;
 }
 
+.get-started-background {
+    background-color: $get-started-background;
+}
+
 .nav-item {
     font-size: 1.2em;
     margin-left: 3em;
 }
 
+#dynamicText {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+    font-size: 48px; /* Adjust size as necessary */
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Keeps everything contained */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align text to the left */
+    margin-left: 30px;
+}
+
+.cursor {
+    opacity: 1;
+    animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+    50% {
+        opacity: 0;
+    }
+}
+
+
 // Custom button styles
 .custom-button {
     padding: 16px 80px; // Adjusted padding
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 50px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
     font-family: 'Poppins', sans-serif; // Ensuring Poppins is applied
 }
+
+/* Default color for large screens */
+.page-title {
+    color: #000000; /* Black color */
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Media query for small screens */
+@media (max-width: 968px) {
+    .page-title {
+        color: #FFFFFF; /* White color for smaller screens */
+    }
+}
+
+
 
 .get-started {
     font-size: 34px;
     font-weight: bold;
+    color: white;
 }
 
 .login-button {
-    background: $button-dark;
-    color: $button-light;
+    background: $button-orange;
+    color: $button-dark-text;
     &:hover {
-        background-color: lighten($button-light, 10%);
+        background-color: $button-orange-background;
         color: $button-dark-text;
-        border: 2px solid $button-dark;
     }
 }
 
 .signup-button {
-    background: $button-dark;
-    color: $button-light;
+    background: $button-orange;
+    color: $button-dark-text;
     &:hover {
-        background-color: lighten($button-light, 10%);
+        background-color: $button-orange-background;
         color: $button-dark-text;
-        border: 2px solid $button-dark;
     }
 }
 
