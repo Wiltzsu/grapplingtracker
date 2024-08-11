@@ -30,6 +30,14 @@ return function (RouteCollector $router, $container) {
     $router->get('/login', function () use ($container) {
         return $container->get(App\Controllers\UserController::class)->showLoginForm();
     });
+
+    $router->get('/resetpassword', function () use ($container) {
+        return $container->get(App\Controllers\UserController::class)->showResetPasswordForm();
+    });
+
+    $router->post('/send-password-reset', function () use ($container) {
+        $container->get(App\Controllers\UserController::class)->sendPasswordReset($_POST);
+    });
     
     $router->post('/login', function () use ($container) {
         $container->get(App\Controllers\UserController::class)->login($_POST);

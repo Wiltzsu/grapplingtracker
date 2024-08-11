@@ -1,22 +1,76 @@
 // Importing Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 // Define variables for colors and commonly used properties
 $background-dark: #343a40;
 $text-light: #ffffff;
 $background-light: #f1f1f1;
 $background-medium: #e9ecef;
+$background-blue: #2944E5;
+$background-navy: rgb(32, 30, 67);
 $border-color: #dee2e6;
 $content-background: #8a8a8a52;
-$login-button-color: #2944E5;
-$login-button-text-color: #ffffff;
+$button-orange: #FEAE6F;
+$button-orange-background: #fbcda9;
+$button-light-text: #FEFEFE;
+$button-dark-text: #191919;
+$get-started-background: rgb(32, 30, 67);
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: rgb(255, 255, 255);
+    background: $background-light;
     font-family: 'Mukta', Arial, Helvetica, sans-serif;
+}
+
+.login-body {
+    height: 100vh;
+    background-color: $background-navy
+}
+
+.login-bold {
+    font-weight: bold;
+}
+
+.custom-login-form {
+    position: absolute;
+    width: 480px;
+    height: auto;
+    top: 129px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $background-light;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: $background-navy;
+    color: $text-light;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.btn-custom {
+    width: 100%;
+    background-color: $background-dark;
+    color: $background-light;
+    border-radius: 10px;
+    padding: 24px 20px;
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.forgot-password {
+    text-align: center;
+    color: $background-blue;
+    text-decoration: underline;
+    margin-top: 15px;
+}
+
+.get-started-background {
+    background-color: $get-started-background;
 }
 
 .nav-item {
@@ -24,23 +78,92 @@ body {
     margin-left: 3em;
 }
 
-.login-button {
-    background-color: $login-button-color;
-    color: $login-button-text-color;
-    padding: 24px 208px; // Compact padding declaration
-    font-size: 24px;
-    font-weight: 600;
-    border-radius: .25rem; // Align border-radius with Bootstrap standards, optional
-    display: inline-block; // Make it inline-block if not already within a button tag
-    text-align: center; // Center the text if it’s not a button element
-    width: auto; // Set width to auto or a specific width depending on design
-    border: none; // Remove border if it's styled as a Bootstrap button
+#dynamicText {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+    font-size: 48px; /* Adjust size as necessary */
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Keeps everything contained */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align text to the left */
+    margin-left: 30px;
+}
 
-    &:hover {
-        background-color: darken($login-button-color, 10%); // Darken on hover for interactive effect
+.cursor {
+    opacity: 1;
+    animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+    50% {
+        opacity: 0;
     }
 }
 
+
+// Custom button styles
+.custom-button {
+    display: inline-block; // Ensures the link is not just text but the entire block
+    padding: 16px 80px; // Adjusted padding
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-family: 'Poppins', sans-serif; // Ensuring Poppins is applied
+}
+
+/* Default color for large screens */
+.page-title {
+    color: #000000; /* Black color */
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Media query for small screens */
+@media (max-width: 968px) {
+    .page-title {
+        color: #FFFFFF; /* White color for smaller screens */
+    }
+}
+
+
+
+.get-started {
+    font-size: 34px;
+    font-weight: bold;
+    color: white;
+}
+
+.login-button {
+    background: $button-orange;
+    color: $button-dark-text;
+    &:hover {
+        background-color: $button-orange-background;
+        color: $button-dark-text;
+    }
+}
+
+.signup-button {
+    background: $button-orange;
+    color: $button-dark-text;
+    &:hover {
+        background-color: $button-orange-background;
+        color: $button-dark-text;
+    }
+}
+
+// Chart styles and others remain the same
 #combinedChart, #techniquesPerPosition, #techniquesLearnedChart, #matTimeChart {
     height: 300px !important;
     width: 100%;
@@ -63,28 +186,9 @@ body {
     border-radius: 0;
 }
 
-// Default table styling
-.table-hover {
-    tbody {
-        tr:hover {
-            background-color: $background-light;
-        }
-    }
-    thead {
-        th {
-            background-color: $background-medium;
-            border-bottom: 2px solid $border-color;
-        }
-    }
-}
-
-// Responsive styling for smaller screens
+// Responsive table styling
 @media (max-width: 768px) {
-    .userID-column,
-    .category-column,
-    .position-column,
-    .difficulty-column,
-    .action-column {
+    .userID-column, .category-column, .position-column, .difficulty-column, .action-column {
         display: none;
     }
     .table {

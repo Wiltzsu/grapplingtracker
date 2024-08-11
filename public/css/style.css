@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Mukta:wght@200;300;400;500;600;700;800&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f1f1f1;
+  font-family: "Mukta", Arial, Helvetica, sans-serif;
+}
+
+.login-body {
+  height: 100vh;
+  background-color: rgb(32, 30, 67);
+}
+
+.login-bold {
+  font-weight: bold;
+}
+
+.custom-login-form {
+  position: absolute;
+  width: 480px;
+  height: auto;
+  top: 129px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(32, 30, 67);
+  color: #ffffff;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.btn-custom {
+  width: 100%;
+  background-color: #343a40;
+  color: #f1f1f1;
+  border-radius: 10px;
+  padding: 24px 20px;
+  font-size: 24px;
+  font-family: "Poppins", sans-serif;
+}
+
+.forgot-password {
+  text-align: center;
+  color: #2944E5;
+  text-decoration: underline;
+  margin-top: 15px;
+}
+
+.get-started-background {
+  background-color: rgb(32, 30, 67);
+}
+
+.nav-item {
+  font-size: 1.2em;
+  margin-left: 3em;
+}
+
+#dynamicText {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+  font-size: 48px; /* Adjust size as necessary */
+  white-space: nowrap; /* Prevents the text from wrapping */
+  overflow: hidden; /* Keeps everything contained */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align text to the left */
+  margin-left: 30px;
+}
+
+.cursor {
+  opacity: 1;
+  animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+  50% {
+    opacity: 0;
+  }
+}
+.custom-button {
+  display: inline-block;
+  padding: 16px 80px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Default color for large screens */
+.page-title {
+  color: #000000; /* Black color */
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Media query for small screens */
+@media (max-width: 968px) {
+  .page-title {
+    color: #FFFFFF; /* White color for smaller screens */
+  }
+}
+.get-started {
+  font-size: 34px;
+  font-weight: bold;
+  color: white;
+}
+
+.login-button {
+  background: #FEAE6F;
+  color: #191919;
+}
+.login-button:hover {
+  background-color: #fbcda9;
+  color: #191919;
+}
+
+.signup-button {
+  background: #FEAE6F;
+  color: #191919;
+}
+.signup-button:hover {
+  background-color: #fbcda9;
+  color: #191919;
+}
+
+#combinedChart, #techniquesPerPosition, #techniquesLearnedChart, #matTimeChart {
+  height: 300px !important;
+  width: 100%;
+}
+
+.dark-list-group .list-group-item {
+  background-color: #343a40;
+  color: #ffffff !important;
+}
+
+.centered-container {
+  max-width: 1000px;
+  min-width: 400px;
+  margin: 40px auto 0;
+  padding: 2px;
+  background-color: rgba(138, 138, 138, 0.3215686275);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+}
+
+@media (max-width: 768px) {
+  .userID-column, .category-column, .position-column, .difficulty-column, .action-column {
+    display: none;
+  }
+  .table td, .table th {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .table thead {
+    display: none;
+  }
+  .table tbody tr {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #dee2e6;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
