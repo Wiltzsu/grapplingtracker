@@ -39,6 +39,11 @@ class UserController
         return $this->twig->render('register.twig');
     }
 
+    public function showResetPasswordForm() :string
+    {
+        return $this->twig->render('reset_password.twig');
+    }
+
     public function register($request) :string
     {
         $username = $request['username'] ?? '';
@@ -80,6 +85,11 @@ class UserController
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
+    }
+
+    public function sendPasswordReset($email)
+    {
+        
     }
 
     public function activate($request) :string

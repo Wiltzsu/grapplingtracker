@@ -6,6 +6,8 @@ $background-dark: #343a40;
 $text-light: #ffffff;
 $background-light: #f1f1f1;
 $background-medium: #e9ecef;
+$background-blue: #2944E5;
+$background-navy: rgb(32, 30, 67);
 $border-color: #dee2e6;
 $content-background: #8a8a8a52;
 $button-orange: #FEAE6F;
@@ -18,8 +20,53 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: rgb(255, 255, 255);
+    background: $background-light;
     font-family: 'Mukta', Arial, Helvetica, sans-serif;
+}
+
+.login-body {
+    height: 100vh;
+    background-color: $background-navy
+}
+
+.login-bold {
+    font-weight: bold;
+}
+
+.custom-login-form {
+    position: absolute;
+    width: 480px;
+    height: auto;
+    top: 129px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $background-light;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: $background-navy;
+    color: $text-light;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.btn-custom {
+    width: 100%;
+    background-color: $background-dark;
+    color: $background-light;
+    border-radius: 10px;
+    padding: 24px 20px;
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.forgot-password {
+    text-align: center;
+    color: $background-blue;
+    text-decoration: underline;
+    margin-top: 15px;
 }
 
 .get-started-background {
@@ -60,11 +107,11 @@ body {
 
 // Custom button styles
 .custom-button {
+    display: inline-block; // Ensures the link is not just text but the entire block
     padding: 16px 80px; // Adjusted padding
     font-size: 18px;
     font-weight: 600;
     border-radius: 50px;
-    display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-right: 10px;
