@@ -137,23 +137,11 @@ body {
     }
 }
 
-
-
 .get-started {
     font-size: 34px;
     font-weight: bold;
     color: white;
 }
-
-.login-button {
-    background: $button-orange;
-    color: $button-dark-text;
-    &:hover {
-        background-color: $button-orange-background;
-        color: $button-dark-text;
-    }
-}
-
 .signup-button {
     background: $button-orange;
     color: $button-dark-text;
