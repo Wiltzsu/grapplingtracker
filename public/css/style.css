@@ -121,15 +121,6 @@ body {
   color: white;
 }
 
-.login-button {
-  background: #FEAE6F;
-  color: #191919;
-}
-.login-button:hover {
-  background-color: #fbcda9;
-  color: #191919;
-}
-
 .signup-button {
   background: #FEAE6F;
   color: #191919;
