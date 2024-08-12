@@ -1,19 +1,49 @@
 <?php
+/**
+ * This file contains Position class and its methods.
+ * 
+ * PHP version 8
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link     https://grapplingtracker.com
+ */
 
 namespace App\Models;
-
 use PDO;
+
+/**
+ * This class is the Position class.
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link     https://grapplingtracker.com
+ */
 class Position
 {
     private $db;
     private $positionName;
     private $positionDescription;
 
+    /**
+     * Constructor function for Position.
+     * 
+     * @param PDO $db Database connection
+     */
     public function __construct(PDO $db)
     {
         $this->db = $db;
     }
 
+    /**
+     * Get all positions.
+     * 
+     * @return array
+     */
     public function getPositions()
     {
         $statement = $this->db->prepare("SELECT * FROM Position");
@@ -21,6 +51,14 @@ class Position
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Validate create position form.
+     * 
+     * @param string $positionName        Position name
+     * @param string $positionDescription Position description
+     * 
+     * @return array
+     */
     public function validateCreatePosition($positionName, $positionDescription)
     {
         $errors = [];
@@ -40,6 +78,14 @@ class Position
         return $errors;
     }
 
+    /**
+     * Create a new position.
+     * 
+     * @param string $positionName        Position name
+     * @param string $positionDescription Position description
+     * 
+     * @return bool
+     */
     public function createNewPosition($positionName, $positionDescription) :bool
     {
         $this->positionName = $positionName;
