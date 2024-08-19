@@ -107,7 +107,7 @@ class Technique
         if (empty($techniqueName)) {
             $errors['techniqueName'] = 'Insert a technique name.';
         } else if (strlen($techniqueName) > 50) {
-            $errors['techniqueName'] = 'Technique name can only contain letters and spaces.';
+            $errors['techniqueName'] = 'Technique name is too long.';
         }
 
         if (empty($techniqueDescription)) {
