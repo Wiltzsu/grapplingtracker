@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ruleset name="CustomStandard">
+    <description>Custom coding standard that extends PEAR with modified line lengths.</description>
+
+    <!-- Inherit everything from PEAR -->
+    <rule ref="PEAR">
+        <exclude name="Generic.Files.LineLength"/>
+        <exclude name="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+    </rule>
+
+    <!-- Custom line length -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="150"/>
+        </properties>
+    </rule>
+</ruleset>
