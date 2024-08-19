@@ -1,9 +1,28 @@
 <?php
-
+/**
+ * This file contains the Technique class.
+ * 
+ * PHP version 8
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  MIT License
+ * @link     https://grapplingtracker.com
+ */
 namespace App\Models;
 
 use PDO;
 
+/**
+ * Technique class that contains methods for handling techniques.
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  MIT License
+ * @link     https://grapplingtracker.com
+ */
 class Technique
 {
     private $db;
@@ -14,11 +33,24 @@ class Technique
     private $positionID;
     private $classID;
 
+    /**
+     * Constructor function for Technique.
+     * 
+     * @param PDO $db Database connection
+     */
     public function __construct(PDO $db)
     {
         $this->db = $db;
     }
 
+    /**
+     * Get all techniques.
+     * 
+     * @param int $userID User ID
+     * @param int $limit  Limit for displaying techniques
+     * 
+     * @return array
+     */
     public function getTechniques($userID, $limit = null) :array
     {
         $userID = $_SESSION['userID'];
@@ -58,19 +90,29 @@ class Technique
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function validateCreateNewTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID)
+    /**
+     * Validates the creation of a new technique.
+     * 
+     * @param string $techniqueName        Technique name
+     * @param string $techniqueDescription Technique description
+     * @param int    $categoryID           Category ID
+     * @param int    $positionID           Position ID
+     * 
+     * @return array
+     */
+    public function validateCreateNewTechnique($techniqueName, $techniqueDescription, $categoryID, $positionID): array
     {
         $errors = [];
 
         if (empty($techniqueName)) {
             $errors['techniqueName'] = 'Insert a technique name.';
-        } else if (!preg_match("/^[a-zA-Z\s]+$/", $techniqueName)) {
+        } else if (strlen($techniqueName) > 50) {
             $errors['techniqueName'] = 'Technique name can only contain letters and spaces.';
         }
 
         if (empty($techniqueDescription)) {
             $errors['techniqueDescription'] = 'Insert a description.';
-        } else if(!preg_match("/^[a-zA-Z\s]+$/", $techniqueName)) {
+        } else if (strlen($techniqueDescription) > 1000) {
             $errors['techniqueDescription'] = 'Technique description can only contain letters and spaces.';
         }
 
@@ -85,6 +127,18 @@ class Technique
         return $errors;
     }
 
+    /**
+     * Create a new technique.
+     * 
+     * @param int    $userID               User ID
+     * @param string $techniqueName        Technique name
+     * @param string $techniqueDescription Technique description
+     * @param int    $categoryID           Category ID
+     * @param int    $positionID           Position ID
+     * @param int    $classID              Class ID
+     * 
+     * @return void
+     */
     public function createNewTechnique(
         $userID,
         $techniqueName,
@@ -141,7 +195,14 @@ class Technique
         $statement->execute();    
     }
 
-    public function countTechniques($userID)
+    /**
+     * Count the number of techniques learned.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return int
+     */
+    public function countTechniques($userID): array
     {
         $userID = $_SESSION['userID'];
 
@@ -157,7 +218,14 @@ class Technique
         return $total_techniques;
     }
 
-    public function getTechniquesMonthly($userID)
+    /**
+     * Get the number of techniques learned per month.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return array
+     */
+    public function getTechniquesMonthly($userID): array
     {
         $query = "SELECT MONTH(insertDate) as month, COUNT(techniqueID) as count
                   FROM Technique
@@ -172,7 +240,14 @@ class Technique
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    public function getTechniquesPerPosition($userID)
+    /**
+     * Get the number of techniques learned per position.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return array
+     */
+    public function getTechniquesPerPosition($userID): array
     {
         $query = "SELECT Position.positionName, COUNT(Technique.techniqueID) AS count
         FROM Technique
@@ -188,6 +263,13 @@ class Technique
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Delete a technique.
+     * 
+     * @param int $techniqueID Technique ID
+     * 
+     * @return void
+     */
     public function deleteTechnique($techniqueID)
     {
         $query = "DELETE FROM Technique WHERE techniqueID = :techniqueID";
