@@ -5,7 +5,7 @@
 $background-dark: #343a40;
 $text-light: #ffffff;
 $background-light: #f1f1f1;
-$background-medium: #e9ecef;
+$background-medium: #efe9ed;
 $background-blue: #2944E5;
 $background-navy: rgb(32, 30, 67);
 $border-color: #dee2e6;
@@ -22,6 +22,7 @@ body {
     min-height: 100vh;
     background: $background-light;
     font-family: 'Mukta', Arial, Helvetica, sans-serif;
+    background-color: white;
 }
 
 .login-body {
@@ -107,7 +108,7 @@ body {
 
 // Custom button styles
 .custom-button {
-    display: inline-block; // Ensures the link is not just text but the entire block
+    display: block; // Ensures the link is not just text but the entire block
     padding: 16px 80px; // Adjusted padding
     font-size: 18px;
     font-weight: 600;
@@ -172,6 +173,15 @@ body {
     background-color: $content-background;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 0;
+}
+
+.test {
+    table-layout: fixed;
+}
+
+.td-overflow {
+    white-space: normal!important;
+    word-wrap: break-word!important;
 }
 
 // Responsive table styling
