@@ -11,7 +11,6 @@
  * @link     https://grapplingtracker.com
  */
 namespace App\Models;
-
 use PDO;
 
 /**

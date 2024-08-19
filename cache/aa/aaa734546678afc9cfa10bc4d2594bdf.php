@@ -58,7 +58,7 @@ class __TwigTemplate_b5253dae6b9a6a1af4cd3e7176de6030 extends Template
         <div class=\"col-12 col-lg-5 d-flex flex-column align-items-center justify-content-center get-started-background\" style=\"min-height: 100vh;\">
             <div class=\"text-center\">
                 <h3 class=\"get-started mb-4\">Get started</h3>
-                <a href=\"login\" class=\"btn btn-lg custom-button login-button mb-3\">Log in</a>
+                <a href=\"login\" class=\"btn btn-lg custom-button signup-button mb-3\">Log in</a>
                 <a href=\"register\" class=\"btn btn-lg custom-button signup-button mb-3\">Sign up</a>
             </div>
         </div>
@@ -117,7 +117,7 @@ class __TwigTemplate_b5253dae6b9a6a1af4cd3e7176de6030 extends Template
         <div class=\"col-12 col-lg-5 d-flex flex-column align-items-center justify-content-center get-started-background\" style=\"min-height: 100vh;\">
             <div class=\"text-center\">
                 <h3 class=\"get-started mb-4\">Get started</h3>
-                <a href=\"login\" class=\"btn btn-lg custom-button login-button mb-3\">Log in</a>
+                <a href=\"login\" class=\"btn btn-lg custom-button signup-button mb-3\">Log in</a>
                 <a href=\"register\" class=\"btn btn-lg custom-button signup-button mb-3\">Sign up</a>
             </div>
         </div>

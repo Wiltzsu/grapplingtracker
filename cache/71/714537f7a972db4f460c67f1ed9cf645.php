@@ -43,57 +43,64 @@ class __TwigTemplate_4ba147a2a33766395f4417f278272d30 extends Template
 <div class=\"container mb-5\">
     <div class=\"row\">
         <div class=\"col-md-12\">
-            <table class=\"table table-hover\">
+            <table class=\"table table-hover test\" style=\"table-layout: fixed\">
                 <thead class=\"thead-light\">
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
-                        <th></th>
-                    </tr>
+                        ";
+        // line 12
+        if ((($context["roleID"] ?? null) == 1)) {
+            // line 13
+            yield "                        <th></th>
+                        ";
+        }
+        // line 15
+        yield "                    </tr>
                 </thead>
                 <tbody>
                 ";
-        // line 16
+        // line 18
         if ( !Twig\Extension\CoreExtension::testEmpty(($context["positions"] ?? null))) {
-            // line 17
+            // line 19
             yield "                    ";
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(($context["positions"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["position"]) {
-                // line 18
-                yield "                            <tr>
-                                <td>";
-                // line 19
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionName", [], "any", false, false, false, 19), "html", null, true);
-                yield "</td>
-                                <td>";
                 // line 20
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionDescription", [], "any", false, false, false, 20), "html", null, true);
+                yield "                            <tr>
+                                <td style=\"white-space: normal; word-wrap: break-word;\">";
+                // line 21
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionName", [], "any", false, false, false, 21), "html", null, true);
+                yield "</td>
+                                <td style=\"white-space: normal; word-wrap: break-word;\">";
+                // line 22
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionDescription", [], "any", false, false, false, 22), "html", null, true);
                 yield "</td>
 
                                 <!-- Only show delete button if user is admin -->
                                 ";
-                // line 23
+                // line 25
                 if ((($context["roleID"] ?? null) == 1)) {
-                    // line 24
+                    // line 26
                     yield "                                <td>
                                     <button type=\"button\" class=\"btn\" data-toggle=\"modal\" data-target=\"#modal";
-                    // line 25
-                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 25), "html", null, true);
+                    // line 27
+                    yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 27), "html", null, true);
                     yield "\">
                                         <img src=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg\" alt=\"Delete\">
                                     </button>
                                 </td>
                                 ";
                 }
-                // line 30
+                // line 32
                 yield "
                             </tr>
 
                             <!-- Modal for deletion confirmation -->
                             <div class=\"modal fade\" id=\"modal";
-                // line 34
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 34), "html", null, true);
+                // line 36
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 36), "html", null, true);
                 yield "\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
                                 <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
                                     <div class=\"modal-content\">
@@ -105,8 +112,8 @@ class __TwigTemplate_4ba147a2a33766395f4417f278272d30 extends Template
                                         </div>
                                         <div class=\"modal-body\">
                                             Are you sure you want to delete the position \"";
-                // line 44
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionName", [], "any", false, false, false, 44), "html", null, true);
+                // line 46
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionName", [], "any", false, false, false, 46), "html", null, true);
                 yield "\"?
                                         </div>
                                         <div class=\"modal-footer\">
@@ -114,8 +121,8 @@ class __TwigTemplate_4ba147a2a33766395f4417f278272d30 extends Template
                                             <!-- Form for deletion -->
                                             <form method=\"POST\" action=\"\">
                                                 <input type=\"hidden\" name=\"positionID\" value=\"";
-                // line 50
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 50), "html", null, true);
+                // line 52
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["position"], "positionID", [], "any", false, false, false, 52), "html", null, true);
                 yield "\">
                                                 <button type=\"submit\" name=\"deletePosition\" class=\"btn btn-danger\">Delete position</button>
                                             </form>
@@ -123,19 +130,19 @@ class __TwigTemplate_4ba147a2a33766395f4417f278272d30 extends Template
                                     </div>
                                 </div>
                             </div>
-                        ";
+                    ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['position'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 58
+            // line 60
             yield "                ";
         } else {
-            // line 59
+            // line 61
             yield "                    <p>No positions found.</p>
                 ";
         }
-        // line 60
+        // line 62
         yield "   
                 </tbody>
             </table>    
@@ -167,7 +174,7 @@ class __TwigTemplate_4ba147a2a33766395f4417f278272d30 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  139 => 60,  135 => 59,  132 => 58,  118 => 50,  109 => 44,  96 => 34,  90 => 30,  82 => 25,  79 => 24,  77 => 23,  71 => 20,  67 => 19,  64 => 18,  59 => 17,  57 => 16,  42 => 3,  40 => 2,  38 => 1,);
+        return array (  146 => 62,  142 => 61,  139 => 60,  125 => 52,  116 => 46,  103 => 36,  97 => 32,  89 => 27,  86 => 26,  84 => 25,  78 => 22,  74 => 21,  71 => 20,  66 => 19,  64 => 18,  59 => 15,  55 => 13,  53 => 12,  42 => 3,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -178,20 +185,22 @@ class __TwigTemplate_4ba147a2a33766395f4417f278272d30 extends Template
 <div class=\"container mb-5\">
     <div class=\"row\">
         <div class=\"col-md-12\">
-            <table class=\"table table-hover\">
+            <table class=\"table table-hover test\" style=\"table-layout: fixed\">
                 <thead class=\"thead-light\">
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
+                        {% if roleID == 1 %}
                         <th></th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
                 {% if positions is not empty %}
                     {% for position in positions %}
                             <tr>
-                                <td>{{ position.positionName}}</td>
-                                <td>{{ position.positionDescription }}</td>
+                                <td style=\"white-space: normal; word-wrap: break-word;\">{{ position.positionName }}</td>
+                                <td style=\"white-space: normal; word-wrap: break-word;\">{{ position.positionDescription }}</td>
 
                                 <!-- Only show delete button if user is admin -->
                                 {% if roleID == 1 %}
@@ -228,7 +237,7 @@ class __TwigTemplate_4ba147a2a33766395f4417f278272d30 extends Template
                                     </div>
                                 </div>
                             </div>
-                        {% endfor %}
+                    {% endfor %}
                 {% else %}
                     <p>No positions found.</p>
                 {% endif %}   
