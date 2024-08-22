@@ -1,10 +1,29 @@
 <?php
-
+/**
+ * This file contains User class and its methods.
+ * 
+ * PHP version 8
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  MIT License
+ * @link     https://grapplingtracker.com 
+ */
 namespace App\Models;
 
 use PDO;
 use DateTime;
 
+/**
+ * This class is the User class.
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  MIT License
+ * @link     https://grapplingtracker.com
+ */
 class User
 {
     private $db;
@@ -14,12 +33,24 @@ class User
     private $hashed_password;
     private $token;
 
+    /**
+     * Constructor function for User.
+     * 
+     * @param PDO $db Database connection
+     */
     public function __construct(PDO $db)
     {
         $this->db = $db;
     }
 
-    private function getLoginAttempts($userID)
+    /**
+     * Get login attempts for user.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return int
+     */
+    private function getLoginAttempts($userID): int
     {
         date_default_timezone_set('Europe/Helsinki');
 
@@ -37,23 +68,49 @@ class User
         return (int) $query->fetchColumn();
     }
 
-    private function recordLoginAttempt($userID)
+    /**
+     * Record login attempt. Tracks user ID and time.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return void
+     */
+    private function recordLoginAttempt($userID): void
     {
         $query = $this->db->prepare("INSERT INTO Login_Attempts (userID, attempt_time) VALUES (?, NOW())");
         $query->execute([$userID]);
     }
 
-    private function canAttemptLogin($userID)
+    /**
+     * Check if user can attempt to login.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return bool
+     */
+    private function canAttemptLogin($userID): bool
     {
         $attempts = $this->getLoginAttempts($userID);
         return $attempts < 5;
     }
 
-    public function validateLogin($username, $password)
+    /**
+     * Validates input checking for empty fields and password length.
+     * 
+     * @param string $username User's chosen username.
+     * @param string $password User's password.
+     * 
+     * @return array Array of error messages, empty if valid.
+     */
+    public function validateLogin($username, $password): array
     {
         $errors = [];
         if (empty($username)) {
             $errors['username'] = 'Please enter a valid username.';
+        }
+
+        if (empty($password)) {
+            $errors['password'] = 'Please enter a valid password.';
         }
 
         if (strlen($password) < 3 || strlen($password) > 72) {
@@ -62,7 +119,15 @@ class User
         return $errors;
     }
 
-    public function authenticateUser($username, $password)
+    /**
+     * Authenticates user by checking database for matching username and password.
+     * 
+     * @param string $username User's chosen username.
+     * @param string $password User's password.
+     * 
+     * @return array Array of error messages, empty if successful.
+     */
+    public function authenticateUser($username, $password): array
     {
         $errors = $this->validateLogin($username, $password);
         if (!empty($errors)) {
@@ -102,15 +167,14 @@ class User
     }
 
     /**
-     * Validates input and checks database for existing username/email.
-     * Returns errors if conditions fail.
+     * Validates registration input checking for empty fields and password length.
      *
      * @param string $username User's chosen username.
      * @param string $email    User's email address.
      *
      * @return array Array of error messages, empty if valid.
      */
-    public function validateRegistration($username, $email)
+    public function validateRegistration($username, $email): array
     {
         $errors = [];
         if (empty($username)) {
@@ -150,7 +214,6 @@ class User
         return $errors;
     }
 
-
     /**
      * Registers a new user if validation passes.
      * Hashes password and inserts into database.
@@ -158,6 +221,7 @@ class User
      * @param string $username Username.
      * @param string $email    Email address.
      * @param string $password Password.
+     * @param string $token    Token.
      *
      * @return array Empty if successful, errors if not.
      */
@@ -185,6 +249,13 @@ class User
         $statement->execute();
     }
 
+    /**
+     * Updates user is_active field based on token.
+     * 
+     * @param string $token Token.
+     * 
+     * @return bool
+     */
     public function activateUser($token): bool
     {
         $query = "UPDATE User SET is_active = TRUE WHERE token = :token";
