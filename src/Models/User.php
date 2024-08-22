@@ -127,7 +127,7 @@ class User
      * 
      * @return array Array of error messages, empty if successful.
      */
-    public function authenticateUser($username, $password): array
+    public function authenticateUser($username, $password): array 
     {
         $errors = $this->validateLogin($username, $password);
         if (!empty($errors)) {
@@ -137,7 +137,7 @@ class User
         $query = $this->db->prepare("SELECT * FROM User WHERE username = ?");
         $query->execute([$username]);
         $user = $query->fetch(PDO::FETCH_ASSOC);
-
+  
         if ($user) {
             if (!$this->canAttemptLogin($user['userID'])) {
                 // Block login attempt because the limit is reached
@@ -161,6 +161,7 @@ class User
             $_SESSION['username'] = $username;
             $_SESSION['roleID'] = $user['roleID'];
             $_SESSION['logged_in'] = true;
+            return [];
         } else {
             return ['password' => 'Login or password do not match.'];
         }

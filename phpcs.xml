@@ -9,4 +9,12 @@
     <rule ref="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore">
         <severity>0</severity>
     </rule>
+
+    <rule ref="PEAR.NamingConventions.ValidFunctionName.PrivateNoUnderscore">
+        <severity>0</severity>
+    </rule>
+
+    <rule ref="Generic.Files.LineLength">
+      <severity>0</severity>
+    </rule>
 </ruleset>

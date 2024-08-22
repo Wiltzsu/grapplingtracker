@@ -1,8 +1,27 @@
 <?php
+/**
+ * This file contains User class and its methods.
+ * 
+ * PHP version 8
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  MIT License
+ * @link     https://grapplingtracker.com 
+ */
 namespace App\Models;
-
 use PDO;
 
+/**
+ * This class is the TrainingClass class.
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  MIT License
+ * @link     https://grapplingtracker.com 
+ */
 class TrainingClass
 {
     private $db;
@@ -15,11 +34,23 @@ class TrainingClass
     private $rounds;
     private $roundDuration;
 
+    /**
+     * Constructor function for TrainingClass.
+     * 
+     * @param PDO $db Database connection
+     */
     public function __construct(PDO $db)
     {
         $this->db = $db;
     }
 
+    /**
+     * Get all training classes for a user.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return array
+     */
     public function getTrainingClasses($userID)
     {
         $statement = $this->db->prepare("SELECT * FROM Class WHERE userID = :userID");
@@ -28,20 +59,31 @@ class TrainingClass
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function validateCreateNewClass($instructor, $location, $duration, $date, $description)
+    /**
+     * Validates creation of a new class.
+     * 
+     * @param string $instructor  Instructor name
+     * @param string $location    Location
+     * @param int    $duration    Duration in minutes
+     * @param string $date        Date
+     * @param string $description Description
+     * 
+     * @return array
+     */
+    public function validateCreateNewClass($instructor, $location, $duration, $date, $description): array
     {
         $errors = [];
 
         if (empty($instructor)) {
             $errors['instructor'] = 'Instructor field cannot be empty.';
-        } else if (!preg_match("/^[a-zA-Z\s]+$/", $instructor)) {
-            $errors['instructor'] = 'Instructor name can only contain letters and spaces.';
+        } else if (strlen($instructor) > 50) {
+            $errors['instructor'] = 'Instructor name is too long.';
         }
 
         if (empty($location)) {
             $errors['location'] = 'Location field cannot be empty.';
-        } else if (!preg_match("/^[a-zA-Z0-9\s]+$/", $location)) {
-            $errors['location'] = 'Location can only contain letters, numbers, and spaces.';
+        } else if (strlen($location) > 100) {
+            $errors['location'] = 'Location name is too long.';
         }
 
         if (empty($duration)) {
@@ -89,43 +131,26 @@ class TrainingClass
         )";
 
         $statement = $this->db->prepare($query);
-        $statement->bindParam(
-            ":userID",
-            $this->userID, PDO::PARAM_INT
-        );
-        $statement->bindParam(
-            ":instructor",
-            $this->instructor, PDO::PARAM_STR
-        );
-        $statement->bindParam(
-            ":location",
-            $this->location, PDO::PARAM_STR
-        );
-        $statement->bindParam(
-            ":classDuration",
-            $this->duration, PDO::PARAM_INT
-        );
-        $statement->bindParam(
-            ":classDate",
-            $this->classDate, PDO::PARAM_STR
-        );
-        $statement->bindParam(
-            ":classDescription",
-            $this->classDescription, PDO::PARAM_STR
-        );
-        $statement->bindParam(
-            ":rounds",
-            $this->rounds, PDO::PARAM_INT
-        );
-        $statement->bindParam(
-            ":roundDuration",
-            $this->roundDuration, PDO::PARAM_INT
-        );
+        $statement->bindParam(":userID", $this->userID, PDO::PARAM_INT);
+        $statement->bindParam(":instructor", $this->instructor, PDO::PARAM_STR);
+        $statement->bindParam(":location", $this->location, PDO::PARAM_STR);
+        $statement->bindParam(":classDuration", $this->duration, PDO::PARAM_INT);
+        $statement->bindParam(":classDate", $this->classDate, PDO::PARAM_STR);
+        $statement->bindParam(":classDescription", $this->classDescription, PDO::PARAM_STR);
+        $statement->bindParam(":rounds", $this->rounds, PDO::PARAM_INT);
+        $statement->bindParam(":roundDuration", $this->roundDuration, PDO::PARAM_INT);
         $statement->execute();
         return [];
     }
 
-    public function countMatTime($userID)
+    /**
+     * Counts total mat time for a user.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return float
+     */
+    public function countMatTime($userID): float
     {
         $userID = $_SESSION['userID'];
 
@@ -134,7 +159,7 @@ class TrainingClass
                   WHERE userID = :userID";
 
         $statement = $this->db->prepare($query);
-        $statement->bindParam(':userID', $userID,PDO::PARAM_INT);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
 
         $statement->execute();
 

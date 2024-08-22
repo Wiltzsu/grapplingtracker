@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * This file contains the entry point for the application.
+ * 
+ * PHP version 8
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  MIT License
+ * @link     https://grapplingtracker.com 
+ */
 session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -7,16 +17,16 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\RouteCollector;
 
-$container = require __DIR__ . '/../config/container.php';
+$container = include __DIR__ . '/../config/container.php';
 $router = new RouteCollector();
 
-$routes = require __DIR__ . '/../config/routes.php';
+$routes = include __DIR__ . '/../config/routes.php';
 $routes($router, $container);
 
 $dispatcher = new Dispatcher($router->getData());
 
 // Get the base path
-$basePath = '/';
+$basePath = '/technique-db-mvc/public';
 
 // Strip the base path from the request URI
 $parsedUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
