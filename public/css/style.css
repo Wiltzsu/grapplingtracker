@@ -5,7 +5,7 @@ body {
   min-height: 100vh;
   background: #f1f1f1;
   font-family: "Mukta", Arial, Helvetica, sans-serif;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 
 .login-body {
@@ -152,10 +152,10 @@ body {
 }
 
 .test {
-  border: 1px solid #dee2e6;
+  table-layout: fixed;
 }
 
-.td {
+.td-overflow {
   white-space: normal !important;
   word-wrap: break-word !important;
 }
