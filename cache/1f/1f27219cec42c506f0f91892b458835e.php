@@ -40,7 +40,7 @@ class __TwigTemplate_679f5821db9412be53ee3850d6af843f extends Template
         yield from         $this->loadTemplate("@HeaderViewItems/header_viewitems.twig", "viewitems/view_classes.twig", 2)->unwrap()->yield($context);
         // line 3
         yield "
-<div class=\"container p-5 mb-5\">
+<div class=\"container px-5 mb-5\">
     <div class=\"row\">
         <div class=\"col-md-12\">
             <table class=\"table table-hover\">
@@ -178,7 +178,7 @@ class __TwigTemplate_679f5821db9412be53ee3850d6af843f extends Template
         return new Source("{% include '@Header/header.twig' %}
 {% include '@HeaderViewItems/header_viewitems.twig' %}
 
-<div class=\"container p-5 mb-5\">
+<div class=\"container px-5 mb-5\">
     <div class=\"row\">
         <div class=\"col-md-12\">
             <table class=\"table table-hover\">

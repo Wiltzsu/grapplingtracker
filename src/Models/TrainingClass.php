@@ -210,20 +210,19 @@ class TrainingClass
      * 
      * @param int $userID User ID
      * 
-     * @return int
+     * @return string Total round time formatted as 'X hours Y minutes'
      */
-    public function countRoundDuration($userID): string
+    public function countRoundDuration($userID)
     {
         $userID = $_SESSION['userID'];
 
-        $query = "SELECT SUM(roundDuration) as totalMinutes
+        $query = "SELECT SUM(rounds * roundDuration) AS TotalRollingTime
                   FROM Class
                   WHERE userID = :userID";
-        
+
         return $this->calculateDuration($query, $userID);
     }
 
-    
     /**
      * Count total amount of rounds for a user.
      * 

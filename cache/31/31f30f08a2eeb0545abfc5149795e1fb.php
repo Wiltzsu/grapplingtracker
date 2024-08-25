@@ -41,7 +41,7 @@ class __TwigTemplate_3d4bfb713c3e771c8bd0e72745862219 extends Template
         // line 3
         yield "
 
-<div class=\"container\">
+<div class=\"container px-5\">
   
   <ul class=\"list-group list-group-flush\">
     <li class=\"list-group-item\"><a href=\"addtechnique\" class=\"link-dark\">Add technique</a></li>
@@ -82,7 +82,7 @@ class __TwigTemplate_3d4bfb713c3e771c8bd0e72745862219 extends Template
 {% include '@HeaderAddItems/header_additems.twig' %}
 
 
-<div class=\"container\">
+<div class=\"container px-5\">
   
   <ul class=\"list-group list-group-flush\">
     <li class=\"list-group-item\"><a href=\"addtechnique\" class=\"link-dark\">Add technique</a></li>
