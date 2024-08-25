@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * This file contains MainViewController class and its methods.
+ * 
+ * PHP version 8
+ * 
+ * @category Controllers
+ * @package  App\Controllers
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link     https://grapplingtracker.com
+ */
 namespace App\Controllers;
 
 use App\Models\Technique;
@@ -7,8 +17,27 @@ use App\Models\TrainingClass;
 use App\Models\Note;
 use Twig\Environment;
 
+/**
+ * This class is the MainViewController class.
+ * 
+ * @category Controllers
+ * @package  App\Controllers
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link     https://grapplingtracker.com
+ */
 class MainViewController
 {
+    /**
+     * Constructor function for MainViewController.
+     * 
+     * @param Technique     $techniqueModel     Technique model
+     * @param TrainingClass $trainingClassModel TrainingClass model
+     * @param Note          $noteClassModel     Note model
+     * @param Environment   $twig               Twig environment
+     * 
+     * @return void
+     */
     public function __construct(
         private Technique $techniqueModel, 
         private TrainingClass $trainingClassModel,
@@ -17,6 +46,11 @@ class MainViewController
     ) { 
     }
 
+    /**
+     * Show the main view.
+     * 
+     * @return string
+     */
     public function showMainView() :string
     {
         $userID = $_SESSION['userID'] ?? null;
@@ -24,24 +58,45 @@ class MainViewController
         // Populates the techniques list.
         $techniquesClasses = $this->techniqueModel->getTechniques($userID, 10);
 
-        // Populates the quick notes list.
+        // Populates the notes list.
         $quickNotes = $this->noteClassModel->getQuickNotes($userID);
 
         // Populates the pie chart.
         $positionsData = $this->techniqueModel->getTechniquesPerPosition($userID);
 
+        // Counts total mat time.
+        $totalMatTime = $this->trainingClassModel->countMatTime($userID);
+
+        // Counts total round duration.
+        $totalRoundDuration = $this->trainingClassModel->countRoundDuration($userID);
+
+        // Counts total rounds.
+        $totalRounds = $this->trainingClassModel->countRounds($userID);
+
         // Prepare labels and values for the techniques per position
-        $labels = array_map(function($item) { return $item['positionName']; }, $positionsData);
-        $values = array_map(function($item) { return $item['count']; }, $positionsData);
+        $labels = array_map(
+            function ($item) {
+                return $item['positionName']; 
+            }, $positionsData
+        );
+        $values = array_map(
+            function ($item) {
+                return $item['count']; 
+            }, $positionsData
+        );
 
         // Populates the line chart.
         $matTimeData = $this->trainingClassModel->countMatTimeMonthly($userID);
         $techniquesData = $this->techniqueModel->getTechniquesMonthly($userID);
         $combinedChartData = $this->prepareCombinedChartData($matTimeData, $techniquesData);
     
-        return $this->twig->render('mainview/main_view.twig', [
+        return $this->twig->render(
+            'mainview/main_view.twig', [
             'techniquesClasses' => $techniquesClasses,
             'totalMatTimeMonthly' => $matTimeData,
+            'totalMatTime' => $totalMatTime,
+            'totalRounds' => $totalRounds,
+            'totalRoundDuration' => $totalRoundDuration,
             'totalTechniquesLearnedMonthly' => $techniquesData,
             'techniquesPerPositionLabels' => json_encode($labels),
             'techniquesPerPositionValues' => json_encode($values),
@@ -50,7 +105,8 @@ class MainViewController
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
             'username' => $_SESSION['username'] ?? null
-        ]);
+            ]
+        );
     }
 
     private function prepareCombinedChartData($matTimeData, $techniquesData)
@@ -88,11 +144,13 @@ class MainViewController
         $errors = $this->noteClassModel->validateQuickNote($content);
     
         if (!empty($errors)) {
-            echo $this->twig->render('mainview/main_view.twig', [
+            echo $this->twig->render(
+                'mainview/main_view.twig', [
                 'errors' => $errors,
                 'input' => $formData,
                 'userID' => $userID
-            ]);
+                ]
+            );
         } else {
             $this->noteClassModel->createQuickNote($userID, $content);
             header('Location: mainview');

@@ -1,6 +1,5 @@
 // Initializes and renders the pie chart for techniques per position.
-document.addEventListener(
-    'DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
         // Obtain the canvas context.
         var ctx = document.getElementById('techniquesPerPosition').getContext('2d');
         // Retrieve the data container element.

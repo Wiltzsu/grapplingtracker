@@ -40,7 +40,7 @@ class __TwigTemplate_b822501e073814de2bf6711662366dff extends Template
         yield from         $this->loadTemplate("@HeaderViewItems/header_viewitems.twig", "viewitems/view_techniques.twig", 2)->unwrap()->yield($context);
         // line 3
         yield "
-<div class=\"container mb-5\">
+<div class=\"container px-5 mb-5\">
     <div class=\"row\">
         <div class=\"col-md-12\">
             <table class=\"table table-hover\">
@@ -110,17 +110,7 @@ class __TwigTemplate_b822501e073814de2bf6711662366dff extends Template
         yield "  
                 </tbody>
             </table>
-            <nav aria-label=\"...\">
-  <ul class=\"pagination pagination-sm\">
-    <li class=\"page-item active\" aria-current=\"page\">
-      <span class=\"page-link\">1</span>
-    </li>
-    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">2</a></li>
-    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li>
-  </ul>
-</nav>
         </div>
-        
     </div>
 </div>";
         return; yield '';
@@ -155,7 +145,7 @@ class __TwigTemplate_b822501e073814de2bf6711662366dff extends Template
         return new Source("{% include '@Header/header.twig' %}
 {% include '@HeaderViewItems/header_viewitems.twig' %}
 
-<div class=\"container mb-5\">
+<div class=\"container px-5 mb-5\">
     <div class=\"row\">
         <div class=\"col-md-12\">
             <table class=\"table table-hover\">
@@ -190,17 +180,7 @@ class __TwigTemplate_b822501e073814de2bf6711662366dff extends Template
                 {% endif %}  
                 </tbody>
             </table>
-            <nav aria-label=\"...\">
-  <ul class=\"pagination pagination-sm\">
-    <li class=\"page-item active\" aria-current=\"page\">
-      <span class=\"page-link\">1</span>
-    </li>
-    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">2</a></li>
-    <li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li>
-  </ul>
-</nav>
         </div>
-        
     </div>
 </div>", "viewitems/view_techniques.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/viewitems/view_techniques.twig");
     }

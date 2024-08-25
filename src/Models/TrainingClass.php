@@ -105,6 +105,20 @@ class TrainingClass
         return $errors;
     }
     
+    /**
+     * Creates a new class.
+     * 
+     * @param int    $userID           User ID
+     * @param string $instructor       Instructor name
+     * @param string $location         Location
+     * @param int    $duration         Duration in minutes
+     * @param date   $classDate        Date
+     * @param string $classDescription Description
+     * @param int    $rounds           Rounds
+     * @param int    $roundDuration    Round duration in seconds
+     * 
+     * @return array
+     */
     public function createNewClass(
         $userID,
         $instructor,
@@ -144,31 +158,104 @@ class TrainingClass
     }
 
     /**
+     * Helper function to calculate duration.
+     * 
+     * @param string $query  Query
+     * @param int    $userID User ID
+     * 
+     * @return string
+     */
+    private function calculateDuration($query, $userID): string
+    {
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $statement->execute();
+    
+        // Fetching the total minutes directly from the query
+        $total_minutes = $statement->fetchColumn();
+        $total_minutes = (float) $total_minutes;
+    
+        if ($total_minutes) {
+            // Calculate total hours and remaining minutes
+            $total_hours = floor($total_minutes / 60);
+            $remaining_minutes = $total_minutes % 60;
+    
+            return $total_hours . ' hours ' . (int) $remaining_minutes . ' minutes';
+        } else {
+            return '0 hours 0 minutes'; // Return this if no mat time is recorded
+        }
+    }
+
+    /**
      * Counts total mat time for a user.
      * 
      * @param int $userID User ID
      * 
-     * @return float
+     * @return string Total mat time formatted as 'X hours Y minutes'
      */
-    public function countMatTime($userID): float
+    public function countMatTime($userID): string
+    {
+        $userID = $_SESSION['userID'];
+    
+        // Ensure the query sums the duration as minutes directly
+        $query = "SELECT SUM(classDuration) AS totalMinutes
+                  FROM Class
+                  WHERE userID = :userID";
+    
+        return $this->calculateDuration($query, $userID);
+    }
+
+    /**
+     * Count total time of rounds for a user.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return int
+     */
+    public function countRoundDuration($userID): string
     {
         $userID = $_SESSION['userID'];
 
-        $query = "SELECT SUM(classDuration)/60.0 AS totalDurationInHours
+        $query = "SELECT SUM(roundDuration) as totalMinutes
                   FROM Class
                   WHERE userID = :userID";
+        
+        return $this->calculateDuration($query, $userID);
+    }
 
+    
+    /**
+     * Count total amount of rounds for a user.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return int
+     */
+    public function countRounds($userID)
+    {
+        $userID = $_SESSION['userID'];
+
+        $query = "SELECT SUM(rounds) as totalRounds
+                  FROM Class
+                  WHERE userID = :userID";
+        
         $statement = $this->db->prepare($query);
         $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
 
         $statement->execute();
 
-        // Fetching only the first column from the result, which should be the sum of classDuration
-        $total_mat_time = $statement->fetchColumn();
+        $total_rounds = $statement->fetchColumn();
 
-        return $total_mat_time;
+        return $total_rounds;
     }
 
+    /**
+     * Counts mat time monthly for a user.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return array
+     */
     public function countMatTimeMonthly($userID) 
     {
         $query = "SELECT MONTH(classDate) as month, SUM(classDuration)/60.0 AS hours

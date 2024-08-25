@@ -1,23 +1,60 @@
 <?php
-
+/**
+ * This file contains TrainingClassController class and its methods.
+ * 
+ * PHP version 8
+ * 
+ * @category Controllers
+ * @package  App\Controllers
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link     https://grapplingtracker.com
+ */
 namespace App\Controllers;
 
 use App\Models\TrainingClass;
 use Twig\Environment;
 
+/**
+ * This class is the TrainingClassController class.
+ * 
+ * @category Controllers
+ * @package  App\Controllers
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link     https://grapplingtracker.com
+ */
 class TrainingClassController
 {
+    /**
+     * Constructor function for TrainingClassController.
+     * 
+     * @param TrainingClass $trainingClassModel TrainingClass model
+     * @param Environment   $twig               Twig environment
+     */
     public function __construct(
         private TrainingClass $trainingClassModel,
         private Environment $twig
     ) {
     }
 
+    /**
+     * Get all training classes.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return array
+     */
     public function getTrainingClasses($userID) :array
     {
         return $this->trainingClassModel->getTrainingClasses($userID);
     }
 
+    /**
+     * Renders the add training class form.
+     * 
+     * @return string
+     */
     public function addClassForm() :string
     {
         $roleID = $_SESSION['roleID'] ?? null;
@@ -33,6 +70,13 @@ class TrainingClassController
         );
     }
 
+    /**
+     * Post a new training class.
+     * 
+     * @param array $formData Form data
+     * 
+     * @return string
+     */
     public function postTrainingClass($formData) :string
     {
         $userID = $_SESSION['userID'];
@@ -78,5 +122,7 @@ class TrainingClassController
             exit();
         }
     }
+
+    
 }
 ?>

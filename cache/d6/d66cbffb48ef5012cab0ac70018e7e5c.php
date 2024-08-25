@@ -40,7 +40,7 @@ class __TwigTemplate_b5a60d531ac90859ac940bf79ae70913 extends Template
         yield from         $this->loadTemplate("@HeaderAddItems/header_additems.twig", "addnew/add_class.twig", 2)->unwrap()->yield($context);
         // line 3
         yield "
-<div class=\"container\">
+<div class=\"container px-5\">
     <!-- Training Class Form Column -->
     <form method=\"POST\" action=\"\" >
         <!-- User ID -->
@@ -217,7 +217,7 @@ class __TwigTemplate_b5a60d531ac90859ac940bf79ae70913 extends Template
         return new Source("{% include '@Header/header.twig' %}
 {% include '@HeaderAddItems/header_additems.twig' %}
 
-<div class=\"container\">
+<div class=\"container px-5\">
     <!-- Training Class Form Column -->
     <form method=\"POST\" action=\"\" >
         <!-- User ID -->

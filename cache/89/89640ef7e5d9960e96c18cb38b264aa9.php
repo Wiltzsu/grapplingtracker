@@ -40,7 +40,7 @@ class __TwigTemplate_fae9ba812d77b0576fe064053a9ee66f extends Template
         yield from         $this->loadTemplate("@HeaderAddItems/header_additems.twig", "addnew/add_position.twig", 2)->unwrap()->yield($context);
         // line 3
         yield "
-<div class=\"container\">
+<div class=\"container px-5\">
     <!-- Position Form Column -->
     <form method=\"POST\" action=\"\" >
         <!-- Position name -->
@@ -122,7 +122,7 @@ class __TwigTemplate_fae9ba812d77b0576fe064053a9ee66f extends Template
         return new Source("{% include '@Header/header.twig' %}
 {% include '@HeaderAddItems/header_additems.twig' %}
 
-<div class=\"container\">
+<div class=\"container px-5\">
     <!-- Position Form Column -->
     <form method=\"POST\" action=\"\" >
         <!-- Position name -->
