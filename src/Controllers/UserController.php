@@ -1,4 +1,16 @@
 <?php
+/**
+ * This file contains the UserController class.
+ * This class is responsible for handling user-related functionality.
+ * 
+ * PHP version 8.0
+ * 
+ * @category Controllers
+ * @package  App\Controllers
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link     https://grapplingtracker.com
+ */
 
 namespace App\Controllers;
 
@@ -7,19 +19,46 @@ use Twig\Environment;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+/**
+ * UserController class.
+ * 
+ * @category Controllers
+ * @package  App\Controllers
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link     https://grapplingtracker.com
+ */
 class UserController
 {
+    /**
+     * Constructor function for UserController.
+     * 
+     * @param User        $userModel User model
+     * @param Environment $twig      Twig environment
+     */
     public function __construct(
         private User $userModel,
         private Environment $twig
     ) {
     }
 
+    /**
+     * Render the login form.
+     * 
+     * @return string
+     */
     public function showLoginForm() :string
     {
         return $this->twig->render('login.twig');
     }
 
+    /**
+     * Log in a user.
+     * 
+     * @param array $request Array of request data.
+     * 
+     * @return void
+     */
     public function login($request) :void
     {
         $username = $request['username'] ?? '';
@@ -34,16 +73,33 @@ class UserController
         }
     }
 
+    /**
+     * Render the register form.
+     * 
+     * @return string
+     */
     public function showRegisterForm() :string
     {
         return $this->twig->render('register.twig');
     }
 
+    /**
+     * Render the reset password form.
+     * 
+     * @return string
+     */
     public function showResetPasswordForm() :string
     {
         return $this->twig->render('reset_password.twig');
     }
 
+    /**
+     * Register a new user.
+     * 
+     * @param array $request Array of request data
+     * 
+     * @return string
+     */
     public function register($request) :string
     {
         $username = $request['username'] ?? '';
@@ -64,6 +120,14 @@ class UserController
         }
     }
 
+    /**
+     * Send an activation email to a user.
+     * 
+     * @param string $email Email address
+     * @param string $token Activation token
+     * 
+     * @return void
+     */
     public function sendActivationEmail($email, $token)
     {
         $mail = new PHPMailer(true);
@@ -87,11 +151,25 @@ class UserController
         }
     }
 
+    /**
+     * Send a password reset email to a user.
+     * 
+     * @param string $email Email address
+     * 
+     * @return void
+     */
     public function sendPasswordReset($email)
     {
         
     }
 
+    /**
+     * Activate a user account.
+     * 
+     * @param array $request Array of request data
+     * 
+     * @return string
+     */
     public function activate($request) :string
     {
         $token = $request['token'] ?? '';
@@ -108,6 +186,11 @@ class UserController
         }
     }
 
+    /**
+     * Log out a user.
+     * 
+     * @return void
+     */
     public function logout() :void
     {
         // Clear all session variables to ensure no data persists after logout.
@@ -116,7 +199,8 @@ class UserController
         // Delete the session cookie.
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000,
+            setcookie(
+                session_name(), '', time() - 42000,
                 $params["path"], $params["domain"],
                 $params["secure"], $params["httponly"]
             );
