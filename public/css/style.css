@@ -54,6 +54,14 @@ body {
 
 .get-started-background {
   background-color: rgb(32, 30, 67);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh; /* Full screen height */
+  text-align: center; /* Ensures text is centered horizontally */
+  padding: 20px; /* Add padding for smaller screens */
 }
 
 .nav-item {
@@ -62,28 +70,20 @@ body {
 }
 
 #dynamicText {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%; /* Center vertically */
-  transform: translateY(-50%);
-  font-size: 48px; /* Adjust size as necessary */
-  white-space: nowrap; /* Prevents the text from wrapping */
-  overflow: hidden; /* Keeps everything contained */
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Align text to the left */
-  margin-left: 30px;
+  color: white;
+  font-size: 3rem; /* Adjustable font size */
+  transition: font-size 0.3s ease; /* Smooth transition for font resize */
+  height: 120px; /* Fixed height to prevent layout shift */
 }
 
-.cursor {
-  opacity: 1;
-  animation: blink-animation 1s steps(5, start) infinite;
+@media (max-width: 992px) { /* Adjust for medium devices and below */
+  #dynamicText {
+    font-size: 2.5rem; /* Slightly smaller font size for medium devices */
+  }
 }
-
-@keyframes blink-animation {
-  50% {
-    opacity: 0;
+@media (max-width: 768px) { /* Adjust for small devices */
+  #dynamicText {
+    font-size: 2rem; /* Even smaller font size for small devices */
   }
 }
 .custom-button {
@@ -101,7 +101,7 @@ body {
 
 /* Default color for large screens */
 .page-title {
-  color: #000000; /* Black color */
+  color: #0099ad; /* Black color */
   position: absolute;
   top: 0;
   left: 0;
