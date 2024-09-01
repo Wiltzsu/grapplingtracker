@@ -64,14 +64,6 @@ class MainViewController
         // Populates the pie chart.
         $positionsData = $this->techniqueModel->getTechniquesPerPosition($userID);
 
-        // Counts total mat time.
-        $totalMatTime = $this->trainingClassModel->countMatTime($userID);
-
-        // Counts total round duration.
-        $totalRoundDuration = $this->trainingClassModel->countRoundDuration($userID);
-
-        // Counts total rounds.
-        $totalRounds = $this->trainingClassModel->countRounds($userID);
 
         // Prepare labels and values for the techniques per position
         $labels = array_map(
@@ -94,9 +86,6 @@ class MainViewController
             'mainview/main_view.twig', [
             'techniquesClasses' => $techniquesClasses,
             'totalMatTimeMonthly' => $matTimeData,
-            'totalMatTime' => $totalMatTime,
-            'totalRounds' => $totalRounds,
-            'totalRoundDuration' => $totalRoundDuration,
             'totalTechniquesLearnedMonthly' => $techniquesData,
             'techniquesPerPositionLabels' => json_encode($labels),
             'techniquesPerPositionValues' => json_encode($values),

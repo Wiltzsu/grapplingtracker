@@ -202,7 +202,23 @@ class TrainingClass
                   FROM Class
                   WHERE userID = :userID";
     
-        return $this->calculateDuration($query, $userID);
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $statement->execute();
+    
+        // Fetching the total minutes directly from the query
+        $total_minutes = $statement->fetchColumn();
+        $total_minutes = (float) $total_minutes;
+    
+        if ($total_minutes) {
+            // Calculate total hours and remaining minutes
+            $total_hours = floor($total_minutes / 60);
+            $remaining_minutes = $total_minutes % 60;
+    
+            return $total_hours . ' hours ' . (int) $remaining_minutes . ' minutes';
+        } else {
+            return '0 hours 0 minutes'; // Return this if no mat time is recorded
+        }
     }
 
     /**
@@ -220,9 +236,24 @@ class TrainingClass
                   FROM Class
                   WHERE userID = :userID";
 
-        return $this->calculateDuration($query, $userID);
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':userID', $userID, PDO::PARAM_INT);
+        $statement->execute();
+
+        $total_minutes = $statement->fetchColumn();
+        $total_minutes = (float) $total_minutes;
+
+        if ($total_minutes) {
+            $total_hours = floor($total_minutes / 60);
+            $remaining_minutes = $total_minutes % 60;
+
+            return $total_hours . ' hours ' . (int) $remaining_minutes . ' minutes';
+        } else {
+            return '0 hours 0 minutes';
+        }
     }
 
+    
     /**
      * Count total amount of rounds for a user.
      * 

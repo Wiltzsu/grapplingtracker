@@ -7,7 +7,7 @@
  * 
  * @category Config
  * @package  App\Config
- * @author   William Lönnberg <
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
  * @license  MIT License
  * @link     https://grapplingtracker.com
  */
@@ -165,6 +165,12 @@ return function (RouteCollector $router, $container) {
     $router->get(
         '/viewcategories', function () use ($container) {
             return $container->get(App\Controllers\ViewItemsController::class)->showCategoryView();
+        }, ['before' => 'auth']
+    );
+
+    $router->get(
+        '/stats', function () use ($container) {
+            return $container->get(App\Controllers\StatsController::class)->showStatsPage();
         }, ['before' => 'auth']
     );
 

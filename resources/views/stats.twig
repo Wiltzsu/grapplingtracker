@@ -1,0 +1,87 @@
+{% include '@Header/header.twig' %}
+
+<div class="container px-5 mb-5">
+    <div class="row text-center">
+        <div class="col-md-12">
+            <h3>7 days</h3>
+        </div>
+        <div class="col-md-12">
+            {% if weeklyMatTime is not empty %}
+                <p>Mat time: {{ weeklyMatTime }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            {% if weeklyRoundDuration is not empty %}
+                <p>Time spent rolling: {{ weeklyRoundDuration }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            {% if totalRoundsWeekly is not empty %}
+                <p>Rounds rolled: {{ totalRoundsWeekly }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+  <div class="row text-center">
+        <div class="col-md-12">
+            <h3>1 month</h3>
+        </div>
+        <div class="col-md-12">
+            {% if monthlyMatTime is not empty %}
+                <p>Mat time: {{ monthlyMatTime }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            {% if monthlyRoundDuration is not empty %}
+                <p>Time spent rolling: {{ monthlyRoundDuration }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            {% if totalRoundsMonthly is not empty %}
+                <p>Rounds rolled: {{ totalRoundsMonthly }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-md-12">
+            <h3>6 months</h3>
+        </div>
+        <div class="col-md-12">
+            {% if biannualMatTime is not empty %}
+                <p>Mat time: {{ biannualMatTime }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            {% if biannualRoundDuration is not empty %}
+                <p>Time spent rolling: {{ biannualRoundDuration }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            {% if totalRoundsMonthly is not empty %}
+                <p>Rounds rolled: {{ totalRoundsMonthly }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-md-12">
+            <h3>All time</h3>
+        </div>
+        <div class="col-md-12">
+            {% if totalMatTime is not empty %}
+                <p>Mat time: {{ totalMatTime }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            {% if totalRoundDuration is not empty %}
+                <p>Time spent rolling: {{ totalRoundDuration }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            {% if totalRounds is not empty %}
+                <p>Rounds rolled: {{ totalRounds }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>

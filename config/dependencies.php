@@ -6,6 +6,14 @@
  * This file configures a Dependency Injection (DI) container using PHP-DI.
  * It defines how various classes and services should be instantiated and
  * injected throughout the application.
+ * 
+ * PHP version 8.0
+ * 
+ * @category Config
+ * @package  App\Config
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @link     https://grapplingtracker.com
  */
 
 use Psr\Container\ContainerInterface;
@@ -16,6 +24,7 @@ use App\Models\Category;
 use App\Models\Technique;
 use App\Models\Profile;
 use App\Models\Note;
+use App\Models\Stats;
 use App\Controllers\UserController;
 use App\Controllers\TrainingClassController;
 use App\Controllers\PositionController;
@@ -23,6 +32,7 @@ use App\Controllers\CategoryController;
 use App\Controllers\MainViewController;
 use App\Controllers\TechniqueController;
 use App\Controllers\ProfileController;
+use App\Controllers\StatsController;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 
@@ -226,7 +236,8 @@ return [
         DI\get(PDO::class)
     ),
 
-    /** Tells the DI container to create a new 'ProfileController'
+    /** 
+     * Tells the DI container to create a new 'ProfileController'
      * instance, injecting the
      * 'Profile' instance,
      * 'Technique' instance,
@@ -249,5 +260,27 @@ return [
      */
     Note::class => DI\create()->constructor(
         DI\get(PDO::class)
+    ),
+
+    /**
+     * Defines how the 'Stats' model should be instantiated.
+     * 
+     * Tells the DI container to create a new 'Stats' instance,
+     * injecting the PDO instance to its constructor.
+     */
+    Stats::class => DI\create()->constructor(
+        DI\get(PDO::class)
+    ),
+
+    /**
+     * Tells the DI container to create a new 'StatsController'
+     * instance, injecting the
+     * 'Stats' instance,
+     * Twig 'Environment' instance,
+     * to its constructor.
+     */
+    StatsController::class => DI\create()->constructor(
+        DI\get(Stats::class),
+        DI\get(Environment::class)
     ),
 ];
