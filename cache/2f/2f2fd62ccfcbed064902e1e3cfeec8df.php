@@ -94,8 +94,6 @@ class __TwigTemplate_4c08075eab426a6f83997fab37ea2630 extends Template
                 </ul>
             </li>
         </ul>
-
-        
     </div>
 </nav>";
         return; yield '';
@@ -179,8 +177,6 @@ class __TwigTemplate_4c08075eab426a6f83997fab37ea2630 extends Template
                 </ul>
             </li>
         </ul>
-
-        
     </div>
 </nav>", "@Header/header.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/header.twig");
     }

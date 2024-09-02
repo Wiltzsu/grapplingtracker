@@ -10,31 +10,59 @@ body {
 
 .login-body {
   height: 100vh;
-  background-color: rgb(32, 30, 67);
+  background-color: #efe9ed;
 }
 
-.login-bold {
-  font-weight: bold;
-}
-
-.custom-login-form {
-  position: absolute;
-  width: 480px;
-  height: auto;
-  top: 129px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #f1f1f1;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: rgb(32, 30, 67);
-  color: #ffffff;
+.front-page-btn {
+  width: 250px; /* Makes buttons wider */
+  margin: 10px auto; /* Centers buttons and adds spacing between them */
+  display: block; /* Ensures buttons take up their own line */
 }
 
 .form-control {
-  border-radius: 10px;
+  border-radius: 0; /* Makes the inputs rectangular */
+  height: 45px; /* Standard height for each input for better visual appeal */
+  margin-bottom: 10px; /* Reduces space between inputs */
+  background-color: #fff; /* Optional: Ensures a consistent background */
+  border: 1px solid #ccc; /* Optional: Adds a subtle border */
 }
 
+.btn-primary {
+  border-radius: 0; /* Makes the button rectangular */
+  height: 50px; /* Sets a consistent height for the button */
+}
+
+/* If you want to reduce the margin above the submit button */
+.btn-block {
+  margin-top: 15px; /* Adjusts the top margin of the button */
+}
+
+/* To ensure that error messages are closer to the input fields */
+.form-text.error-message {
+  margin-bottom: 5px;
+  margin-top: -5px; /* Pulls the error message closer to the input field */
+}
+
+.custom-login-form {
+  position: fixed; /* Use fixed to keep it in the viewport */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the form */
+  padding: 20px;
+  border-radius: 10px;
+  color: #000000; /* Adjust text color as necessary */
+  min-width: 300px; /* Minimum width */
+  width: 500px;
+  max-width: 95%; /* Prevents the form from being too wide on larger screens */
+}
+
+@media (max-width: 768px) {
+  .custom-login-form {
+    padding: 15px; /* Slightly reduce padding on smaller screens */
+    min-width: 260px; /* Smaller minimum width for very small devices */
+    max-width: 90%;
+  }
+}
 .btn-custom {
   width: 100%;
   background-color: #343a40;
@@ -53,7 +81,7 @@ body {
 }
 
 .get-started-background {
-  background-color: rgb(32, 30, 67);
+  background-color: #efe9ed;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,7 +98,7 @@ body {
 }
 
 #dynamicText {
-  color: white;
+  color: #000000;
   font-size: 3rem; /* Adjustable font size */
   transition: font-size 0.3s ease; /* Smooth transition for font resize */
   height: 120px; /* Fixed height to prevent layout shift */
@@ -106,7 +134,7 @@ body {
   top: 0;
   left: 0;
   margin: 20px;
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
 }
 
@@ -117,9 +145,8 @@ body {
   }
 }
 .get-started {
-  font-size: 34px;
-  font-weight: bold;
-  color: white;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
 }
 
 .signup-button {
