@@ -31,9 +31,20 @@ body {
 }
 
 .front-page-btn {
-    width: 250px; /* Makes buttons wider */
-    margin: 10px auto; /* Centers buttons and adds spacing between them */
-    display: block; /* Ensures buttons take up their own line */
+    display: inline-flex; /* Uses flexbox to align content */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    width: 90%; /* Adjust width as needed */
+    padding: 12px 0; /* Uniform padding */
+    margin: 10px auto; /* Centers the button and adds spacing */
+    width: 200px;;
+}
+
+/* Optional: Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .front-page-btn {
+        width: 100%; /* Full width on smaller screens */
+    }
 }
 
 .form-control {
