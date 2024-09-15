@@ -167,27 +167,20 @@ class __TwigTemplate_28f14557d62b4edc1e4841d8f3db2e2a extends Template
 
     <div class=\"row text-center\">
         <div class=\"col-md-12\">
-            <h3>All time</h3>
+        <h3>All time</h3>
+        <div class=\"form-check\">
+            <input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"flexCheckDefault\">
+            <label class=\"form-check-label\" for=\"flexCheckDefault\">
+            </label>
+        </div>
         </div>
         <div class=\"col-md-12\">
             ";
-        // line 72
+        // line 77
         if ( !Twig\Extension\CoreExtension::testEmpty(($context["totalMatTime"] ?? null))) {
-            // line 73
+            // line 78
             yield "                <p>Mat time: ";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["totalMatTime"] ?? null), "html", null, true);
-            yield "</p>
-            ";
-        }
-        // line 75
-        yield "        </div>
-        <div class=\"col-md-12\">
-            ";
-        // line 77
-        if ( !Twig\Extension\CoreExtension::testEmpty(($context["totalRoundDuration"] ?? null))) {
-            // line 78
-            yield "                <p>Time spent rolling: ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["totalRoundDuration"] ?? null), "html", null, true);
             yield "</p>
             ";
         }
@@ -196,17 +189,73 @@ class __TwigTemplate_28f14557d62b4edc1e4841d8f3db2e2a extends Template
         <div class=\"col-md-12\">
             ";
         // line 82
-        if ( !Twig\Extension\CoreExtension::testEmpty(($context["totalRounds"] ?? null))) {
+        if ( !Twig\Extension\CoreExtension::testEmpty(($context["totalRoundDuration"] ?? null))) {
             // line 83
-            yield "                <p>Rounds rolled: ";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["totalRounds"] ?? null), "html", null, true);
+            yield "                <p>Time spent rolling: ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["totalRoundDuration"] ?? null), "html", null, true);
             yield "</p>
             ";
         }
         // line 85
         yield "        </div>
+        <div class=\"col-md-12\">
+            ";
+        // line 87
+        if ( !Twig\Extension\CoreExtension::testEmpty(($context["totalRounds"] ?? null))) {
+            // line 88
+            yield "                <p>Rounds rolled: ";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["totalRounds"] ?? null), "html", null, true);
+            yield "</p>
+            ";
+        }
+        // line 90
+        yield "        </div>
     </div>
-</div>";
+</div>
+
+// if checkbox is clicked
+// send data to database table
+
+<script>
+    document.getElementById('flexCheckDefault').addEventListener('click', function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/technique-db-mvc/public/stats', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({totalMatTime: ";
+        // line 102
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["totalMatTime"] ?? null), "html", null, true);
+        yield ", totalRoundDuration: ";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["totalRoundDuration"] ?? null), "html", null, true);
+        yield ", totalRounds: ";
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["totalRounds"] ?? null), "html", null, true);
+        yield " }));
+    });
+</script>
+
+<?php
+public function updateUserPreferences(\$userID, \$preferences)
+{
+    foreach (\$preferences as \$key => \$value) {
+        \$sql = \"SELECT count(*) FROM user_preferences WHERE userID = :userID AND preference_key = :key\";
+        \$stmt = \$this->db->prepare(\$sql);
+        \$stmt->execute(['userID' => \$userID, 'key' => \$key]);
+        \$exists = \$stmt->fetchColumn();
+
+        if (\$exists) {
+            // Update existing preference
+            \$sql = \"UPDATE user_preferences SET preference_value = :value WHERE userID = :userID AND preference_key = :key\";
+        } else {
+            // Insert new preference
+            \$sql = \"INSERT INTO user_preferences (userID, preference_key, preference_value) VALUES (:userID, :key, :value)\";
+        }
+
+        \$stmt = \$this->db->prepare(\$sql);
+        \$stmt->execute(['userID' => \$userID, 'key' => \$key, 'value' => \$value]);
+    }
+}
+?>
+
+";
         return; yield '';
     }
 
@@ -231,7 +280,7 @@ class __TwigTemplate_28f14557d62b4edc1e4841d8f3db2e2a extends Template
      */
     public function getDebugInfo()
     {
-        return array (  207 => 85,  201 => 83,  199 => 82,  195 => 80,  189 => 78,  187 => 77,  183 => 75,  177 => 73,  175 => 72,  165 => 64,  159 => 62,  157 => 61,  153 => 59,  147 => 57,  145 => 56,  141 => 54,  135 => 52,  133 => 51,  123 => 43,  117 => 41,  115 => 40,  111 => 38,  105 => 36,  103 => 35,  99 => 33,  93 => 31,  91 => 30,  81 => 22,  75 => 20,  73 => 19,  69 => 17,  63 => 15,  61 => 14,  57 => 12,  51 => 10,  49 => 9,  40 => 2,  38 => 1,);
+        return array (  226 => 102,  212 => 90,  206 => 88,  204 => 87,  200 => 85,  194 => 83,  192 => 82,  188 => 80,  182 => 78,  180 => 77,  165 => 64,  159 => 62,  157 => 61,  153 => 59,  147 => 57,  145 => 56,  141 => 54,  135 => 52,  133 => 51,  123 => 43,  117 => 41,  115 => 40,  111 => 38,  105 => 36,  103 => 35,  99 => 33,  93 => 31,  91 => 30,  81 => 22,  75 => 20,  73 => 19,  69 => 17,  63 => 15,  61 => 14,  57 => 12,  51 => 10,  49 => 9,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -304,7 +353,12 @@ class __TwigTemplate_28f14557d62b4edc1e4841d8f3db2e2a extends Template
 
     <div class=\"row text-center\">
         <div class=\"col-md-12\">
-            <h3>All time</h3>
+        <h3>All time</h3>
+        <div class=\"form-check\">
+            <input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"flexCheckDefault\">
+            <label class=\"form-check-label\" for=\"flexCheckDefault\">
+            </label>
+        </div>
         </div>
         <div class=\"col-md-12\">
             {% if totalMatTime is not empty %}
@@ -322,6 +376,43 @@ class __TwigTemplate_28f14557d62b4edc1e4841d8f3db2e2a extends Template
             {% endif %}
         </div>
     </div>
-</div>", "stats.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/stats.twig");
+</div>
+
+// if checkbox is clicked
+// send data to database table
+
+<script>
+    document.getElementById('flexCheckDefault').addEventListener('click', function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/technique-db-mvc/public/stats', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({totalMatTime: {{ totalMatTime }}, totalRoundDuration: {{ totalRoundDuration }}, totalRounds: {{ totalRounds }} }));
+    });
+</script>
+
+<?php
+public function updateUserPreferences(\$userID, \$preferences)
+{
+    foreach (\$preferences as \$key => \$value) {
+        \$sql = \"SELECT count(*) FROM user_preferences WHERE userID = :userID AND preference_key = :key\";
+        \$stmt = \$this->db->prepare(\$sql);
+        \$stmt->execute(['userID' => \$userID, 'key' => \$key]);
+        \$exists = \$stmt->fetchColumn();
+
+        if (\$exists) {
+            // Update existing preference
+            \$sql = \"UPDATE user_preferences SET preference_value = :value WHERE userID = :userID AND preference_key = :key\";
+        } else {
+            // Insert new preference
+            \$sql = \"INSERT INTO user_preferences (userID, preference_key, preference_value) VALUES (:userID, :key, :value)\";
+        }
+
+        \$stmt = \$this->db->prepare(\$sql);
+        \$stmt->execute(['userID' => \$userID, 'key' => \$key, 'value' => \$value]);
+    }
+}
+?>
+
+", "stats.twig", "/opt/lampp/htdocs/technique-db-mvc/resources/views/stats.twig");
     }
 }

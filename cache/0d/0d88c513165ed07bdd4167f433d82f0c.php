@@ -39,11 +39,14 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
         // line 2
         yield "
 <div class=\"container\">
-
     <div class=\"row p-5\">
         <h3 class=\"col-12\">Dashboard</h3>
         <div class=\"col-md-12\">
-            <table class=\"table table-hover\">
+            ";
+        // line 7
+        if ( !Twig\Extension\CoreExtension::testEmpty(($context["techniquesClasses"] ?? null))) {
+            // line 8
+            yield "            <table class=\"table table-hover\">
                 <thead class=\"thead-light\">
                     <tr>
                         <th>Technique name</th>
@@ -53,48 +56,39 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
                     </tr>
                 </thead>
                 <tbody>
-                    ";
-        // line 18
-        if ( !Twig\Extension\CoreExtension::testEmpty(($context["techniquesClasses"] ?? null))) {
-            // line 19
-            yield "                        ";
+                ";
+            // line 18
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(($context["techniquesClasses"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["techniqueClass"]) {
+                // line 19
+                yield "                <tr>
+                    <td>";
                 // line 20
-                yield "                        <tr>
-                            <td>";
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "techniqueName", [], "any", false, false, false, 20), "html", null, true);
+                yield "</td>
+                    <td>";
                 // line 21
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "techniqueName", [], "any", false, false, false, 21), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "techniqueDescription", [], "any", false, false, false, 21), "html", null, true);
                 yield "</td>
-                            <td>";
+                    <td>";
                 // line 22
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "techniqueDescription", [], "any", false, false, false, 22), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "categoryName", [], "any", false, false, false, 22), "html", null, true);
                 yield "</td>
-                            <td>";
+                    <td>";
                 // line 23
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "categoryName", [], "any", false, false, false, 23), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "positionName", [], "any", false, false, false, 23), "html", null, true);
                 yield "</td>
-                            <td>";
-                // line 24
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["techniqueClass"], "positionName", [], "any", false, false, false, 24), "html", null, true);
-                yield "</td>
-                        </tr>
-                        ";
+                </tr>
+                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['techniqueClass'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 27
-            yield "                    ";
-        } else {
-            // line 28
-            yield "                        <tr>
-                            <td colspan=\"4\">No entries found.</td>
-                        </tr>
-                    ";
+            // line 26
+            yield "            ";
         }
-        // line 32
+        // line 27
         yield "                </tbody>
             </table>
         </div>
@@ -105,53 +99,53 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
                 <h4>Make a note</h4>
                 <div class=\"form-group\">
                     <input type=\"hidden\" class=\"form-control\" id=\"userID\" name=\"userID\" required value=\"";
-        // line 41
+        // line 36
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(($context["userID"] ?? null), "html", null, true);
         yield "\">
                 </div>
                 <!-- Content -->
                 <div class=\"form-group";
-        // line 44
-        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 44)) ? (" has-error") : (""));
+        // line 39
+        yield ((CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 39)) ? (" has-error") : (""));
         yield "\">
                     <textarea class=\"form-control\" id=\"quicknote\" name=\"quicknote\" value=\"";
-        // line 45
-        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", true, true, false, 45) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", false, false, false, 45)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", false, false, false, 45), "html", null, true)) : (yield ""));
+        // line 40
+        (((CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", true, true, false, 40) &&  !(null === CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", false, false, false, 40)))) ? (yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["input"] ?? null), "content", [], "any", false, false, false, 40), "html", null, true)) : (yield ""));
         yield "\"></textarea>
                     ";
-        // line 46
-        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 46)) {
-            // line 47
+        // line 41
+        if (CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 41)) {
+            // line 42
             yield "                        <span class=\"help-block error-message\">";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 47), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["errors"] ?? null), "content", [], "any", false, false, false, 42), "html", null, true);
             yield "</span>
                     ";
         }
-        // line 49
+        // line 44
         yield "                </div>
                 <button type=\"submit\" name=\"submit\" class=\"btn btn-primary mb-2\">Submit</button>
             </form>
 
             ";
-        // line 53
+        // line 48
         if ( !Twig\Extension\CoreExtension::testEmpty(($context["quickNotes"] ?? null))) {
-            // line 54
+            // line 49
             yield "                ";
             $context['_parent'] = $context;
             $context['_seq'] = CoreExtension::ensureTraversable(($context["quickNotes"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["quickNote"]) {
-                // line 55
+                // line 50
                 yield "                <div class=\"card mb-2\">
                     <div class=\"card-body d-flex justify-content-between align-items-center\">
                         <p class=\"card-text mb-0\">";
-                // line 57
-                yield Twig\Extension\CoreExtension::nl2br($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["quickNote"], "content", [], "any", false, false, false, 57), "html", null, true));
+                // line 52
+                yield Twig\Extension\CoreExtension::nl2br($this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["quickNote"], "content", [], "any", false, false, false, 52), "html", null, true));
                 yield "</p>
                         <form method=\"POST\" action=\"mainview\"> <!-- Specify the correct path -->
                             <input type=\"hidden\" name=\"delete\" value=\"1\">
                             <input type=\"hidden\" name=\"quicknoteID\" value=\"";
-                // line 60
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["quickNote"], "quicknoteID", [], "any", false, false, false, 60), "html", null, true);
+                // line 55
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["quickNote"], "quicknoteID", [], "any", false, false, false, 55), "html", null, true);
                 yield "\">
                             <button type=\"submit\" class=\"btn\">
                                 <img src=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg\" alt=\"Delete\">
@@ -164,17 +158,18 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['quickNote'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 68
+            // line 63
             yield "            ";
         } else {
-            // line 69
+            // line 64
             yield "                <p>No notes found.</p>
             ";
         }
-        // line 71
+        // line 66
         yield "        </div>
     </div>
 
+<!--
         <div class=\"row px-5\">
             <div class=\"col-md-12\">
                 <nav>
@@ -194,19 +189,19 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <script>
     var totalMatTimeData = ";
-        // line 96
+        // line 92
         yield json_encode(($context["totalMatTimeMonthly"] ?? null));
         yield ";
     var techniquesLearnedData = ";
-        // line 97
+        // line 93
         yield json_encode(($context["totalTechniquesLearnedMonthly"] ?? null));
         yield ";
     var techniquesPerPositionData = ";
-        // line 98
+        // line 94
         yield json_encode(($context["techniquesPerPosition"] ?? null));
         yield ";
 </script>
@@ -241,7 +236,7 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
      */
     public function getDebugInfo()
     {
-        return array (  210 => 98,  206 => 97,  202 => 96,  175 => 71,  171 => 69,  168 => 68,  154 => 60,  148 => 57,  144 => 55,  139 => 54,  137 => 53,  131 => 49,  125 => 47,  123 => 46,  119 => 45,  115 => 44,  109 => 41,  98 => 32,  92 => 28,  89 => 27,  80 => 24,  76 => 23,  72 => 22,  68 => 21,  65 => 20,  60 => 19,  58 => 18,  40 => 2,  38 => 1,);
+        return array (  205 => 94,  201 => 93,  197 => 92,  169 => 66,  165 => 64,  162 => 63,  148 => 55,  142 => 52,  138 => 50,  133 => 49,  131 => 48,  125 => 44,  119 => 42,  117 => 41,  113 => 40,  109 => 39,  103 => 36,  92 => 27,  89 => 26,  80 => 23,  76 => 22,  72 => 21,  68 => 20,  65 => 19,  61 => 18,  49 => 8,  47 => 7,  40 => 2,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -249,10 +244,10 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
         return new Source("{% include '@Header/header.twig' %}
 
 <div class=\"container\">
-
     <div class=\"row p-5\">
         <h3 class=\"col-12\">Dashboard</h3>
         <div class=\"col-md-12\">
+            {% if techniquesClasses is not empty %}
             <table class=\"table table-hover\">
                 <thead class=\"thead-light\">
                     <tr>
@@ -263,20 +258,15 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
                     </tr>
                 </thead>
                 <tbody>
-                    {% if techniquesClasses is not empty %}
-                        {% for techniqueClass in techniquesClasses %}
-                        <tr>
-                            <td>{{ techniqueClass.techniqueName }}</td>
-                            <td>{{ techniqueClass.techniqueDescription }}</td>
-                            <td>{{ techniqueClass.categoryName }}</td>
-                            <td>{{ techniqueClass.positionName }}</td>
-                        </tr>
-                        {% endfor %}
-                    {% else %}
-                        <tr>
-                            <td colspan=\"4\">No entries found.</td>
-                        </tr>
-                    {% endif %}
+                {% for techniqueClass in techniquesClasses %}
+                <tr>
+                    <td>{{ techniqueClass.techniqueName }}</td>
+                    <td>{{ techniqueClass.techniqueDescription }}</td>
+                    <td>{{ techniqueClass.categoryName }}</td>
+                    <td>{{ techniqueClass.positionName }}</td>
+                </tr>
+                {% endfor %}
+            {% endif %}
                 </tbody>
             </table>
         </div>
@@ -319,6 +309,7 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
         </div>
     </div>
 
+<!--
         <div class=\"row px-5\">
             <div class=\"col-md-12\">
                 <nav>
@@ -338,7 +329,7 @@ class __TwigTemplate_7fda2d2fb8b32e683d564435573f39af extends Template
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <script>
     var totalMatTimeData = {{ totalMatTimeMonthly|json_encode|raw }};

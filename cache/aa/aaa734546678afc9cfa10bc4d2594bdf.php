@@ -46,7 +46,7 @@ class __TwigTemplate_b5253dae6b9a6a1af4cd3e7176de6030 extends Template
 <body>
 
 <div class=\"container-fluid vh-100 d-flex flex-column justify-content-center align-items-center get-started-background\">
-    <img src=\"/technique-db-mvc/public/img/logo.png\" alt=\"Grappling Tracker logo\" class=\"mb-5 page-title\">
+    <img src=\"/technique-db-mvc/public/img/logo2.svg\" alt=\"Grappling Tracker logo\" class=\"mb-5 page-title\" style=\"width: 180px\">
 
     <div class=\"row\">
         <div class=\"col-12 text-center\">
@@ -58,7 +58,7 @@ class __TwigTemplate_b5253dae6b9a6a1af4cd3e7176de6030 extends Template
         <div class=\"col-12 text-center\">
             <h3 class=\"mb-4 get-started\">Get started</h3>
             <a href=\"login\" class=\"btn btn-primary  front-page-btn \">Log in</a>
-            <a href=\"register\" class=\"btn btn-primary  front-page-btn mt-3\">Sign up</a>
+            <a href=\"register\" class=\"btn btn-primary  front-page-btn \">Sign up</a>
         </div>
     </div>
 </div>
@@ -104,7 +104,7 @@ class __TwigTemplate_b5253dae6b9a6a1af4cd3e7176de6030 extends Template
 <body>
 
 <div class=\"container-fluid vh-100 d-flex flex-column justify-content-center align-items-center get-started-background\">
-    <img src=\"/technique-db-mvc/public/img/logo.png\" alt=\"Grappling Tracker logo\" class=\"mb-5 page-title\">
+    <img src=\"/technique-db-mvc/public/img/logo2.svg\" alt=\"Grappling Tracker logo\" class=\"mb-5 page-title\" style=\"width: 180px\">
 
     <div class=\"row\">
         <div class=\"col-12 text-center\">
@@ -116,7 +116,7 @@ class __TwigTemplate_b5253dae6b9a6a1af4cd3e7176de6030 extends Template
         <div class=\"col-12 text-center\">
             <h3 class=\"mb-4 get-started\">Get started</h3>
             <a href=\"login\" class=\"btn btn-primary  front-page-btn \">Log in</a>
-            <a href=\"register\" class=\"btn btn-primary  front-page-btn mt-3\">Sign up</a>
+            <a href=\"register\" class=\"btn btn-primary  front-page-btn \">Sign up</a>
         </div>
     </div>
 </div>

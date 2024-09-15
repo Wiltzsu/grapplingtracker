@@ -66,7 +66,12 @@
 
     <div class="row text-center">
         <div class="col-md-12">
-            <h3>All time</h3>
+        <h3>All time</h3>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            </label>
+        </div>
         </div>
         <div class="col-md-12">
             {% if totalMatTime is not empty %}
@@ -85,3 +90,39 @@
         </div>
     </div>
 </div>
+
+// if checkbox is clicked
+// send data to database table
+
+<script>
+    document.getElementById('flexCheckDefault').addEventListener('click', function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/technique-db-mvc/public/stats', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({totalMatTime: {{ totalMatTime }}, totalRoundDuration: {{ totalRoundDuration }}, totalRounds: {{ totalRounds }} }));
+    });
+</script>
+
+<?php
+public function updateUserPreferences($userID, $preferences)
+{
+    foreach ($preferences as $key => $value) {
+        $sql = "SELECT count(*) FROM user_preferences WHERE userID = :userID AND preference_key = :key";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['userID' => $userID, 'key' => $key]);
+        $exists = $stmt->fetchColumn();
+
+        if ($exists) {
+            // Update existing preference
+            $sql = "UPDATE user_preferences SET preference_value = :value WHERE userID = :userID AND preference_key = :key";
+        } else {
+            // Insert new preference
+            $sql = "INSERT INTO user_preferences (userID, preference_key, preference_value) VALUES (:userID, :key, :value)";
+        }
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['userID' => $userID, 'key' => $key, 'value' => $value]);
+    }
+}
+?>
+

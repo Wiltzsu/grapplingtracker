@@ -1,10 +1,10 @@
 {% include '@Header/header.twig' %}
 
 <div class="container">
-
     <div class="row p-5">
         <h3 class="col-12">Dashboard</h3>
         <div class="col-md-12">
+            {% if techniquesClasses is not empty %}
             <table class="table table-hover">
                 <thead class="thead-light">
                     <tr>
@@ -15,20 +15,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% if techniquesClasses is not empty %}
-                        {% for techniqueClass in techniquesClasses %}
-                        <tr>
-                            <td>{{ techniqueClass.techniqueName }}</td>
-                            <td>{{ techniqueClass.techniqueDescription }}</td>
-                            <td>{{ techniqueClass.categoryName }}</td>
-                            <td>{{ techniqueClass.positionName }}</td>
-                        </tr>
-                        {% endfor %}
-                    {% else %}
-                        <tr>
-                            <td colspan="4">No entries found.</td>
-                        </tr>
-                    {% endif %}
+                {% for techniqueClass in techniquesClasses %}
+                <tr>
+                    <td>{{ techniqueClass.techniqueName }}</td>
+                    <td>{{ techniqueClass.techniqueDescription }}</td>
+                    <td>{{ techniqueClass.categoryName }}</td>
+                    <td>{{ techniqueClass.positionName }}</td>
+                </tr>
+                {% endfor %}
+            {% endif %}
                 </tbody>
             </table>
         </div>
@@ -71,6 +66,7 @@
         </div>
     </div>
 
+<!--
         <div class="row px-5">
             <div class="col-md-12">
                 <nav>
@@ -90,7 +86,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <script>
     var totalMatTimeData = {{ totalMatTimeMonthly|json_encode|raw }};

@@ -1,9 +1,9 @@
 <?php
 /**
  * This file contains the StatsController class.
- * 
+ *
  * PHP version 8.0
- * 
+ *
  * @category Controllers
  * @package  App\Controllers
  * @author   William Lönnberg <william.lonnberg@gmail.com>
@@ -18,7 +18,7 @@ use Twig\Environment;
 
 /**
  * StatsController class.
- * 
+ *
  * @category Controllers
  * @package  App\Controllers
  * @author   William Lönnberg <william.lonnberg@gmail.com>
@@ -29,10 +29,10 @@ class StatsController
 {
     /**
      * Constructor function for StatsController.
-     * 
+     *
      * @param Stats       $statsModel Stats model
      * @param Environment $twig       Twig environment
-     * 
+     *
      * @return void
      */
     public function __construct(
@@ -43,46 +43,56 @@ class StatsController
 
     /**
      * Render the stats page.
-     * 
+     *
      * @return string
      */
     public function showStatsPage() :string
     {
         $userID = $_SESSION['userID'] ?? null;
-        
-        // Counts weekly mat time.
+
+        // Counts weekly, monthly, biannual, all time mat time.
         $weeklyMatTime = $this->statsModel->countMatTimeWeekly($userID);
-        // Counts monthly mat time.
         $monthlyMatTime = $this->statsModel->countMatTimeMonthly($userID);
-        // Counts biannual mat time.
         $biannualMatTime = $this->statsModel->countMatTimeBiannual($userID);
-        // Counts total mat time.
         $totalMatTime = $this->statsModel->countMatTime($userID);
 
-        // Counts weekly round duration.
+        // Counts weekly, monthly, biannual, all time round duration.
         $weeklyRoundDuration = $this->statsModel->countRoundDurationWeekly($userID);
-        // Counts monthly round duration.
         $monthlyRoundDuration = $this->statsModel->countRoundDurationMonthly($userID);
-        // Counts biannual round duration.
         $biannualRoundDuration = $this->statsModel->countRoundDurationBiannual($userID);
-        // Counts total round duration.
         $totalRoundDuration = $this->statsModel->countRoundDuration($userID);
 
-        // Counts weekly rounds.
+        // Counts weekly, monthly, all time rounds.
         $totalRoundsWeekly = $this->statsModel->countRoundsWeekly($userID);
-        // Count monthly rounds.
         $totalRoundsMonthly = $this->statsModel->countRoundsMonthly($userID);
-        // Counts total rounds.
         $totalRounds = $this->statsModel->countRounds($userID);
+
+            // Prepare all data for JSON
+        $preferences = [
+            'weeklyMatTime' => $weeklyMatTime,
+            'monthlyMatTime' => $monthlyMatTime,
+            'biannualMatTime' => $biannualMatTime,
+            'totalMatTime' => $totalMatTime,
+            'weeklyRoundDuration' => $weeklyRoundDuration,
+            'monthlyRoundDuration' => $monthlyRoundDuration,
+            'biannualRoundDuration' => $biannualRoundDuration,
+            'totalRoundDuration' => $totalRoundDuration,
+            'totalRoundsWeekly' => $totalRoundsWeekly,
+            'totalRoundsMonthly' => $totalRoundsMonthly,
+            'totalRounds' => $totalRounds
+        ];
+
+        $jsonStatsData = json_encode($preferences);
 
         return $this->twig->render(
             'stats.twig', [
+            'jsonStatsData' => $jsonStatsData,
             'weeklyMatTime' => $weeklyMatTime, 'monthlyMatTime' => $monthlyMatTime,
             'biannualMatTime' => $biannualMatTime, 'totalMatTime' => $totalMatTime,
-            
+
             'weeklyRoundDuration' => $weeklyRoundDuration, 'monthlyRoundDuration' => $monthlyRoundDuration,
             'biannualRoundDuration' => $biannualRoundDuration,'totalRoundDuration' => $totalRoundDuration,
-            
+
             'totalRoundsWeekly' => $totalRoundsWeekly, 'totalRoundsMonthly' => $totalRoundsMonthly,
             'totalRounds' => $totalRounds,
             ]
