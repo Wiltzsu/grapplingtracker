@@ -26,7 +26,7 @@ $routes($router, $container);
 $dispatcher = new Dispatcher($router->getData());
 
 // Get the base path
-$basePath = '/technique-db-mvc/public';
+$basePath = '/grappling-tracker/public';
 
 // Strip the base path from the request URI
 $parsedUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
