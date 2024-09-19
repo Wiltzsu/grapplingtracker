@@ -1,6 +1,7 @@
 # Grappling Tracker
 
-Grappling Tracker is a web-based application tailored for martial arts enthusiasts to track and analyze their training sessions, techniques, and progress over time. It provides a user-friendly dashboard for logging training details, viewing statistics, and managing one's martial arts journey effectively. It's a long-time passion project for myself that I work on when I have the time and energy. It is still heavily under construction.
+Grappling Tracker is a web-based application tailored for martial arts enthusiasts to track and analyze their training sessions, techniques, and progress over time. It provides a user-friendly dashboard for logging training details, viewing statistics, and managing one's martial arts journey effectively. It's a long-time project for myself that emerged from my own need
+of keeping track of my training. It's a work in progress and I'm constantly adding new features and improvements.
 
 ## Features (so far)
 
