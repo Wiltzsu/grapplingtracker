@@ -97,7 +97,7 @@
 <script>
     document.getElementById('flexCheckDefault').addEventListener('click', function() {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/technique-db-mvc/public/stats', true);
+        xhr.open('POST', '/grappling-tracker/public/stats', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({totalMatTime: {{ totalMatTime }}, totalRoundDuration: {{ totalRoundDuration }}, totalRounds: {{ totalRounds }} }));
     });

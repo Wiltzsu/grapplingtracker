@@ -143,7 +143,7 @@ class UserController
             $mail->addAddress($email);
             $mail->isHTML(true);
             $mail->Subject = 'Activate your account';
-            $mail->Body = "Please click here to activate your account: <a href='http://localhost/technique-db-mvc/public/activate?token=$token'>Activate Account</a>";
+            $mail->Body = "Please click here to activate your account: <a href='http://localhost/grappling-tracker/public/activate?token=$token'>Activate Account</a>";
             $mail->send();
             echo 'Activation email has been sent.';
         } catch (Exception $e) {
@@ -210,6 +210,6 @@ class UserController
         session_destroy();
 
         // Redirect to home page.
-        header("Location: /technique-db-mvc/public/");
+        header("Location: /grappling-tracker/public/");
     }
 }
