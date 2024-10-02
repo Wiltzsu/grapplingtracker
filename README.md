@@ -23,7 +23,7 @@ Once you have registered and logged in, you can start by:
 
 ## Contributing
 
-Contributions are welcome, and any contributions you make are **greatly appreciated**. If you have suggestions for enhancements or encounter any issues, please:
+Escpecially frontend contributions are welcome, and any contributions you make are **greatly appreciated**. If you have suggestions for enhancements or encounter any issues, please:
 
 1. Open an issue to discuss what you would like to change.
 2. For major changes, please open an issue first to discuss what you would like to change.
@@ -31,4 +31,3 @@ Contributions are welcome, and any contributions you make are **greatly apprecia
 ## Acknowledgments
 
 - Hat tip to all contributors who have helped shape this project.
-- Inspired by the dedication and hard work of martial arts practitioners around the world.
