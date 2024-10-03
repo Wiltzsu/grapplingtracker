@@ -17,28 +17,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Phroute\Phroute\Dispatcher;
 use Phroute\Phroute\RouteCollector;
 
-// Test Database Connection
-try {
-    // Load the database settings
-    $settings = require __DIR__ . '/../config/settings.php';
-    $db_settings = $settings['database'];
-
-    // Initialize PDO
-    $pdo = new PDO(
-        $db_settings['dsn'],
-        $db_settings['username'],
-        $db_settings['password'],
-        $db_settings['options']
-    );
-
-    // If successful, output this
-    echo "Database connection successful!<br>";
-} catch (PDOException $e) {
-    // If connection fails, output error and stop execution
-    echo "Database connection failed: " . $e->getMessage();
-    die();  // Stop further script execution if DB connection fails
-}
-
 $container = include __DIR__ . '/../config/container.php';
 $router = new RouteCollector();
 
