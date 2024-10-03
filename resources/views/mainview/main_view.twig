@@ -1,37 +1,12 @@
 {% include '@Header/header.twig' %}
 
 <div class="container">
-    <div class="row p-5">
-        <h3 class="col-12">Dashboard</h3>
-        <div class="col-md-12">
-            {% if techniquesClasses is not empty %}
-            <table class="table table-hover">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Technique name</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Position</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for techniqueClass in techniquesClasses %}
-                <tr>
-                    <td>{{ techniqueClass.techniqueName }}</td>
-                    <td>{{ techniqueClass.techniqueDescription }}</td>
-                    <td>{{ techniqueClass.categoryName }}</td>
-                    <td>{{ techniqueClass.positionName }}</td>
-                </tr>
-                {% endfor %}
-            {% endif %}
-                </tbody>
-            </table>
-        </div>
+    <div class="row p-3">
 
         <div class="col-md-12">
             <form method="POST" action="">
                 <!-- User ID -->
-                <h4>Make a note</h4>
+                <h1>Notes</h1>
                 <div class="form-group">
                     <input type="hidden" class="form-control" id="userID" name="userID" required value="{{ userID }}">
                 </div>
@@ -42,7 +17,7 @@
                         <span class="help-block error-message">{{ errors.content }}</span>
                     {% endif %}
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary mb-2">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary mt-3 mb-3">Submit</button>
             </form>
 
             {% if quickNotes is not empty %}
@@ -63,40 +38,6 @@
             {% else %}
                 <p>No notes found.</p>
             {% endif %}
+
         </div>
     </div>
-
-<!--
-        <div class="row px-5">
-            <div class="col-md-12">
-                <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Techniques Studied</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Mat Time</button>
-                    </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <canvas id="techniquesLearnedChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <canvas id="matTimeChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
-
-<script>
-    var totalMatTimeData = {{ totalMatTimeMonthly|json_encode|raw }};
-    var techniquesLearnedData = {{ totalTechniquesLearnedMonthly|json_encode|raw }};
-    var techniquesPerPositionData = {{ techniquesPerPosition|json_encode|raw }};
-</script>
-
-<script src="/grappling-tracker/public/js/techniquesPerPosition.js"></script>
-<script src="/grappling-tracker/public/js/techniqueMatTimeChart.js"></script>
-
-<script src="/grappling-tracker/public/js/totalMatTime.js"></script>
-<script src="/grappling-tracker/public/js/techniquesLearned.js"></script>
-<script src="/grappling-tracker/public/js/beltChart.js"></script>

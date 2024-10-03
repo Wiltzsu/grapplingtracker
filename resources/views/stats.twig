@@ -1,128 +1,65 @@
 {% include '@Header/header.twig' %}
 
-<div class="container px-5 mb-5">
-    <div class="row text-center">
-        <div class="col-md-12">
-            <h3>7 days</h3>
-        </div>
-        <div class="col-md-12">
+<div class="container px-3">
+    <div class="row">
+
+        <h1>Rolling stats</h1>
+        <div class="col-md-6">
+            <h2>7 days</h2>
             {% if weeklyMatTime is not empty %}
                 <p>Mat time: {{ weeklyMatTime }}</p>
             {% endif %}
-        </div>
-        <div class="col-md-12">
             {% if weeklyRoundDuration is not empty %}
                 <p>Time spent rolling: {{ weeklyRoundDuration }}</p>
             {% endif %}
-        </div>
-        <div class="col-md-12">
             {% if totalRoundsWeekly is not empty %}
                 <p>Rounds rolled: {{ totalRoundsWeekly }}</p>
             {% endif %}
         </div>
-    </div>
-
-  <div class="row text-center">
-        <div class="col-md-12">
-            <h3>1 month</h3>
-        </div>
-        <div class="col-md-12">
+        
+        <div class="col-md-6">
+            <h2>1 month</h2>
             {% if monthlyMatTime is not empty %}
                 <p>Mat time: {{ monthlyMatTime }}</p>
             {% endif %}
-        </div>
-        <div class="col-md-12">
             {% if monthlyRoundDuration is not empty %}
                 <p>Time spent rolling: {{ monthlyRoundDuration }}</p>
             {% endif %}
-        </div>
-        <div class="col-md-12">
             {% if totalRoundsMonthly is not empty %}
                 <p>Rounds rolled: {{ totalRoundsMonthly }}</p>
             {% endif %}
         </div>
     </div>
 
-    <div class="row text-center">
-        <div class="col-md-12">
-            <h3>6 months</h3>
-        </div>
-        <div class="col-md-12">
+    <div class="row">
+
+        <div class="col-md-6">
+            <h2>6 months</h2>
             {% if biannualMatTime is not empty %}
                 <p>Mat time: {{ biannualMatTime }}</p>
             {% endif %}
-        </div>
-        <div class="col-md-12">
             {% if biannualRoundDuration is not empty %}
                 <p>Time spent rolling: {{ biannualRoundDuration }}</p>
             {% endif %}
-        </div>
-        <div class="col-md-12">
             {% if totalRoundsMonthly is not empty %}
                 <p>Rounds rolled: {{ totalRoundsMonthly }}</p>
             {% endif %}
         </div>
-    </div>
 
-    <div class="row text-center">
-        <div class="col-md-12">
-        <h3>All time</h3>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-            </label>
-        </div>
-        </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
+            <h2>All time</h2>
             {% if totalMatTime is not empty %}
                 <p>Mat time: {{ totalMatTime }}</p>
             {% endif %}
-        </div>
-        <div class="col-md-12">
             {% if totalRoundDuration is not empty %}
                 <p>Time spent rolling: {{ totalRoundDuration }}</p>
             {% endif %}
-        </div>
-        <div class="col-md-12">
             {% if totalRounds is not empty %}
                 <p>Rounds rolled: {{ totalRounds }}</p>
             {% endif %}
         </div>
+
     </div>
 </div>
 
-// if checkbox is clicked
-// send data to database table
-
-<script>
-    document.getElementById('flexCheckDefault').addEventListener('click', function() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/grappling-tracker/public/stats', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({totalMatTime: {{ totalMatTime }}, totalRoundDuration: {{ totalRoundDuration }}, totalRounds: {{ totalRounds }} }));
-    });
-</script>
-
-<?php
-public function updateUserPreferences($userID, $preferences)
-{
-    foreach ($preferences as $key => $value) {
-        $sql = "SELECT count(*) FROM user_preferences WHERE userID = :userID AND preference_key = :key";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute(['userID' => $userID, 'key' => $key]);
-        $exists = $stmt->fetchColumn();
-
-        if ($exists) {
-            // Update existing preference
-            $sql = "UPDATE user_preferences SET preference_value = :value WHERE userID = :userID AND preference_key = :key";
-        } else {
-            // Insert new preference
-            $sql = "INSERT INTO user_preferences (userID, preference_key, preference_value) VALUES (:userID, :key, :value)";
-        }
-
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute(['userID' => $userID, 'key' => $key, 'value' => $value]);
-    }
-}
-?>
 

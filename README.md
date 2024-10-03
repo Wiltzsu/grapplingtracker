@@ -31,4 +31,3 @@ Contributions are welcome, and any contributions you make are **greatly apprecia
 ## Acknowledgments
 
 - Hat tip to all contributors who have helped shape this project.
-- Inspired by the dedication and hard work of martial arts practitioners around the world.
