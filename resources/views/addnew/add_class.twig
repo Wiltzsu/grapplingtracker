@@ -1,79 +1,76 @@
 {% include '@Header/header.twig' %}
 {% include '@HeaderAddItems/header_additems.twig' %}
 
-<div class="container-fluid px-3">
+<div class="container px-3">
     <!-- Training Class Form Column -->
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6 col-12">
-            <form method="POST" action="" >
-                <!-- User ID (hidden) -->
-                <div class="form-group">
-                    <input type="hidden" class="form-control" id="userID" name="userID" required value="{{ userID }}">
-                </div>
+        <form method="POST" action="" >
+            <!-- User ID (hidden) -->
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="userID" name="userID" required value="{{ userID }}">
+            </div>
 
-                <!-- Instructor name -->
-                <h5>Add a training class</h5>
-                <div class="form-group{{ errors.instructor ? ' has-error' : '' }}">
-                    <label for="instructor" class="mt-3">Instructor name:</label>
-                    <input type="text" class="form-control" id="instructor" name="instructor" value="{{ input.instructor ?? '' }}" placeholder="">
-                    {% if errors.instructor %}
-                        <span class="form-text error-message">{{ errors.instructor }}</span>
-                    {% endif %}
-                </div>
+            <!-- Instructor name -->
+            <h5>Add a training class</h5>
+            <div class="form-group{{ errors.instructor ? ' has-error' : '' }}">
+                <label for="instructor" class="mt-3">Instructor name:</label>
+                <input type="text" class="form-control" id="instructor" name="instructor" value="{{ input.instructor ?? '' }}" placeholder="">
+                {% if errors.instructor %}
+                    <span class="form-text error-message">{{ errors.instructor }}</span>
+                {% endif %}
+            </div>
 
-                <!-- Location -->
-                <div class="form-group{{ errors.location ? ' has-error' : '' }}">
-                    <label for="location" class="mt-3">Location:</label>
-                    <input type="text" class="form-control" id="location" name="location" value="{{ input.location ?? '' }}" placeholder="">
-                    {% if errors.location %}
-                        <span class="form-text error-message">{{ errors.location }}</span>
-                    {% endif %}
-                </div>
+            <!-- Location -->
+            <div class="form-group{{ errors.location ? ' has-error' : '' }}">
+                <label for="location" class="mt-3">Location:</label>
+                <input type="text" class="form-control" id="location" name="location" value="{{ input.location ?? '' }}" placeholder="">
+                {% if errors.location %}
+                    <span class="form-text error-message">{{ errors.location }}</span>
+                {% endif %}
+            </div>
 
-                <!-- Duration -->
-                <div class="form-group{{ errors.duration ? ' has-error' : '' }}">
-                    <label for="duration" class="mt-3">Duration (minutes):</label>
-                    <input type="number" class="form-control" id="duration" name="duration" value="{{ input.duration  ?? '' }}" placeholder="">
-                    {% if errors.duration %}
-                        <span class="form-text error-message">{{ errors.duration }}</span>
-                    {% endif %}
-                </div>
+            <!-- Duration -->
+            <div class="form-group{{ errors.duration ? ' has-error' : '' }}">
+                <label for="duration" class="mt-3">Duration (minutes):</label>
+                <input type="number" class="form-control" id="duration" name="duration" value="{{ input.duration  ?? '' }}" placeholder="">
+                {% if errors.duration %}
+                    <span class="form-text error-message">{{ errors.duration }}</span>
+                {% endif %}
+            </div>
 
-                <!-- Date -->
-                <div class="form-group{{ errors.classDate ? ' has-error' : '' }}">
-                    <label for="date" class="mt-3">Date:</label>
-                    <input type="date" class="form-control" id="date" name="classDate" value="{{ input.classDate  ?? '' }}">
-                    {% if errors.classDate %}
-                        <span class="form-text error-message">{{ errors.classDate }}</span>
-                    {% endif %}
-                </div>
+            <!-- Date -->
+            <div class="form-group{{ errors.classDate ? ' has-error' : '' }}">
+                <label for="date" class="mt-3">Date:</label>
+                <input type="date" class="form-control" id="date" name="classDate" value="{{ input.classDate  ?? '' }}">
+                {% if errors.classDate %}
+                    <span class="form-text error-message">{{ errors.classDate }}</span>
+                {% endif %}
+            </div>
 
-                <!-- Class description -->
-                <div class="form-group{{ errors.classDescription ? ' has-error' : '' }}">
-                    <label for="classDescription" class="mt-3">Description:</label>
-                    <textarea class="form-control" id="classDescription" name="classDescription" placeholder="">{{ input.classDescription ?? '' }}</textarea>
-                    {% if errors.classDescription %}
-                        <span class="form-text error-message">{{ errors.classDescription }}</span>
-                    {% endif %}
-                </div>
+            <!-- Class description -->
+            <div class="form-group{{ errors.classDescription ? ' has-error' : '' }}">
+                <label for="classDescription" class="mt-3">Description:</label>
+                <textarea class="form-control" id="classDescription" name="classDescription" placeholder="">{{ input.classDescription ?? '' }}</textarea>
+                {% if errors.classDescription %}
+                    <span class="form-text error-message">{{ errors.classDescription }}</span>
+                {% endif %}
+            </div>
 
-                <!-- Rolling rounds per class -->
-                <div class="form-group">
-                    <label for="rounds" class="mt-3">Amount of rounds:</label>
-                    <input type="number" class="form-control" id="rounds" name="rounds" value="{{ input.rounds  ?? '' }}" placeholder="">
-                    <div class="form-text mb-2">Optional field.</div>
-                </div>
+            <!-- Rolling rounds per class -->
+            <div class="form-group">
+                <label for="rounds" class="mt-3">Amount of rounds:</label>
+                <input type="number" class="form-control" id="rounds" name="rounds" value="{{ input.rounds  ?? '' }}" placeholder="">
+                <div class="form-text mb-2">Optional field.</div>
+            </div>
 
-                <!-- Round duration -->
-                <div class="form-group">
-                    <label for="roundDuration" class="mt-3">One round duration:</label>
-                    <input type="number" class="form-control" id="roundDuration" name="roundDuration" value="{{ input.roundDuration  ?? '' }}" placeholder="">
-                    <div class="form-text mb-2">Optional field.</div>
-                </div>
+            <!-- Round duration -->
+            <div class="form-group">
+                <label for="roundDuration" class="mt-3">One round duration:</label>
+                <input type="number" class="form-control" id="roundDuration" name="roundDuration" value="{{ input.roundDuration  ?? '' }}" placeholder="">
+                <div class="form-text mb-2">Optional field.</div>
+            </div>
 
-                <!-- Submit button -->
-                <button type="submit" name="submit" class="btn btn-primary mt-3 w-100">Add</button>
-            </form>
-        </div>
-    </div>
+            <!-- Submit button -->
+            <button type="submit" name="submit" class="btn btn-primary mt-3">Add</button>
+        </form>
+
 </div>

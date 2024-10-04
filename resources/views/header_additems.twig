@@ -1,12 +1,13 @@
-<nav class="navbar navbar-expand-lg bg-light mb-3">
-    <div class="container">
-        <div class="justify-content-between" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" aria-current="page" href="addtechnique">Technique</a>
-                <a class="nav-link" href="addclass">Class</a>
-                <a class="nav-link" href="addposition">Position</a>
-                <a class="nav-link" href="addcategory">Category</a>
-            </div>
-        </div>
-    </div>
-</nav>
+
+
+<div class="dropdown">
+  <button onclick="toggleAddnew()" class="dropbtn">Choose what to add</button>
+  <div id="addnewDropdown" class="dropdown-content">
+    <a href="addtechnique">Technique</a>
+    <a href="addclass">Class</a>
+    <a href="addposition">Position</a>
+    <a href="addcategory">Category</a>
+  </div>
+</div>
+
+<script src="/js/addNewDropdown.js"></script>
