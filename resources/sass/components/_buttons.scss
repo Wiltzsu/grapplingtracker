@@ -1,3 +1,17 @@
 .test-button {
     background-color: red;
 }
+
+.primary-button {
+    color: $primary-button-color;
+    background-color: $primary-button-bg;
+}
+
+.primary-button:hover {
+    color: $primary-button-color;
+    background-color: $primary-button-hover-bg;
+}
+
+.secondary-button {
+    background-color: $secondary-button-bg;
+}

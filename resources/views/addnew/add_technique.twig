@@ -1,10 +1,9 @@
 {% include '@Header/header.twig' %}
 {% include '@HeaderAddItems/header_additems.twig' %}
 
-<div class="container px-3">
+<div class="container px-3 mt-3">
     <form method="POST" action="">
         <h5>Add a technique</h5>
-        
         <!-- User ID -->
         <div class="form-group">
             <input type="hidden" class="form-control" id="userID" name="userID" required value="{{ userID }}">
@@ -67,6 +66,6 @@
             </select>
         </div>
 
-        <button type="submit" name="submit" class="btn btn-primary mt-3">Add</button>
+        <button type="submit" name="submit" class="primary-button mt-3">Add</button>
     </form>
 </div>
