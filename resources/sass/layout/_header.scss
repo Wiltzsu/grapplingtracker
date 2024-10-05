@@ -1,1 +1,96 @@
-// header styles
+/* Add a gradient background to the top navigation */
+.topnav {
+  background: rgb(255,0,71);
+  background: linear-gradient(90deg, rgba(255,0,71,1) 0%, rgba(165,81,167,1) 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between; /* Space out left, center, and right sections */
+  align-items: center; /* Vertically center items */
+  gap: 20px;
+  padding: 10px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: transparent;
+  color: black;
+}
+
+/* Show the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none; /* Initially hide the icon */
+}
+
+/* Left section for "Grappling Tracker" */
+.left-section {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Center section for navigation links */
+.center-section {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adds space between the links */
+  flex: 2;
+}
+
+/* Right section for logged-in text */
+.logged-in-text {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+  padding-right: 20px;
+}
+
+/* When the screen is less than 600 pixels wide, hide all links except for the icon */
+@media screen and (max-width: 600px) {
+  .topnav .center-section,
+  .topnav .logged-in-text {
+    display: none; /* Initially hide the center and right sections */
+  }
+
+  .topnav .icon {
+    display: block; /* Show the icon (hamburger menu) */
+    cursor: pointer; /* Change cursor to pointer for interactivity */
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon */
+@media screen and (max-width: 600px) {
+  .topnav.responsive {
+    display: block; /* Switch layout to block on small screens */
+    position: relative; /* Allow positioning of icon */
+  }
+
+  .topnav.responsive .center-section,
+  .topnav.responsive .logged-in-text {
+    display: flex; /* Show the hidden sections */
+    flex-direction: column; /* Stack links vertically */
+    align-items: center; /* Center the stacked links */
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: center;
+  }
+
+  .topnav.responsive .icon {
+    position: absolute; /* Position the icon in the corner */
+    right: 10px; /* Adjust as needed */
+    top: 10px; /* Adjust as needed */
+  }
+}

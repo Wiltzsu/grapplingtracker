@@ -8,46 +8,29 @@
     <link href="/css/style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="/js/topNavigation.js"></script>
 </head>
 <body>
 
+<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top p-3">
-    <a class="navbar-brand" href="mainview">Grappling Tracker</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="mainview">Notes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="addtechnique">Add</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="viewtechniques">View</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="stats">Stats</a>
-            </li>
-        </ul>
-       <ul class="navbar-nav ms-auto"> <!-- This ul is added to push the dropdown to the right -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="navbar-text">
-            {% if username %}
-               {{ username }} 
-                
-            {% endif %}
-        </span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="profile">Profile</a></li>
-                    <li><a class="dropdown-item" href="settings">Settings</a></li>
-                    <li><a href="logout" class="dropdown-item">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
+<div class="topnav" id="topnav">
+    <div class="left-section">
+        <a href="mainview">Grappling Tracker</a>
     </div>
-</nav>
+    <div class="center-section">
+        <a href="mainview" class="active">Notes</a>
+        <a href="addtechnique">Add</a>
+        <a href="viewtechniques">View</a>
+        <a href="stats">Stats</a>
+    </div>
+    <span class="logged-in-text">
+    {% if username %}
+        {{ username }} 
+    {% endif %}
+    </span>
+    <a href="javascript:void(0);" class="icon" onclick="openNavigation()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
