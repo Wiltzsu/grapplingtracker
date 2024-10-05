@@ -5,6 +5,13 @@
 .primary-button {
     color: $primary-button-color;
     background-color: $primary-button-bg;
+    padding: 0.5rem;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 12px;
+    font-weight: 700;
 }
 
 .primary-button:hover {
