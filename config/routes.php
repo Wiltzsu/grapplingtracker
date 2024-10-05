@@ -16,7 +16,7 @@ use Phroute\Phroute\RouteCollector;
 return function (RouteCollector $router, $container) {
     $router->get(
         '/', function () use ($container) {
-            echo $container->get('Twig\Environment')->render('front_page.twig');
+            echo $container->get('Twig\Environment')->render('front-page.twig');
         }
     );
 

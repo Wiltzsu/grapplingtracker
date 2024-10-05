@@ -90,7 +90,7 @@ class UserController
      */
     public function showResetPasswordForm() :string
     {
-        return $this->twig->render('reset_password.twig');
+        return $this->twig->render('reset-password.twig');
     }
 
     /**
@@ -177,12 +177,12 @@ class UserController
         if ($token) {
             $result = $this->userModel->activateUser($token);
             if ($result) {
-                return $this->twig->render('activation_success.twig');
+                return $this->twig->render('activation-success.twig');
             } else {
-                return $this->twig->render('activation_failure.twig', ['error' => 'Invalid token or account already activated.']);
+                return $this->twig->render('activation-failure.twig', ['error' => 'Invalid token or account already activated.']);
             }
         } else {
-            return $this->twig->render('activation_failure.twig', ['error' => 'No token provided.']);
+            return $this->twig->render('activation-failure.twig', ['error' => 'No token provided.']);
         }
     }
 

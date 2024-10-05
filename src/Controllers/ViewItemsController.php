@@ -23,7 +23,7 @@ class ViewItemsController
         $userID = $_SESSION['userID'] ?? null;
 
         $techniques = $this->techniqueModel->getTechniques($userID);
-        return $this->twig->render('viewitems/view_techniques.twig', [
+        return $this->twig->render('viewitems/view-techniques.twig', [
             'techniques' => $techniques,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
@@ -36,7 +36,7 @@ class ViewItemsController
         $userID = $_SESSION['userID'] ?? null;
 
         $classes = $this->trainingClassModel->getTrainingClasses($userID);
-        return $this->twig->render('viewitems/view_classes.twig', [
+        return $this->twig->render('viewitems/view-classes.twig', [
             'classes' => $classes,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
@@ -49,7 +49,7 @@ class ViewItemsController
         $userID = $_SESSION['userID'] ?? null;
 
         $positions = $this->positionModel->getPositions($userID);
-        return $this->twig->render('viewitems/view_positions.twig', [
+        return $this->twig->render('viewitems/view-positions.twig', [
             'positions' => $positions,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
@@ -62,7 +62,7 @@ class ViewItemsController
         $userID = $_SESSION['userID'] ?? null;
 
         $categories = $this->categoryModel->getCategories($userID);
-        return $this->twig->render('viewitems/view_categories.twig', [
+        return $this->twig->render('viewitems/view-categories.twig', [
             'categories' => $categories,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
