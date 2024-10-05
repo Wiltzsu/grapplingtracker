@@ -61,7 +61,7 @@ class TrainingClassController
         $username = $_SESSION['username'] ?? null;
 
         return $this->twig->render(
-            'addnew/add_class.twig', [
+            'addnew/add-class.twig', [
             'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username,
@@ -99,7 +99,7 @@ class TrainingClassController
 
         if (!empty($errors)) {
             return $this->twig->render(
-                'addnew/add_class.twig', [
+                'addnew/add-class.twig', [
                 'errors' => $errors,
                 'input' => $formData,
                 'userID' => $userID

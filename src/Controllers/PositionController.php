@@ -60,7 +60,7 @@ class PositionController
         $username = $_SESSION['username'] ?? null;
 
         return $this->twig->render(
-            'addnew/add_position.twig', [
+            'addnew/add-position.twig', [
             'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username
@@ -86,7 +86,7 @@ class PositionController
         );
 
         if (!empty($errors)) {
-            return $this->twig->render('addnew/add_position.twig', ['errors' => $errors, 'input' => $formData]);
+            return $this->twig->render('addnew/add-position.twig', ['errors' => $errors, 'input' => $formData]);
         } else {
             $this->positionModel->createNewPosition(
                 $positionName,

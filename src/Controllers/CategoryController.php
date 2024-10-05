@@ -24,7 +24,7 @@ class CategoryController
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
 
-        return $this->twig->render('addnew/add_category.twig', [
+        return $this->twig->render('addnew/add-category.twig', [
             'userID' => $userID,
             'roleID' => $roleID,
             'username' => $username
@@ -44,7 +44,7 @@ class CategoryController
         );
         
         if (!empty($errors)) {
-            return $this->twig->render('addnew/add_category.twig', ['errors' => $errors, 'input' => $formData]);
+            return $this->twig->render('addnew/add-category.twig', ['errors' => $errors, 'input' => $formData]);
         } else {
             $this->categoryModel->createNewCategory(
                 $categoryName,

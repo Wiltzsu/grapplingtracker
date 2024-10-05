@@ -78,7 +78,7 @@ class TechniqueController
     
         // Generate HTML content using Twig and return it instead of echoing
         return $this->twig->render(
-            'addnew/add_technique.twig', [
+            'addnew/add-technique.twig', [
             'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username,
@@ -138,7 +138,7 @@ class TechniqueController
         if (!empty($errors)) {
             // Pass all the originally submitted data back to the form along with the errors
             return $this->twig->render(
-                'addnew/add_technique.twig', [
+                'addnew/add-technique.twig', [
                 'errors' => $errors,
                 'input' => $formData,
                 'categories' => $categories,

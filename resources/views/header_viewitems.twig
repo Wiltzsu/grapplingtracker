@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg bg-light mb-2">
-    <div class="container">
-        <div class="justify-content-between" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" aria-current="page" href="viewtechniques">Technique</a>
-                <a class="nav-link" href="viewclasses">Class</a>
-                <a class="nav-link" href="viewpositions">Position</a>
-                <a class="nav-link" href="viewcategories">Category</a>
-            </div>
+<script src="/js/global.js"></script>
+<script src="/js/toggle.js"></script>
+
+<div class="dropdown">
+    <button onclick="toggleViewItems()" class="dropbtn">Choose what to view</button>
+        <div id="viewitemsDropdown" class="dropdown-content">
+            <a href="viewtechniques">Techniques</a>
+            <a href="viewclasses">Classes</a>
+            <a href="viewpositions">Positions</a>
+            <a href="viewcategories">Categories</a>
         </div>
-    </div>
-</nav>
+</div>

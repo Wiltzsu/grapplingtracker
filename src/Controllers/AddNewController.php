@@ -16,7 +16,7 @@ class AddNewController
         $roleID = $_SESSION['roleID'] ?? null;
         $username = $_SESSION['username'] ?? null;
 
-        echo $this->twig->render('addnew/add_new.twig', [
+        echo $this->twig->render('addnew/add-new.twig', [
             'userID' => $_SESSION['userID'],
             'roleID' => $roleID,
             'username' => $username
