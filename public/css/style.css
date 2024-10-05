@@ -31,7 +31,6 @@
   border: none;
   cursor: pointer;
   margin-top: 1em;
-  margin-left: 1em;
   border-radius: 5px;
   padding: 12px;
   font-weight: 700;
@@ -55,7 +54,6 @@
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  margin-left: 1em;
 }
 
 .dropdown-content a {
@@ -71,6 +69,23 @@
 
 .show {
   display: block;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  margin-top: 1em;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
 /*# sourceMappingURL=style.css.map */

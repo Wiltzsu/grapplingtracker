@@ -1,9 +1,10 @@
 {% include '@Header/header.twig' %}
-{% include '@HeaderAddItems/header-additems.twig' %}
 
 <div class="container px-3 mt-3">
+    {% include '@HeaderAddItems/header-additems.twig' %}
+
     <!-- Position Form Column -->
-    <form method="POST" action="" >
+    <form method="POST" action="" class="mt-3">
         <!-- Position name -->
         <h5>Add a position</h5>
         <div class="form-group{{ errors.positionName ? ' has-error' : '' }}">

@@ -1,9 +1,10 @@
 {% include '@Header/header.twig' %}
-{% include '@HeaderViewItems/header-viewitems.twig' %}
 
-<div class="container px-3">
+<div class="container px-3 mt-3">
     <div class="row">
         <div class="col-md-12">
+            {% include '@HeaderViewItems/header-viewitems.twig' %}
+        
             {% if categories is empty %}
                 <p>No positions found.</p>
             {% else %}
