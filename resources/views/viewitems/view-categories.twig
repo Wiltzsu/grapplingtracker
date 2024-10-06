@@ -13,8 +13,6 @@
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
-                        <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,7 +20,6 @@
                         <tr>
                             <td>{{ category.categoryName }}</td>
                             <td>{{ category.categoryDescription }}</td>
-                            <td>{{ category.userID }}</td>
                             <!-- Only show delete button if user is admin -->
                             {% if roleID == 1 %}                                   
                             <td>

@@ -12,7 +12,7 @@
 
         <!-- Name -->
         <div class="form-group{{ errors.techniqueName ? ' has-error' : '' }}">
-            <label for="techniqueName" class="mt-3">Technique Name:</label>
+            <label for="techniqueName" class="mt-3">Name:</label>
             <input type="text" class="form-control" id="techniqueName" name="techniqueName" value="{{ input.techniqueName ?? '' }}">
             {% if errors.techniqueName %}
                 <span class="form-text error-message">{{ errors.techniqueName }}</span>

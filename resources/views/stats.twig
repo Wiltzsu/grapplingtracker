@@ -1,11 +1,11 @@
 {% include '@Header/header.twig' %}
 
 <div class="container px-3">
-    <div class="row">
+    <div class="row mt-3">
 
-        <h1>Rolling stats</h1>
+        <h3>Rolling stats</h3>
         <div class="col-md-6">
-            <h2>7 days</h2>
+            <h4>7 days</h4>
             {% if weeklyMatTime is not empty %}
                 <p>Mat time: {{ weeklyMatTime }}</p>
             {% endif %}
@@ -18,7 +18,7 @@
         </div>
         
         <div class="col-md-6">
-            <h2>1 month</h2>
+            <h4>1 month</h4>
             {% if monthlyMatTime is not empty %}
                 <p>Mat time: {{ monthlyMatTime }}</p>
             {% endif %}
@@ -32,7 +32,6 @@
     </div>
 
     <div class="row">
-
         <div class="col-md-6">
             <h2>6 months</h2>
             {% if biannualMatTime is not empty %}
