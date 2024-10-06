@@ -210,6 +210,6 @@ class UserController
         session_destroy();
 
         // Redirect to home page.
-        header("Location: /grappling-tracker/public/");
+        header("Location: /");
     }
 }
