@@ -17,3 +17,12 @@
 .secondary-button {
     background-color: $secondary-button-bg;
 }
+
+/* Make buttons block-level and full width */
+.front-page-btn {
+    display: block;
+    width: 300px; /* Make the button take full width */
+    margin-bottom: 10px; /* Add space between buttons */
+    padding: 10px; /* Adjust padding for better sizing */
+  }
+

@@ -1,12 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 .container {
-  max-width: 700px;
+  max-width: 900px;
 }
 
 body {
   background-color: #222831;
   color: #f1f1f1;
   font-family: "Roboto", sans-serif;
+}
+
+#dynamicText {
+  min-height: 50px;
 }
 
 /* Add a gradient background to the top navigation */
@@ -102,7 +106,7 @@ body {
 }
 .primary-button {
   color: #f1f1f1;
-  background-color: #00ADB5;
+  background-color: #7508ce;
   padding: 0.5rem;
   font-size: 16px;
   border: none;
@@ -120,8 +124,16 @@ body {
   background-color: #222831;
 }
 
+/* Make buttons block-level and full width */
+.front-page-btn {
+  display: block;
+  width: 300px; /* Make the button take full width */
+  margin-bottom: 10px; /* Add space between buttons */
+  padding: 10px; /* Adjust padding for better sizing */
+}
+
 .dropbtn {
-  background-color: #00ADB5;
+  background-color: #7508ce;
   color: #f1f1f1;
   padding: 0.5rem;
   font-size: 16px;
