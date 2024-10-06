@@ -15,9 +15,9 @@
 
 return [
     'database' => [
-        'dsn' => 'mysql:host=localhost;dbname=journaldb',
-        'username' => 'root',
-        'password' => '8HZejFXsvayVMK',
+        'dsn' => 'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'],
+        'username' => $_ENV['DB_USER'],
+        'password' => $_ENV['DB_PASS'],
         'options' => [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             /**
