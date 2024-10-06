@@ -12,6 +12,12 @@
  * @return Array Returns an array of settings related to database
  * connection.
  */
+use Dotenv\Dotenv;
+
+// Load environment variables
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../'); // Adjust path as needed
+$dotenv->load();
+
 
 return [
     'database' => [
