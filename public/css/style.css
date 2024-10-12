@@ -205,4 +205,23 @@ tr:nth-child(odd) {
   color: black;
 }
 
+.login-form {
+  width: 350px;
+}
+
+@media only screen and (min-width: 600px) {
+  .login-form {
+    width: 500px;
+  }
+}
+.register-form {
+  width: 350px;
+}
+
+@media only screen and (min-width: 600px) {
+  .register-form {
+    width: 500px;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
