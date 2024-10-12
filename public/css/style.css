@@ -11,6 +11,7 @@ body {
 
 #dynamicText {
   min-height: 50px;
+  text-align: center;
 }
 
 /* Add a gradient background to the top navigation */
@@ -104,6 +105,18 @@ body {
     top: 10px; /* Adjust as needed */
   }
 }
+.center-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4em;
+  height: 12em;
+}
+
+.logo {
+  width: 180px;
+}
+
 .primary-button {
   color: #f1f1f1;
   background-color: #7508ce;
@@ -214,6 +227,12 @@ tr:nth-child(odd) {
     width: 500px;
   }
 }
+.frontpage-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .register-form {
   width: 350px;
 }

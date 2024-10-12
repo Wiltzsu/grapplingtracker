@@ -87,6 +87,7 @@ return [
         $loader->addPath($twigSettings['views_path'], 'HeaderViewItems');
         $loader->addPath($twigSettings['views_path'], 'HeaderAddItems');
         $loader->addPath($twigSettings['views_path'], 'Footer');
+        $loader->addPath($twigSettings['views_path'], 'HeaderFrontPage');
 
         // Return a new Twig Environment object, constructed with the loader
         // and an array of options.
