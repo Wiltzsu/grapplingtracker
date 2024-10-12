@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", function() {
      * Phrases to be dynamically displayed in the 'dynamicText' element.
      */
     const phrases = [
-        "Track your grappling techniques.",
-        "Log your training sessions.",
-        "Monitor your progress over time."
+        "Track your techniques.",
+        "Log your sessions.",
+        "Monitor your progress."
     ];
 
     const textElement = document.getElementById('dynamicText'); // Element where the text will appear.
