@@ -60,6 +60,19 @@ class TechniqueController
         return $this->techniqueModel->getTechniques($userID);
     }
 
+    public function showTechniqueView() :string
+    {
+        $userID = $_SESSION['userID'] ?? null;
+
+        $techniques = $this->techniqueModel->getTechniques($userID);
+        return $this->twig->render('viewitems/view-techniques.twig', [
+            'techniques' => $techniques,
+            'userID' => $userID,
+            'roleID' => $_SESSION['roleID'] ?? null,
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    }
+
     /**
      * Renders the add technique form.
      * 
@@ -157,7 +170,7 @@ class TechniqueController
                 $classID
             );
             
-            header('Location: addnew');
+            header('Location: addtechnique');
             exit();
         }
     }

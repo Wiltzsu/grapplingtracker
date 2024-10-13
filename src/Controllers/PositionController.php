@@ -39,6 +39,19 @@ class PositionController
     ) {
     }
 
+    public function showPositionView() :string
+    {
+        $userID = $_SESSION['userID'] ?? null;
+
+        $positions = $this->positionModel->getPositions($userID);
+        return $this->twig->render('viewitems/view-positions.twig', [
+            'positions' => $positions,
+            'userID' => $userID,
+            'roleID' => $_SESSION['roleID'] ?? null,
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    }
+
     /**
      * Get all positions.
      * 
@@ -93,7 +106,7 @@ class PositionController
                 $positionDescription
             );
 
-            header('Location: addnew');
+            header('Location: addposition');
             exit();
         }
     }

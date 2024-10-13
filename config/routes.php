@@ -146,25 +146,31 @@ return function (RouteCollector $router, $container) {
 
     $router->get(
         '/viewtechniques', function () use ($container) {
-            return $container->get(App\Controllers\ViewItemsController::class)->showTechniqueView();
+            return $container->get(App\Controllers\TechniqueController::class)->showTechniqueView();
+        }, ['before' => 'auth']
+    );
+
+    $router->post(
+        '/viewtechniques', function () use ($container) {
+            $container->get(App\Controllers\TechniqueController::class)->handlePostRequest($_POST);
         }, ['before' => 'auth']
     );
 
     $router->get(
         '/viewclasses', function () use ($container) {
-            return $container->get(App\Controllers\ViewItemsController::class)->showClassView();
+            return $container->get(App\Controllers\TrainingClassController::class)->showClassView();
         }, ['before' => 'auth']
     );
 
     $router->get(
         '/viewpositions', function () use ($container) {
-            return $container->get(App\Controllers\ViewItemsController::class)->showPositionView();
+            return $container->get(App\Controllers\PositionController::class)->showPositionView();
         }, ['before' => 'auth']
     );
 
     $router->get(
         '/viewcategories', function () use ($container) {
-            return $container->get(App\Controllers\ViewItemsController::class)->showCategoryView();
+            return $container->get(App\Controllers\CategoryController::class)->showCategoryView();
         }, ['before' => 'auth']
     );
 

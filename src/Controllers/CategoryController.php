@@ -18,6 +18,19 @@ class CategoryController
         return $this->categoryModel->getCategories($userID);
     }
 
+    public function showCategoryView() :string
+    {
+        $userID = $_SESSION['userID'] ?? null;
+
+        $categories = $this->categoryModel->getCategories($userID);
+        return $this->twig->render('viewitems/view-categories.twig', [
+            'categories' => $categories,
+            'userID' => $userID,
+            'roleID' => $_SESSION['roleID'] ?? null,
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    }
+
     public function addCategoryForm() :string
     {
         $userID = $_SESSION['userID'] ?? null;

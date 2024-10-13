@@ -276,9 +276,6 @@ class Technique
         $delete = $this->db->prepare($query);
         $delete->bindValue(':techniqueID', $techniqueID, PDO::PARAM_INT);
         $delete->execute();
-
-        header('Location: viewitems');
-        exit();
     }
 }
 ?>

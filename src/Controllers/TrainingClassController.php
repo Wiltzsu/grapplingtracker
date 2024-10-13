@@ -38,6 +38,19 @@ class TrainingClassController
     ) {
     }
 
+    public function showClassView() :string
+    {
+        $userID = $_SESSION['userID'] ?? null;
+
+        $classes = $this->trainingClassModel->getTrainingClasses($userID);
+        return $this->twig->render('viewitems/view-classes.twig', [
+            'classes' => $classes,
+            'userID' => $userID,
+            'roleID' => $_SESSION['roleID'] ?? null,
+            'username' => $_SESSION['username'] ?? null
+        ]);
+    }
+
     /**
      * Get all training classes.
      * 
@@ -118,7 +131,7 @@ class TrainingClassController
                 $roundDuration
             );
             
-            header('Location: addnew');
+            header('Location: addclass');
             exit();
         }
     }
