@@ -60,17 +60,24 @@ class TechniqueController
         return $this->techniqueModel->getTechniques($userID);
     }
 
+    /**
+     * Show the technique view.
+     * 
+     * @return string
+     */
     public function showTechniqueView() :string
     {
         $userID = $_SESSION['userID'] ?? null;
 
         $techniques = $this->techniqueModel->getTechniques($userID);
-        return $this->twig->render('viewitems/view-techniques.twig', [
+        return $this->twig->render(
+            'viewitems/view-techniques.twig', [
             'techniques' => $techniques,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
             'username' => $_SESSION['username'] ?? null
-        ]);
+            ]
+        );
     }
 
     /**

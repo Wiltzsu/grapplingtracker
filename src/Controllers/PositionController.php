@@ -39,17 +39,24 @@ class PositionController
     ) {
     }
 
+    /**
+     * Show the position view.
+     * 
+     * @return string
+     */
     public function showPositionView() :string
     {
         $userID = $_SESSION['userID'] ?? null;
 
         $positions = $this->positionModel->getPositions($userID);
-        return $this->twig->render('viewitems/view-positions.twig', [
+        return $this->twig->render(
+            'viewitems/view-positions.twig', [
             'positions' => $positions,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
             'username' => $_SESSION['username'] ?? null
-        ]);
+            ]
+        );
     }
 
     /**

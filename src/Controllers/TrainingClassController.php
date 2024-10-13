@@ -38,17 +38,24 @@ class TrainingClassController
     ) {
     }
 
+    /**
+     * Show the training class view.
+     * 
+     * @return string
+     */
     public function showClassView() :string
     {
         $userID = $_SESSION['userID'] ?? null;
 
         $classes = $this->trainingClassModel->getTrainingClasses($userID);
-        return $this->twig->render('viewitems/view-classes.twig', [
+        return $this->twig->render(
+            'viewitems/view-classes.twig', [
             'classes' => $classes,
             'userID' => $userID,
             'roleID' => $_SESSION['roleID'] ?? null,
             'username' => $_SESSION['username'] ?? null
-        ]);
+            ]
+        );
     }
 
     /**
