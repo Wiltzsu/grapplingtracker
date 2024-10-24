@@ -1,20 +1,51 @@
 <?php
-
+/**
+ * This file contains the Note model.
+ * 
+ * PHP version 8.0.0
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@gmail.com>
+ * @license  MIT License
+ * @link     https://grapplingtracker.com
+ */
 namespace App\Models;
 
 use PDO;
 
+/**
+ * The Note model.
+ * 
+ * @category Models
+ * @package  App\Models
+ * @author   William Lönnberg <william.lonnberg@mail.com>
+ * @license  MIT License
+ * @link     https://grapplingtracker.com
+ */
 class Note
 {
     private $db;
     private $userID;
     private $content;
 
+    /**
+     * Constructor function for Note.
+     * 
+     * @param PDO $db Database connection
+     */
     public function __construct(PDO $db)
     {
         $this->db = $db;
     }
 
+    /**
+     * Validate quick note.
+     * 
+     * @param string $content Content
+     * 
+     * @return array
+     */
     public function validateQuickNote($content)
     {
         $errors = [];
@@ -28,6 +59,14 @@ class Note
         return $errors;
     }
 
+    /**
+     * Create a quick note.
+     * 
+     * @param int    $userID  User ID
+     * @param string $content Content
+     * 
+     * @return void
+     */
     public function createQuickNote(
         $userID,
         $content
@@ -56,6 +95,13 @@ class Note
         $statement->execute();
     }
 
+    /**
+     * Get all quick notes.
+     * 
+     * @param int $userID User ID
+     * 
+     * @return array
+     */
     public function getQuickNotes($userID) :array
     {
         $userID = $_SESSION['userID'];
@@ -72,14 +118,18 @@ class Note
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Delete a quick note.
+     * 
+     * @param int $quicknoteID Quick note ID
+     * 
+     * @return void
+     */
     public function deleteQuickNote($quicknoteID) :void
     {
         $query = "DELETE FROM Quick_Note WHERE quicknoteID = :quicknoteID";
         $delete = $this->db->prepare($query);
-        $delete->bindValue (':quicknoteID', $quicknoteID, PDO::PARAM_INT);
+        $delete->bindValue(':quicknoteID', $quicknoteID, PDO::PARAM_INT);
         $delete->execute();
-
-        header('Location: mainview');
-        exit();
     }
 }

@@ -7,7 +7,7 @@ of keeping track of my training. It's a work in progress and I'm constantly addi
 
 - **Technique Logging**: Record details about each technique practiced including description, category, etc.
 - **Training Session Management**: Log each training session with details such as duration, instructor, and location.
-- **Mobile Responsive**: Accessible on various devices, ensuring a seamless experience across platforms.
+- **Mobile Responsive**: Accessible on various devices, getting  a seamless experience across platforms.
 
 ## Getting Started
 
@@ -24,10 +24,3 @@ Once you have registered and logged in, you can start by:
 ## Contributing
 
 Escpecially frontend contributions are welcome, and any contributions you make are **greatly appreciated**. If you have suggestions for enhancements or encounter any issues, please:
-
-1. Open an issue to discuss what you would like to change.
-2. For major changes, please open an issue first to discuss what you would like to change.
-
-## Acknowledgments
-
-- Hat tip to all contributors who have helped shape this project.
