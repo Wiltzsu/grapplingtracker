@@ -20,40 +20,7 @@
                         <tr>
                             <td>{{ category.categoryName }}</td>
                             <td>{{ category.categoryDescription }}</td>
-                            <!-- Only show delete button if user is admin -->
-                            {% if roleID == 1 %}                                   
-                            <td>
-                                <button type="button" class="btn" data-toggle="modal" data-target="#modal{{ category.categoryID }}">
-                                    <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/icons/trash.svg" alt="Delete">
-                                </button>
-                            </td>
-                            {% endif %}
                         </tr>
-
-                        <!-- Modal for deletion confirmation -->
-                        <div class="modal fade" id="modal{{ category.categoryID }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure you want to delete the category "{{ category.categoryName }}"?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <!-- Form for deletion -->
-                                        <form method="POST" action="">
-                                            <input type="hidden" name="categoryID" value="{{ category.categoryID }}">
-                                            <button type="submit" name="deleteCategory" class="btn btn-danger">Delete category</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     {% endfor %}
                 {% endif %}  
                 </tbody>

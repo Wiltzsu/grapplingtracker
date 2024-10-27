@@ -91,6 +91,12 @@ return function (RouteCollector $router, $container) {
     );
 
     $router->get(
+        '/addnew', function () use ($container) {
+            return $container->get(App\Controllers\AddNewController::class)->showAddNewView();
+        }
+    );
+
+    $router->get(
         '/addtechnique', function () use ($container) {
             return $container->get(App\Controllers\TechniqueController::class)->addTechniqueForm();
         }, ['before' => 'auth']
