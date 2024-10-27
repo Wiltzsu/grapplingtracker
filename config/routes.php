@@ -93,7 +93,7 @@ return function (RouteCollector $router, $container) {
     $router->get(
         '/addnew', function () use ($container) {
             return $container->get(App\Controllers\AddNewController::class)->showAddNewView();
-        }
+        }, ['before' => 'auth']
     );
 
     $router->get(
@@ -141,6 +141,12 @@ return function (RouteCollector $router, $container) {
     $router->post(
         '/addclass', function () use ($container) {
             return $container->get(App\Controllers\TrainingClassController::class)->postTrainingClass($_POST);
+        }, ['before' => 'auth']
+    );
+
+    $router->get(
+        '/viewitems', function () use ($container) {
+            return $container->get(App\Controllers\ViewController::class)->showViewItems();
         }, ['before' => 'auth']
     );
 
