@@ -18,11 +18,25 @@
     <div class="left-section">
         <a href="mainview">Grappling Tracker</a>
     </div>
-    <div class="center-section">
-        <a href="mainview" class="active">Notes</a>
-        <a href="addtechnique">Add</a>
-        <a href="viewtechniques">View</a>
-        <a href="stats">Stats</a>
+    <div id="myNav" class="overlay">
+
+        <div>
+            <a href="mainview" class="overlay-heading">Grappling Tracker</a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        </div>
+
+        <span class="">
+            {% if username %}
+                {{ username }} 
+            {% endif %}
+        </span>
+
+        <div class="overlay-content">
+            <a href="mainview" class="active">Notes</a>
+            <a href="addtechnique">Add</a>
+            <a href="viewtechniques">View</a>
+            <a href="stats">Stats</a>
+        </div>
     </div>
     <span class="logged-in-text">
     {% if username %}
@@ -30,9 +44,82 @@
     {% endif %}
     </span>
     
-    <a href="javascript:void(0);" class="icon" onclick="openNavigation()">
-        <i class="fa fa-bars"></i>
-    </a>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
 </div>
 <a href="logout" class="dropdown-item">Logout</a>
 
+<style>
+
+.overlay {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: #222226;
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay-heading {
+  position: absolute;
+  top: 35px;
+  left: 30px;
+  font-size: 16px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #FAFAFA;
+  display: block;
+  transition: 0.3s;
+  font-weight: 400;
+  line-height: 44px;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 35px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 16px;
+  top: 0px;
+  right: 30px;
+  }
+}
+</style>
+</head>
+<body>
+
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}
+</script>
