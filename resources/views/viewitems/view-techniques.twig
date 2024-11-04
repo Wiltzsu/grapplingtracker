@@ -3,44 +3,56 @@
 <div class="container px-3 mt-3">
 
     <div class="row">
-        <span>View | Technique
-            <a href="/viewitems">
-                <img src="/img/cancel.svg" alt"cancel">
-            </a>
-        </span>
+        <div class="col-md-6">
+            <span>View | Technique
+                <a href="/viewitems">
+                    <img src="/img/cancel.svg" alt"cancel">
+                </a>
+            </span>
+        </div>
+
+        <div class="col-md-6">
+            <span>
+                <a href="">
+                    <img src="/img/more_vert.svg" alt"more">
+                </a>
+            </span>
+        </div> 
     </div>
 
     <div class="row">
-        <div class="col-md-12">
-            {% include '@HeaderViewItems/header-viewitems.twig' %}            
-        
-            <table class="table table-hover">
-                {% if techniques is empty %}
-                    <p>No techniques found.</p>
-                {% else %}
-                <thead class="thead-light">
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Position</th>
-                        <th>Class</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for technique in techniques %}
-                        <tr>
-                            <td>{{ technique.techniqueName }}</td>
-                            <td>{{ technique.techniqueDescription }}</td>
-                            <td>{{ technique.categoryName }}</td>
-                            <td>{{ technique.positionName }}</td>
-                            <td>{{ technique.location }}</td>
-                        </tr>
-                    {% endfor %}
-                {% endif %}  
-                </tbody>
-            </table>
-        </div>
+        {% include '@HeaderViewItems/header-viewitems.twig' %}
     </div>
+    {% if techniques is empty %}
+        <h5>No techniques found.</h5>
+    {% else %}
+        <div class="container">
+            <div class="row">
+                {% for technique in techniques %}
+                    <div class="col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-md-6 font-weight-bold">Name:</div>
+                            <div class="col-md-6">{{ technique.techniqueName }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 font-weight-bold">Description:</div>
+                            <div class="col-md-6">{{ technique.techniqueDescription }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 font-weight-bold">Category:</div>
+                            <div class="col-md-6">{{ technique.categoryName }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 font-weight-bold">Position:</div>
+                            <div class="col-md-6">{{ technique.positionName }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 font-weight-bold">Location:</div>
+                            <div class="col-md-6">{{ technique.location }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 </div>

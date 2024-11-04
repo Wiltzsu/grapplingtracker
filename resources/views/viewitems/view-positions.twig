@@ -11,30 +11,28 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
-            {% include '@HeaderViewItems/header-viewitems.twig' %}            
-            
-            {% if positions is empty %}
-                <p>No positions found.</p>
-            {% else %}
-            <table class="table table-hover">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for position in positions %}
-                        <tr>
-                            <td style="white-space: normal; word-wrap: break-word;">{{ position.positionName }}</td>
-                            <td style="white-space: normal; word-wrap: break-word;">{{ position.positionDescription }}</td>
-                        </tr>
-                    {% endfor %}
-                {% endif %}   
-                </tbody>
-            </table>    
-        </div>
+        {% include '@HeaderViewItems/header-viewitems.twig' %}
     </div>
+    {% if positions is empty %}
+        <h5>No positions found.</h5>
+    {% else %}
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-md-3">Name</div>
+                            <div class="col-md-9">Description</div>
+                        </div>
+                    </div>
+                {% for position in positions %}
+                    <div class="col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-md-3">{{ position.positionName }}</div>
+                            <div class="col-md-9">{{ position.positionDescription }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 </div>
