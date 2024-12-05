@@ -26,7 +26,7 @@ $routes($router, $container);
 $dispatcher = new Dispatcher($router->getData());
 
 // Get the base path
-$basePath = '/grappling-tracker/public';
+$basePath = '/grapplingtracker/public';
 
 // Strip the base path from the request URI
 $parsedUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

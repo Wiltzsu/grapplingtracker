@@ -143,7 +143,7 @@ class UserController
             $mail->addAddress($email);
             $mail->isHTML(true);
             $mail->Subject = 'Activate your account';
-            $mail->Body = "Please click here to activate your account: <a href='http://localhost/grappling-tracker/public/activate?token=$token'>Activate Account</a>";
+            $mail->Body = "Please click here to activate your account: <a href='http://localhost/grapplingtracker/public/activate?token=$token'>Activate Account</a>";
             $mail->send();
             echo 'Activation email has been sent.';
         } catch (Exception $e) {
