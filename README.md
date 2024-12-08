@@ -1,26 +1,27 @@
 # Grappling Tracker
 
-Grappling Tracker is a web-based application tailored for martial arts enthusiasts to track and analyze their training sessions, techniques, and progress over time. It provides a user-friendly dashboard for logging training details, viewing statistics, and managing one's martial arts journey effectively. It's a long-time project for myself that emerged from my own need
-of keeping track of my training. It's a work in progress and I'm constantly adding new features and improvements.
+⚠️ **IMPORTANT NOTICE: This repository is no longer actively maintained.**  
+The Grappling Tracker project is being refactored using Laravel. Future development and improvements will occur in the new repository. This repository is archived for reference purposes only.  
 
-## Features (so far)
+---
 
+Grappling Tracker is a web-based application tailored for grappling enthusiasts to track and analyze their training sessions, techniques, and progress over time. It provides a user-friendly dashboard for logging training details, viewing statistics, and managing one's martial arts journey effectively. It's a long-time project for myself that emerged from my own need of keeping track of my training.
+
+---
+
+## New Version (Laravel Stack)
+
+The refactored version of Grappling Tracker is built with Laravel for better scalability and maintainability. You can find the new repository [here](https://github.com/Wiltzsu/grapplingtracker-v2).
+
+---
+
+## Features (in this version)
 - **Technique Logging**: Record details about each technique practiced including description, category, etc.
 - **Training Session Management**: Log each training session with details such as duration, instructor, and location.
-- **Mobile Responsive**: Accessible on various devices, getting  a seamless experience across platforms.
+- **Mobile Responsive**: Accessible on various devices, getting a seamless experience across platforms.
 
-## Getting Started
+---
 
-To get started with Grappling Tracker, visit [Grappling Tracker](https://grapplingtracker.com) and register for an account. The application is fully hosted online, so you can access it from anywhere without any installation.
+## License
+[MIT License](LICENSE)
 
-## Usage
-
-Once you have registered and logged in, you can start by:
-
-- **Adding Techniques**: Navigate to the 'Add Technique' section to input details about the techniques you have practiced.
-- **Logging Training Sessions**: Enter details of your training sessions to keep track of the time and content of your practices.
-- **Viewing Progress**: Check your dashboard regularly to see comprehensive analytics about your training and progression.
-
-## Contributing
-
-Escpecially frontend contributions are welcome, and any contributions you make are **greatly appreciated**. If you have suggestions for enhancements or encounter any issues, please:
