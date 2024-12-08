@@ -1,6 +1,6 @@
 # Grappling Tracker
 
-⚠️ **IMPORTANT NOTICE: This repository is no longer actively maintained.**  
+⚠️ **This repository is no longer actively maintained.**  
 The Grappling Tracker project is being refactored using Laravel. Future development and improvements will occur in the new repository. This repository is archived for reference purposes only.  
 
 ---
