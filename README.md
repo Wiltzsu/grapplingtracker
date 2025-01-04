@@ -11,7 +11,7 @@ Grappling Tracker is a web-based application tailored for grappling enthusiasts 
 
 ## New Version (Laravel Stack)
 
-The refactored version of Grappling Tracker is built with Laravel for better scalability and maintainability. You can find the new repository [here](https://github.com/Wiltzsu/grapplingtracker-v2).
+The refactored version of Grappling Tracker is built with Laravel for better scalability and maintainability. The [old project](https://github.com/Wiltzsu/grapplingtracker) has been archived and is no longer maintained. You can find the new repository [here](https://github.com/Wiltzsu/grapplingtracker-v2).
 
 ---
 
