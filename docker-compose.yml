@@ -1,0 +1,23 @@
+# Local development database. Not used in production.
+services:
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-gt}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-gt}
+      POSTGRES_DB: ${POSTGRES_DB:-gt}
+    ports:
+      # Bound to localhost only, so the dev DB isn't reachable from the network.
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+      # Creates the separate test database (gt_test) on first start.
+      - ./docker/postgres-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
