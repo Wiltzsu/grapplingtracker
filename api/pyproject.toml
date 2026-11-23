@@ -15,9 +15,9 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pytest>=8.3",
-    "httpx>=0.28",  # used by FastAPI's TestClient
     "ruff>=0.8",
     "mypy>=1.13",
+    "httpx2>=2.16.2",  # used by FastAPI's TestClient
 ]
 
 [tool.uv]
